@@ -1,0 +1,53 @@
+.container {
+  position: relative;
+  z-index: 99;
+}
+.top {
+  background: #232a36;
+}
+.top .topContent {
+  width: 1020px;
+  min-width: 1020px;
+  padding: 0 10px;
+  margin: 0 auto;
+  height: 42px;
+  line-height: 42px;
+  color: #999;
+}
+.top .topLeft {
+  float: left;
+}
+.top .topLeft span {
+  margin-right: 10px;
+}
+.top .topLeft .fontRed {
+  color: #fd565e;
+  font-style: normal;
+}
+.top .topRight {
+  float: right;
+  text-align: right;
+}
+.top .topRight span {
+  margin-left: 10px;
+}
+.nav {
+  height: 118px;
+  background: rgba(255, 255, 255, 0.9);
+}
+.nav .navContent {
+  width: 1020px;
+  min-width: 1020px;
+  margin: 0 auto;
+  height: 118px;
+  padding: 24px 10px;
+  background: #fff;
+}
+.nav .navContent .logo {
+  float: left;
+}
+.nav .navContent .menu {
+  float: right;
+  height: 70px;
+  padding: 15px 0;
+}

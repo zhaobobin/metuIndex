@@ -1,0 +1,56 @@
+.container {
+  padding: 30px 0 50px;
+  background: #454e52;
+}
+.footContent {
+  width: 1020px;
+  min-width: 1020px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+.footContent .top {
+  overflow: hidden;
+}
+.footContent .top dl {
+  float: left;
+  width: 200px;
+}
+.footContent .top dl dt {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 2em;
+  color: #e6e6e6;
+  margin-bottom: 10px;
+}
+.footContent .top dl dd {
+  font-size: 14px;
+}
+.footContent .top dl a {
+  color: #b4b4b4;
+}
+.footContent .top dl a:hover {
+  color: #1890ff;
+}
+.footContent .top ul {
+  float: right;
+}
+.footContent .top ul li {
+  line-height: 2em;
+  text-align: right;
+  color: #e6e6e6;
+  margin-bottom: 15px;
+}
+.footContent .top ul li .size18 {
+  font-size: 18px;
+}
+.footContent .top ul li .size26 {
+  font-size: 26px;
+}
+.footContent .bottom {
+  padding: 30px 0;
+  border-top: 1px solid #595959;
+}
+.footContent .bottom span {
+  margin-right: 10px;
+  color: #b4b4b4;
+}

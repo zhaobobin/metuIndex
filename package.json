@@ -1,0 +1,42 @@
+{
+  "name": "metuIndex",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "NO_PROXY=true roadhog server",
+    "build": "NODE_ENV=production roadhog build",
+    "lint": "eslint --ext .js src test",
+    "precommit": "npm run lint"
+  },
+  "dependencies": {
+    "antd": "^3.8.0",
+    "dva": "^2.3.2",
+    "dva-loading": "^2.0.4",
+    "lodash": "^4.17.10",
+    "moment": "^2.22.2",
+    "react": "^16.2.0",
+    "react-container-query": "^0.11.0",
+    "react-document-title": "^2.0.3",
+    "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "@babel/polyfill": "^7.0.0-beta.56",
+    "babel-plugin-dva-hmr": "^0.3.2",
+    "babel-plugin-import": "^1.8.0",
+    "babel-plugin-module-resolver": "^3.1.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.5",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^4.14.0",
+    "eslint-config-umi": "^0.1.1",
+    "eslint-plugin-flowtype": "^2.34.1",
+    "eslint-plugin-import": "^2.6.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.1.0",
+    "husky": "^0.12.0",
+    "redbox-react": "^1.4.3",
+    "roadhog": "^2.0.0"
+  }
+}

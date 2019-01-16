@@ -1,10 +1,8 @@
 import React from 'react';
 
-import styles from './GlobalContent.less'
-
 const GlobalContent = (props) => {
   return(
-    <div className={styles.content}>
+    <div style={{marginTop: '64px'}}>
       {props.children}
     </div>
   )

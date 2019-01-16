@@ -3,7 +3,7 @@
   ```
   git clone git@github.com:zhaobobin/metuIndex.git
   
-  cd qtw
+  cd metuIndex
   
   npm install
   
@@ -12,7 +12,7 @@
   
 ### 手动安装
 
-1、新建项目qtw
+1、新建项目metuIndex
 
   ```
   npm install dva-cli -g
@@ -359,9 +359,9 @@
 
 在 utils/utils.ENV 中添加配置
 
-qtw-token ————  用户登录后保存token
+metuIndex-token ————  用户登录后保存token
 
-qtw-currentMenu ————  记录MainMenu导航当前激活的key,用于F5刷新页面时显示默认的路由
+metuIndex-currentMenu ————  记录MainMenu导航当前激活的key,用于F5刷新页面时显示默认的路由
 
 ### 疑难问题
 

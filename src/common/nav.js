@@ -24,85 +24,86 @@ export const getNavData = app => [
         component: dynamicWrapper(app, [], () => import('../routes/Home/Home')),
       },
       {
-        name: '我要出借',
-        key: 'lend',
-        path: 'lend',
-        children: [
-          {
-            name: '活动专区',
-            key: 'hdzq',
-            path: 'hdzq',
-            component: dynamicWrapper(app, [], () => import('../routes/Lend/Hdzq')),
-          },
-          {
-            name: '散标专区',
-            key: 'sbzq',
-            path: 'sbzq',
-            component: dynamicWrapper(app, [], () => import('../routes/Lend/Sbzq')),
-          },
-          {
-            name: '变现专区',
-            key: 'bxzq',
-            path: 'bxzq',
-            component: dynamicWrapper(app, [], () => import('../routes/Lend/Bxzq')),
-          },
-        ]
+        name: '影像',
+        key: 'vision',
+        path: 'vision',
+        component: dynamicWrapper(app, [], () => import('../routes/Vision/Vision')),
       },
       {
-        name: '我要借款',
-        key: 'borrow',
-        path: 'borrow',
-        component: dynamicWrapper(app, [], () => import('../routes/Borrow/Borrow')),
+        name: '影像-分类',
+        key: 'vision-category',
+        path: 'vision/:category',
+        isHide: true,
+        component: dynamicWrapper(app, [], () => import('../routes/Vision/Vision')),
       },
       {
-        name: '新手须知',
-        key: 'guide',
-        path: 'guide',
-        children: [
-          {
-            name: '新手须知',
-            key: 'notes',
-            path: 'notes',
-            component: dynamicWrapper(app, [], () => import('../routes/Guide/Notes')),
-          },
-          {
-            name: '风险控制',
-            key: 'control',
-            path: 'control',
-            component: dynamicWrapper(app, [], () => import('../routes/Guide/RiskControl')),
-          },
-          {
-            name: '收费标准',
-            key: 'standard',
-            path: 'standard',
-            component: dynamicWrapper(app, [], () => import('../routes/Guide/ChargeStandard')),
-          },
-          {
-            name: '常见问题',
-            key: 'problem',
-            path: 'problem',
-            component: dynamicWrapper(app, [], () => import('../routes/Guide/Problem')),
-          },
-        ]
+        name: '教程',
+        key: 'course',
+        path: 'course',
+        component: dynamicWrapper(app, [], () => import('../routes/Course/Course')),
       },
+      // {
+      //   name: '器材',
+      //   key: 'equipments',
+      //   path: 'equipments',
+      //   component: dynamicWrapper(app, ['equipments'], () => import('../routes/Equipments/Equipments')),
+      // },
+      // {
+      //   name: '器材列表',
+      //   key: 'equipments-list',
+      //   path: 'equipments/:keyword',
+      //   isHide: true,
+      //   component: dynamicWrapper(app, ['equipments'], () => import('../routes/Equipments/Equipments')),
+      // },
+      //
+      // {
+      //   name: '相册详情',
+      //   path: 'album/:id/:title',
+      //   isHide: true,
+      //   component: dynamicWrapper(app, ['comment'], () => import('../routes/Photo/AlbumDetail')),
+      // },
+      // {
+      //   name: '图片详情',
+      //   path: 'photo/:id/:title',
+      //   isHide: true,
+      //   component: dynamicWrapper(app, ['photo', 'comment'], () => import('../routes/Photo/PhotoDetail')),
+      // },
+      // {
+      //   name: '文章详情',
+      //   path: ':category/:id/:title',
+      //   isHide: true,
+      //   component: dynamicWrapper(app, ['comment'], () => import('../routes/Article/ArticleDetail')),
+      // },
+      //
+      // {
+      //   name: '标签云',
+      //   path: '/tags',
+      //   isHide: true,
+      //   component: dynamicWrapper(app, ['tags'], () => import('../routes/Tags/TagsExport')),
+      // },
+      // {
+      //   name: '标签',
+      //   path: '/tags/:tag',
+      //   isHide: true,
+      //   component: dynamicWrapper(app, ['tags'], () => import('../routes/Tags/TagsArticle')),
+      // },
       {
-        name: '信息披露',
-        key: 'information',
-        path: 'information',
-        children: [
-          {
-            name: '借贷课堂',
-            key: 'classroom',
-            path: 'classroom',
-            component: dynamicWrapper(app, [], () => import('../routes/Information/Classroom')),
-          },
-        ]
+        name: '用户中心',
+        path: 'u/:username',
+        isHide: true,
+        component: dynamicWrapper(app, ['oss'], () => import('../routes/User/UserCenter')),
       },
+      // {
+      //   name: '设置',
+      //   path: 'setting',
+      //   isHide: true,
+      //   component: dynamicWrapper(app, ['oss'], () => import('../routes/User/UserSetting')),
+      // },
       {
-        name: '关于我们',
-        key: 'about',
-        path: 'about',
-        component: dynamicWrapper(app, [], () => import('../routes/About/About')),
+        name: '发布',
+        path: 'publish/:modelType',
+        isHide: true,
+        component: dynamicWrapper(app, ['oss', 'publish'], () => import('../routes/Publish/Publish')),
       },
     ]
   },

@@ -1,0 +1,151 @@
+.pintuCanvas{
+  margin: 0 auto;
+  width:320px;
+  height:160px;
+  background: url(../../assets/com/loading.gif) no-repeat center center;
+}
+
+.pintuBlock {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.sliderContainer {
+
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  margin: 0 auto;
+  color: #45494c;
+  text-align: center;
+  border: 1px solid #e4e7eb;
+  background: #f7f9fa;
+  position: relative;
+
+}
+
+.sliderContainer_active .slider {
+  height: 38px;
+  top: -1px;
+  border: 1px solid #1991FA;
+}
+.sliderContainer_active .sliderMask {
+  height: 38px;
+  border-width: 1px;
+}
+
+.sliderContainer_success .slider {
+  height: 38px;
+  top: -1px;
+  border: 1px solid #52CCBA;
+  background-color: #52CCBA !important;
+}
+.sliderContainer_success .sliderMask {
+  height: 38px;
+  border: 1px solid #52CCBA;
+  background-color: #D2F4EF;
+}
+.sliderContainer_success .sliderIcon {
+  background-position: 0 0 !important;
+}
+
+.sliderContainer_fail .slider {
+  height: 38px;
+  top: -1px;
+  border: 1px solid #f57a7a;
+  background-color: #f57a7a !important;
+}
+.sliderContainer_fail .sliderMask {
+  height: 38px;
+  border: 1px solid #f57a7a;
+  background-color: #fce1e1;
+}
+.sliderContainer_fail .sliderIcon {
+  background-position: 0 -82px !important;
+}
+
+.sliderContainer_refresh{
+  color: #F57A7B;
+  border-color: #F57A7B;
+  background: #FCE1E0;
+}
+.sliderContainer_refresh .sliderMask{
+  display: none;
+}
+.sliderContainer_refresh .sliderText{
+  position:relative;
+  cursor: pointer;
+}
+.sliderContainer_refresh .sliderText i{
+  display:block;
+  width:12px;
+  height:12px;
+  position:absolute;
+  left:-20px;
+  top:50%;
+  margin-top:-6px;
+  background: url(../../assets/sign/sign_icon.png) no-repeat 0 -97px;
+  background-size: 34px 471px;
+}
+.sliderContainer_refresh .sliderText:hover{
+  border-bottom: 1px solid #F57A7B;
+}
+
+.sliderContainer_active .sliderText,
+.sliderContainer_success .sliderText,
+.sliderContainer_fail .sliderText {
+  display: none;
+}
+
+.sliderMask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 40px;
+  border: 0 solid #1991FA;
+  background: #D1E9FE;
+}
+
+.slider {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: background .2s linear;
+}
+
+.slider:hover {
+  background: #1991FA;
+}
+
+.slider:hover .sliderIcon {
+  background-position: 0 -13px;
+}
+
+.sliderIcon {
+  position: absolute;
+  top: 50%;
+  left: 13px;
+  margin-top:-6px;
+  width: 14px;
+  height: 12px;
+  background: url(../../assets/sign/sign_icon.png) no-repeat 0 -26px;
+  background-size: 34px 471px;
+}
+
+.refreshIcon {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index:99;
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+  background: url(../../assets/sign/sign_icon.png) no-repeat 0 -437px;
+  background-size: 34px 471px;
+}

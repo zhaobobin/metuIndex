@@ -1,7 +1,6 @@
 import fetch from 'dva/fetch';
 import { notification } from 'antd';
 import { Base64 } from 'js-base64';
-import { ENV, Storage } from './utils';
 import store from '../index';
 
 const codeMessage = {
@@ -57,17 +56,16 @@ export default function request(url, options) {
   };
 
   const newOptions = { ...defaultOptions, ...options };
-  if (newOptions.method === 'POST' || newOptions.method === 'PUT' || newOptions.method === 'DELETE') {
+  if (newOptions.method === 'POST' || newOptions.method === 'PUT') {
     newOptions.headers = {
-      Accept: 'application/json',
+      'Accept': 'application/json',
       'Content-Type': 'application/json; charset=utf-8',
       ...newOptions.headers,
     };
     newOptions.body = JSON.stringify(newOptions.body);
 
-    let token = Storage.get(ENV.storageToken);
-    if(token) {
-      newOptions.headers['Authorization'] = 'Basic ' + Base64.encode(token + ':')      //读取本地token
+    if(options.token) {
+      newOptions.headers['Authorization'] = 'Basic ' + Base64.encode(options.token + ':')      //读取本地token
     }
   }
 
@@ -81,5 +79,18 @@ export default function request(url, options) {
           type: 'global/logout',
         });
       }
+    });
+}
+
+export function FetchGet(url){
+  let option = {
+    method: 'GET',
+    credentials: 'include',
+    headers: {'Content-Type': 'application/json'}
+  };
+  return fetch(url, option)
+    .then(response => response.json())
+    .catch((error) => {
+      return error;
     });
 }

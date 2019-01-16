@@ -1,79 +1,218 @@
+import { routerRedux } from 'dva/router';
+import { notification } from 'antd';
 import request from '~/utils/request';
-import {ENV, Storage, globalOptions} from '~/utils/utils';
+import {ENV, Storage} from '~/utils/utils';
 
 export default {
 
   namespace: 'global',
 
   state: {
+
+    loading: true,
+
+    isAuth: false,
     status: undefined,
-    currentUser: {},
+    lastTel: '',
+    category: '',
+    currentUser: '',                                  //当前用户信息
+    roleList: [],                                     //角色列表
+
+    signModalVisible: false,                          //登录modal的显示状态
+    signTabKey: '',                                   //登录modal中tab的默认key
+
     theme: Storage.get(ENV.storageTheme) || {},
   },
 
   subscriptions: {
     setup({ dispatch, history }) {  // eslint-disable-line
+
     },
   },
 
   effects: {
-    *register({ url, payload, callback }, { call, put }) {
+    *init({ payload }, { call, put }) {
+      const res = yield call(
+        (params) => {return request('api/init', {method: 'POST', body: params})},
+        payload
+      );
+      if(res.status === 1){
+        yield put({
+          type: 'changeAppInfo',
+          payload: res,
+        });
+      }
+    },
+    *smsCode({ payload, callback }, { call, put }) {
+      const res = yield call(
+        (params) => {return request('api/smsCode', {method: 'POST', body: params})},
+        payload
+      );
+      yield callback(res);
+    },
+    *register({ payload, callback }, { call, put }) {
       const res = yield call(
         (params) => {return request('api/register', {method: 'POST', body: params})},
         payload
       );
-      if(res.status === 200){
-        yield callback(res);
+      if(res.status === 1){
+        yield put({
+          type: 'changeLoginStatus',
+          payload: {
+            loading: false,
+            isAuth: true,
+            currentUser: res.data,
+          }
+        });
+        Storage.set(ENV.storageLastTel, payload.tel);
+        Storage.set(ENV.storageToken, res.token);              //保存token
       }
+      yield callback(res);
     },
 
-    *token({ url, payload, callback }, { call, put }) {
+    *login({ payload, callback }, { call, put }) {
       const res = yield call(
-        (params) => {return request('api/token', {method: 'POST', body: params})},
+        (params) => {return request('api/login', {method: 'POST', body: params})},
         payload
       );
-      if(res.status === 200){
+      if(res.status === 1){
+        yield put({
+          type: 'changeLoginStatus',
+          payload: {
+            loading: false,
+            isAuth: true,
+            currentUser: res.data,
+          }
+        });
+        Storage.set(ENV.storageLastTel, payload.tel);
         Storage.set(ENV.storageToken, res.token);              //保存token
-        yield callback(res);
       }
+      yield callback(res);
     },
 
-    *logout({ url, payload, callback }, { call, put }) {
+    *token({ payload, callback }, { call, put }) {
+
+      //没有refreshToken 不校验token接口
+      if(payload.refreshToken) {
+
+        const res = yield call(
+          (params) => {return request('/api/token/refreshToken', {method: 'POST', body: params})},
+          payload
+        );
+        yield callback(res);
+
+        if(res.code === 0){
+          Storage.set(ENV.storageToken, res.data.access_token);               //保存token
+          yield put({
+            type: 'changeLoginStatus',
+            payload: {
+              loading: false,
+              isAuth: true,
+              currentUser: res.data,
+            }
+          });
+        }else{
+          yield put({
+            type: 'changeLoginStatus',
+            payload: {
+              loading: false,
+              isAuth: false,
+              currentUser: '',
+            }
+          });
+        }
+
+      }else{
+        yield put({ type: 'changeLoading', payload: false });
+      }
+
+    },
+
+    *logout({ payload, callback }, { call, put }) {
       const res = yield call(
         (params) => {return request('api/logout', {method: 'POST', body: params})},
         payload
       );
-      if(res.status === 200){
-        yield callback(res);
+      if(res.status === 1){
+        yield put({
+          type: 'changeLoginStatus',
+          payload: {
+            isAuth: false,
+            currentUser: '',
+          },
+        });
+        Storage.remove(ENV.storageToken);
       }
     },
 
     *post({ url, payload, callback }, { call, put }) {
-      const options = globalOptions(url, payload);
-      const res = yield call(
-        (params) => {return request(options.url, {method: 'POST', body: params})},
-        options.payload
-      );
-      if(res.status === 200){
+
+      let res, exp = payload.exp, storage = Storage.get(url);
+
+      if(exp && storage){
+        res = storage;
+      }else{
+        res = yield call(
+          (params) => {return request(url, {method: 'POST', body: params})},
+          payload
+        );
+        if(res.status === 1 && exp) Storage.set(url, res);
+      }
+
+      //登录过期等
+      if(res.status === 9){
+        Storage.remove(ENV.storageToken);              //删除token
+        notification.error({
+          message: '提示',
+          description: res.message
+        });
+        yield put({
+          type: 'changeLoginStatus',
+          payload: {
+            isAuth: false,
+            userInfo: '',
+          }
+        });
+        yield put(routerRedux.push({ pathname: '/' }));
+      }else{
         yield callback(res);
       }
+
     },
 
     *get({ url, payload, callback }, { call, put }) {
-      const options = globalOptions(url, payload);
       const res = yield call(
-        (params) => {return request(options.url, {method: 'GET', body: params})},
-        options.payload
+        (params) => {return request(url, {method: 'GET', body: params})},
+        payload
       );
-      if(res.status === 200){
-        yield callback(res);
-      }
+      yield callback(res);
     },
   },
 
   reducers: {
-    save(state, action) {
-      return { ...state, ...action.payload };
+    changeAppInfo(state, { payload }) {
+      return {
+        ...state,
+        roleList: payload.roleList,
+        category: payload.category,
+        currentUser: payload.currentUser,
+      };
+    },
+    changeLoginStatus(state, { payload }) {
+      return {
+        ...state,
+        loading: payload.loading,
+        isAuth: payload.isAuth,
+        currentUser: payload.currentUser,
+        token: payload.token,
+      };
+    },
+    changeSignModal(state, { payload }) {
+      return {
+        ...state,
+        signModalVisible: payload.signModalVisible,
+        signTabKey: payload.signTabKey,
+      };
     },
   },
 

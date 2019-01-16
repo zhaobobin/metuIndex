@@ -1,0 +1,93 @@
+.articleList {
+  margin-bottom: 20px;
+}
+.articleList li {
+  padding: 20px 10px;
+  border-bottom: 1px solid #eaeaea;
+}
+.articleList li .item {
+  overflow: hidden;
+}
+.articleList li .item .thumb {
+  float: left;
+  width: 180px;
+  height: 150px;
+  background: #f1f1f1;
+  position: relative;
+}
+.articleList li .item .thumb img {
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+  position: absolute;
+  left: -999px;
+  top: -999px;
+  right: -999px;
+  bottom: -999px;
+}
+.articleList li .item .info {
+  margin-left: 200px;
+}
+.articleList li .item .info h2 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 2em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.articleList li .item .info h2 a {
+  color: #333;
+}
+.articleList li .item .info h2 a:hover {
+  color: #1890ff;
+}
+.articleList li .item .info .desc {
+  display: -webkit-box;
+  font-size: 16px;
+  line-height: 1.7em;
+  color: #999;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}
+.articleList li .related {
+  margin-top: 10px;
+  padding: 0 10px;
+  line-height: 30px;
+  overflow: hidden;
+}
+.articleList li .related p {
+  margin: 0;
+}
+.articleList li .related .tags {
+  float: left;
+  width: 50%;
+  min-height: 30px;
+  font-size: 14px;
+  line-height: 30px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.articleList li .related .tags a {
+  display: inline-block;
+  margin-right: 15px;
+  color: #666;
+}
+.articleList li .related .tags a:hover {
+  color: #1890ff;
+}
+.articleList li .related .handler {
+  float: left;
+  width: 50%;
+  min-height: 30px;
+  font-size: 14px;
+  line-height: 30px;
+  color: #999;
+  text-align: right;
+}
+.articleList li .related .handler span {
+  display: inline-block;
+  margin-left: 15px;
+}

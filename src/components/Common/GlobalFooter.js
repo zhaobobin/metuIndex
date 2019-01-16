@@ -1,7 +1,22 @@
 import React from 'react';
 import { Link } from 'dva/router';
+import { Row, Col } from 'antd';
 import { ENV } from '~/utils/utils'
 import styles from './GlobalFooter.less';
+
+const center = {
+  xs: 22,
+  sm: 20,
+  md: 16,
+  lg: 16
+};
+
+const slide = {
+  xs: 1,
+  sm: 2,
+  md: 4,
+  lg: 4
+};
 
 const menus = [
   {
@@ -48,29 +63,29 @@ const GlobalFooter = (props) => {
 
   return(
     <div className={styles.container}>
-      <div className={styles.footContent}>
-        <div className={styles.top}>
-          {menuList}
-          <ul className={styles.kefu}>
-            <li><span className={styles.size18}>在线客服、投诉</span></li>
-            <li><span className={styles.size26}>{ENV.hotline}</span></li>
-            <li><span className={styles.size26}>{ENV.email}</span></li>
-            <li>工作时间：{ENV.worktime}</li>
-          </ul>
-        </div>
-        <div className={styles.bottom}>
-          <p>
-            <span>{ENV.icp}</span>
-            <span>|</span>
-            <span>{ENV.beian}</span>
-          </p>
-          <p>
-            <span>{ENV.address}</span>
-            <span>|</span>
-            <span>{ENV.copyright}</span>
-          </p>
-        </div>
-      </div>
+      <Row>
+        <Col {...slide}/>
+        <Col {...center}>
+          <div className={styles.footContent}>
+            <div className={styles.top}>
+              {menuList}
+            </div>
+            <div className={styles.bottom}>
+              <p>
+                <span>{ENV.icp}</span>
+                <span>|</span>
+                <span>{ENV.beian}</span>
+              </p>
+              <p>
+                <span>{ENV.address}</span>
+                <span>|</span>
+                <span>{ENV.copyright}</span>
+              </p>
+            </div>
+          </div>
+        </Col>
+        <Col {...slide}/>
+      </Row>
     </div>
   )
 };

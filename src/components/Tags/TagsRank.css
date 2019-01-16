@@ -1,0 +1,12 @@
+.tagsList {
+  padding: 5px 0;
+}
+.tagsList a {
+  display: inline-block;
+  line-height: 2em;
+  padding: 0 5px;
+  color: #666;
+}
+.tagsList a:hover {
+  color: #1890ff;
+}

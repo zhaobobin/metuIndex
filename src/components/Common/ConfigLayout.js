@@ -1,13 +1,13 @@
-export const slide = {
-  xs: 1,
-  sm: 2,
-  md: 4,
-  lg: 4
+export const center = {
+  xs: 24,
+  sm: 24,
+  md: 22,
+  lg: 22
 };
 
-export const center = {
-  xs: 22,
-  sm: 20,
-  md: 16,
-  lg: 16
+export const slide = {
+  xs: 0,
+  sm: 0,
+  md: 1,
+  lg: 1
 };

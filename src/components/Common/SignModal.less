@@ -1,0 +1,68 @@
+.userAction{
+  height: 64px;
+  line-height: 64px;
+  text-align: right;
+  padding-right:20px;
+
+  a{display:inline-block;}
+
+  .userInfo{
+    margin-right:20px;
+    padding-left: 35px;
+    position:relative;
+    text-decoration: none;
+    font-size:16px;
+    color:hsla(0,0%,100%,.65);
+    img{
+      display:block;
+      width:24px;
+      height:24px;
+      border-radius:50%;
+      position:absolute;
+      left:5px;
+      top:50%;
+      margin-top:-12px
+    }
+    i{
+      font-size:18px;
+      position:absolute;
+      left:9px;
+      top:50%;
+      margin-top:-8px
+    }
+    &:hover{color:#fff}
+
+  }
+  .userBtn{
+    height: 30px;
+    padding: 0 30px;
+  }
+  .loginBtn{
+    margin-right: 20px;
+  }
+}
+
+.userModal{
+  .prefixIcon{
+    color:#999;
+  }
+  .captcha{
+    text-align: center;
+    img{width: auto; height: 100%; cursor: pointer}
+  }
+  .codeBtn{
+    padding: 0;
+    line-height: 32px;
+  }
+
+  :global(.ant-tabs-bar){
+    margin-bottom: 24px;
+  }
+  :global(.ant-form-item-control){
+    line-height:32px;
+  }
+  :global(.ant-btn){
+    width:100%
+  }
+  .forgotPsd{float:right}
+}

@@ -1,0 +1,190 @@
+.comment .title {
+  font-size: 15px;
+  font-weight: bold;
+  color: #333;
+}
+.comment .title span {
+  color: #f00;
+}
+.comment .form {
+  margin-bottom: 20px;
+}
+.comment .form .action {
+  margin-top: -5px;
+  line-height: 24px;
+  overflow: hidden;
+}
+.comment .form .action a {
+  color: #333;
+}
+.comment .form .action a:hover {
+  color: #1890ff;
+}
+.comment .form .action .currentUser {
+  float: left;
+  padding: 0 5px;
+  margin: 0;
+  font-size: 14px;
+  font-weight: bold;
+}
+.comment .form .action .btns {
+  float: right;
+  margin: 0;
+}
+.comment .form .action .btns button {
+  width: auto;
+  margin-left: 10px;
+  font-size: 12px;
+}
+.comment .list {
+  margin-top: 20px;
+}
+.comment .list li {
+  padding: 15px 0;
+  border-top: 1px dashed #e6e6e6;
+}
+.comment .list .item {
+  position: relative;
+}
+.comment .list .item .avatar {
+  display: block;
+  float: left;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #e6e6e6;
+  position: relative;
+  overflow: hidden;
+}
+.comment .list .item .avatar img {
+  width: 100%;
+  height: 100%;
+}
+.comment .list .item .avatar i {
+  color: #fff;
+  font-size: 20px;
+  margin-left: -10px;
+  margin-top: -10px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+.comment .list .item .content {
+  margin-left: 42px;
+  position: relative;
+}
+.comment .list .item .content .head {
+  margin-bottom: 2px;
+  line-height: 20px;
+}
+.comment .list .item .content .head span {
+  margin-right: 10px;
+  color: #999;
+}
+.comment .list .item .content .head .date {
+  font-size: 12px;
+}
+.comment .list .item .content .head a {
+  font-weight: bold;
+  color: #406599;
+}
+.comment .list .item .content .head a:hover {
+  color: #1890ff;
+}
+.comment .list .item .content .body p {
+  margin: 0;
+  line-height: 22px;
+}
+.comment .list .item .content .body a {
+  font-weight: bold;
+  color: #406599;
+}
+.comment .list .item .content .body a:hover {
+  color: #1890ff;
+}
+.comment .list .item .content .foot {
+  margin-top: 2px;
+}
+.comment .list .item .content .foot p {
+  margin: 0;
+}
+.comment .list .item .content .foot em {
+  font-style: normal;
+}
+.comment .list .item .content .foot .action {
+  overflow: hidden;
+}
+.comment .list .item .content .foot span {
+  margin-right: 10px;
+  font-size: 12px;
+  color: #999;
+}
+.comment .list .item .content .foot span.reply {
+  margin-right: 10px;
+}
+.comment .list .item .content .foot span.report,
+.comment .list .item .content .foot span.like {
+  float: right;
+  margin-left: 10px;
+  margin-right: 0;
+}
+.comment .list .item .content .foot span .likeCount {
+  display: inline-block;
+  margin-left: 3px;
+  min-width: 14px;
+}
+.comment .list .item .content .foot a {
+  font-size: 12px;
+  color: #999;
+}
+.comment .list .item .content .foot a:hover {
+  color: #1890ff;
+}
+.comment .list .item .content .replyList .item {
+  margin-top: 20px;
+}
+.comment .list .moreComment {
+  display: block;
+  margin: 20px 0;
+  line-height: 30px;
+  text-align: center;
+  background: #f4f5f6;
+}
+.comment.black a {
+  color: #fff;
+}
+.comment.black a:hover {
+  color: #1890ff;
+}
+.comment.black .title {
+  color: #fff;
+}
+.comment.black .body {
+  color: #b0b5b8;
+}
+.comment.black textarea {
+  color: #fff;
+  background-color: #1c1d1e;
+  border-color: #444;
+}
+.comment.black button {
+  border-color: #000;
+  background: none;
+}
+.comment.black button.reset {
+  font-size: 14px;
+  color: #999;
+}
+.comment.black button.submit {
+  font-size: 14px;
+  color: #1890ff;
+}
+.comment.black .list li {
+  border-top: 1px dashed #1c1d1e;
+}
+.comment.black .list li .avatar {
+  background: #333;
+}
+.comment.black .list li .avatar i {
+  color: #999;
+}

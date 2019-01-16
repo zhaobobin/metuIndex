@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Redirect, Switch } from 'dva/router';
-import { Layout, BackTop } from 'antd';
+import { Layout } from 'antd';
 import DocumentTitle from 'react-document-title';
 import NotFound from "~/routes/Other/404";
 import { ENV } from '~/utils/utils';
@@ -35,11 +35,11 @@ export default class BaseLayout extends React.Component {
 
   render(){
 
-    const { getRouteData, navData } = this.props;
+    const { getRouteData, navData, location } = this.props;
 
     const layout = (
       <Layout>
-        <GlobalHeader navData={navData[0].children}/>
+        <GlobalHeader navData={navData[0].children} location={location}/>
 
         <GlobalContent>
 
@@ -60,10 +60,10 @@ export default class BaseLayout extends React.Component {
             <Route component={NotFound} />
           </Switch>
 
-          <BackTop />
         </GlobalContent>
 
         <GlobalFooter/>
+
       </Layout>
     );
 

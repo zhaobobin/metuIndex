@@ -14,6 +14,16 @@ export default class MainMenu extends React.Component {
     current: Storage.get(ENV.storageCurrentMenu) ? Storage.get(ENV.storageCurrentMenu) : 'home'
   };
 
+  UNSAFE_componentWillReceiveProps(nextProps){
+    if(nextProps.location.pathname !== this.state.pathname){
+      //console.log(nextProps.location.pathname)
+      let path = nextProps.location.pathname.split('/')[1];
+      if(path === 'u' || path === 'setting' || path === 'publish'){
+        this.setState({ current: '' });
+      }
+    }
+  }
+
   handleClick = (e) => {
     Storage.set(ENV.storageCurrentMenu, e.key);
     this.setState({ current: e.key });
@@ -50,6 +60,7 @@ export default class MainMenu extends React.Component {
     return(
       <div className={styles.mainMenu}>
         <Menu
+          theme="dark"
           onClick={this.handleClick}
           selectedKeys={[this.state.current]}
           mode="horizontal"

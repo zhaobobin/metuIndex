@@ -1,14 +1,15 @@
 import moment from 'moment';
+import { notification } from 'antd';
 import { parse, stringify } from 'qs';
+const CryptoJS = require('crypto-js');  //引用AES源码js
 
 /**
  * 全局变量
- * @type {{appname: string, hometitle: string, keywords: string, description: string, author: string, verification: string, address: string, hotline: string, icp: string, beian: string, copyright: string, slogan: string, web: string, storageToken: string, storageTheme: string, storageCurrentMenu: string}}
  */
 export const ENV = {
   appname: '迷图网',
-  hometitle: '【迷图网】P2P理财- 中国领先的互联网理财借贷P2P平台',
-  keywords: '迷图网,摄影，图片,素材,分享,社区。',
+  hometitle: '迷图网- 摄影图片素材分享社区',
+  keywords: '迷图网,摄影,图片,素材,分享,社区。',
   description: '迷图网（www.metuwang.com）- 摄影图片素材分享社区。',
   author: '迷图网(www.metuwang.com)',
   verification: '',
@@ -19,74 +20,494 @@ export const ENV = {
   icp: 'ICP经营许可证 京B2-20160180',
   beian: '京ICP备14014223号-2',
   copyright: '©2015-2018 迷图网 All rights reserved',
-  slogan: '摄影图片分享社区',
+  slogan: '摄影图片素材分享社区',
   web: 'www.metuwang.com',
   worktime: '9:00-17:30',
 
   storageToken: 'metuIndex-token',
+  storageLastTel: 'metuIndex-lastTel',
+  storageRemenber: 'metuIndex-remenber',
+  storageHistory: 'metuIndex-history',
   storageTheme: 'metuIndex-theme',
   storageCurrentMenu: 'metuIndex-currentMenu',
 };
 
 /**
- * Storage
+ * Storage 本地存储 检验过期
  * @type {{set: Storage.set, get: Storage.get, remove: Storage.remove}}
+ * exp 过期时间的秒数 一天的秒数 60 * 60 * 24
  */
 export const Storage = {
-  set: function(key, data) {	// 保存
-    return window.localStorage.setItem(key, window.JSON.stringify(data));
+
+  // 保存
+  set: function (key, value) {
+
+    let curTime = new Date().getTime();
+    return window.localStorage.setItem(
+      key,
+      window.JSON.stringify({ data: value, time: curTime })
+    );
+
   },
-  get: function(key) {			// 查询
-    return window.JSON.parse(window.localStorage.getItem(key));
+
+  // 查询
+  get: function (key, exp) {
+
+    let obj = window.JSON.parse(window.localStorage.getItem(key));
+    if (!obj || !obj.data) return false;                         //无记录
+    if (exp && new Date().getTime() - obj.time > exp * 1000) {    //过期
+      return false
+    } else {
+      return obj.data;
+    }
+
   },
-  remove: function(key) {	// 删除
+
+  // 删除
+  remove: function (key) {
+
     return window.localStorage.removeItem(key);
+
   },
+
+  // 判断浏览器是否支持 hasLocalSotrage
+  hasLocalSotrage: function () {
+    return window.localStorage
+  },
+
+  //设置cookie
+  setCookie: function (key, value, day) {
+    let t = day || 30;
+    let d = new Date();
+    d.setTime(d.getTime() + (t * 24 * 60 * 60 * 1000));
+    let expires ="expires="+ d.toUTCString();
+    document.cookie = key + "=" + value + "; " + expires;
+  },
+
+  //获取cookie
+  getCookie: function (name) {
+    let arr, reg = new RegExp("(^|)" + name + "=([^]*)(|$)");
+    if (arr = document.cookie.match(reg)) {
+      return arr[2];
+    }
+    else {
+      return null;
+    }
+  },
+
 };
 
 /**
- * uuid
+ * 加密方法
+ * @param k
+ * @param text
  * @returns {string}
+ * @constructor
  */
-function uuid() {
-  let len = 32; // 32长度
-  let radix = 16; // 16进制
-  let chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
-  let uuid = [],i;radix=radix||chars.length;
-  if(len){
-    for(i=0;i<len;i++)uuid[i]=chars[0|Math.random()*radix];
-  }else{
-    let r;uuid[8]=uuid[13]=uuid[18]=uuid[23]='-';uuid[14]='4';
-    for(i=0;i<36;i++){
-      if(!uuid[i]){r=0|Math.random()*16;uuid[i]=chars[(i===19)?(r&0x3)|0x8:r];
-      }
+export function Encrypt(k, text) {
+
+  const key = CryptoJS.enc.Utf8.parse("metu-" + k);                        //十六位十六进制数作为密钥
+  const iv = CryptoJS.enc.Utf8.parse('1269571569321021');                  //十六位十六进制数作为密钥偏移量
+
+  let encrypted = CryptoJS.AES.encrypt(
+    text.toString(),
+    key,
+    {
+      iv: iv,
+      mode: CryptoJS.mode.CBC,
+      padding: CryptoJS.pad.Pkcs7
     }
-  }
-  return uuid.join('');
+  );
+  return encrypted.ciphertext.toString();
 }
 
 /**
- * 全局参数
- * @param url
- * @param options
- * @returns {{url: string, payload: {uid: string, sign: string, request_id: string, req_from: string, req_ver: string}}}
+ * 解密方法
+ * @param k
+ * @param text
+ * @returns {string}
+ * @constructor
  */
-export function globalOptions(url, options){
+export function Decrypt(k, text) {
 
-  let apiUrl = '/cms/api/v1' + url,
-    uid = options.uid ? options.uid : '',
-    sign = options.token ? window.md5(options.token + '_' + url) : '';
-  return {
-    url: apiUrl,
-    payload: {
-      ...options,
-      uid: uid,
-      sign: sign,
-      request_id: uuid(),
-      req_from:'web',
-      req_ver:'1.0.0',
-    },
+  const key = CryptoJS.enc.Utf8.parse("metu-" + k);                        //十六位十六进制数作为密钥
+  const iv = CryptoJS.enc.Utf8.parse('1269571569321021');                  //十六位十六进制数作为密钥偏移量
+
+  let encryptedHexStr = CryptoJS.enc.Hex.parse(text);
+  let srcs = CryptoJS.enc.Base64.stringify(encryptedHexStr);
+
+  let decrypt = CryptoJS.AES.decrypt(
+    srcs,
+    key,
+    {
+      iv: iv,
+      mode: CryptoJS.mode.CBC,
+      padding: CryptoJS.pad.Pkcs7
+    }
+  );
+  return decrypt.toString(CryptoJS.enc.Utf8);
+}
+
+/**
+ * 邀请码解密
+ * @param text
+ * @returns {string}
+ */
+export function yaoqingDecrypt(text) {
+
+  const key = CryptoJS.enc.Utf8.parse("metu-yaoqingmajm");                        //十六位十六进制数作为密钥
+  const iv = CryptoJS.enc.Utf8.parse('1269571569321021');                         //十六位十六进制数作为密钥偏移量
+
+  let encryptedHexStr = CryptoJS.enc.Hex.parse(text);
+  let srcs = CryptoJS.enc.Base64.stringify(encryptedHexStr);
+
+  let decrypt = CryptoJS.AES.decrypt(
+    srcs,
+    key,
+    {
+      iv: iv,
+      mode: CryptoJS.mode.CBC,
+      padding: CryptoJS.pad.Pkcs7
+    }
+  );
+  return decrypt.toString(CryptoJS.enc.Utf8);
+}
+
+/*************************** 通用工具函数 ***************************/
+
+//浏览器后退
+export function goBack(){
+  if ((navigator.userAgent.indexOf('MSIE') >= 0) && (navigator.userAgent.indexOf('Opera') < 0)){ // IE
+    if(window.history.length > 0){
+      window.history.go(-1);
+    }else{
+      window.location.href = this.ENV.siteUrl
+    }
+  }else{ //非IE浏览器
+    if (navigator.userAgent.indexOf('Firefox') >= 0 ||
+      navigator.userAgent.indexOf('Opera') >= 0 ||
+      navigator.userAgent.indexOf('Safari') >= 0 ||
+      navigator.userAgent.indexOf('Chrome') >= 0 ||
+      navigator.userAgent.indexOf('WebKit') >= 0){
+
+      if(window.history.length > 1){
+        window.history.go(-1);
+      }else{
+        window.location.href = this.ENV.siteUrl
+      }
+    }else{ //未知的浏览器
+      window.history.go(-1);
+    }
+  }
+}
+
+/**
+ * 拆解url参数转换为对象
+ * @returns {Object}
+ */
+export function getUrlParams() {
+  // 以&分隔字符串，获得类似name=xiaoli这样的元素数组
+  let url = window.location.href.split('?')[1];
+  if (!url) return false;
+  let arr = url.split("&");
+  let obj = new Object();
+
+  // 将每一个数组元素以=分隔并赋给obj对象
+  for (let i = 0; i < arr.length; i++) {
+    let tmp_arr = arr[i].split("=");
+    obj[decodeURIComponent(tmp_arr[0])] = decodeURIComponent(tmp_arr[1]);
+  }
+  return obj;
+}
+
+/*************************** 表单工具函数 ***************************/
+
+/**
+ * 判断是否是邮箱
+ * @param email
+ * @returns {boolean}
+ */
+export function isEmail(email) {
+  let reg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+  return reg.test(email);
+}
+
+/**
+ * 判断是否是手机号
+ * @param tel
+ * @returns {boolean}
+ */
+export function isPhone(tel) {
+  let reg = /^1[0-9]{10}$/;
+  return reg.test(tel);
+}
+
+/**
+ * 动态检查输入值是不是手机号，1开头并且 <= 11位数值返回true
+ * @param value
+ */
+export function checkPhone(value) {
+  if (value.substr(0, 1) === '1') {
+    return value.length <= 11;
+  } else {
+    return false;
+  }
+}
+
+//字段错误校验
+export function hasErrors(fieldsError) {
+  return Object.keys(fieldsError).some(field => fieldsError[field]);
+}
+
+//校验密码强度
+export function checkPsdLevel(value) {
+  // 0： 表示第一个级别， 1：表示第二个级别， 2：表示第三个级别， 3： 表示第四个级别， 4：表示第五个级别
+  let modes = 0;
+  if (value.length < 8) {//最初级别
+    return modes;
+  }
+  if (/\d/.test(value)) {//如果用户输入的密码 包含了数字
+    modes++;
+  }
+  if (/[a-z]/.test(value)) {//如果用户输入的密码 包含了小写的a到z
+    modes++;
+  }
+  if (/\W/.test(value)) {//如果是非数字 字母 下划线
+    modes++;
+  }
+  if (/[A-Z]/.test(value)) {//如果用户输入的密码 包含了大写的A到Z
+    modes++;
+  }
+  return modes;
+}
+
+/*************************** 字符串工具函数 ***************************/
+
+/**
+ * 过滤文字中的特殊符号
+ * @param str
+ * @returns {string}
+ */
+export function filterStr(str) {
+  let pattern = new RegExp("[`~@#$^&|\\<>/~@#￥&]");
+  let specialStr = "";
+  for (let i = 0; i < str.length; i++) {
+    specialStr += str.substr(i, 1).replace(pattern, '');
+  }
+  return specialStr;
+}
+
+//过滤手机号
+export function filterTel(str) {
+
+  return str.toString().replace(/^(\d{3})\d{4}(\d+)/, "$1****$2");
+
+}
+
+//过滤卡号
+export function filterBankcard(str) {
+
+  let newStr = str.substring(0, 4) + ' **** **** *' + str.substring(14, 16);
+  return newStr;
+
+}
+
+//检查操作权限
+export function checkRole(roleid) {
+  if(roleid === 9){
+    return true;
+  }else{
+    notification.error({ message: '只有超级管理员有权操作！' });
+    return false;
+  }
+}
+
+/*************************** 图片工具函数 ***************************/
+
+/**
+ * 图片转base64
+ * @param img
+ * @returns {string}
+ */
+export function imgToBase64(img) {
+  let canvas = document.createElement("canvas");
+  canvas.width = img.width;
+  canvas.height = img.height;
+  let ctx = canvas.getContext("2d");
+  ctx.drawImage(img, 0, 0, img.width, img.height);
+  return canvas.toDataURL("image/jpeg");
+}
+
+//文件转为base64
+export function file2base64(file, cb) {
+
+  let base64 = '', reader = new FileReader();
+
+  reader.readAsDataURL(file);
+  reader.onload = function (e) {
+
+    base64 = e.target.result;
+
+    let img = new Image();
+    img.src = base64;
+    img.onload = function () {
+      let data = {
+        base64: base64,
+        width: this.width,
+        height: this.height
+      };
+      return cb(data);
+    };
+
   };
+}
+
+/**
+ * 将base64转换为文件
+ * @param dataurl
+ * @returns {Blob}
+ */
+export function dataURLtoBlob(dataurl) {
+  let arr = dataurl.split(','),
+    mime = arr[0].match(/:(.*?);/)[1],
+    bstr = atob(arr[1]),
+    n = bstr.length,
+    u8arr = new Uint8Array(n);
+  while (n--) {
+    u8arr[n] = bstr.charCodeAt(n);
+  }
+  return new Blob([u8arr], { type: mime });
+}
+
+//获取图片尺寸
+export function getImgSize(url, cb){
+  let img = new Image();
+  img.src = url;
+  img.onload = function(){
+    let obj = {
+      width: img.width,
+      height: img.height
+    };
+    return cb(obj)
+  }
+}
+
+export function toBase64(file){
+
+  return new Promise(function(resolve, reject){
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function(e) {
+      resolve(e.target.result)
+    };
+  })
+
+}
+
+export function img2base64(imgUrl, cb){
+
+  let base64 = '',
+    img = new Image(),
+    cav = document.createElement('canvas'),
+    ctx = cav.getContext('2d');
+
+  img.src = imgUrl;
+  img.onload = function() {
+    cav.width = img.width;
+    cav.height = img.height;
+    ctx.drawImage(img, 0, 0);					//img转换为canvas
+    base64 = cav.toDataURL('images/jpeg');
+    return cb(base64);
+  };
+}
+
+/*************************** 数值工具函数 ***************************/
+
+/**
+ * 空值工具函数
+ * @param val
+ * @returns {boolean}
+ */
+export function isEmptyValue(val) {
+  if (val === '' || val === null || val === 'null' || val === undefined || val === 'undefined') return true
+  return false;
+};
+
+/**
+ * 金额字符串转数值
+ * @param numStr
+ * @returns {number}
+ */
+export function str2Number(numStr) {
+  let str = isEmptyValue(numStr) ? 0 : numStr;
+  let param = str.toString();
+  if (!param.includes(',')) return parseFloat(param);
+  let arr = str.split(',');
+  return parseFloat(arr.join(''));
+}
+
+/**
+ * 金额数值格式化
+ * @param number
+ * @param intFlag     正整数
+ * @returns {*}
+ */
+export function numberFormat(number, intFlag) {
+
+  if (typeof number === 'string' && number.includes(',')) return number;             //已格式化的直接反复
+
+  let result = '',
+    float = '.00',
+    num = number.toString();
+
+  if (parseInt(number, 10) !== number) {                          //是否是整数
+    let split = num.split('.');
+    num = split[0];
+    float = '.' + (split[1] && split[1].length===1 ? split[1]+'0' : split[1])
+  }
+  if(intFlag){
+    float = '';
+  }
+
+  //加入分隔符
+  while (num.length > 3) {
+    result = ',' + num.slice(-3) + result;
+    num = num.slice(0, num.length - 3);
+  }
+
+  return num + result + float;
+}
+
+
+/**
+ * 金额大写
+ * @param n
+ * @returns {string}
+ */
+export function digitUppercase(n) {
+  const fraction = ['角', '分'];
+  const digit = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖'];
+  const unit = [['元', '万', '亿'], ['', '拾', '佰', '仟', '万']];
+  let num = Math.abs(n);
+  let s = '';
+  fraction.forEach((item, index) => {
+    s += (digit[Math.floor(accMul(num, 10 * 10 ** index)) % 10] + item).replace(/零./, '');
+  });
+  s = s || '整';
+  num = Math.floor(num);
+  for (let i = 0; i < unit[0].length && num > 0; i += 1) {
+    let p = '';
+    for (let j = 0; j < unit[1].length && num > 0; j += 1) {
+      p = digit[num % 10] + unit[1][j] + p;
+      num = Math.floor(num / 10);
+    }
+    s = p.replace(/(零.)*零$/, '').replace(/^$/, '零') + unit[0][i] + s;
+  }
+
+  return s
+    .replace(/(零.)*零元/, '元')
+    .replace(/(零.)+/g, '零')
+    .replace(/^整$/, '零元整');
 }
 
 export function fixedZero(val) {
@@ -166,32 +587,6 @@ function accMul(arg1, arg2) {
   m += s1.split('.').length > 1 ? s1.split('.')[1].length : 0;
   m += s2.split('.').length > 1 ? s2.split('.')[1].length : 0;
   return (Number(s1.replace('.', '')) * Number(s2.replace('.', ''))) / 10 ** m;
-}
-
-export function digitUppercase(n) {
-  const fraction = ['角', '分'];
-  const digit = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖'];
-  const unit = [['元', '万', '亿'], ['', '拾', '佰', '仟', '万']];
-  let num = Math.abs(n);
-  let s = '';
-  fraction.forEach((item, index) => {
-    s += (digit[Math.floor(accMul(num, 10 * 10 ** index)) % 10] + item).replace(/零./, '');
-  });
-  s = s || '整';
-  num = Math.floor(num);
-  for (let i = 0; i < unit[0].length && num > 0; i += 1) {
-    let p = '';
-    for (let j = 0; j < unit[1].length && num > 0; j += 1) {
-      p = digit[num % 10] + unit[1][j] + p;
-      num = Math.floor(num / 10);
-    }
-    s = p.replace(/(零.)*零$/, '').replace(/^$/, '零') + unit[0][i] + s;
-  }
-
-  return s
-    .replace(/(零.)*零元/, '元')
-    .replace(/(零.)+/g, '零')
-    .replace(/^整$/, '零元整');
 }
 
 function getRelation(str1, str2) {

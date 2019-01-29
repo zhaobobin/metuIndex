@@ -103,6 +103,7 @@ export default class PhotoListGallery extends PureComponent {
           height: parseInt(photos[i].thumb.height),
           type: type
         };
+        console.log(photoList)
         photoList.push(photo)
       }
     }

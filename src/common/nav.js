@@ -42,51 +42,51 @@ export const getNavData = app => [
         path: 'course',
         component: dynamicWrapper(app, [], () => import('../routes/Course/Course')),
       },
-      // {
-      //   name: '器材',
-      //   key: 'equipments',
-      //   path: 'equipments',
-      //   component: dynamicWrapper(app, ['equipments'], () => import('../routes/Equipments/Equipments')),
-      // },
-      // {
-      //   name: '器材列表',
-      //   key: 'equipments-list',
-      //   path: 'equipments/:keyword',
-      //   isHide: true,
-      //   component: dynamicWrapper(app, ['equipments'], () => import('../routes/Equipments/Equipments')),
-      // },
-      //
-      // {
-      //   name: '相册详情',
-      //   path: 'album/:id/:title',
-      //   isHide: true,
-      //   component: dynamicWrapper(app, ['comment'], () => import('../routes/Photo/AlbumDetail')),
-      // },
-      // {
-      //   name: '图片详情',
-      //   path: 'photo/:id/:title',
-      //   isHide: true,
-      //   component: dynamicWrapper(app, ['photo', 'comment'], () => import('../routes/Photo/PhotoDetail')),
-      // },
-      // {
-      //   name: '文章详情',
-      //   path: ':category/:id/:title',
-      //   isHide: true,
-      //   component: dynamicWrapper(app, ['comment'], () => import('../routes/Article/ArticleDetail')),
-      // },
-      //
-      // {
-      //   name: '标签云',
-      //   path: '/tags',
-      //   isHide: true,
-      //   component: dynamicWrapper(app, ['tags'], () => import('../routes/Tags/TagsExport')),
-      // },
-      // {
-      //   name: '标签',
-      //   path: '/tags/:tag',
-      //   isHide: true,
-      //   component: dynamicWrapper(app, ['tags'], () => import('../routes/Tags/TagsArticle')),
-      // },
+      {
+        name: '器材',
+        key: 'equipments',
+        path: 'equipments',
+        component: dynamicWrapper(app, [], () => import('../routes/Equipments/Equipments')),
+      },
+      {
+        name: '器材列表',
+        key: 'equipments-list',
+        path: 'equipments/:keyword',
+        isHide: true,
+        component: dynamicWrapper(app, [], () => import('../routes/Equipments/Equipments')),
+      },
+
+      {
+        name: '相册详情',
+        path: 'album/:id/:title',
+        isHide: true,
+        component: dynamicWrapper(app, [], () => import('../routes/Photo/AlbumDetail')),
+      },
+      {
+        name: '图片详情',
+        path: 'photo/:id/:title',
+        isHide: true,
+        component: dynamicWrapper(app, ['photo'], () => import('../routes/Photo/PhotoDetail')),
+      },
+      {
+        name: '文章详情',
+        path: ':category/:id/:title',
+        isHide: true,
+        component: dynamicWrapper(app, [], () => import('../routes/Article/ArticleDetail')),
+      },
+
+      {
+        name: '标签云',
+        path: '/tags',
+        isHide: true,
+        component: dynamicWrapper(app, [], () => import('../routes/Tags/TagsExport')),
+      },
+      {
+        name: '标签',
+        path: '/tags/:tag',
+        isHide: true,
+        component: dynamicWrapper(app, [], () => import('../routes/Tags/TagsArticle')),
+      },
       {
         name: '用户中心',
         path: 'u/:username',

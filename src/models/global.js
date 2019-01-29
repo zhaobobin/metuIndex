@@ -39,7 +39,7 @@ export default {
       if(res.status === 1){
         yield put({
           type: 'changeAppInfo',
-          payload: res,
+          payload: res.data,
         });
       }
     },
@@ -61,11 +61,11 @@ export default {
           payload: {
             loading: false,
             isAuth: true,
-            currentUser: res.data,
+            currentUser: res.data.currentUser,
           }
         });
         Storage.set(ENV.storageLastTel, payload.tel);
-        Storage.set(ENV.storageToken, res.token);              //保存token
+        Storage.set(ENV.storageToken, res.data.token);              //保存token
       }
       yield callback(res);
     },
@@ -81,11 +81,11 @@ export default {
           payload: {
             loading: false,
             isAuth: true,
-            currentUser: res.data,
+            currentUser: res.data.currentUser,
           }
         });
         Storage.set(ENV.storageLastTel, payload.tel);
-        Storage.set(ENV.storageToken, res.token);              //保存token
+        Storage.set(ENV.storageToken, res.data.token);              //保存token
       }
       yield callback(res);
     },
@@ -96,13 +96,13 @@ export default {
       if(payload.refreshToken) {
 
         const res = yield call(
-          (params) => {return request('/api/token/refreshToken', {method: 'POST', body: params})},
+          (params) => {return request('/api/token', {method: 'POST', body: params})},
           payload
         );
         yield callback(res);
 
         if(res.code === 0){
-          Storage.set(ENV.storageToken, res.data.access_token);               //保存token
+          Storage.set(ENV.storageToken, res.data.token);               //保存token
           yield put({
             type: 'changeLoginStatus',
             payload: {
@@ -193,6 +193,8 @@ export default {
     changeAppInfo(state, { payload }) {
       return {
         ...state,
+        loading: false,
+        isAuth: !!payload.currentUser,
         roleList: payload.roleList,
         category: payload.category,
         currentUser: payload.currentUser,

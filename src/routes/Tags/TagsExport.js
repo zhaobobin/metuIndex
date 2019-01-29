@@ -6,7 +6,7 @@ import { connect } from 'dva';
 import { Link } from 'dva/router';
 import {Row, Col, Card} from 'antd';
 
-import styles from './IndexBase.less';
+//import styles from './IndexBase.less';
 
 @connect(state => ({
   article: state.article,

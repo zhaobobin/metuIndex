@@ -8,7 +8,7 @@ const CryptoJS = require('crypto-js');  //引用AES源码js
  */
 export const ENV = {
   appname: '迷图网',
-  hometitle: '迷图网- 摄影图片素材分享社区',
+  hometitle: '迷图网 - 摄影图片素材分享社区',
   keywords: '迷图网,摄影,图片,素材,分享,社区。',
   description: '迷图网（www.metuwang.com）- 摄影图片素材分享社区。',
   author: '迷图网(www.metuwang.com)',

@@ -23,37 +23,12 @@
     html{overflow-y:visible}#loader-wrapper{position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;overflow-y:visible}#loader{display:block;position:relative;left:50%;top:50%;width:200px;height:200px;margin:-100px 0 0 -100px;border-radius:50%;border:3px solid transparent;border-top-color:#1890ff;-webkit-animation:spin 2s linear infinite;-ms-animation:spin 2s linear infinite;-moz-animation:spin 2s linear infinite;-o-animation:spin 2s linear infinite;animation:spin 2s linear infinite;z-index:1001}#loader:before{content:"";position:absolute;top:5px;left:5px;right:5px;bottom:5px;border-radius:50%;border:3px solid transparent;border-top-color:#1890ff;-webkit-animation:spin 3s linear infinite;-moz-animation:spin 3s linear infinite;-o-animation:spin 3s linear infinite;-ms-animation:spin 3s linear infinite;animation:spin 3s linear infinite}#loader:after{content:"";position:absolute;top:15px;left:15px;right:15px;bottom:15px;border-radius:50%;border:3px solid transparent;border-top-color:#1890ff;-moz-animation:spin 1.5s linear infinite;-o-animation:spin 1.5s linear infinite;-ms-animation:spin 1.5s linear infinite;-webkit-animation:spin 1.5s linear infinite;animation:spin 1.5s linear infinite}@-webkit-keyframes spin{0%{-webkit-transform:rotate(0deg);-ms-transform:rotate(0deg);transform:rotate(0deg)}100%{-webkit-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes spin{0%{-webkit-transform:rotate(0deg);-ms-transform:rotate(0deg);transform:rotate(0deg)}100%{-webkit-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg)}}#loader-wrapper .loader-section{position:fixed;top:0;width:51%;height:100%;background:#fff;z-index:1000;-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0)}#loader-wrapper .loader-section.section-bg{width:100%;left:0;opacity:1}#loader-wrapper .loader-section.section-left{left:0}#loader-wrapper .loader-section.section-right{right:0}.loaded #loader-wrapper .loader-section.section-bg{opacity:0;-webkit-transition:all .7s .3s cubic-bezier(0.645,0.045,0.355,1.000);transition:all .5s .3s cubic-bezier(0.645,0.045,0.355,1.000)}.loaded #loader-wrapper .loader-section.section-left{height:100%;-webkit-transform:translateX(-100%);-ms-transform:translateX(-100%);transform:translateX(-100%);-webkit-transition:all .7s .3s cubic-bezier(0.645,0.045,0.355,1.000);transition:all .7s .3s cubic-bezier(0.645,0.045,0.355,1.000)}.loaded #loader-wrapper .loader-section.section-right{height:100%;-webkit-transform:translateX(100%);-ms-transform:translateX(100%);transform:translateX(100%);-webkit-transition:all .7s .3s cubic-bezier(0.645,0.045,0.355,1.000);transition:all .7s .3s cubic-bezier(0.645,0.045,0.355,1.000)}.loaded #loader{opacity:0;-webkit-transition:all .3s ease-out;transition:all .3s ease-out}.loaded #loader-wrapper{visibility:hidden;-webkit-transform:translateY(-100%);-ms-transform:translateY(-100%);transform:translateY(-100%);-webkit-transition:all .3s 1s ease-out;transition:all .3s 1s ease-out}.no-js #loader-wrapper{display:none}.no-js h1{color:#222}#loader-wrapper .load_logo{width:80px;height:80px;opacity:1;margin-left:-40px;margin-top:-40px;position:absolute;top:50%;left:50%;z-index:9999999999999}#loader-wrapper .load_logo img{width:100%;height:auto;}
   </style>
 
-  <script type="text/javascript">
-    function browserRedirect() {
-      var sUserAgent = navigator.userAgent.toLowerCase();
-      var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
-      var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
-      var bIsMidp = sUserAgent.match(/midp/i) == "midp";
-      var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
-      var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
-      var bIsAndroid = sUserAgent.match(/android/i) == "android";
-      var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
-      var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
-
-      if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
-        var url = window.location.href;
-        var relUrl = url.replace(window.location.origin, '');
-        window.location.href = "http://m.metuwang.com" + relUrl;
-      }
-    }
-    //browserRedirect();
-  </script>
-
-  <!--[if lte IE 8]>
+  <!--[if lte 9]>
   <script>alert("您的浏览器版本较低，请升级浏览器到ie9+，或者使用Chrome、Firefox等浏览器！")</script>
-  <![endif]-->
-
-  <!--[if IE 9]>
   <script src="https://cdn.bootcss.com/es5-shim/4.5.10/es5-sham.min.js"></script>
   <script src="https://cdn.bootcss.com/es5-shim/4.5.10/es5-shim.min.js"></script>
   <script src="https://as.alipayobjects.com/g/component/??console-polyfill/0.2.2/index.js,html5shiv/3.7.2/html5shiv.min.js,media-match/2.0.2/media.match.min.js"></script>
   <script src="https://cdn.bootcss.com/jquery/1.9.0/jquery.min.js"></script>
-  <script>alert("您的浏览器版本较低，请升级浏览器到ie9+，或者使用Chrome、Firefox等浏览器！")</script>
   <![endif]-->
 
   <!--[if IE 10]>

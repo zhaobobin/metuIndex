@@ -217,7 +217,7 @@ export default class UserSign extends React.Component {
     const userMenu = isAuth ?
       <Menu>
         <Menu.Item>
-          <Link to={`/u/${currentUser.username}`}>我的主页</Link>
+          <Link to={`/u/${currentUser.nickname}`}>我的主页</Link>
         </Menu.Item>
         <Menu.Item>
           <Link to="/setting">设置</Link>

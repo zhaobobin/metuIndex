@@ -48,7 +48,7 @@ const menus = [
   },
 ];
 
-const GlobalFooter = (props) => {
+export default function GlobalFooter (props) {
 
   const menuList = menus.map((item, index) => (
     <dl key={index}>
@@ -89,5 +89,3 @@ const GlobalFooter = (props) => {
     </div>
   )
 };
-
-export default GlobalFooter

@@ -1,11 +1,7 @@
-import React from 'react';
-
-const GlobalContent = (props) => {
+export default function GlobalContent (props) {
   return(
-    <div style={{marginTop: '64px'}}>
+    <div style={{marginTop: '64px', minHeight: '600px'}}>
       {props.children}
     </div>
   )
 };
-
-export default GlobalContent

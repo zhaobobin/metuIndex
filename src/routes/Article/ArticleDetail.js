@@ -14,14 +14,13 @@ import CommentList from '~/components/Comment/CommentList';
 
 @connect(state => ({
   global: state.global,
-  fetch: state.fetch,
 }))
 export default class ArticleDetail extends PureComponent {
 
   constructor(props){
     super(props);
     this.ajaxFlag = true;
-    state = {
+    this.state = {
       id: this.props.match.params.id,
       detail: '',													                                      //文章数据
 

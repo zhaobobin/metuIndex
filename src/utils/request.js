@@ -2,6 +2,7 @@ import fetch from 'dva/fetch';
 import { notification } from 'antd';
 import { Base64 } from 'js-base64';
 import store from '../index';
+import {ENV, Storage} from '~/utils/utils';
 
 const codeMessage = {
   200: '请求成功',
@@ -63,9 +64,9 @@ export default function request(url, options) {
       ...newOptions.headers,
     };
     newOptions.body = JSON.stringify(newOptions.body);
-
-    if(options.token) {
-      newOptions.headers['Authorization'] = 'Basic ' + Base64.encode(options.token + ':')      //读取本地token
+    //HttpBasicAuth
+    if(Storage.get(ENV.storageToken)) {
+      newOptions.headers['Authorization'] = 'Basic ' + Base64.encode(Storage.get(ENV.storageToken) + ':')      //读取本地token
     }
   }
 

@@ -6,6 +6,7 @@ import { ENV, Storage } from '~/utils/utils';
 import DocumentTitle from 'react-document-title';
 import NotFound from "~/routes/Other/404";
 
+import Loading from '~/components/Common/Loading';
 import GlobalHeader from '~/components/Common/GlobalHeader';
 import GlobalFooter from '~/components/Common/GlobalFooter';
 import GlobalContent from '~/components/Common/GlobalContent';
@@ -75,31 +76,36 @@ export default class BaseLayout extends React.Component {
 
     const { getRouteData, navData, location } = this.props;
     const path = location.pathname.split('/')[1];
+    const { loading } = this.props.global;
 
     const layout = (
       <Layout>
         <GlobalHeader navData={navData[0].children} location={location}/>
 
-        <GlobalContent>
-
-          <Switch>
+          <GlobalContent>
             {
-              getRouteData('BaseLayout').map(item =>
-                (
-                  <Route
-                    exact={item.exact}
-                    key={item.path}
-                    path={item.path}
-                    component={item.component}
-                  />
-                )
-              )
+              loading ?
+                <Loading/>
+                :
+                <Switch>
+                  {
+                    getRouteData('BaseLayout').map(item =>
+                      (
+                        <Route
+                          exact={item.exact}
+                          key={item.path}
+                          path={item.path}
+                          component={item.component}
+                        />
+                      )
+                    )
+                  }
+                  <Route component={NotFound} />
+                </Switch>
             }
-            <Route component={NotFound} />
-          </Switch>
 
-          <BackTop />
-        </GlobalContent>
+            <BackTop />
+          </GlobalContent>
 
         {
           path === 'publish' ? null : <GlobalFooter/>

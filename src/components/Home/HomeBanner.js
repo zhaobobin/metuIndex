@@ -1,21 +1,24 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
 import {Spin} from 'antd';
 import { SimpleImg } from 'react-simple-img';
 import { getImgSize } from '~/utils/utils';
 
-import styles from './PhotoWelcome.less';
+import styles from './HomeBanner.less';
 
 @connect(state => ({
   global: state.global
 }))
-export default class PhotoWelcome extends PureComponent {
+export default class HomeBanner extends React.Component {
 
-  state = {
-    data: '',
-    style: '?x-oss-process=style/thumb_m'
-  };
+  constructor(props){
+    super(props);
+    this.state = {
+      data: '',
+      imgStyle: '?x-oss-process=style/thumb_m'
+    };
+  }
 
   componentDidMount(){
     this.queryPhotoWel();
@@ -39,17 +42,17 @@ export default class PhotoWelcome extends PureComponent {
   //加载优化、img下载完成后再渲染组件
   onLoad = () => {
     this.setState({
-      style: '?x-oss-process=style/cover'
+      imgStyle: '?x-oss-process=style/cover'
     })
   };
 
   render(){
 
-    const {data, style} = this.state;
+    const {data, imgStyle} = this.state;
 
     const bgImg = data ?
       {
-        backgroundImage: 'url(' + data.thumb.url + style + ')',
+        backgroundImage: `url(${data.thumb.url}${imgStyle})`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center center',
         backgroundSize: 'cover'
@@ -57,7 +60,7 @@ export default class PhotoWelcome extends PureComponent {
 
     return(
 
-      <div className={styles.photoWel} style={bgImg}>
+      <div className={styles.container} style={bgImg}>
         {
           data ?
             <div className={styles.item}>

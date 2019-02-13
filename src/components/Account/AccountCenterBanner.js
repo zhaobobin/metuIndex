@@ -2,9 +2,8 @@ import React, { PureComponent } from 'react';
 import { connect } from 'dva';
 import { Icon, Upload, notification } from 'antd';
 import { file2base64 } from '~/utils/utils';
-
 import defauleBanner from '~/assets/banner.jpg';
-import styles from './UserCenterBanner.less';
+import styles from './AccountCenterBanner.less';
 
 import PhotoCrop from '~/components/Photo/PhotoCrop';
 
@@ -13,7 +12,7 @@ import PhotoCrop from '~/components/Photo/PhotoCrop';
   oss: state.oss,
 }))
 
-export default class UserCenter extends PureComponent {
+export default class AccountCenterBanner extends PureComponent {
 
   constructor(props){
     super(props);

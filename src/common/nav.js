@@ -21,6 +21,7 @@ export const getNavData = app => [
         name: '首页',
         key: 'home',
         path: '',
+        exact: true,
         component: dynamicWrapper(app, [], () => import('../routes/Home/Home')),
       },
       {
@@ -91,16 +92,17 @@ export const getNavData = app => [
         name: '用户中心',
         path: 'u/:username',
         isHide: true,
-        component: dynamicWrapper(app, ['oss'], () => import('../routes/User/UserCenter')),
+        component: dynamicWrapper(app, ['oss'], () => import('../routes/Account/AccountCenter')),
       },
-      // {
-      //   name: '设置',
-      //   path: 'setting',
-      //   isHide: true,
-      //   component: dynamicWrapper(app, ['oss'], () => import('../routes/User/UserSetting')),
-      // },
+      {
+        name: '设置',
+        path: 'setting',
+        isHide: true,
+        component: dynamicWrapper(app, ['oss'], () => import('../routes/Account/AccountSetting')),
+      },
       {
         name: '发布',
+        key: 'publish',
         path: 'publish/:modelType',
         isHide: true,
         component: dynamicWrapper(app, ['oss', 'publish'], () => import('../routes/Publish/Publish')),

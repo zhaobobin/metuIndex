@@ -1,0 +1,75 @@
+@import '../../theme/index.less';
+
+.menu{
+
+  margin-left: 50px;
+  margin-bottom: 0;
+  height: 64px;
+
+  li{
+    float: left;
+    position: relative;
+
+    a.link{
+      display:block;
+      padding:0 20px;
+      line-height:64px;
+      text-align: center;
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.65);
+
+      &:hover{
+        color: @color_white;
+      }
+      &.current{
+        color: @color_blue;
+      }
+    }
+
+    .submenu{
+      display:none;
+      width:100%;
+      position:absolute;
+      left:0;
+      top:80px;
+      background: rgba(47, 47, 47, 0.9);
+      box-shadow: @box_shadow;
+
+      p{margin: 0}
+      a{
+        display:block;
+        font-size:14px;
+        line-height:40px;
+        color:@color_333;
+
+        &:hover{
+          background: @color_blue2
+        }
+        &.active{
+          color: @color_blue
+        }
+      }
+
+    }
+    &:hover .submenu{
+      display:block;
+    }
+
+  }
+
+  :global(.ant-menu.ant-menu-dark .ant-menu-item-selected){
+    background: none;
+  }
+
+  :global(.ant-menu-dark .ant-menu-item-selected a){
+    color: @link;
+  }
+
+  :global(.ant-menu){
+    background: none;
+  }
+  :global(.ant-menu-horizontal){
+    border: none
+  }
+
+}

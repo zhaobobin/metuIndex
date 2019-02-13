@@ -4,7 +4,6 @@ import { Row, Col, Card, Tabs } from 'antd';
 import styles from './HomePhotoList.less'
 
 import AlbumListQuery from '~/components/Photo/AlbumListQuery';
-
 const TabPane = Tabs.TabPane;
 
 @connect(state => ({
@@ -44,9 +43,10 @@ export default class HomePhotoList extends React.Component{
 
     return(
       <div className={styles.photoList}>
-        <Tabs defaultActiveKey={key}
-              animated={false}
-              onChange={this.handleTab}
+        <Tabs
+          defaultActiveKey={key}
+          animated={false}
+          onChange={this.handleTab}
         >
 
           <TabPane tab="热门" key="popular">

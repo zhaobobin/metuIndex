@@ -12,28 +12,32 @@ import {Storage} from "../../utils/utils";
 import styles from './TagsRank.less';
 
 @connect(state => ({
-  tags: state.tags,
+  global: state.tags,
 }))
 export default class TagsRank extends PureComponent {
 
-  state = {
-    list: '',
-  };
+  constructor(props){
+    super(props);
+    this.ajaxFlag = true;
+    this.state = {
+      list: '',
+    };
+  }
 
   componentDidMount(){
-    Storage.set('metu-tagsFlag', true);
     this.queryTagsRank({itemsPerPage: this.props.itemsPerPage});
   }
 
   queryTagsRank(params){
-    if(!Storage.get('metu-tagsFlag')) return;
-    Storage.set('metu-tagsFlag', false);
+    if(!this.ajaxFlag) return;
+    this.ajaxFlag = false;
 
     this.props.dispatch({
-      type: 'tags/rank',
+      type: 'global/post',
+      url: 'api/TagsRank',
       payload: params,
       callback: (res) => {
-        Storage.set('metu-tagsFlag', true);
+        this.ajaxFlag = true;
         if(res.status === 1){
           this.setState({
             list: res.data,
@@ -51,15 +55,21 @@ export default class TagsRank extends PureComponent {
     //console.log(list)
 
     const RankList = list ?
-      list.map((topic, index) => (
-        <Link to={`/tags/${topic.name}`} key={index}>
-          {topic.name}
-        </Link>
-      ))
-      : null;
+      <div className={styles.list}>
+        {
+          list.map((topic, index) => (
+            <Link to={`/tags/${topic.name}`} key={index}>
+              {topic.name}
+            </Link>
+          ))
+        }
+      </div>
+      :
+      null;
 
     return(
       <div className={styles.tagsList}>
+        <h3>热门标签</h3>
         {RankList}
       </div>
     )

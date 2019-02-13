@@ -7,7 +7,8 @@
  * https://github.com/loo41/share-react
  */
 import React from 'react';
-import { Qq, Qzone } from 'share-react';
+import { Icon } from 'antd'
+import { Qq, Weibo } from 'share-react';
 import QRCode from 'qrcode.react'
 import { ENV } from '~/utils/utils'
 import styles from './CusShare.less'
@@ -21,7 +22,7 @@ export default function CusShare ({url, title, desc, style}) {
 
   //分享链接取，设置的url，或者浏览器当前url
   let shareParams = {
-    url: url,
+    url: url || window.location.href,
     title: title || ENV.hometitle,
     desc: desc || ENV.shareDesc,
   };
@@ -31,25 +32,27 @@ export default function CusShare ({url, title, desc, style}) {
 
       <li className={styles.weichat} style={style}>
         <span>
-          <img src={weixinImg} alt="weichat"/>
+          <Icon type="wechat" />
         </span>
-        <span className={styles.ma}><QRCode value={shareParams.url} size={120}/></span>
+        <span className={styles.ma}>
+          <QRCode value={shareParams.url} size={100}/>
+        </span>
       </li>
 
       <li className={styles.qq} style={style}>
         <Qq data={shareParams} windowWidth={800} windowHeight={700}>
           <span className={styles.qq}>
-            <img src={qqImg} alt="qq"/>
+            <Icon type="qq" />
           </span>
         </Qq>
       </li>
 
-      <li className={styles.zone} style={style}>
-        <Qzone data={shareParams} windowWidth={800} windowHeight={700}>
+      <li className={styles.weibo} style={style}>
+        <Weibo data={shareParams} windowWidth={800} windowHeight={700}>
           <span className={styles.zone}>
-            <img src={zoneImg} alt="Qzone"/>
+            <Icon type="weibo" />
           </span>
-        </Qzone>
+        </Weibo>
       </li>
 
     </ul>

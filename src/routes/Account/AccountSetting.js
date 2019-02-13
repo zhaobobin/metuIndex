@@ -3,16 +3,16 @@ import { Redirect } from 'dva/router';
 import { connect } from 'dva';
 import { Row, Col, Tabs } from 'antd';
 import {ENV} from '~/utils/utils';
-import styles from './UserSetting.less';
+import styles from './AccountSetting.less';
 
-import UserInfoSetting from '~/components/User/UserInfoSetting'
+import AccountInfoSetting from '~/components/Account/AccountInfoSetting'
 
 const TabPane = Tabs.TabPane;
 
 @connect(state => ({
   global: state.global
 }))
-export default class UserSetting extends PureComponent {
+export default class AccountSetting extends PureComponent {
 
   state = {
     tabKey: '1'
@@ -45,7 +45,7 @@ export default class UserSetting extends PureComponent {
 
     const tabKey = this.state.tabKey;
 
-    const {isAuth} = this.props.login;
+    const {isAuth} = this.props.global;
 
     return(
       <div className={styles.setting}>
@@ -56,7 +56,7 @@ export default class UserSetting extends PureComponent {
                   onChange={this.handleTab}
             >
               <TabPane tab="用户信息" key="1">
-                <UserInfoSetting/>
+                <AccountInfoSetting/>
               </TabPane>
               <TabPane tab="账户安全" key="2">基本信息</TabPane>
               <TabPane tab="个人偏好" key="3">基本信息</TabPane>

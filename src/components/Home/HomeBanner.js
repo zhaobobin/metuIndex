@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
 import {Spin} from 'antd';
-import { SimpleImg } from 'react-simple-img';
 import { getImgSize } from '~/utils/utils';
 
 import styles from './HomeBanner.less';

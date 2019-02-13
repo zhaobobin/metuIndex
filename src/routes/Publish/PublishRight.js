@@ -52,6 +52,7 @@ export default class PublishRight extends React.Component {
     if(nextProps.modelType !== this.state.modelType) this.props.form.resetFields();
   }
 
+  //选择缩略图
   handleSelectPhoto = (url) => {
     this.props.form.setFieldsValue({
       thumb: url
@@ -62,6 +63,28 @@ export default class PublishRight extends React.Component {
         thumb: url
       }
     })
+  };
+
+  formSubmit = (e) => {
+    e.preventDefault();
+    if(!this.ajaxFlag) return;
+    this.ajaxFlag = false;
+
+    const {content, thumb} = this.props.publish;
+
+    this.props.form.validateFields(keys, (err, values) => {
+      if(!err){
+        values.modelType = this.state.modelType;
+        values.uid = this.props.global.currentUser._id;
+        values.content = this.props.publish.content;
+        values.thumb = this.props.publish.thumb || '';
+        if(values.tags) values.tags = values.tags.join(',');
+        this.saveData(values)
+      }else{
+        this.ajaxFlag = false;
+      }
+    });
+
   };
 
   //保存数据
@@ -91,22 +114,6 @@ export default class PublishRight extends React.Component {
     });
   }
 
-  formSubmit = (e) => {
-    e.preventDefault();
-    if(!this.ajaxFlag) return;
-    this.ajaxFlag = false;
-
-    this.props.form.validateFields(keys, (err, values) => {
-      if(!err){
-        values.thumb = this.props.publish.thumb || '';
-        this.saveData(values)
-      }else{
-        this.ajaxFlag = false;
-      }
-    });
-
-  };
-
   //取消
   formCancel = (e) => {
     e.preventDefault();
@@ -125,7 +132,7 @@ export default class PublishRight extends React.Component {
   render(){
 
     const { detail } = this.state;
-    const { global, publish, category, form } = this.props;
+    const { global, category, form } = this.props;
     const { getFieldDecorator, getFieldsError } = form;
 
     //分类option

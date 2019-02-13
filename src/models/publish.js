@@ -6,11 +6,12 @@ export default {
   namespace: 'publish',
 
   state: {
+
     submitting: false,                    //提交状态
     modelType: '',                        //模型类型
     thumb: '',                            //缩略图
     category: '',                         //分类列表
-    articleContent: '',                   //文章内容
+    content: '',                          //文章内容
     photoList: '',                        //图片列表
   },
 
@@ -35,6 +36,13 @@ export default {
       return {
         ...state,
         modelType: payload.modelType
+      };
+    },
+    saveArticleContent(state, {payload}) {
+      return {
+        ...state,
+        ...state,
+        content: payload.content
       };
     },
   }

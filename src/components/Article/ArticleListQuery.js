@@ -12,25 +12,28 @@ import {Storage} from '../../utils/utils';
 import ArticleListShow from './ArticleListShow'
 
 @connect(state => ({
-  article: state.article
+  global: state.global
 }))
 export default class ArticleListQuery extends PureComponent {
 
-  state = {
-    modelType: 'article',
+  constructor(props){
+    super(props);
+    this.ajaxFlag = true;
+    this.state = {
+      modelType: 'article',
 
-    uid: this.props.uid ? this.props.uid : '',								                //用户id
-    category: this.props.category ? this.props.category : '',								  //分类id
-    parent: this.props.parent ? this.props.parent : '',								        //父级分类
-    currentPage: this.props.currentPage ? this.props.currentPage : 1,					//当前页数
-    pageSize: Storage.get('metu-pageSize') ? Storage.get('metu-pageSize') : 10,			//每页数量
+      uid: this.props.uid ? this.props.uid : '',								                //用户id
+      category: this.props.category ? this.props.category : '',								  //分类id
+      parent: this.props.parent ? this.props.parent : '',								        //父级分类
+      currentPage: this.props.currentPage ? this.props.currentPage : 1,					//当前页数
+      pageSize: Storage.get('metu-pageSize') ? Storage.get('metu-pageSize') : 10,			//每页数量
 
-    total: 0,
-    list: '',
-  };
+      total: 0,
+      list: '',
+    };
+  }
 
   componentDidMount(){
-    Storage.set('metu-ajaxFlag', true);
     this.queryArticleList({
       params: {
         modelType: this.state.modelType,
@@ -44,15 +47,16 @@ export default class ArticleListQuery extends PureComponent {
   }
 
   queryArticleList(params){
-    if(!Storage.get('metu-ajaxFlag')) return;
-    Storage.set('metu-ajaxFlag', false);
+    if(!this.ajaxFlag) return;
+    this.ajaxFlag = false;
 
     this.props.dispatch({
-      type: 'article/list',
+      type: 'global/post',
+      url: 'api/ArticleList',
       payload: params,
       callback: (res) => {
         window.scrollTo(0, 0);
-        Storage.set('metu-ajaxFlag', true);
+        this.ajaxFlag = true;
         if(res.status === 1){
           for(let i in res.data){
             if(res.data[i].tags) res.data[i].tags = res.data[i].tags.split(',');
@@ -105,13 +109,16 @@ export default class ArticleListQuery extends PureComponent {
         {
           list ?
             <ArticleListShow data={list} />
-            : null
+            :
+            null
         }
 
-        <Pagination defaultCurrent={1}
+        <Pagination
+          defaultCurrent={1}
           total={total}
-          showSizeChanger
-          showQuickJumper
+          hideOnSinglePage={true}
+          showSizeChanger={true}
+          showQuickJumper={true}
           onChange={this.onChange}
           onShowSizeChange={this.onShowSizeChange}
         />

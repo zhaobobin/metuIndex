@@ -17,33 +17,37 @@ const keys1 = ['avatar', 'nickname', 'fullname', 'gender', 'birthday', 'introduc
 const keys2 = ['address', 'zipcode', 'tel', 'qq', 'idcard'];
 
 @connect(state => ({
-  login: state.login,
+  global: state.global,
   oss: state.oss
 }))
 @Form.create()
 export default class UserInfoSetting extends PureComponent {
 
-  state = {
-    _id: '',
-    username: '',
+  constructor(props){
+    super(props);
+    this.ajaxFlag = true;
+    this.state = {
+      _id: '',
+      username: '',
 
-    userpic: '',            //用户头像
-    fullname: '',           //真实姓名
-    gender: '不详',          //性别
-    birthday: '',           //生日
-    introduction: '',       //个人简介
-    city: '',               //所在城市
-    homepage: '',           //个人主页
+      userpic: '',            //用户头像
+      fullname: '',           //真实姓名
+      gender: '不详',          //性别
+      birthday: '',           //生日
+      introduction: '',       //个人简介
+      city: '',               //所在城市
+      homepage: '',           //个人主页
 
-    address: '',            //通讯地址
-    zipcode: '',            //邮编
-    tel: '',                //电话
-    qq: '',                 //QQ号
-    idcard: ''              //身份证号
-  };
+      address: '',            //通讯地址
+      zipcode: '',            //邮编
+      tel: '',                //电话
+      qq: '',                 //QQ号
+      idcard: ''              //身份证号
+    };
+  }
 
   componentDidMount(){
-    Storage.set('metu-ajaxFlag', true);
+
   }
 
   handleSelectPhoto = (value) => {
@@ -76,38 +80,38 @@ export default class UserInfoSetting extends PureComponent {
 
   saveBaseinfo = (e) => {
     e.preventDefault();
-    if(!Storage.get('metu-ajaxFlag')) return;
-    Storage.set('metu-ajaxFlag', false);
+    if(!this.ajaxFlag) return;
+    this.ajaxFlag = false;
     this.props.form.validateFields(keys1, (err, values) => {
       if(!err){
         this.userUpdate(values);
       }else{
-        Storage.set('metu-ajaxFlag', true)
+        this.ajaxFlag = true;
       }
     });
   };
 
   saveConnect = (e) => {
     e.preventDefault();
-    if(!Storage.get('metu-ajaxFlag')) return;
-    Storage.set('metu-ajaxFlag', false);
+    if(!this.ajaxFlag) return;
+    this.ajaxFlag = false;
     this.props.form.validateFields(keys2, (err, values) => {
       if(!err){
         this.userUpdate(values);
       }else{
-        Storage.set('metu-ajaxFlag', true)
+        this.ajaxFlag = true;
       }
     });
   };
 
   userUpdate(values){
-    values._id = this.props.login.currentUser._id;
+    values._id = this.props.global.currentUser._id;
     //console.log(values)
     this.props.dispatch({
-      type: 'login/update',
+      type: 'global/update',
       payload: values,
       callback: (res) => {
-        Storage.set('metu-ajaxFlag', true)
+        this.ajaxFlag = true;
       }
     });
   }
@@ -115,7 +119,7 @@ export default class UserInfoSetting extends PureComponent {
   render(){
 
     const { getFieldDecorator } = this.props.form;
-    const {currentUser} = this.props.login;
+    const {currentUser} = this.props.global;
 
     const formItemLayout = {                                                                //表单元素布局
       labelCol: {

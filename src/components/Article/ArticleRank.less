@@ -1,19 +1,47 @@
+@import '../../theme/index.less';
+
 .rankList{
-  .rankItem{
-    padding: 5px 0;
-    .title{color:#333}
-    a:hover .title{color:#1890ff}
-    .desc{
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
-      margin:5px 0;
-      line-height:2em;
-      color:#666;
-    }
-    .info{
-      color:#999;font-size:12px;
-      span{margin-right:10px}
+
+  h3{
+    margin:0;
+    padding-left: 30px;
+    height: 18px;
+    font-size: 16px;
+    line-height: 1;
+    font-weight: 400;
+    position:relative;
+    &:before{
+      position: absolute;
+      left: 0;
+      content: " ";
+      width: 2px;
+      height: 18px;
+      background: @color_blue;
     }
   }
+
+  .list{
+    margin: 15px 30px;
+
+    .item{
+      padding: 5px 0;
+      .title{color:#333}
+      a:hover .title{
+        color: @color_blue;
+      }
+      .desc{
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        margin:5px 0;
+        line-height:2em;
+        color:#666;
+      }
+      .info{
+        color:#999;font-size:12px;
+        span{margin-right:10px}
+      }
+    }
+  }
+
 }

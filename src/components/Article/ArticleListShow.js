@@ -4,9 +4,8 @@
  */
 import React, { PureComponent } from 'react';
 import { Link } from 'dva/router';
-import { Icon } from 'antd';
 import Moment from 'moment';
-import logo from '../../assets/logo2.png';
+import logo from '~/assets/logo2.png';
 
 import styles from './ArticleListShow.less';
 
@@ -40,10 +39,10 @@ export default class ArticleListShow extends PureComponent {
               }
             </p>
             <p className={styles.handler}>
-              <span><Icon type="user" /> {topic.uid.nickname}</span>
-              <span><Icon type="clock-circle-o" /> {Moment(topic.createtime).format('YYYY-MM-DD')}</span>
-              <span><Icon type="eye-o" /> {topic.views}</span>
-              <span><Icon type="message" /> {topic.comments.length}</span>
+              <span>{topic.uid.nickname}</span>
+              <span>{Moment(topic.createtime).format('YYYY-MM-DD')}</span>
+              <span>{topic.views} 阅读</span>
+              <span>{topic.comments.length} 评论</span>
             </p>
           </div>
         </li>

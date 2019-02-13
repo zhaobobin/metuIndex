@@ -1,18 +1,17 @@
 import React from 'react';
 import { connect } from 'dva';
 import {Storage, hasErrors, getImgSize, file2base64} from '~/utils/utils';
-import styles from './ArticleEditor.less'
 
 import { EditorState, convertToRaw, ContentState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 import draftToHtml from 'draftjs-to-html';
-import draftToMarkdown from 'draftjs-to-markdown';
 import htmlToDraft from 'html-to-draftjs';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 @connect(state => ({
   global: state.global,
   oss: state.oss,
+  publish: state.publish,
 }))
 export default class ArticleEditor extends React.Component {
 
@@ -24,21 +23,22 @@ export default class ArticleEditor extends React.Component {
     }
   }
 
-  componentsDidMount(){
+  componentDidMount(){
 
   }
 
   //监控富文本变化
   onEditorStateChange = (editorState) => {
+    this.props.dispatch({
+      type: 'publish/saveArticleContent',
+      payload: {
+        content: draftToHtml(convertToRaw(editorState.getCurrentContent()))
+      }
+    });
     this.setState({
       editorState: editorState,
       help: ''
     });
-  };
-
-  //检查富文本内容
-  checkArticleContent = () => {
-
   };
 
   render(){
@@ -64,7 +64,6 @@ export default class ArticleEditor extends React.Component {
           }}
           placeholder="请输入正文..."
           spellCheck
-          onBlur={this.checkArticleContent}
           localization={{ locale: 'zh' }}
         />
         <style>

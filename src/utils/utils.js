@@ -10,7 +10,7 @@ export const ENV = {
   appname: '迷图网',
   hometitle: '迷图网 - 摄影图片素材分享社区',
   keywords: '迷图网,摄影,图片,素材,分享,社区。',
-  description: '迷图网（www.metuwang.com）- 摄影图片素材分享社区。',
+  description: '迷图网（www.metuwang.com）- 是一个致力于摄影分享、发现、售卖的专业平台，来自世界各地的摄影师是我们忠实的用户。让你与他人因图片相识，世界很大，我想看一看。',
   author: '迷图网(www.metuwang.com)',
   verification: '',
 

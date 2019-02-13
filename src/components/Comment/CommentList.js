@@ -8,7 +8,7 @@ import { connect } from 'dva';
 import { Link } from 'dva/router';
 import { Button, Form, Icon, Input, Popover, notification } from 'antd';
 import Moment from 'moment';
-import {ENV, Storage, filterStr} from "../../utils/utils";
+import {filterStr} from "../../utils/utils";
 
 import styles from './CommentList.less';
 
@@ -16,61 +16,77 @@ const FormItem = Form.Item;
 const { TextArea } = Input;
 
 @connect(state => ({
-  comment: state.comment,
-  login: state.login,
+  global: state.global,
 }))
 @Form.create()
 export default class CommentList extends PureComponent {
 
-  state = {
-    aid: this.props.id,                   //文章id
-    commentId: '',                        //被回复的评论id
-    replyUid: '',                         //被回复的用户id
-    popoverVisible: [],							      //评论操作提示卡
-    placeholder: '写下您的评论...',
-  };
+  constructor(props){
+    super(props);
+    this.ajaxFlag = true;
+    this.state = {
+      commentId: '',                        //被回复的评论id
+      replyUid: '',                         //被回复的用户id
+      popoverVisible: [],							      //评论操作提示卡
+      placeholder: '写下您的评论...',
+
+      pageSize: 1,
+
+      list: [],
+      total: 0,
+      hasMore: false,
+
+    };
+  }
 
   componentDidMount(){
-    Storage.set('metu-commentFlag', true);
-    this.queryCommentList(this.state.aid);
+    this.queryCommentList(this.props.id);
   }
 
-  //组件卸载时清空评论列表
-  componentWillUnmount(){
-    this.props.dispatch({
-      type: 'comment/clearList'
-    });
+  componentWillReceiveProps(nextProps){
+    if(nextProps.aid !== this.props.aid){
+      this.queryCommentList(nextProps.aid);
+    }
   }
 
+  //查询评论列表
   queryCommentList = () => {
-    if(!Storage.get('metu-commentFlag')) return;
-    Storage.set('metu-commentFlag', false);
+    if(!this.ajaxFlag) return;
+    this.ajaxFlag = false;
 
     this.props.dispatch({
-      type: 'comment/list',
+      type: 'global/post',
+      url: 'api/CommentList',
       payload: {
         aid: this.state.aid,
-        currentPage: this.props.comment.currentPage,
+        currentPage: this.state.pageSize,
         params: {}
       },
       callback: (res) => {
-        Storage.set('metu-commentFlag', true);
+        if(res.status === 1){
+          this.setState({
+            list: res.data.list,
+            totla: res.data.total,
+            hasMore: res.data.hasMore
+          })
+        }
+        setTimeout(() => {this.ajaxFlag = true}, 500)
       }
     });
   };
 
   //检查登录状态
   checkLogin = () => {
-    let {isAuth} = this.props.login;
+    let {isAuth} = this.props.global;
     if(!isAuth){
       this.props.dispatch({
-        type: 'login/changeModal',
+        type: 'global/changeSignModal',
         payload: {
-          modalVisible: true,
-          tabKey: '1',
+          signModalVisible: true,
+          signTabKey: '1',
         }
       });
-      Storage.set('metu-commentFlag', true);
+      this.ajaxFlag = true;
       return false;
     }
     return true;
@@ -79,13 +95,13 @@ export default class CommentList extends PureComponent {
   //确定发表评论
   commentSubmit = (e) => {
     e.preventDefault();
-    if(!Storage.get('metu-commentFlag')) return;
-    Storage.set('metu-commentFlag', false);
+    if(!this.ajaxFlag) return;
+    this.ajaxFlag = false;
 
     if(!this.checkLogin()) return false;												      //检查登录状态
     let data = {
       aid: this.state.aid,
-      uid: this.props.login.currentUser._id
+      uid: this.props.global.currentUser._id
     };
     if(this.state.commentId) data.commentId = this.state.commentId;			    //被回复的评论id
     if(this.state.replyUid) data.replyUid = this.state.replyUid;			      //被回复的用户id
@@ -94,7 +110,7 @@ export default class CommentList extends PureComponent {
         let content = filterStr(values.remark);
         if(content.trim() === ''){															        //评论不能为空
           this.props.form.resetFields();
-          Storage.set('metu-commentFlag', true);
+          this.ajaxFlag = true;
           return;
         }
         data.content = content;
@@ -117,7 +133,7 @@ export default class CommentList extends PureComponent {
             description: res.msg,
           });
         }
-        Storage.set('metu-commentFlag', true);
+        setTimeout(() => {this.ajaxFlag = true}, 500)
       }
     });
   };
@@ -137,11 +153,11 @@ export default class CommentList extends PureComponent {
   }
 
   focusHandle = () => {
-    Storage.set('metu-commentFlag', false);
+    this.ajaxFlag = false;
   };
 
   blurHandle = () => {
-    Storage.set('metu-commentFlag', true);
+    this.ajaxFlag = true;
   };
 
   resetComment = (e) => {
@@ -171,12 +187,12 @@ export default class CommentList extends PureComponent {
 
   likeComment(topic, commentId){
 
-    if(!Storage.get('metu-commentFlag')) return;
-    Storage.set('metu-commentFlag', false);
+    if(!this.ajaxFlag) return;
+    this.ajaxFlag = false;
     if(!this.checkLogin()) return false;												      //检查登录状态
 
     let _id = topic._id,
-      uid = this.props.login.currentUser._id,
+      uid = this.props.global.currentUser._id,
       action = topic.like.indexOf(uid) < 0 ? 'add' : 'del';
 
     this.props.dispatch({
@@ -188,7 +204,7 @@ export default class CommentList extends PureComponent {
         commentId: commentId ? commentId : ''
       },
       callback: (res) => {
-        Storage.set('metu-commentFlag', true);
+        setTimeout(() => {this.ajaxFlag = true}, 500)
       }
     });
   }
@@ -203,8 +219,8 @@ export default class CommentList extends PureComponent {
   }
 
   toggleReplyList(topic){
-    if(!Storage.get('metu-commentFlag')) return;
-    Storage.set('metu-commentFlag', false);
+    if(!this.ajaxFlag) return;
+    this.ajaxFlag = false;
 
     this.props.dispatch({
       type: 'comment/replyToggle',
@@ -213,14 +229,14 @@ export default class CommentList extends PureComponent {
         isVisible: !topic.isVisible
       },
       callback: () => {
-        Storage.set('metu-commentFlag', true);
+        setTimeout(() => {this.ajaxFlag = true}, 500)
       }
     });
   }
 
   queryReplyList(topic){
-    if(!Storage.get('metu-commentFlag')) return;
-    Storage.set('metu-commentFlag', false);
+    if(!this.ajaxFlag) return;
+    this.ajaxFlag = false;
 
     this.props.dispatch({
       type: 'comment/replyList',
@@ -230,7 +246,7 @@ export default class CommentList extends PureComponent {
         currentPage: topic.currentPage
       },
       callback: () => {
-        Storage.set('metu-commentFlag', true);
+        setTimeout(() => {this.ajaxFlag = true}, 500)
       }
     });
   }
@@ -239,8 +255,8 @@ export default class CommentList extends PureComponent {
 
     const theme = this.props.theme ? styles[this.props.theme] : styles.white;
     const {getFieldDecorator} = this.props.form;
-    const {list, total, hasMore} = this.props.comment;
-    const {isAuth, currentUser} = this.props.login;
+    const {list, total, hasMore} = this.state;
+    const {isAuth, currentUser} = this.props.global;
 
     //生成评论列表
     const commnetList = total > 0 ?

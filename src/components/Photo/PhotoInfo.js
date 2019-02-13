@@ -9,35 +9,45 @@ import { connect } from 'dva';
 import { Link } from 'dva/router';
 import {Row, Col, Icon, Spin, notification} from 'antd';
 import Moment from 'moment';
-import {ENV, Storage, goBack} from "../../utils/utils";
 
 import styles from './PhotoInfo.less';
 
 @connect(state => ({
-  login: state.login,
+  global: state.global,
   oss: state.oss,
 }))
 export default class PhotoInfo extends PureComponent {
 
-  state = {
-    exifShow: '',
-  };
+  constructor(props){
+    super(props);
+    this.ajaxFlag = true;
+    this.state = {
+      exifShow: '',
+    };
+  }
 
   //检查登录状态
   checkLogin = () => {
-    let {isAuth} = this.props.login;
+    let {isAuth} = this.props.global;
     if(!isAuth){
       this.props.dispatch({
-        type: 'login/changeModal',
+        type: 'global/changeSignModal',
         payload: {
-          modalVisible: true,
-          tabKey: '1',
+          signModalVisible: true,
+          signTabKey: '1',
         }
       });
-      Storage.set('metu-ajaxFlag', true);
+      this.ajaxFlag = true;
       return false;
     }
     return true;
+  };
+
+  //关注
+  handleFollow = () => {
+    if(!this.ajaxFlag) return;
+    this.ajaxFlag = false;
+    if(!this.checkLogin()) return false;								//检查登录状态
   };
 
   //显示exif详情
@@ -51,13 +61,13 @@ export default class PhotoInfo extends PureComponent {
 
   render(){
 
-    const {detail, tags, currentPhoto} = this.props;
+    const {detail, currentPhoto} = this.props;
 
     //console.log(currentPhoto)
 
     //tags
-    const tagsList = tags ?
-      tags.map((topic, index) => (
+    const tagsList = detail.tags ?
+      detail.tags.map((topic, index) => (
         <Link className={styles.tagItem} key={index} to={`tags/${topic}`}>{topic}</Link>
       ))
       : null;

@@ -15,16 +15,19 @@ import {Storage} from "../../utils/utils";
 import styles from './ArticleRank.less';
 
 @connect(state => ({
-  article: state.article,
+  global: state.global,
 }))
 export default class ArticleRank extends PureComponent {
 
-  state = {
-    list: '',
-  };
+  constructor(props){
+    super(props);
+    this.ajaxFlag = true;
+    this.state = {
+      list: '',
+    };
+  }
 
   componentDidMount(){
-    Storage.set('metu-rankFlag', true);
     this.queryArticleRank(this.props);
   }
 
@@ -33,8 +36,8 @@ export default class ArticleRank extends PureComponent {
   }
 
   queryArticleRank(props){
-    if(!Storage.get('metu-rankFlag')) return;
-    Storage.set('metu-rankFlag', false);
+    if(!this.ajaxFlag) return;
+    this.ajaxFlag = false;
 
     let params = {
       modelType: props.modelType ? props.modelType : 'article',
@@ -44,10 +47,11 @@ export default class ArticleRank extends PureComponent {
     };
 
     this.props.dispatch({
-      type: 'article/rank',
+      type: 'global/post',
+      url: 'api/ArticleRank',
       payload: params,
       callback: (res) => {
-        Storage.set('metu-rankFlag', true);
+        this.ajaxFlag = true;
         if(res.status === 1){
           this.setState({
             list: res.data,
@@ -65,24 +69,30 @@ export default class ArticleRank extends PureComponent {
     //console.log(list)
 
     const RankList = list ?
-      list.map((topic, index) => (
-        <div className={styles.rankItem} key={index}>
-          <Link to={`/${topic.category.catedir}/${topic._id}/${topic.title}-by-${topic.uid.nickname}`}>
-            <strong className={styles.title}>{topic.title}</strong>
-            <p className={styles.desc}>{topic.description}</p>
-            <p className={styles.info}>
-              <span><Icon type="user" /> {topic.uid.nickname}</span>
-              <span><Icon type="clock-circle-o" /> {Moment(topic.createtime).format('YYYY-MM-DD')}</span>
-              <span><Icon type="eye-o" /> {topic.views}</span>
-              <span><Icon type="message" /> {topic.comments.length}</span>
-            </p>
-          </Link>
-        </div>
-      ))
-      : null;
+      <ul className={styles.list}>
+        {
+          list.map((topic, index) => (
+            <li className={styles.item} key={index}>
+              <Link to={`/${topic.category.catedir}/${topic._id}/${topic.title}-by-${topic.uid.nickname}`}>
+                <strong className={styles.title}>{topic.title}</strong>
+                <p className={styles.desc}>{topic.description}</p>
+                <p className={styles.info}>
+                  <span><Icon type="user" /> {topic.uid.nickname}</span>
+                  <span><Icon type="clock-circle-o" /> {Moment(topic.createtime).format('YYYY-MM-DD')}</span>
+                  <span><Icon type="eye-o" /> {topic.views}</span>
+                  <span><Icon type="message" /> {topic.comments.length}</span>
+                </p>
+              </Link>
+            </li>
+          ))
+        }
+      </ul>
+      :
+      null;
 
     return(
       <div className={styles.rankList}>
+        <h3>推荐阅读</h3>
         {RankList}
       </div>
     )

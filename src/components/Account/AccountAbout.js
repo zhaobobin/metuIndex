@@ -5,9 +5,9 @@ import React, { PureComponent } from 'react';
 import { Link } from 'dva/router';
 import Moment from 'moment';
 
-import styles from './UserAbout.less';
+import styles from './AccountAbout.less';
 
-export default class UserAbout extends PureComponent {
+export default class AccountAbout extends PureComponent {
 
   render(){
 

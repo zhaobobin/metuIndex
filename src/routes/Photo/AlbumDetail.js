@@ -17,8 +17,7 @@ import CommentList from '~/components/Comment/CommentList';
 
 
 @connect(state => ({
-  article: state.article,
-  login: state.login,
+  global: state.global,
 }))
 export default class AlbumDetail extends PureComponent {
 
@@ -35,15 +34,15 @@ export default class AlbumDetail extends PureComponent {
 
   queryArticleDetail(id){
     this.props.dispatch({
-      type: 'article/detail',
-      url: 'api/AlbumDetail',
+      type: 'global/post',
+      url: 'api/ArticleDetail',
       payload: {
         id: id
       },
       callback: (res) => {
         if(res.status === 1){
           let data = res.data;
-          document.title = data.title + " - 相册 - " + ENV.appname;
+          document.title = data.title + " - " + data.uid.nickname + " - " + ENV.appname;
           if(typeof(data.content) === 'string') data.content = JSON.parse(data.content);			//转换图片列表数据
           if(data.tags && typeof(data.tags) === 'string') data.tags = data.tags.split(',');
 
@@ -87,7 +86,7 @@ export default class AlbumDetail extends PureComponent {
               </div>
 
               <div className={styles.body}>
-                <PhotoInfo detail={detail} tags={detail.tags} currentPhoto={currentPhoto}/>
+                <PhotoInfo detail={detail} currentPhoto={currentPhoto}/>
                 <div className={styles.foot}>
                   <CommentList id={id} theme="black"/>
                 </div>

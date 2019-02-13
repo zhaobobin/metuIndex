@@ -18,48 +18,7 @@ const slide = {
   lg: 4
 };
 
-const menus = [
-  {
-    label: '新手指引',
-    children: [
-      {label: '新手须知', url: ''},
-      {label: '风控管理', url: ''},
-      {label: '收费准则', url: ''},
-      {label: '帮助中心', url: ''}
-    ]
-  },
-  {
-    label: '新闻资讯',
-    children: [
-      {label: '网站公告', url: ''},
-      {label: '公司新闻', url: ''},
-      {label: '行业资讯', url: ''},
-      {label: '媒体报道', url: ''}
-    ]
-  },
-  {
-    label: '关于我们',
-    children: [
-      {label: '公司介绍', url: ''},
-      {label: '合作机构', url: ''},
-      {label: '联系我们', url: ''},
-      {label: '网站地图', url: ''}
-    ]
-  },
-];
-
 export default function GlobalFooter (props) {
-
-  const menuList = menus.map((item, index) => (
-    <dl key={index}>
-      <dt>{item.label}</dt>
-      {
-        item.children.map((topic, i) => (
-          <dd key={i}><Link to={`/${topic.url}`}>{topic.label}</Link></dd>
-        ))
-      }
-    </dl>
-  ));
 
   return(
     <div className={styles.container}>
@@ -68,18 +27,23 @@ export default function GlobalFooter (props) {
         <Col {...center}>
           <div className={styles.footContent}>
             <div className={styles.top}>
-              {menuList}
+              <p className={styles.title}><strong>{ENV.hometitle}</strong></p>
+              <p className={styles.desc}>{ENV.description}</p>
             </div>
             <div className={styles.bottom}>
               <p>
                 <span>{ENV.icp}</span>
                 <span>|</span>
                 <span>{ENV.beian}</span>
-              </p>
-              <p>
-                <span>{ENV.address}</span>
                 <span>|</span>
                 <span>{ENV.copyright}</span>
+              </p>
+              <p>
+                <span><Link to="help">帮助中心</Link></span>
+                <span>|</span>
+                <span><Link to="service">服务条款</Link></span>
+                <span>|</span>
+                <span><Link to="contact">联系我们</Link></span>
               </p>
             </div>
           </div>

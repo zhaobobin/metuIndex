@@ -5,7 +5,7 @@ import { ENV } from '~/utils/utils';
 import styles from './GlobalHeader.less';
 
 import logo from '~/assets/logo2.png'
-import MainMenu from '~/components/Common/MainMenu'
+import GlobalHeaderMenu from '~/components/Common/GlobalHeaderMenu'
 import SignModal from '~/components/Common/SignModal'
 
 function headerIsOpacity(pathname){
@@ -67,9 +67,7 @@ export default class GlobalHeader extends React.Component {
           </Col>
 
           <Col xs={0} sm={0} md={13} lg={14}>
-            <div className={styles.nav}>
-              <MainMenu navData={navData} location={location}/>
-            </div>
+            <GlobalHeaderMenu navData={navData} location={location}/>
           </Col>
 
           <Col xs={18} sm={18} md={8} lg={8}>

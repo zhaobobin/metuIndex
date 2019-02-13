@@ -7,38 +7,25 @@
 
 .footContent{
   padding: 0 10px;
+  color: @color_gray;
+  a{
+    color: @color_gray;
+  }
+
+  p{
+    margin-bottom:10px;
+  }
 
   .top{
-    overflow: hidden;
-
-    dl{
-      float: left;
-      width:200px;
-      dt{
-        font-size: 16px;
-        font-weight: bold;
-        line-height: 2em;
-        color: #e6e6e6;
-        margin-bottom: 10px;
-      }
-      dd{
-        font-size: 14px;
-      }
-      a{
-        color: @color_gray;
-        &:hover{
-          color: @link_hover
-        }
-      }
+    .title{
+      font-size:26px;
     }
   }
 
   .bottom{
     padding: 30px 0;
-    border-top: 1px solid #595959;;
     span{
       margin-right: 10px;
-      color: @color_gray;
     }
   }
 }

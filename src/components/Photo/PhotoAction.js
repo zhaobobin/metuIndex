@@ -5,39 +5,42 @@ import React, { PureComponent } from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
 import {Icon} from 'antd';
-import {Storage} from "../../utils/utils";
-
 import styles from './PhotoAction.less';
 
+import CusShare from '~/components/Article/CusShare'
+
 @connect(state => ({
-  login: state.login,
+  global: state.global,
 }))
 export default class PhotoAction extends PureComponent {
 
-  state = {
-    detail: '',
-    likeState: false,												                                  //喜欢该文章的状态
-    likeCount: '',														                                //喜欢该文章的人数
-    collectState: '',													                                //对应当前用户的收藏状态
-    followState: '',													                                //对应当前用户的关注状态
-  };
+  constructor(props){
+    super(props);
+    this.ajaxFlag = true;
+    this.state = {
+      detail: '',
+      likeState: false,												                                  //喜欢该文章的状态
+      likeCount: '',														                                //喜欢该文章的人数
+      collectState: '',													                                //对应当前用户的收藏状态
+      followState: '',													                                //对应当前用户的关注状态
+    };
+  }
 
   componentDidMount(){
-    Storage.set('metu-ajaxFlag', true);
     let data = this.props.data,
-      {login} = this.props;
-    this.initArticle(data, login)
+      {global} = this.props;
+    this.initArticle(data, global)
   }
 
   //处理用户登录、退出时，重新渲染文章数据
   componentWillReceiveProps(nextProps){
-    if(nextProps.login.isAuth !== this.props.login.isAuth){
-      this.initArticle(this.state.detail, nextProps.login)
+    if(nextProps.global.isAuth !== this.props.global.isAuth){
+      this.initArticle(this.state.detail, nextProps.global)
     }
   }
 
-  initArticle(data, login){
-    let {isAuth, currentUser} = login;
+  initArticle(data, global){
+    let {isAuth, currentUser} = global;
     //判断当前用户的喜欢、收藏
     let likeState = isAuth ? data.like.indexOf(currentUser._id) > -1 : false,
       collectState = isAuth ? currentUser.collect.indexOf(data._id) > -1 : false,
@@ -54,16 +57,16 @@ export default class PhotoAction extends PureComponent {
 
   //检查登录状态
   checkLogin = () => {
-    let {isAuth} = this.props.login;
+    let {isAuth} = this.props.global;
     if(!isAuth){
       this.props.dispatch({
-        type: 'login/changeModal',
+        type: 'global/changeSignModal',
         payload: {
-          modalVisible: true,
-          tabKey: '1',
+          signModalVisible: true,
+          signTabKey: '1',
         }
       });
-      Storage.set('metu-ajaxFlag', true);
+      this.ajaxFlag = true;
       return false;
     }
     return true;
@@ -71,25 +74,26 @@ export default class PhotoAction extends PureComponent {
 
   //喜欢
   handleLike = () => {
-    if(!Storage.get('metu-ajaxFlag')) return;
-    Storage.set('metu-ajaxFlag', false);
+    if(!this.ajaxFlag) return;
+    this.ajaxFlag = false;
     if(!this.checkLogin()) return false;								//检查登录状态
 
-    let {login} = this.props;
+    let {global} = this.props;
     let _id = this.state.detail._id,
-      uid = this.props.login.currentUser._id,
+      uid = this.props.global.currentUser._id,
       action = this.state.likeState ? 'del' : 'add';
 
     this.props.dispatch({
-      type: 'article/like',
+      type: 'global/post',
+      url: 'api/ArticleLike',
       payload: {
         _id: _id,
         uid: uid,
         action: action,
       },
       callback: (res) => {
-        this.initArticle(res.data, login);
-        Storage.set('metu-ajaxFlag', true);
+        this.initArticle(res.data, global);
+        setTimeout(() => {this.ajaxFlag = true}, 500)
       }
     });
 
@@ -97,16 +101,17 @@ export default class PhotoAction extends PureComponent {
 
   //收藏
   handleCollect = () => {
-    if(!Storage.get('metu-ajaxFlag')) return;
-    Storage.set('metu-ajaxFlag', false);
+    if(!this.ajaxFlag) return;
+    this.ajaxFlag = false;
     if(!this.checkLogin()) return false;								//检查登录状态
 
     let _id = this.state.detail._id,
-      uid = this.props.login.currentUser._id,
+      uid = this.props.global.currentUser._id,
       action = this.state.collectState ? 'del' : 'add';
 
     this.props.dispatch({
-      type: 'login/collect',
+      type: 'global/post',
+      url: 'api/UserCollect',
       payload: {
         _id: _id,
         uid: uid,
@@ -114,14 +119,9 @@ export default class PhotoAction extends PureComponent {
       },
       callback: (res) => {
         if(res.status === 1) this.setState({collectState: !this.state.collectState});
-        Storage.set('metu-ajaxFlag', true);
+        setTimeout(() => {this.ajaxFlag = true}, 500)
       }
     });
-
-  };
-
-  //分享
-  handleShare = () => {
 
   };
 
@@ -142,29 +142,35 @@ export default class PhotoAction extends PureComponent {
   render(){
 
     const {detail, likeState, likeCount, collectState} = this.state;
-//console.log(detail)
+
     return(
 
       <div className={styles.handle}>
         {
           detail ?
             <ul>
-              <li>
-                <Icon type="message" />
-                <span>{detail.comments.length}</span>
-              </li>
-              <li>
+              <li className={styles.li1}>
                 <a title="喜欢" onClick={this.handleLike}>
                   <Icon type={likeState ? "heart" : "heart-o"} />
-                  <span>{likeCount}</span>
+                  <span className={styles.count}>{likeCount}</span>
                 </a>
               </li>
-              <li>
-              <a title="收藏" onClick={this.handleCollect}>
-                <Icon type={collectState ? "star" : "star-o"} />
-              </a>
+              <li className={styles.li2}>
+                <Icon type="message" />
+                <span className={styles.count}>{detail.comments.length}</span>
               </li>
-              <li><a title="分享" onClick={this.handleShare}><Icon type="share-alt" /></a></li>
+              <li className={styles.li3}>
+                <CusShare/>
+              </li>
+              <li className={styles.li4}>
+                <Icon type="ellipsis" />
+                <div className={styles.menu}>
+                  <a title="收藏" onClick={this.handleCollect}>
+                    <Icon type={collectState ? "star" : "star-o"} /> 收藏
+                  </a>
+                  <a>举报</a>
+                </div>
+              </li>
               {/*<li><a><Icon type="ellipsis" /></a></li>*/}
             </ul>
             : null

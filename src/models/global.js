@@ -43,13 +43,6 @@ export default {
         });
       }
     },
-    *smsCode({ payload, callback }, { call, put }) {
-      const res = yield call(
-        (params) => {return request('api/smsCode', {method: 'POST', body: params})},
-        payload
-      );
-      yield callback(res);
-    },
     *register({ payload, callback }, { call, put }) {
       const res = yield call(
         (params) => {return request('api/register', {method: 'POST', body: params})},

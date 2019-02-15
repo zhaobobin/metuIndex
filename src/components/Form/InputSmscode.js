@@ -19,8 +19,30 @@ export default class InputSmscode extends React.Component {
     this.ajaxFlag = true;
     this.state = {
       value: '',            //输入框的值
+      tel: '',
       btnText: '获取验证码',
+      btnStyle: styles.null
     }
+  }
+
+  componentDidMount(){
+    this.initBtnStyle(this.props.tel);
+  }
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    //按钮在激活状态，才重置倒计时
+    if (nextProps.tel !== this.props.tel && this.state.btnStyle !== styles.disabled) {
+      this.initBtnStyle(nextProps.tel);
+    }
+  }
+
+  //初始化按钮样式
+  initBtnStyle(tel){
+    let btnStyle = tel ? styles.actived : styles.null;
+    this.setState({
+      tel,
+      btnStyle,
+    })
   }
 
   //改变输入值
@@ -35,16 +57,12 @@ export default class InputSmscode extends React.Component {
   getCode = (e) => {
     e.preventDefault();
 
-    let {tel, captcha} = this.props;
+    let {tel} = this.props;
     if(!tel) {
       this.props.callback('telError');
       return;
     }
-    if(!captcha) {
-      this.props.callback('captchaError');
-      return;
-    }
-    if(this.state.btnText !== '获取验证码') return;
+    if(this.state.btnStyle !== styles.actived) return;
 
     if(!this.ajaxFlag) return;
     this.ajaxFlag = false;
@@ -53,8 +71,7 @@ export default class InputSmscode extends React.Component {
       type: 'global/post',
       url: 'api/smsCode',
       payload: {
-        tel,
-        captcha,
+        tel: tel,
         userType: 'user'
       },
       callback: (res) => {
@@ -79,11 +96,11 @@ export default class InputSmscode extends React.Component {
   //短信倒计时
   interval(){
     let num = 60;
-    this.setState({btnText: '重新发送(' + num + 's)'});
+    this.setState({btnText: '重新发送(' + num + 's)', btnStyle: styles.disabled});
     timer = setInterval(() => {
       if(num === 1){
         this.ajaxFlag = true;
-        this.setState({btnText: '获取验证码'});
+        this.setState({btnText: '获取验证码', btnStyle: styles.actived});
         clearInterval(timer);
       }else{
         num--;
@@ -94,25 +111,29 @@ export default class InputSmscode extends React.Component {
 
   render(){
 
-    const {value, btnText} = this.state;
+    const {value, btnText, btnStyle} = this.state;
 
     return(
-      <div className={styles.smscode}>
-        <Input
-          size="large"
-          maxLength="6"
-          autoComplete="off"
-          placeholder="短信验证码"
-          onChange={this.changeValue}
-          value={value}
-        />
-        <a
-          className={styles.btn}
-          onClick={this.getCode}
-        >
-          {btnText}
-        </a>
-      </div>
+      <Row gutter={10} className={styles.smscode}>
+        <Col span={16}>
+          <Input
+            size="large"
+            maxLength="6"
+            autoComplete="off"
+            placeholder="短信验证码"
+            onChange={this.changeValue}
+            value={value}
+          />
+        </Col>
+        <Col span={8}>
+          <a
+            className={styles.btn + " " + btnStyle}
+            onClick={this.getCode}
+          >
+            {btnText}
+          </a>
+        </Col>
+      </Row>
     )
   }
 

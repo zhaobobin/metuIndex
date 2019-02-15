@@ -1,0 +1,47 @@
+@import '../../theme/index.less';
+
+.userModal{
+
+  .content{
+    height:530px;
+  }
+
+  .head{
+    padding: 13px 0;
+    height: 56px;
+    line-height: 30px;
+    background: @color_blue3;
+    text-align:center;
+    img{
+      width:auto;
+      height:30px;
+      position:relative;
+      top:-2px;
+    }
+    strong{
+      display:inline-block;
+      height:30px;
+      margin-left: 10px;
+      font-size: 18px;
+      color: @color_blue;
+    }
+  }
+
+  .body{
+    padding: 0 30px;
+  }
+
+  :global{
+    .ant-modal-content{
+      overflow:hidden;
+    }
+    .ant-modal-body{
+      padding:0;
+    }
+    .ant-form-item{
+      height:70px;
+      margin:0;
+    }
+  }
+
+}

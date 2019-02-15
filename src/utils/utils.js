@@ -20,7 +20,7 @@ export const ENV = {
   icp: 'ICP经营许可证 京B2-20160180',
   beian: '京ICP备14014223号-2',
   copyright: '©2015-2018 迷图网 All rights reserved',
-  slogan: '摄影图片素材分享社区',
+  slogan: '影像点亮生活',
   web: 'www.metuwang.com',
   worktime: '9:00-17:30',
 

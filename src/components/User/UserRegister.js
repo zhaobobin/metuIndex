@@ -2,15 +2,14 @@ import React from 'react';
 import { connect } from 'dva';
 import { Row, Col, Form, Input, Icon, Button, Checkbox, Tabs, Modal, Menu, Dropdown, notification } from 'antd';
 import { hasErrors } from '~/utils/utils'
-import styles from './UserRegister.less'
+import styles from './UserSign.less'
 
 import InputMobile from '~/components/Form/InputMobile'
-import InputCaptcha from '~/components/Form/InputCaptcha'
-import InputSmscode from '~/components/Form/InputSmscode'
 import InputPassword from '~/components/Form/InputPassword'
+import InputSmscode from '~/components/Form/InputSmscode'
 
 const FormItem = Form.Item;
-const keys = ['tel', 'captcha', 'smscode', 'password'];
+const keys = ['tel', 'password', 'captcha', 'smscode'];
 
 @connect(state => ({
   global: state.global
@@ -39,12 +38,6 @@ export default class UserRegister extends React.Component {
     this.props.form.validateFields(['tel'], (err, values) => {});
   };
 
-  //图形验证码
-  captchaCallback = (value) => {
-    this.props.form.setFieldsValue({'captcha': value});
-    this.props.form.validateFields(['captcha'], (err, values) => {});
-  };
-
   //短信验证码回调
   smscodeCallback = (value) => {
     //清空错误提示
@@ -66,15 +59,6 @@ export default class UserRegister extends React.Component {
       });
       this.setState({smscodeSended: true});
     }
-    else if(value === 'captchaError'){
-      this.props.form.setFields({
-        'captcha': {
-          value: '',
-          errors: [new Error('请输入图形验证码')]
-        }
-      });
-      this.setState({smscodeSended: true});
-    }
     else{
       this.props.form.setFieldsValue({'smscode': value});
       this.props.form.validateFields(['smscode'], (err, values) => {});
@@ -87,8 +71,8 @@ export default class UserRegister extends React.Component {
     this.props.form.validateFields(['password'], (err, values) => {});
   };
 
-  //注册
-  regeditSubmit = (e) => {
+  //确定
+  submit = (e) => {
     e.preventDefault();
 
     if(!this.ajaxFlag) return;
@@ -96,31 +80,43 @@ export default class UserRegister extends React.Component {
 
     this.props.form.validateFields(keys, (err, values) => {
       if (!err) {
-        //console.log(values)
-        let data = {
-          userType: this.state.userType,
-          tel: values.r_tel,
-          captcha: parseInt(values.r_captcha, 10),
-          smscode: values.r_smscode,
-          password: values.r_password,
-        };
-        this.props.dispatch({
-          type: 'global/register',
-          payload: data,
-          callback: (res) => {
-            if (res.status === 1) {
-              this.setUserModal(false, '2');
-            }else{
-              this.getCaptcha();
-              notification.error({
-                message: '注册失败！',
-                description: res.msg,
-              });
-            }
-          }
-        });
+        this.register(values);
       }
       setTimeout(() => { this.ajaxFlag = true }, 500);
+    });
+  };
+
+  //注册
+  register = (values) => {
+    this.props.dispatch({
+      type: 'global/register',
+      payload: {
+        userType: this.state.userType,
+        tel: values.tel,
+        password: values.password,
+        smscode: values.smscode,
+      },
+      callback: (res) => {
+        if (res.status === 1) {
+          this.setUserModal(false, '2');
+        }else{
+          this.getCaptcha();
+          notification.error({
+            message: '注册失败！',
+            description: res.msg,
+          });
+        }
+      }
+    });
+  };
+
+  toLogin = () => {
+    this.props.dispatch({
+      type: 'global/changeSignModal',
+      payload: {
+        signModalVisible: true,
+        signTabKey: '1',
+      }
     });
   };
 
@@ -129,69 +125,75 @@ export default class UserRegister extends React.Component {
     const { getFieldDecorator, getFieldValue, getFieldsError } = this.props.form;
 
     return(
-      <Form onSubmit={this.regeditSubmit} className={styles.register}>
-        <FormItem>
-          {getFieldDecorator('tel', {
-            validateTrigger: 'onBlur',
-            rules: [
-              { required: true, message: '请输入手机号' },
-              { pattern: /^1[0-9]{10}$/, message: '手机号输入有误' }
-            ],
-          })(
-            <InputMobile callback={this.mobileCallback}/>
-          )}
-        </FormItem>
-        <FormItem>
-          {getFieldDecorator('captcha', {
-            validateTrigger: 'onBlur',
-            rules: [
-              { required: true, message: '请输入验证码' },
-              { pattern: /^[A-Za-z0-9]+$/, message: '只能输入字母和数字' }
-            ]
-          })(
-            <InputCaptcha callback={this.captchaCallback}/>
-          )}
-        </FormItem>
-        <FormItem>
-          {getFieldDecorator('smscode', {
-            validateTrigger: 'onBlur',
-            rules: [
-              { required: true, message: '请输入验证码' },
-              { len: 6, message: '手机验证码格式有误' },
-              { pattern: /^[0-9]+$/, message: '只能输入数字' }
-            ]
-          })(
-            <InputSmscode
-              tel={hasErrors(getFieldsError(['tel'])) ? '' : getFieldValue('tel')}
-              captcha={hasErrors(getFieldsError(['captcha'])) ? '' : getFieldValue('captcha')}
-              callback={this.smscodeCallback}
-            />
-          )}
-        </FormItem>
-        <FormItem>
-          {getFieldDecorator('password', {
-            validateTrigger: 'onBlur',
-            rules: [
-              { required: true, message: '请输入密码' },
-              { min: 6, message: '密码长度只能在6-20位字符之间' },
-              { max: 20, message: '密码长度只能在6-20位字符之间' },
-              { pattern: /^[A-Za-z0-9]+$/, message: '只能输入字母和数字' }
-            ],
-          })(
-            <InputPassword callback={this.passwordCallback}/>
-          )}
-        </FormItem>
-        <FormItem>
-          <Button
-            size="large"
-            type="primary"
-            htmlType="submit"
-            className={styles.btn}
-          >
-            注册
-          </Button>
-        </FormItem>
-      </Form>
+      <div className={styles.sign}>
+
+        <div className={styles.form}>
+
+          <h4>
+            <p>快速注册</p>
+            <hr/>
+          </h4>
+
+          <Form onSubmit={this.submit} className={styles.register}>
+            <FormItem>
+              {getFieldDecorator('tel', {
+                validateTrigger: 'onBlur',
+                rules: [
+                  { required: true, message: '请输入手机号' },
+                  { pattern: /^1[0-9]{10}$/, message: '手机号输入有误' }
+                ],
+              })(
+                <InputMobile callback={this.mobileCallback}/>
+              )}
+            </FormItem>
+
+            <FormItem>
+              {getFieldDecorator('password', {
+                validateTrigger: 'onBlur',
+                rules: [
+                  { required: true, message: '请输入密码' },
+                  { min: 6, message: '密码长度只能在6-20位字符之间' },
+                  { max: 20, message: '密码长度只能在6-20位字符之间' },
+                  { pattern: /^[A-Za-z0-9]+$/, message: '只能输入字母和数字' }
+                ],
+              })(
+                <InputPassword callback={this.passwordCallback}/>
+              )}
+            </FormItem>
+
+            <FormItem>
+              {getFieldDecorator('smscode', {
+                validateTrigger: 'onBlur',
+                rules: [
+                  { required: true, message: '请输入验证码' },
+                  { len: 6, message: '手机验证码格式有误' },
+                  { pattern: /^[0-9]+$/, message: '只能输入数字' }
+                ]
+              })(
+                <InputSmscode
+                  tel={hasErrors(getFieldsError(['tel'])) ? '' : getFieldValue('tel')}
+                  callback={this.smscodeCallback}
+                />
+              )}
+            </FormItem>
+
+            <FormItem>
+              <Button
+                size="large"
+                type="primary"
+                htmlType="submit"
+                className={styles.btn}
+              >
+                注册
+              </Button>
+            </FormItem>
+
+            <p>已有账号？返回 <a onClick={this.toLogin} className={styles.blue}>登录</a></p>
+
+          </Form>
+        </div>
+
+      </div>
     )
   }
 

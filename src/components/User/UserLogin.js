@@ -230,7 +230,7 @@ export default class UserLogin extends React.Component {
                 </FormItem>
                 :
                 <FormItem style={{height: '50px'}}>
-                  <p>注意：未注册过的手机号，将会自动创建新账号</p>
+                  <p>注意：未注册过的手机号，系统将会自动创建新账号</p>
                 </FormItem>
             }
 

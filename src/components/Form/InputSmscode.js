@@ -126,12 +126,12 @@ export default class InputSmscode extends React.Component {
           />
         </Col>
         <Col span={8}>
-          <a
+          <span
             className={styles.btn + " " + btnStyle}
             onClick={this.getCode}
           >
             {btnText}
-          </a>
+          </span>
         </Col>
       </Row>
     )

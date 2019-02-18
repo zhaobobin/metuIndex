@@ -7,6 +7,7 @@ export default {
   "publicPath": "/index/",
   "hash": true,
   "ignoreMomentLocale": true,
+  "theme": "./src/theme/theme.js",
   "extraBabelPlugins": [
     ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": true }],
   ],

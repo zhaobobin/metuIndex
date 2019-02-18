@@ -5,11 +5,12 @@ import { hasErrors } from '~/utils/utils'
 import styles from './UserSign.less'
 
 import InputMobile from '~/components/Form/InputMobile'
+import InputText from '~/components/Form/InputText'
 import InputPassword from '~/components/Form/InputPassword'
 import InputSmscode from '~/components/Form/InputSmscode'
 
 const FormItem = Form.Item;
-const keys = ['tel', 'password', 'captcha', 'smscode'];
+const keys = ['tel', 'nickname', 'password', 'captcha', 'smscode'];
 
 @connect(state => ({
   global: state.global
@@ -36,6 +37,12 @@ export default class UserRegister extends React.Component {
   mobileCallback = (value) => {
     this.props.form.setFieldsValue({'tel': value});
     this.props.form.validateFields(['tel'], (err, values) => {});
+  };
+
+  //昵称
+  nicknameCallback = (value) => {
+    this.props.form.setFieldsValue({'nickname': value});
+    this.props.form.validateFields(['nickname'], (err, values) => {});
   };
 
   //短信验证码回调
@@ -148,16 +155,27 @@ export default class UserRegister extends React.Component {
             </FormItem>
 
             <FormItem>
+              {getFieldDecorator('nickname', {
+                validateTrigger: 'onBlur',
+                rules: [
+                  { required: true, message: '请输入昵称' },
+                  { pattern: /^[\u4E00-\u9FA5a-zA-Z0-9_]{2,10}$/, message: '只能输入汉子、字母、数字、下划线，2-10位' }
+                ],
+              })(
+                <InputText placeholder="昵称" callback={this.nicknameCallback}/>
+              )}
+            </FormItem>
+
+            <FormItem>
               {getFieldDecorator('password', {
                 validateTrigger: 'onBlur',
                 rules: [
                   { required: true, message: '请输入密码' },
                   { min: 6, message: '密码长度只能在6-20位字符之间' },
                   { max: 20, message: '密码长度只能在6-20位字符之间' },
-                  { pattern: /^[A-Za-z0-9]+$/, message: '只能输入字母和数字' }
                 ],
               })(
-                <InputPassword callback={this.passwordCallback}/>
+                <InputPassword psdLevelStyle={{width: '365px'}} callback={this.passwordCallback}/>
               )}
             </FormItem>
 

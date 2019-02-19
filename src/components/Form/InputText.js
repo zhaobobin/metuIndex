@@ -15,7 +15,7 @@ export default class InputText extends React.Component {
   }
 
   changeValue = (e) => {
-    let value = e.target.value.replace(/ /g,'');
+    let value = e.target.value;
     this.setState({ value });
     this.props.callback(value);
   };

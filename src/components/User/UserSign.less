@@ -2,6 +2,7 @@
 
 .sign{
 
+  padding-top:20px;
   position:relative;
 
   a{
@@ -15,7 +16,7 @@
   }
 
   h4{
-    margin:20px 0;
+    margin-bottom:20px;
     text-align: center;
     line-height:20px;
     position:relative;
@@ -26,8 +27,11 @@
       position:relative;
       z-index:1;
       span{
-        color: @color_blue;
-        cursor: pointer;
+        margin: 0 2px;
+        &.scan{
+          color: @color_blue;
+          cursor: pointer;
+        }
       }
     }
     hr{

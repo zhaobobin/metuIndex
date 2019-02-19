@@ -1,3 +1,109 @@
-.modalConfirm{
+:global{
 
+  #mtw{
+
+    .ant-confirm-body .anticon{
+      display:none
+    }
+    .ant-modal-confirm-body .anticon{
+      display: none;
+    }
+
+    .ant-confirm-content{
+      margin:0;
+    }
+    .ant-modal-confirm-content{
+      margin:0;
+    }
+
+    .ant-confirm-btns{
+      float:none;
+      width:100%;
+      margin-top:20px;
+      text-align:center;
+
+      .ant-btn{
+        width:160px;
+        height:40px;
+        line-height:38px;
+        font-size:16px;
+      }
+
+    }
+
+  }
+
+}
+
+.modalAlert{
+  :global{
+    .ant-modal-body{
+      padding: 50px 32px 56px 32px;
+    }
+  }
+}
+
+.modalConfirm{
+  :global{
+    .ant-modal-body{
+      padding: 50px 32px 56px 32px;
+    }
+  }
+}
+
+.modalArticleAlert{
+  :global{
+    .ant-modal-body{
+      padding: 30px 16px;
+    }
+  }
+}
+
+.dialogTitle{
+  width:520px;
+  font-size:18px;
+  margin:0 auto 20px;
+  text-align:center;
+  font-weight:400;
+}
+.dialogContent{
+  text-align:center;
+  img{
+    display: block;
+    margin:0 auto 20px;
+    width: auto;
+    height:auto;
+    max-width:100%;
+  }
+  p{
+    word-break: break-all;
+    margin-bottom:15px;
+  }
+  strong{
+    font-size:26px;
+    font-weight:400;
+  }
+  span{
+    font-size:18px;
+  }
+}
+
+.ArticleTitle{
+  margin:0 0 30px;
+  font-size:26px;
+  text-align:center;
+}
+.ArticleDetail{
+  min-height: 200px;
+  max-height: 400px;
+  padding: 20px;
+  background: #F4F4F4;
+  overflow-y: auto;
+  p{
+    word-break: break-all;
+  }
+  img{
+    max-width:100%;
+    height:auto;
+  }
 }

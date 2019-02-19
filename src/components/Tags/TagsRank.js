@@ -3,18 +3,15 @@
  * itemsPerPage： 总数量，默认10
  * <TagsRank itemsPerPage={10}/>
  */
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
-import {Card, Icon, notification} from 'antd';
-import {Storage} from "../../utils/utils";
-
 import styles from './TagsRank.less';
 
 @connect(state => ({
   global: state.tags,
 }))
-export default class TagsRank extends PureComponent {
+export default class TagsRank extends React.Component {
 
   constructor(props){
     super(props);
@@ -42,8 +39,6 @@ export default class TagsRank extends PureComponent {
           this.setState({
             list: res.data,
           })
-        }else{
-          notification.error({message: '提示', description: res.msg});
         }
       }
     });

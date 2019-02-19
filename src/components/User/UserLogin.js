@@ -7,6 +7,7 @@ import styles from './UserSign.less'
 import InputMobile from '~/components/Form/InputMobile'
 import InputPassword from '~/components/Form/InputPassword'
 import InputSmscode from '~/components/Form/InputSmscode'
+import UserLoginScan from './UserLoginScan'
 
 const FormItem = Form.Item;
 const keys1 = ['tel', 'password'];
@@ -124,7 +125,7 @@ export default class UserLogin extends React.Component {
           this.props.callback();
         }else{
           notification.error({
-            message: '登录失败！',
+            message: '登录失败',
             description: res.msg,
           });
         }
@@ -154,7 +155,13 @@ export default class UserLogin extends React.Component {
         <div className={styles.form}>
 
           <h4>
-            <p>推荐使用 <span><Icon type="scan" /> 微信扫码</span> 登录 , 安全快捷</p>
+            <p>
+              <span>推荐使用</span>
+              <span onClick={() => this.changeLoginType('scan')} className={styles.scan}>
+                <Icon type="scan" /> 微信扫码
+              </span>
+              <span>登录 , 安全快捷</span>
+            </p>
             <hr/>
           </h4>
 
@@ -219,7 +226,7 @@ export default class UserLogin extends React.Component {
 
             {
               loginType === 'psd' ?
-                <FormItem style={{height: '50px', lineHeight: '30px'}}>
+                <FormItem style={{height: '40px'}}>
                   {getFieldDecorator('remember', {
                     valuePropName: 'checked',
                     initialValue: this.state.remember,
@@ -229,7 +236,7 @@ export default class UserLogin extends React.Component {
                   <a className={styles.forgotPsd}>忘记密码</a><br/>
                 </FormItem>
                 :
-                <FormItem style={{height: '50px'}}>
+                <FormItem style={{height: '40px'}}>
                   <p>注意：未注册过的手机号，系统将会自动创建新账号</p>
                 </FormItem>
             }
@@ -239,6 +246,7 @@ export default class UserLogin extends React.Component {
               type="primary"
               htmlType="submit"
               className={styles.btn}
+              style={{marginBottom: '20px'}}
             >
               登录
             </Button>
@@ -251,7 +259,7 @@ export default class UserLogin extends React.Component {
               <hr/>
             </h4>
             <p>
-              <a className={styles.wechat}>
+              <a className={styles.wechat} onClick={() => this.changeLoginType('scan')}>
                 <Icon type="wechat" />
               </a>
               <a className={styles.weibo}>
@@ -266,7 +274,7 @@ export default class UserLogin extends React.Component {
           {
             loginType === 'scan' ?
               <div className={styles.loginScan}>
-
+                <UserLoginScan/>
               </div>
               :
               null

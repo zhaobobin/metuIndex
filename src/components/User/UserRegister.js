@@ -8,9 +8,10 @@ import InputMobile from '~/components/Form/InputMobile'
 import InputText from '~/components/Form/InputText'
 import InputPassword from '~/components/Form/InputPassword'
 import InputSmscode from '~/components/Form/InputSmscode'
+import FormXieyi from '~/components/Form/FormXieyi'
 
 const FormItem = Form.Item;
-const keys = ['tel', 'nickname', 'password', 'captcha', 'smscode'];
+const keys = ['tel', 'nickname', 'password', 'captcha', 'smscode', 'xieyi'];
 
 @connect(state => ({
   global: state.global
@@ -78,6 +79,11 @@ export default class UserRegister extends React.Component {
     this.props.form.validateFields(['password'], (err, values) => {});
   };
 
+  //协议
+  xieyiCallback = (value) => {
+    this.props.form.setFieldsValue({'xieyi': value});
+  };
+
   //确定
   submit = (e) => {
     e.preventDefault();
@@ -99,20 +105,38 @@ export default class UserRegister extends React.Component {
       type: 'global/register',
       payload: {
         userType: this.state.userType,
-        tel: values.tel,
-        password: values.password,
-        smscode: values.smscode,
+        ...values
       },
       callback: (res) => {
         if (res.status === 1) {
           this.setUserModal(false, '2');
         }else{
-          this.getCaptcha();
-          notification.error({
-            message: '注册失败！',
-            description: res.msg,
-          });
+          if(res.status > 10000) {
+            this.setInputError(res.status, res.msg);
+          }else{
+            notification.error({
+              message: '注册失败',
+              description: res.msg,
+            });
+          }
         }
+      }
+    });
+  };
+
+  setInputError = (status, msg) => {
+    let key;
+    switch(status){
+      case 10001: key = 'tel'; break;
+      case 10002: key = 'password'; break;
+      case 10003: key = 'nickname'; break;
+      case 10004: key = 'smscode'; break;
+      default: break;
+    }
+    this.props.form.setFields({
+      [key]: {
+        value: '',
+        errors: [new Error(msg)]
       }
     });
   };
@@ -195,16 +219,25 @@ export default class UserRegister extends React.Component {
               )}
             </FormItem>
 
-            <FormItem>
-              <Button
-                size="large"
-                type="primary"
-                htmlType="submit"
-                className={styles.btn}
-              >
-                注册
-              </Button>
+            <FormItem style={{height: '40px'}}>
+              {getFieldDecorator('xieyi', {
+                valuePropName: 'checked',
+                initialValue: true,
+              })(
+                <FormXieyi callback={this.xieyiCallback}/>
+              )}
             </FormItem>
+
+            <Button
+              size="large"
+              type="primary"
+              htmlType="submit"
+              className={styles.btn}
+              style={{marginBottom: '10px'}}
+              disabled={!getFieldValue('xieyi')}
+            >
+              注册
+            </Button>
 
             <p>已有账号？返回 <a onClick={this.toLogin} className={styles.blue}>登录</a></p>
 

@@ -3,9 +3,11 @@
  */
 import React from 'react';
 import { connect } from 'dva';
-import { Row, Col, Input, Button, notification } from 'antd';
+import { Row, Col, Input, Icon, Modal, notification } from 'antd';
 import {filterTel} from '~/utils/utils'
 import styles from './InputSmscode.less';
+
+import PintuValidate from '~/components/Form/PintuValidate'
 
 let timer;
 
@@ -21,7 +23,10 @@ export default class InputSmscode extends React.Component {
       value: '',            //输入框的值
       tel: '',
       btnText: '获取验证码',
-      btnStyle: styles.null
+      btnStyle: styles.null,
+
+      pintuNo: new Date().getTime(),
+      pintuVisible: false,    //拼图
     }
   }
 
@@ -53,9 +58,8 @@ export default class InputSmscode extends React.Component {
     this.props.callback(value);
   };
 
-  //获取短信验证码
-  getCode = (e) => {
-    e.preventDefault();
+  //确定
+  submit = () => {
 
     let {tel} = this.props;
     if(!tel) {
@@ -67,6 +71,22 @@ export default class InputSmscode extends React.Component {
     if(!this.ajaxFlag) return;
     this.ajaxFlag = false;
 
+    this.setState({
+      pintuVisible: true
+    });
+
+    setTimeout(() => { this.ajaxFlag = true }, 500);
+  };
+
+  //拼图回调
+  pintuResult = (value) => {
+    if(!value) return;
+    this.sendSmsCode();
+  };
+
+  //发送验证码
+  sendSmsCode = () => {
+    let {tel} = this.props;
     this.props.dispatch({
       type: 'global/post',
       url: 'api/smsCode',
@@ -89,14 +109,12 @@ export default class InputSmscode extends React.Component {
         }
       }
     });
-
-    setTimeout(() => { this.ajaxFlag = true }, 500);
   };
 
   //短信倒计时
   interval(){
     let num = 60;
-    this.setState({btnText: '重新发送(' + num + 's)', btnStyle: styles.disabled});
+    this.setState({btnText: '重新发送(' + num + 's)', btnStyle: styles.disabled, pintuVisible: false});
     timer = setInterval(() => {
       if(num === 1){
         this.ajaxFlag = true;
@@ -109,9 +127,21 @@ export default class InputSmscode extends React.Component {
     }, 1000)
   }
 
+  //清空输入框
+  emitEmpty(){
+    this.setState({ value: '' });
+    this.props.callback();
+  };
+
+  modalCancel = () => {
+    this.setState({
+      pintuVisible: false
+    });
+  };
+
   render(){
 
-    const {value, btnText, btnStyle} = this.state;
+    const {value, btnText, btnStyle, pintuNo, pintuVisible} = this.state;
 
     return(
       <Row gutter={10} className={styles.smscode}>
@@ -123,16 +153,41 @@ export default class InputSmscode extends React.Component {
             placeholder="短信验证码"
             onChange={this.changeValue}
             value={value}
+            suffix={
+              value ?
+                <Icon
+                  type="close-circle"
+                  onClick={() => this.emitEmpty()}
+                />
+                :
+                null
+            }
           />
         </Col>
         <Col span={8}>
           <span
             className={styles.btn + " " + btnStyle}
-            onClick={this.getCode}
+            onClick={this.submit}
           >
             {btnText}
           </span>
         </Col>
+
+        <Col span={0}>
+          <Modal
+            title="请先完成下方验证"
+            width={360}
+            footer={null}
+            centered={true}
+            destroyOnClose={true}
+            visible={pintuVisible}
+            onCancel={this.modalCancel}
+            className={styles.pintuModal}
+          >
+            <PintuValidate no={pintuNo} callback={this.pintuResult}/>
+          </Modal>
+        </Col>
+
       </Row>
     )
   }

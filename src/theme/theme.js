@@ -13,7 +13,7 @@ export default {
   "text-color-secondary" : "#888",                    // 次文本色
   // "disabled-color" : "#FFE9D4",                       // 失效色
   // "disable-bg": "#FFE9D4",                            // 失效色
-  "btn-disable-color": "#e6f7ff",                     // 按钮失效色
+  "btn-disable-color": "#1890ff",                     // 按钮失效色
   "btn-disable-bg": "#e6f7ff",                        // 按钮失效色
   "btn-disable-border": "#e6f7ff",                    // 按钮失效色
   "border-radius-base": "3px",                        // 组件/浮层圆角

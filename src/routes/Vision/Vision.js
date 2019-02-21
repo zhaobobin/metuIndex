@@ -43,20 +43,12 @@ export default class Vision extends React.Component {
 
   render(){
 
-    const {category} = this.props.global;
     const {pathname, headerFixed} = this.state;
     const keyword = pathname.split('/')[2] ? pathname.split('/')[2] : null,
       current = keyword ? keyword.split('-')[0] : 'popular';
 
-    let currentCate = keyword;
-    for(let i in category){
-      if(keyword === category[i].name){
-        currentCate = category[i]._id
-      }
-    }
-
     const queryOption = {
-      category: currentCate,
+      keyword: current,
       itemsPerPage: 6,                 //每页数量
     };
 

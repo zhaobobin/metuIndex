@@ -1,6 +1,6 @@
 /*
  * 相册列表 - 无限加载查询
- * <AlbumListQuery category={category} />
+ * <AlbumListQuery />
  */
 import React, { PureComponent } from 'react';
 import { connect } from 'dva';
@@ -10,8 +10,6 @@ import {Storage} from '~/utils/utils';
 import InfiniteScroll from 'react-infinite-scroller';			//加载更多
 
 import PhotoListGallery from '~/components/Photo/PhotoListGallery';
-//import PhotoListMasonry from '~/components/Photo/PhotoListMasonry';
-//import PhotoListGrid from '~/components/Photo/PhotoListGrid';
 
 function getImgSize(url){
   let img = new Image();
@@ -33,15 +31,14 @@ export default class AlbumListQuery extends PureComponent {
     this.state = {
 
       params: {
-        modelType: 'photo',
-        category: this.props.category ? this.props.category : '',
-        tag: this.props.tag ? this.props.tag : '',
-        uid: this.props.uid ? this.props.uid : '',								                      //用户id
+        keyword: this.props.keyword || '',
+        tag: this.props.tag || '',
+        uid: this.props.uid || '',								                      //用户id
       },
 
-      currentPage: this.props.currentPage ? this.props.currentPage : 1,					      //当前页数
-      itemsPerPage: this.props.itemsPerPage ? this.props.itemsPerPage : 10,			      //每页数量
-      maxQueryPage: this.props.maxQueryPage ? this.props.maxQueryPage : undefined,    //最大查询页数，默认undefined
+      currentPage: this.props.currentPage || 1,					      //当前页数
+      itemsPerPage: this.props.itemsPerPage || 10,			      //每页数量
+      maxQueryPage: this.props.maxQueryPage || undefined,    //最大查询页数，默认undefined
       initializing: 1,
 
       loading: true,
@@ -61,12 +58,12 @@ export default class AlbumListQuery extends PureComponent {
 
   componentWillReceiveProps(nextProps){
 
-    if(nextProps.category !== this.state.params.category) {
+    if(nextProps.keyword !== this.state.params.keyword) {
       this.queryPhotoList({
         clearList: true,
         params: {
           ...this.state.params,
-          category: nextProps.category,
+          keyword: nextProps.keyword,
         },
         currentPage: 1,
         pageSize: this.state.itemsPerPage
@@ -80,18 +77,18 @@ export default class AlbumListQuery extends PureComponent {
 
     this.props.dispatch({
       type: 'global/post',
-      url: 'api/ArticleList',
+      url: 'api/AlbumList',
       payload: query,
       callback: (res) => {
         this.ajaxFlag = true;
         if(res.status === 1){
           this.setState({
+            loading: false,
             params: query.params,
             currentPage: this.state.currentPage + 1,
-            loading: false,
-            list: list.concat(res.data),
-            total: res.total,
-            hasMore: res.hasMore
+            list: list.concat(res.data.list),
+            total: res.data.total,
+            hasMore: res.data.hasMore
           })
         }else{
           notification.error({message: '提示', description: res.msg});
@@ -119,7 +116,7 @@ export default class AlbumListQuery extends PureComponent {
 
   render(){
 
-    const { category, list, hasMore } = this.state;
+    const { list, hasMore } = this.state;
 
     return(
       <div className="photo-container">
@@ -129,7 +126,7 @@ export default class AlbumListQuery extends PureComponent {
           loadMore={this.LoadMore}
           hasMore={hasMore}
         >
-          <PhotoListGallery photos={list} category={category} type="album" />
+          <PhotoListGallery photos={list} type="album" />
         </InfiniteScroll>
       </div>
     )

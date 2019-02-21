@@ -1,9 +1,8 @@
 /*
  * 文章排名查询
  * category：分类
- * modelType：模型类型，默认article
  * itemsPerPage： 总数量，默认10
- * <ArticleRank modelType="article" itemsPerPage={10}/>
+ * <ArticleRank itemsPerPage={10}/>
  */
 import React, { PureComponent } from 'react';
 import { connect } from 'dva';
@@ -40,7 +39,6 @@ export default class ArticleRank extends PureComponent {
     this.ajaxFlag = false;
 
     let params = {
-      modelType: props.modelType ? props.modelType : 'article',
       category: props.category ? props.category : '',
       parent: props.parent ? props.parent : '',
       pageSize: props.pageSize ? props.pageSize : 10
@@ -73,7 +71,7 @@ export default class ArticleRank extends PureComponent {
         {
           list.map((topic, index) => (
             <li className={styles.item} key={index}>
-              <Link to={`/${topic.category.catedir}/${topic._id}/${topic.title}-by-${topic.uid.nickname}`}>
+              <Link to={`/course/${topic._id}/${topic.title}-by-${topic.uid.nickname}`}>
                 <strong className={styles.title}>{topic.title}</strong>
                 <p className={styles.desc}>{topic.description}</p>
                 <p className={styles.info}>

@@ -1,11 +1,11 @@
 /**
- * 图片上传
+ * 上传图片列表
  */
 import React, { Component } from 'react';
 import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
 import { Form, Input, Button, Icon, Row, Col, Card, InputNumber, Select, Table, Divider, Upload, Modal, Popconfirm, notification } from 'antd';
-import {Storage, checkRole, hasErrors, file2base64} from '../../utils/utils';
+import {Storage, checkRole, hasErrors, file2base64} from '~/utils/utils';
 import styles from './UploadPhotoList.less'
 
 const FormItem = Form.Item;
@@ -16,16 +16,16 @@ const { Option } = Select;
 const keys = ['category', 'title', 'tags', 'description', 'copyright'];
 
 @connect(state => ({
-  login: state.login,
+  global: state.global,
   photo: state.photo,
   oss: state.oss,
 }))
 @Form.create()
-export default class PhotoListUpload extends Component {
+export default class UploadPhotoList extends Component {
 
   state = {
-    role: this.props.login.currentUser.role,
-    uid: this.props.login.currentUser._id,
+    role: this.props.global.currentUser.role,
+    uid: this.props.global.currentUser._id,
     visible: false,
     photoList: [],                                        //暂存图片列表
     ossList: [],                                          //oss图片文件待删除列表
@@ -119,7 +119,7 @@ export default class PhotoListUpload extends Component {
     });
 
     let option = {
-      uid: this.props.login.currentUser._id,
+      uid: this.props.global.currentUser._id,
       category: 'photo',
       name: file.name.split('.')[0],
       unix: new Date().getTime(),

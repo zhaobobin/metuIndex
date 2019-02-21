@@ -26,7 +26,7 @@ export default class HomeBanner extends React.Component {
   queryPhotoWel(){
     this.props.dispatch({
       type: 'global/post',
-      url: '/api/ArticleWel',
+      url: '/api/HomeSwiper',
       payload: {},
       callback: (res) => {
         if(res.status === 1){

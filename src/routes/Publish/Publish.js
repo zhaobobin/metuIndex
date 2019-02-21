@@ -6,41 +6,35 @@ import { Redirect } from 'dva/router';
 import { connect } from 'dva';
 import styles from './Publish.less';
 
-import ArticleEditor from '~/components/Article/ArticleEditor';
-import PublishRight from './PublishRight';
+import PublishArticle from './PublishArticle';
+import PublishPhoto from './PublishPhoto';
 
 @connect(state => ({
   global: state.global
 }))
 export default class Publish extends React.Component {
 
+  componentDidMount(){
+    document.body.style['overflow'] = 'hidden'
+  }
+
+  componentWillUnmount(){
+    document.body.style['overflow'] = 'auto'
+  }
+
   render(){
 
     const { global } = this.props;
-    const modelType = this.props.match.params.modelType;
-
-    //循环当前模型的分类列表
-    let currentCate = [],
-      category = global.category;
-    for(let i in category){
-      if(category[i].model.type === modelType) currentCate.push(category[i])
-    }
+    const publishType = this.props.match.params.publishType;
 
     return(
       <div className={styles.publish}>
         {
           global.isAuth ?
-            <div className={styles.container}>
-              <div className={styles.left}>
-                {
-                  modelType === 'article' ?
-                    <ArticleEditor/>
-                    :
-                    null
-                }
-              </div>
-              <PublishRight modelType={modelType} category={currentCate}/>
-            </div>
+            publishType === 'article' ?
+              <PublishArticle/>
+              :
+              <PublishPhoto/>
             :
             <Redirect to="/" />
         }

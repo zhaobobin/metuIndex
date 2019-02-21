@@ -20,11 +20,11 @@ export default class ArticleListShow extends PureComponent {
       list.map((topic, index) => (
         <li key={index}>
           <div className={styles.item}>
-            <Link to={`/${topic.category.catedir}/${topic._id}/${topic.title}-by-${topic.uid.nickname}`} className={styles.thumb}>
+            <Link to={`/course/${topic._id}/${topic.title}-by-${topic.uid.nickname}`} className={styles.thumb}>
               <img src={topic.thumb ? topic.thumb : logo} alt={topic.title} />
             </Link>
             <div className={styles.info}>
-              <h2><Link to={`/${topic.category.catedir}/${topic._id}/${topic.title}-by-${topic.uid.nickname}`}>{topic.title}</Link></h2>
+              <h2><Link to={`/course/${topic._id}/${topic.title}-by-${topic.uid.nickname}`}>{topic.title}</Link></h2>
               <p className={styles.desc}>{topic.description}</p>
             </div>
           </div>

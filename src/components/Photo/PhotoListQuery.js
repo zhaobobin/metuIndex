@@ -8,8 +8,6 @@ import {Row, Col, notification} from 'antd';
 import {Storage} from '~/utils/utils';
 
 import PhotoListGallery from '~/components/Photo/PhotoListGallery';
-//import PhotoListMasonry from '~/components/Photo/PhotoListMasonry';
-//import PhotoListGrid from '~/components/Photo/PhotoListGrid';
 
 import InfiniteScroll from 'react-infinite-scroller';			//加载更多
 
@@ -21,7 +19,6 @@ export default class PhotoListQuery extends PureComponent {
   state = {
 
     params: {
-      modelType: 'photo',                                                             //文章模型类型
       category: this.props.category ? this.props.category : '',
       uid: this.props.uid ? this.props.uid : '',								                      //用户id
     },

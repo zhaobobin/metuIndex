@@ -17,30 +17,20 @@
 
 .left{
   float:left;
-  width:75%;
+  width:78%;
   height: 100%;
+  position: relative;
 }
 .right{
   float:right;
-  width:25%;
+  width:22%;
   height: 100%;
-  padding:10px 20px 60px 10px;
-  overflow-x: hidden;
-  overflow-y: auto;
+  position: relative;
 }
-.submit{
-  width:25%;
-  height:48px;
-  line-height:48px;
-  border-radius: 0;
-  position:fixed;
-  right:0;
-  bottom:0;
-}
+
 
 @media screen and (max-width: 1024px){
   .container{overflow-y: auto;}
-  .left{width:100%;height:auto}
+  .left{width:100%;height:auto;min-height:420px;}
   .right{float:left;width:100%;height:auto}
-  .submit{width:100%;position:relative;}
 }

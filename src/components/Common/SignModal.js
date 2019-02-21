@@ -79,7 +79,7 @@ export default class UserSign extends React.Component {
                       :
                       <Icon type="user" />
                   }
-                  <span className={styles.username}>{currentUser.username}</span>
+                  <span className={styles.username}>{currentUser.nickname}</span>
                 </Link>
               </Dropdown>
 

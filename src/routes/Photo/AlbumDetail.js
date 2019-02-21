@@ -35,7 +35,7 @@ export default class AlbumDetail extends PureComponent {
   queryArticleDetail(id){
     this.props.dispatch({
       type: 'global/post',
-      url: 'api/ArticleDetail',
+      url: 'api/AlbumDetail',
       payload: {
         id: id
       },

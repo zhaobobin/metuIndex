@@ -1,8 +1,6 @@
 /*
  * 文章列表查询 - 接收参数cateid
- * category：分类
- * catedir：分类路径
- * <ArticleListQuery category={category} catedir={catedir}/>
+ * <ArticleListQuery/>
  */
 import React, { PureComponent } from 'react';
 import { connect } from 'dva';
@@ -20,13 +18,10 @@ export default class ArticleListQuery extends PureComponent {
     super(props);
     this.ajaxFlag = true;
     this.state = {
-      modelType: 'article',
-
-      uid: this.props.uid ? this.props.uid : '',								                //用户id
-      category: this.props.category ? this.props.category : '',								  //分类id
-      parent: this.props.parent ? this.props.parent : '',								        //父级分类
-      currentPage: this.props.currentPage ? this.props.currentPage : 1,					//当前页数
-      pageSize: Storage.get('metu-pageSize') ? Storage.get('metu-pageSize') : 10,			//每页数量
+      uid: this.props.uid || '',								                //用户id
+      keyword: '',								                                              //筛选关键字
+      currentPage: this.props.currentPage || 1,					//当前页数
+      pageSize: Storage.get('metu-pageSize') || 10,			//每页数量
 
       total: 0,
       list: '',
@@ -36,10 +31,8 @@ export default class ArticleListQuery extends PureComponent {
   componentDidMount(){
     this.queryArticleList({
       params: {
-        modelType: this.state.modelType,
         uid: this.state.uid,
-        category: this.state.category,
-        parent: this.state.parent
+        keyword: this.state.keyword,
       },
       currentPage: this.state.currentPage,
       pageSize: this.state.pageSize
@@ -57,13 +50,14 @@ export default class ArticleListQuery extends PureComponent {
       callback: (res) => {
         window.scrollTo(0, 0);
         this.ajaxFlag = true;
+        let list = res.data.list;
         if(res.status === 1){
-          for(let i in res.data){
-            if(res.data[i].tags) res.data[i].tags = res.data[i].tags.split(',');
+          for(let i in list){
+            if(list[i].tags) list[i].tags = list[i].tags.split(',');
           }
           this.setState({
-            total: res.total,
-            list: res.data,
+            total: res.data.total,
+            list: list,
           })
         }else{
           notification.error({message: '提示', description: res.msg});
@@ -76,10 +70,8 @@ export default class ArticleListQuery extends PureComponent {
   onChange = (current) => {
     this.queryArticleList({
       params: {
-        modelType: this.state.modelType,
         uid: this.state.uid,
-        category: this.state.category,
-        parent: this.state.parent
+        keyword: this.state.keyword,
       },
       currentPage: current,
       pageSize: this.state.pageSize
@@ -88,10 +80,8 @@ export default class ArticleListQuery extends PureComponent {
   onShowSizeChange = (current, pageSize) => {
     this.queryArticleList({
       params: {
-        modelType: this.state.modelType,
         uid: this.state.uid,
-        category: this.state.category,
-        parent: this.state.parent
+        keyword: this.state.keyword,
       },
       currentPage: current,
       pageSize: pageSize
@@ -101,7 +91,6 @@ export default class ArticleListQuery extends PureComponent {
   render(){
 
     const { list, total, pageSize } = this.state;
-    //console.log(list)
 
     return(
       <div className="article-container">

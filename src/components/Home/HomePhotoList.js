@@ -15,28 +15,20 @@ export default class HomePhotoList extends React.Component{
     super(props);
     this.ajaxFlag = true;
     this.state = {
-      key: 'popular',
+      keyword: 'popular',
     }
   }
 
-  handleTab = (key) => {
-    this.setState({key})
+  handleTab = (keyword) => {
+    this.setState({keyword})
   };
 
   render(){
 
-    const {key} = this.state;
-    const {category} = this.props.global;
-
-    let currentCate = key;
-    for(let i in category){
-      if(key === category[i].name){
-        currentCate = category[i]._id
-      }
-    }
+    const {keyword} = this.state;
 
     const queryOption = {
-      category: currentCate,
+      keyword,
       itemsPerPage: 12,                 //每页数量
       maxQueryPage: 2,                  //最大页数
     };
@@ -44,33 +36,33 @@ export default class HomePhotoList extends React.Component{
     return(
       <div className={styles.photoList}>
         <Tabs
-          defaultActiveKey={key}
+          defaultActiveKey={keyword}
           animated={false}
           onChange={this.handleTab}
         >
 
           <TabPane tab="热门" key="popular">
-            {key === 'popular' ? <AlbumListQuery {...queryOption} /> : null}
+            {keyword === 'popular' ? <AlbumListQuery {...queryOption} /> : null}
           </TabPane>
 
           <TabPane tab="推荐" key="editor">
-            {key === 'editor' ? <AlbumListQuery {...queryOption} /> : null}
+            {keyword === 'editor' ? <AlbumListQuery {...queryOption} /> : null}
           </TabPane>
 
           <TabPane tab="最新" key="new">
-            {key === 'new' ? <AlbumListQuery {...queryOption} /> : null}
+            {keyword === 'new' ? <AlbumListQuery {...queryOption} /> : null}
           </TabPane>
 
           <TabPane tab="风光" key="风光">
-            {key === '风光' ? <AlbumListQuery {...queryOption} /> : null}
+            {keyword === '风光' ? <AlbumListQuery {...queryOption} /> : null}
           </TabPane>
 
           <TabPane tab="人像" key="人像">
-            {key === '人像' ? <AlbumListQuery {...queryOption} /> : null}
+            {keyword === '人像' ? <AlbumListQuery {...queryOption} /> : null}
           </TabPane>
 
           <TabPane tab="人文" key="人文">
-            {key === '人文' ? <AlbumListQuery {...queryOption} /> : null}
+            {keyword === '人文' ? <AlbumListQuery {...queryOption} /> : null}
           </TabPane>
 
         </Tabs>

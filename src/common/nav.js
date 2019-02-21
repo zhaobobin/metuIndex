@@ -32,8 +32,8 @@ export const getNavData = app => [
       },
       {
         name: '影像-分类',
-        key: 'vision-category',
-        path: 'vision/:category',
+        key: 'vision-keyword',
+        path: 'vision/:keyword',
         isHide: true,
         component: dynamicWrapper(app, [], () => import('../routes/Vision/Vision')),
       },
@@ -103,7 +103,7 @@ export const getNavData = app => [
       {
         name: '发布',
         key: 'publish',
-        path: 'publish/:modelType',
+        path: 'publish/:publishType',
         isHide: true,
         component: dynamicWrapper(app, ['oss', 'publish'], () => import('../routes/Publish/Publish')),
       },

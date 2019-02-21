@@ -8,7 +8,7 @@ export default {
   state: {
 
     submitting: false,                    //提交状态
-    modelType: '',                        //模型类型
+    publishType: '',                      //发布类型
     thumb: '',                            //缩略图
     category: '',                         //分类列表
     content: '',                          //文章内容
@@ -32,10 +32,10 @@ export default {
   },
 
   reducers: {
-    changeModelType(state, {payload}) {
+    changePublishType(state, {payload}) {
       return {
         ...state,
-        modelType: payload.modelType
+        publishType: payload.publishType
       };
     },
     saveArticleContent(state, {payload}) {

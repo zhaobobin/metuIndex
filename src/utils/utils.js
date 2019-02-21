@@ -352,7 +352,7 @@ export function file2base64(file, cb) {
     img.src = base64;
     img.onload = function () {
       let data = {
-        base64: base64,
+        url: base64,
         width: this.width,
         height: this.height
       };

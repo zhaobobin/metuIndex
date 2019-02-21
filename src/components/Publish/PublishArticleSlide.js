@@ -6,14 +6,14 @@ import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
 import { Row, Col, Form, Input, Select, Button, Modal, notification } from 'antd';
 import { hasErrors } from '~/utils/utils';
-import styles from './Publish.less';
+import styles from './PublishSlide.less';
 
 import UploadPhoto from '~/components/Form/UploadPhoto'
 
 const FormItem = Form.Item;
 const confirm = Modal.confirm;
 const { TextArea } = Input;
-const { Option, OptGroup } = Select;
+const { Option } = Select;
 
 const formItemLayout = {
   labelCol: {
@@ -30,7 +30,7 @@ const formItemLayout = {
   },
 };
 
-const keys = ['category', 'title', 'tags', 'description', 'copyright', 'status', 'allow_comment', 'focus'];
+const keys = ['title', 'tags', 'description', 'copyright', 'status', 'allow_comment', 'focus'];
 
 @connect(state => ({
   global: state.global,
@@ -43,13 +43,8 @@ export default class PublishRight extends React.Component {
     super(props);
     this.ajaxFlag = true;
     this.state = {
-      modelType: this.props.modelType,
       detail: ''
     }
-  }
-
-  componentWillReceiveProps(nextProps){
-    if(nextProps.modelType !== this.state.modelType) this.props.form.resetFields();
   }
 
   //选择缩略图
@@ -74,7 +69,6 @@ export default class PublishRight extends React.Component {
 
     this.props.form.validateFields(keys, (err, values) => {
       if(!err){
-        values.modelType = this.state.modelType;
         values.uid = this.props.global.currentUser._id;
         values.content = this.props.publish.content;
         values.thumb = this.props.publish.thumb || '';
@@ -132,13 +126,8 @@ export default class PublishRight extends React.Component {
   render(){
 
     const { detail } = this.state;
-    const { global, category, form } = this.props;
+    const { global, form } = this.props;
     const { getFieldDecorator, getFieldsError } = form;
-
-    //分类option
-    const categoryOption = category.map((topic, index) => (
-      <Option key={topic._id} value={topic._id}>{topic.name}</Option>
-    ));
 
     //标签option
     const tags = ['人像', '风光', '街拍', '城市', '旅行', '纪实', '色彩', '手机', '黑白', '胶片', '抓拍'];
@@ -162,30 +151,17 @@ export default class PublishRight extends React.Component {
     ));
 
     return(
-      <div className={styles.right}>
+      <div className={styles.slide}>
 
         <Form onSubmit={this.formSubmit} onReset={this.formCancel}>
 
-          <FormItem {...formItemLayout} label="缩略图">
+          <FormItem label="缩略图">
             {getFieldDecorator('thumb', {})(
               <UploadPhoto category="thumb" url="" callback={this.handleSelectPhoto}/>
             )}
           </FormItem>
 
-          <FormItem {...formItemLayout} label="分类">
-            {getFieldDecorator('category', {
-              initialValue: detail.category ? detail.category._id : undefined,
-              rules: [
-                { required: true, message: '请选择文章分类！' }
-              ],
-            })(
-              <Select style={{ width: '100%' }} placeholder="请选择文章分类" onChange={this.selectCategory}>
-                {categoryOption}
-              </Select>
-            )}
-          </FormItem>
-
-          <FormItem {...formItemLayout} label="标题">
+          <FormItem label="标题">
             {getFieldDecorator('title', {
               initialValue: detail.title ? detail.title : undefined,
               rules: [
@@ -194,16 +170,22 @@ export default class PublishRight extends React.Component {
                 { pattern: /^[\u0391-\uFFE5A-Za-z0-9,.]+$/, message: '不能输入特殊符号！' }
               ],
             })(
-              <Input style={{ width: '100%' }} placeholder="标题长度不能超过20个字"/>
+              <Input
+                size="large"
+                autoComplete="off"
+                style={{ width: '100%' }}
+                placeholder="标题长度不能超过20个字"
+              />
             )}
           </FormItem>
 
-          <FormItem {...formItemLayout} label="标签">
+          <FormItem label="标签">
             {getFieldDecorator('tags', {
               initialValue: detail.tags ? detail.tags.split(',') : undefined,
             })(
               <Select
                 mode="tags"
+                size="large"
                 style={{ width: '100%' }}
                 placeholder="请输入标签，并以逗号隔开"
                 tokenSeparators={[',', '，']}
@@ -213,22 +195,29 @@ export default class PublishRight extends React.Component {
             )}
           </FormItem>
 
-          <FormItem {...formItemLayout} label="描述">
+          <FormItem label="描述">
             {getFieldDecorator('description', {
               initialValue: detail.description ? detail.description : undefined,
               rules: [
                 { max: 200, message: '描述长度不能超过200个字！' },
               ],
             })(
-              <TextArea style={{ width: '100%' }} placeholder="描述长度不能超过200个字" autosize={{ minRows: 2, maxRows: 4 }}/>
+              <TextArea
+                style={{ width: '100%' }}
+                placeholder="描述长度不能超过200个字"
+                autosize={{ minRows: 2, maxRows: 4 }}
+              />
             )}
           </FormItem>
 
-          <FormItem {...formItemLayout} label="版权">
+          <FormItem label="版权">
             {getFieldDecorator('copyright', {
               initialValue: detail.copyright ? detail.copyright : undefined
             })(
-              <Select placeholder="请选择">
+              <Select
+                size="large"
+                placeholder="请选择"
+              >
                 {copyrightOption}
               </Select>
             )}
@@ -241,7 +230,7 @@ export default class PublishRight extends React.Component {
             htmlType="submit"
             disabled={hasErrors(getFieldsError(keys)) || global.submitting}
           >
-            保存
+            发布
           </Button>
         </Form>
 

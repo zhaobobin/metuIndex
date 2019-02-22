@@ -30,7 +30,7 @@ const formItemLayout = {
   },
 };
 
-const keys = ['title', 'tags', 'description', 'copyright', 'status', 'allow_comment', 'focus'];
+const keys = ['title', 'description', 'tags', 'copyright', 'allow_comment'];
 
 @connect(state => ({
   global: state.global,
@@ -179,6 +179,21 @@ export default class PublishRight extends React.Component {
             )}
           </FormItem>
 
+          <FormItem label="描述">
+            {getFieldDecorator('description', {
+              initialValue: detail.description ? detail.description : undefined,
+              rules: [
+                { max: 200, message: '描述长度不能超过200个字！' },
+              ],
+            })(
+              <TextArea
+                style={{ width: '100%' }}
+                placeholder="描述长度不能超过200个字"
+                autosize={{ minRows: 2, maxRows: 4 }}
+              />
+            )}
+          </FormItem>
+
           <FormItem label="标签">
             {getFieldDecorator('tags', {
               initialValue: detail.tags ? detail.tags.split(',') : undefined,
@@ -192,21 +207,6 @@ export default class PublishRight extends React.Component {
               >
                 {tagsOption}
               </Select>
-            )}
-          </FormItem>
-
-          <FormItem label="描述">
-            {getFieldDecorator('description', {
-              initialValue: detail.description ? detail.description : undefined,
-              rules: [
-                { max: 200, message: '描述长度不能超过200个字！' },
-              ],
-            })(
-              <TextArea
-                style={{ width: '100%' }}
-                placeholder="描述长度不能超过200个字"
-                autosize={{ minRows: 2, maxRows: 4 }}
-              />
             )}
           </FormItem>
 

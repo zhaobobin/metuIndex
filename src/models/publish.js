@@ -8,11 +8,10 @@ export default {
   state: {
 
     submitting: false,                    //提交状态
-    publishType: '',                      //发布类型
-    thumb: '',                            //缩略图
-    category: '',                         //分类列表
-    content: '',                          //文章内容
-    photoList: '',                        //图片列表
+    publishType: '',                      //发布类型：文章、图片
+    thumb: '',                            //缩略图（可选）
+    content: '',                          //文章内容：文章模型
+    photoList: '',                        //图片列表：图片模型
   },
 
   effects: {

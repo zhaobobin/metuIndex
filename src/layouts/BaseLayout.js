@@ -79,7 +79,7 @@ export default class BaseLayout extends React.Component {
     const { loading } = this.props.global;
 
     const layout = (
-      <Layout>
+      <Layout style={{minHeight: '100vh'}}>
         <GlobalHeader navData={navData[0].children} location={location}/>
 
           <GlobalContent>

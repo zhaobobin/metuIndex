@@ -6,7 +6,7 @@ import styles from './AccountCenter.less';
 
 import AccountCenterBanner from '~/components/Account/AccountCenterBanner';
 import PhotoListMasonry from '~/components/Photo/PhotoListMasonry';
-import PhotoListQuery from '~/components/Photo/PhotoListQuery';
+import PhotosListQuery from '~/components/Photo/PhotosListQuery';
 import AlbumListQuery from '~/components/Photo/AlbumListQuery';
 import ArticleListQuery from '~/components/Article/ArticleListQuery'
 import AccountAbout from '~/components/Account/AccountAbout'
@@ -99,7 +99,7 @@ export default class AccountCenter extends PureComponent {
         >
 
           <TabPane tab="照片" key="1">
-            {tabKey === '1' && detail ? <PhotoListQuery {...queryOption} category="userPhotoList" uid={detail._id}/> : null}
+            {tabKey === '1' && detail ? <PhotosListQuery {...queryOption} category="userPhotoList" uid={detail._id}/> : null}
           </TabPane>
 
           <TabPane tab="相册" key="2">
@@ -122,11 +122,11 @@ export default class AccountCenter extends PureComponent {
           </TabPane>
 
           <TabPane tab="喜欢" key="4">
-            {tabKey === '4' && detail ? <PhotoListMasonry data={detail.like} type="album" /> : null}
+            {tabKey === '4' && detail ? <PhotoListMasonry data={detail.like} type="photos" /> : null}
           </TabPane>
 
           <TabPane tab="收藏" key="5">
-            {tabKey === '5' && detail ? <PhotoListMasonry data={detail.collect} type="album" /> : null}
+            {tabKey === '5' && detail ? <PhotoListMasonry data={detail.collect} type="photos" /> : null}
           </TabPane>
 
           <TabPane tab="关于" key="6">

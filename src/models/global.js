@@ -13,8 +13,7 @@ export default {
 
     isAuth: false,
     status: undefined,
-    lastTel: '',
-    category: '',
+    lastTel: Storage.get(ENV.storageLastTel) || '',
     currentUser: '',                                  //当前用户信息
     roleList: [],                                     //角色列表
 

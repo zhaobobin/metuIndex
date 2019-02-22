@@ -35,6 +35,11 @@ export default class PublishPhotoContent extends React.Component {
 
   };
 
+  //查询用户相册列表
+  queryAlbumList = () => {
+    let uid = this.props.global.currentUser._id;
+  };
+
   //图片上传前检查
   beforeUpload = (file) => {
     const isImg = file.type.split('/')[1] === 'jpeg' || file.type.split('/')[1] === 'png';

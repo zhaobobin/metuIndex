@@ -8,6 +8,7 @@ import { Row, Col, Form, Input, Select, Button, Modal, notification } from 'antd
 import { hasErrors } from '~/utils/utils';
 import styles from './PublishSlide.less';
 
+import PublishConfig from './PublishConfig'
 import UploadPhoto from '~/components/Form/UploadPhoto'
 
 const FormItem = Form.Item;
@@ -30,7 +31,7 @@ const formItemLayout = {
   },
 };
 
-const keys = ['title', 'tags', 'description', 'copyright', 'status', 'allow_comment', 'focus'];
+const keys = ['title', 'description', 'tags', 'copyright', 'allow_comment'];
 
 @connect(state => ({
   global: state.global,
@@ -86,10 +87,10 @@ export default class PublishRight extends React.Component {
     let api = '',
       id = this.props.id;
     if(id){
-      api = 'api/ArticleUpdate';
+      api = 'api/PhotocUpdate';
       params.id = id;
     }else{
-      api = 'api/ArticleAdd';
+      api = 'api/PhotocAdd';
     }
     //保存时，执行ossDel列表对应文件的删除操作
     this.props.dispatch({
@@ -130,23 +131,12 @@ export default class PublishRight extends React.Component {
     const { getFieldDecorator, getFieldsError } = form;
 
     //标签option
-    const tags = ['人像', '风光', '街拍', '城市', '旅行', '纪实', '色彩', '手机', '黑白', '胶片', '抓拍'];
-    const tagsOption = tags.map((topic, index) => (
+    const tagsOption = PublishConfig.tags.map((topic, index) => (
       <Option key={index} value={topic}>{topic}</Option>
     ));
 
     //版权option
-    const copyright = [
-      {label: '非原创', value: 0},
-      {label: '原创,CC0协议共享(非署名)', value: 1},
-      {label: '原创,CC协议共享(署名)', value: 2},
-      {label: '原创,CC协议共享(署名-非商业性使用)', value: 3},
-      {label: '原创,CC协议共享(署名-禁止演绎)', value: 4},
-      {label: '原创,CC协议共享(署名-相同方式共享)', value: 5},
-      {label: '原创,CC协议共享(署名-非商业性使用-禁止演绎)', value: 6},
-      {label: '原创,CC协议共享(署名-非商业性使用-相同方式共享)', value: 7}
-    ];
-    const copyrightOption = copyright.map((topic, index) => (
+    const copyrightOption = PublishConfig.copyright.map((topic, index) => (
       <Option key={index} value={topic.value}>{topic.label}</Option>
     ));
 
@@ -173,6 +163,21 @@ export default class PublishRight extends React.Component {
             )}
           </FormItem>
 
+          <FormItem label="描述">
+            {getFieldDecorator('description', {
+              initialValue: detail.description ? detail.description : undefined,
+              rules: [
+                { max: 200, message: '描述长度不能超过200个字！' },
+              ],
+            })(
+              <TextArea
+                style={{ width: '100%' }}
+                placeholder="描述长度不能超过200个字"
+                autosize={{ minRows: 2, maxRows: 4 }}
+              />
+            )}
+          </FormItem>
+
           <FormItem label="标签">
             {getFieldDecorator('tags', {
               initialValue: detail.tags ? detail.tags.split(',') : undefined,
@@ -186,21 +191,6 @@ export default class PublishRight extends React.Component {
               >
                 {tagsOption}
               </Select>
-            )}
-          </FormItem>
-
-          <FormItem label="描述">
-            {getFieldDecorator('description', {
-              initialValue: detail.description ? detail.description : undefined,
-              rules: [
-                { max: 200, message: '描述长度不能超过200个字！' },
-              ],
-            })(
-              <TextArea
-                style={{ width: '100%' }}
-                placeholder="描述长度不能超过200个字"
-                autosize={{ minRows: 2, maxRows: 4 }}
-              />
             )}
           </FormItem>
 

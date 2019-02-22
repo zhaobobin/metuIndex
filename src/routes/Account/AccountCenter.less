@@ -1,7 +1,18 @@
+@import '../../theme/index.less';
+
 .userCenter{
   margin-top:-84px;
 
-  :global(.ant-tabs-nav-scroll){
-    text-align:center
+  :global{
+    .ant-tabs-bar{
+      padding-top:10px;
+      background:#fff;
+      border:none;
+      box-shadow: @box_shadow;
+    }
+    .ant-tabs-nav-scroll{
+      text-align:center
+    }
   }
+
 }

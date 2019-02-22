@@ -67,7 +67,7 @@ export default class HomeBanner extends React.Component {
               {
                 data.uid ?
                   <p className={styles.info}>
-                    <Link to={`/album/${data._id}/${data.title}-by-${data.uid.nickname}`}>{data.title}</Link>
+                    <Link to={`/photos/${data._id}/${data.title}-by-${data.uid.nickname}`}>{data.title}</Link>
                     <span>by</span>
                     <Link to={`/u/${data.uid.username}`}>{data.uid.nickname}</Link>
                   </p>

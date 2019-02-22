@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import { Row, Col, Card, Tabs } from 'antd';
 import styles from './HomePhotoList.less'
 
-import AlbumListQuery from '~/components/Photo/AlbumListQuery';
+import PhotosListQuery from '~/components/Photo/PhotosListQuery';
 const TabPane = Tabs.TabPane;
 
 @connect(state => ({
@@ -42,27 +42,27 @@ export default class HomePhotoList extends React.Component{
         >
 
           <TabPane tab="热门" key="popular">
-            {keyword === 'popular' ? <AlbumListQuery {...queryOption} /> : null}
+            {keyword === 'popular' ? <PhotosListQuery {...queryOption} /> : null}
           </TabPane>
 
           <TabPane tab="推荐" key="editor">
-            {keyword === 'editor' ? <AlbumListQuery {...queryOption} /> : null}
+            {keyword === 'editor' ? <PhotosListQuery {...queryOption} /> : null}
           </TabPane>
 
           <TabPane tab="最新" key="new">
-            {keyword === 'new' ? <AlbumListQuery {...queryOption} /> : null}
+            {keyword === 'new' ? <PhotosListQuery {...queryOption} /> : null}
           </TabPane>
 
           <TabPane tab="风光" key="风光">
-            {keyword === '风光' ? <AlbumListQuery {...queryOption} /> : null}
+            {keyword === '风光' ? <PhotosListQuery {...queryOption} /> : null}
           </TabPane>
 
           <TabPane tab="人像" key="人像">
-            {keyword === '人像' ? <AlbumListQuery {...queryOption} /> : null}
+            {keyword === '人像' ? <PhotosListQuery {...queryOption} /> : null}
           </TabPane>
 
           <TabPane tab="人文" key="人文">
-            {keyword === '人文' ? <AlbumListQuery {...queryOption} /> : null}
+            {keyword === '人文' ? <PhotosListQuery {...queryOption} /> : null}
           </TabPane>
 
         </Tabs>

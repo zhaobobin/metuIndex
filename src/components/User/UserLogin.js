@@ -187,7 +187,7 @@ export default class UserLogin extends React.Component {
                   { pattern: /^1[0-9]{10}$/, message: '手机号输入有误' }
                 ],
               })(
-                <InputMobile callback={this.mobileCallback}/>
+                <InputMobile default={lastTel} callback={this.mobileCallback}/>
               )}
             </FormItem>
 

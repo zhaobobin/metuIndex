@@ -3,7 +3,8 @@ import { connect } from 'dva';
 import { Link } from 'dva/router';
 import { Button, Icon, Menu, Dropdown } from 'antd';
 import {ENV, Storage} from "~/utils/utils";
-import styles from './SignModal.less';
+import {FormattedMessage} from 'react-intl';
+import styles from './GlobalHeaderSign.less';
 
 import UserSignModal from '~/components/User/UserSignModal';
 import { Confirm } from '~/components/Dialog/Dialog'
@@ -61,13 +62,19 @@ export default class UserSign extends React.Component {
                 overlay={
                   <Menu>
                     <Menu.Item>
-                      <Link to={`/u/${currentUser.nickname}`}>我的主页</Link>
+                      <Link to={`/u/${currentUser.nickname}`}>
+                        <FormattedMessage id="menu.user.account"/>
+                      </Link>
                     </Menu.Item>
                     <Menu.Item>
-                      <Link to="/setting">设置</Link>
+                      <Link to="/setting">
+                        <FormattedMessage id="menu.user.setting"/>
+                      </Link>
                     </Menu.Item>
                     <Menu.Item>
-                      <a onClick={this.logout}>退出</a>
+                      <a onClick={this.logout}>
+                        <FormattedMessage id="menu.user.logout"/>
+                      </a>
                     </Menu.Item>
                   </Menu>
                 }
@@ -75,7 +82,7 @@ export default class UserSign extends React.Component {
                 <Link className={styles.userInfo} to={`/u/${currentUser.username}`}>
                   {
                     currentUser.avatar ?
-                      <img src={currentUser.avatar + '?x-oss-process=style/thumb_s'} alt="用户头像" />
+                      <img src={currentUser.avatar + '?x-oss-process=style/thumb_s'} alt="avatar" />
                       :
                       <Icon type="user" />
                   }
@@ -87,22 +94,32 @@ export default class UserSign extends React.Component {
                 overlay={
                   <Menu>
                     <Menu.Item>
-                      <Link to="/publish/photo">发布图片</Link>
+                      <Link to="/publish/photo">
+                        <FormattedMessage id="menu.publish.photo"/>
+                      </Link>
                     </Menu.Item>
                     <Menu.Item>
-                      <Link to="/publish/article">发布文章</Link>
+                      <Link to="/publish/article">
+                        <FormattedMessage id="menu.publish.article"/>
+                      </Link>
                     </Menu.Item>
                   </Menu>
                 }
               >
-                <Link to="/publish/photo"><Button className={styles.userBtn} type="primary">发布</Button></Link>
+                <Link to="/publish/photo"><Button className={styles.userBtn} type="primary">
+                  <FormattedMessage id="menu.publish"/>
+                </Button></Link>
               </Dropdown>
 
             </div>
             :
             <div key="login">
-              <Button className={styles.userBtn + " " + styles.loginBtn} onClick={ () => this.setUserModal(true, '1') }>登录</Button>
-              <Button className={styles.userBtn} type="primary" onClick={ () => this.setUserModal(true, '2') }>注册</Button>
+              <Button className={styles.userBtn + " " + styles.loginBtn} onClick={ () => this.setUserModal(true, '1') }>
+                <FormattedMessage id="menu.user.login"/>
+              </Button>
+              <Button className={styles.userBtn} type="primary" onClick={ () => this.setUserModal(true, '2') }>
+                <FormattedMessage id="menu.user.register"/>
+              </Button>
             </div>
         }
 

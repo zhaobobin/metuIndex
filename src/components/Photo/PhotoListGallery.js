@@ -9,7 +9,7 @@ import {Row, Col, Spin} from 'antd';
 
 import Gallery from 'react-photo-gallery';
 import Measure from 'react-measure';
-import PhotoItem from './PhotoItem';
+import PhotoListItem from './PhotoListItem';
 
 import styles from './PhotoList.less';
 
@@ -34,10 +34,9 @@ export default class PhotoListGallery extends PureComponent {
     super(props);
     this.state = {
       width: document.body.clientWidth,             //获取文档宽度
-      PhotoItem: PhotoItem,                         //图片占位加载优化
       category: this.props.category,                //分类，发生改变时清空photos数组
       photos: this.props.photos,                    //图片列表
-      type: this.props.type,                        //图片类型 album、photo
+      type: this.props.type,                        //图片类型：photos(照片集)、photo(照片详情)
     };
     this.loadMorePhotos = debounce(this.loadMorePhotos, 200);
   }
@@ -71,7 +70,7 @@ export default class PhotoListGallery extends PureComponent {
 
   measureRef(measureRef){
 
-    let {width, photos, PhotoItem, type} = this.state;
+    let {width, photos, type} = this.state;
     if (width < 1 ) return <div ref={measureRef}/>;
     let columns = 2;
     if(width >= 480) columns = 3;
@@ -98,7 +97,7 @@ export default class PhotoListGallery extends PureComponent {
 
     return(
       <div ref={measureRef}>
-        <Gallery photos= {photoList} columns={columns} margin={5} ImageComponent={PhotoItem} />
+        <Gallery photos= {photoList} columns={columns} margin={5} ImageComponent={PhotoListItem} />
       </div>
     )
   };

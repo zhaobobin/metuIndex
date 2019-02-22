@@ -1,9 +1,12 @@
+/**
+ * 图片列表元素 - 占位优化显示
+ */
 import React from 'react';
 import { Link } from 'dva/router';
 import LoadLazy from '~/components/Common/LoadLazy'
 import styles from './PhotoList.less';
 
-export default function PhotoItem ({ index, photo, margin }) {
+export default function PhotoListItem ({ index, photo, margin }) {
 
   return (
     <Link

@@ -10,7 +10,7 @@ export default class InputMobile extends React.Component {
     super(props);
     this.ajaxFlag = true;
     this.state = {
-      value: '',            //输入框的值
+      value: this.props.default || '',            //输入框的值
     }
   }
 

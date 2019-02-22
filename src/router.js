@@ -3,8 +3,20 @@ import { Router, Route, Switch } from 'dva/router';
 import cloneDeep from 'lodash/cloneDeep';
 import { getNavData } from '~/common/nav';
 import { getPlainNode } from '~/utils/utils';
-
 import NotFound from "~/routes/Other/404";
+
+//国家化
+import {addLocaleData, IntlProvider} from 'react-intl';
+import enLocaleData from 'react-intl/locale-data/zh'
+import en_US from './locales/en_US';
+import zh_CN from './locales/zh_CN';
+addLocaleData(enLocaleData);
+const currentLang = navigator.language;
+const messages = {
+  'en-US': en_US,
+  'zh-CN': zh_CN,
+};
+//国家化 end!
 
 function getRouteData(navData, path) {
   if (!navData.some(item => item.layout === path) ||
@@ -45,12 +57,14 @@ export default function RouterConfig({ history, app }) {
   };
 
   return (
-    <Router history={history}>
-      <Switch>
-        <Route path="/user" render={props => <UserLayout {...props} {...passProps} />} />
-        <Route path="/" render={props => <BaseLayout {...props} {...passProps} />} />
-        <Route component={NotFound} />
-      </Switch>
-    </Router>
+    <IntlProvider locale={currentLang} messages={messages[currentLang]}>
+      <Router history={history}>
+        <Switch>
+          <Route path="/user" render={props => <UserLayout {...props} {...passProps} />} />
+          <Route path="/" render={props => <BaseLayout {...props} {...passProps} />} />
+          <Route component={NotFound} />
+        </Switch>
+      </Router>
+    </IntlProvider>
   );
 }

@@ -4,7 +4,7 @@ import { Link } from 'dva/router';
 import { Row, Col, Menu } from 'antd';
 import styles from './Vision.less';
 
-import AlbumListQuery from '~/components/Photo/AlbumListQuery';
+import PhotosListQuery from '~/components/Photo/PhotosListQuery';
 
 @connect(state => ({
   global: state.global,
@@ -90,7 +90,7 @@ export default class Vision extends React.Component {
           </Row>
         </div>
 
-        <AlbumListQuery {...queryOption} />
+        <PhotosListQuery {...queryOption} />
 
       </div>
     )

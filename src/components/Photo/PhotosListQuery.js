@@ -23,7 +23,7 @@ function getImgSize(url){
 @connect(state => ({
   global: state.global
 }))
-export default class AlbumListQuery extends PureComponent {
+export default class PhotosListQuery extends PureComponent {
 
   constructor(props){
     super(props);
@@ -77,7 +77,7 @@ export default class AlbumListQuery extends PureComponent {
 
     this.props.dispatch({
       type: 'global/post',
-      url: 'api/AlbumList',
+      url: 'api/PhotosList',
       payload: query,
       callback: (res) => {
         this.ajaxFlag = true;

@@ -11,15 +11,6 @@ import InfiniteScroll from 'react-infinite-scroller';			//加载更多
 
 import PhotoListGallery from '~/components/Photo/PhotoListGallery';
 
-function getImgSize(url){
-  let img = new Image();
-  img.src = url;
-  return {
-    width: img.width,
-    height: img.height
-  }
-}
-
 @connect(state => ({
   global: state.global
 }))

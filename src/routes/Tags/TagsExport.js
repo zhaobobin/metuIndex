@@ -1,17 +1,13 @@
 /*
 * 标签目录
 * */
-import React, { PureComponent } from 'react';
-import { connect } from 'dva';
+import React from 'react';
 import { Link } from 'dva/router';
 import {Row, Col, Card} from 'antd';
 
 //import styles from './IndexBase.less';
 
-@connect(state => ({
-  article: state.article,
-}))
-export default class TagsExport extends PureComponent {
+export default class TagsExport extends React.Component {
 
   render(){
 

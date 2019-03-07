@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Redirect, Switch } from 'dva/router';
 import { Layout } from 'antd';
+import { injectIntl } from 'react-intl';
 import DocumentTitle from 'react-document-title';
 import NotFound from "~/routes/Other/404";
 import { ENV } from '~/utils/utils';
@@ -9,29 +10,21 @@ import GlobalHeader from '~/components/Common/GlobalHeader';
 import GlobalFooter from '~/components/Common/GlobalFooter';
 import GlobalContent from '~/components/Common/GlobalContent';
 
-export default class BaseLayout extends React.Component {
+class UserLayout extends React.Component {
 
   getPageTitle() {
-    const { location, getRouteData } = this.props;
+    const { intl, location, getRouteData } = this.props;
     const { pathname } = location;
-    let title = ENV.appname;
+    const appname = intl.formatMessage({id: 'env.appname'});
+
+    let title = appname;
     getRouteData('UserLayout').forEach((item) => {
       if (item.path !== pathname) return;
-      title = item.name + ' - ' + ENV.appname;
+      let routeName = intl.formatMessage({id: item.id});   //路径名称
+      title = routeName + ' - ' + appname;
     });
     return title;
   }
-
-  getMenuData = (data, parentPath) => {
-    let arr = [];
-    data.forEach((item) => {
-      if (item.children) {
-        arr.push({ path: `${parentPath}/${item.path}`, name: item.name });
-        arr = arr.concat(this.getMenuData(item.children, `${parentPath}/${item.path}`));
-      }
-    });
-    return arr;
-  };
 
   render(){
 
@@ -75,3 +68,5 @@ export default class BaseLayout extends React.Component {
   }
 
 }
+
+export default injectIntl(UserLayout, {withRef: true});

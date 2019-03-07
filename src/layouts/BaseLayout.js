@@ -3,6 +3,7 @@ import { connect } from 'dva';
 import { Route, Switch } from 'dva/router';
 import { Layout, BackTop } from 'antd';
 import { ENV, Storage } from '~/utils/utils';
+import { injectIntl } from 'react-intl';
 import DocumentTitle from 'react-document-title';
 import NotFound from "~/routes/Other/404";
 
@@ -14,7 +15,7 @@ import GlobalContent from '~/components/Common/GlobalContent';
 @connect(state => ({
   global: state.global
 }))
-export default class BaseLayout extends React.Component {
+class BaseLayout extends React.Component {
 
   componentDidMount(){
     this.props.dispatch({
@@ -37,40 +38,32 @@ export default class BaseLayout extends React.Component {
 
   //获取页面标题
   getPageTitle() {
-    const { location, getRouteData } = this.props;
+    const { intl, location, getRouteData } = this.props;
     const { pathname } = location;
     const routeData = getRouteData('BaseLayout');
 
     let title = '';
     if(pathname === '/'){
-      title = ENV.hometitle;
+      title = intl.formatMessage({id: 'env.hometitle'});
     }else{
-      title = this.foreachTitle(routeData, pathname).slice(3) + ' - ' + ENV.appname;
+      let appname = intl.formatMessage({id: 'env.appname'});
+      title = this.foreachTitle(routeData, pathname).slice(3) + ' - ' + appname;
     }
+    console.log(title)
     return title;
   }
 
   //循环标题
   foreachTitle(routeData, pathname){
-    let title = '';
+    let title = '', { intl } = this.props;
     for(let i in routeData){
       if (pathname.indexOf(routeData[i].key) > -1) {
-        title = this.foreachTitle(routeData[i].children, pathname) + ' - ' + routeData[i].name;
+        let routeName = intl.formatMessage({id: routeData[i].id});   //路径名称
+        title = this.foreachTitle(routeData[i].children, pathname) + ' - ' + routeName;
       }
     }
     return title;
   }
-
-  getMenuData = (data, parentPath) => {
-    let arr = [];
-    data.forEach((item) => {
-      if (item.children) {
-        arr.push({ path: `${parentPath}/${item.path}`, name: item.name });
-        arr = arr.concat(this.getMenuData(item.children, `${parentPath}/${item.path}`));
-      }
-    });
-    return arr;
-  };
 
   render(){
 
@@ -122,3 +115,5 @@ export default class BaseLayout extends React.Component {
   }
 
 }
+
+export default injectIntl(BaseLayout, {withRef: true});

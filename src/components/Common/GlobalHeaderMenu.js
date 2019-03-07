@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link, NavLink } from 'dva/router';
+import { FormattedMessage } from 'react-intl';
 import styles from './GlobalHeaderMenu.less';
 
-function getMenuList(menusData){
-  if (!menusData) return [];
-  return menusData.map((item, index) => {
+function getMenuList(navData){
+
+  if (!navData) return [];
+  return navData.map((item, index) => {
     if (!item.name || item.isHide) return null;
     return(
       <li key={item.key}>
@@ -14,9 +16,7 @@ function getMenuList(menusData){
           activeClassName={styles.current}
           to={`/${item.path}`}
         >
-            <span>
-              {item.name}
-            </span>
+          <FormattedMessage id={item.id}/>
         </NavLink>
 
         {
@@ -33,7 +33,7 @@ function getMenuList(menusData){
                         activeClassName={styles.active}
                         to={`/${item.path}/${topic.path}`}
                       >
-                        {topic.name}
+                        <FormattedMessage id={topic.id}/>
                       </NavLink>
                     </p>
                 ))

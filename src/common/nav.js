@@ -11,6 +11,7 @@ const dynamicWrapper = (app, models, component) => dynamic({
 // nav data
 export const getNavData = app => [
 
+  //基本路由
   {
     component: dynamicWrapper(app, [], () => import('../layouts/BaseLayout')),
     layout: 'BaseLayout',
@@ -19,39 +20,45 @@ export const getNavData = app => [
     path: '/',
     children: [
       {
-        name: <FormattedMessage id="menu.home"/>,
+        name: '首页',
+        id: 'menu.home',
         key: 'home',
         path: '',
         exact: true,
         component: dynamicWrapper(app, [], () => import('../routes/Home/Home')),
       },
       {
-        name: <FormattedMessage id="menu.vision"/>,
+        name: '影像',
+        id: 'menu.vision',
         key: 'vision',
         path: 'vision',
         component: dynamicWrapper(app, [], () => import('../routes/Vision/Vision')),
       },
       {
-        name: <FormattedMessage id="menu.vision"/>,
+        name: '影像',
+        id: 'menu.vision',
         key: 'vision-keyword',
         path: 'vision/:keyword',
         isHide: true,
         component: dynamicWrapper(app, [], () => import('../routes/Vision/Vision')),
       },
       {
-        name: <FormattedMessage id="menu.course"/>,
+        name: '教程',
+        id: 'menu.course',
         key: 'course',
         path: 'course',
         component: dynamicWrapper(app, [], () => import('../routes/Course/Course')),
       },
       {
-        name: <FormattedMessage id="menu.equipments"/>,
+        name: '器材',
+        id: 'menu.equipments',
         key: 'equipments',
         path: 'equipments',
         component: dynamicWrapper(app, [], () => import('../routes/Equipments/Equipments')),
       },
       {
-        name: <FormattedMessage id="menu.equipments"/>,
+        name: '器材',
+        id: 'menu.equipments',
         key: 'equipments-list',
         path: 'equipments/:keyword',
         isHide: true,
@@ -59,58 +66,104 @@ export const getNavData = app => [
       },
 
       {
-        name: <FormattedMessage id="menu.photos"/>,
+        name: '照片集',
+        id: 'menu.photos',
+        key: 'photos',
         path: 'photos/:id/:title',
         isHide: true,
         component: dynamicWrapper(app, [], () => import('../routes/Photo/PhotosDetail')),
       },
       {
-        name: <FormattedMessage id="menu.photo"/>,
+        name: '照片',
+        id: 'menu.photo',
+        key: 'photo',
         path: 'photo/:id/:title',
         isHide: true,
         component: dynamicWrapper(app, ['photo'], () => import('../routes/Photo/PhotoDetail')),
       },
       {
-        name: <FormattedMessage id="menu.article.detail"/>,
+        name: '文章详情',
+        id: 'menu.article.detail',
+        key: 'article',
         path: 'course/:id/:title',
         isHide: true,
         component: dynamicWrapper(app, [], () => import('../routes/Article/ArticleDetail')),
       },
 
       {
-        name: <FormattedMessage id="menu.tags"/>,
+        name: '标签云',
+        id: 'menu.tags',
+        key: 'tags',
         path: 'tags',
         isHide: true,
         component: dynamicWrapper(app, [], () => import('../routes/Tags/TagsExport')),
       },
       {
-        name: <FormattedMessage id="menu.tag"/>,
+        name: '标签',
+        id: 'menu.tag',
+        key: 'tag',
         path: 'tags/:tag',
         isHide: true,
         component: dynamicWrapper(app, [], () => import('../routes/Tags/TagsArticle')),
       },
       {
-        name: <FormattedMessage id="menu.user.center"/>,
+        name: '用户中心',
+        id: 'menu.user.center',
+        key: 'center',
         path: 'u/:username',
         isHide: true,
         component: dynamicWrapper(app, ['oss'], () => import('../routes/Account/AccountCenter')),
       },
       {
-        name: <FormattedMessage id="menu.user.setting"/>,
+        name: '用户设置',
+        id: 'menu.user.setting',
+        key: 'setting',
         path: 'setting',
         isHide: true,
         component: dynamicWrapper(app, ['oss'], () => import('../routes/Account/AccountSetting')),
       },
       {
-        name: <FormattedMessage id="menu.publish"/>,
+        name: '发布',
+        id: 'menu.publish',
         key: 'publish',
         path: 'publish/:publishType',
         isHide: true,
         component: dynamicWrapper(app, ['oss', 'publish'], () => import('../routes/Publish/Publish')),
       },
+      {
+        name: '回调',
+        id: 'calback',
+        key: 'callback',
+        path: 'callback',
+        isHide: true,
+        children: [
+          {
+            name: '微信回调',
+            id: 'callback.wechat',
+            key: 'wechat',
+            path: 'wechat',
+            component: dynamicWrapper(app, [], () => import('../routes/Callback/Wechat')),
+          },
+          {
+            name: '微博回调',
+            id: 'callback.weibo',
+            key: 'weibo',
+            path: 'weibo',
+            component: dynamicWrapper(app, [], () => import('../routes/Callback/Weibo')),
+          },
+          {
+            name: 'QQ回调',
+            id: 'callback.qq',
+            key: 'qq',
+            path: 'qq',
+            component: dynamicWrapper(app, [], () => import('../routes/Callback/Qq')),
+          },
+        ]
+      },
     ]
   },
 
+  //用户路由
   {
     component: dynamicWrapper(app, [], () => import('../layouts/UserLayout')),
     layout: 'UserLayout',
@@ -119,19 +172,22 @@ export const getNavData = app => [
     path: 'user',
     children: [
       {
-        name: <FormattedMessage id="menu.user.login"/>,
+        name: '用户登录',
+        id: 'menu.user.login',
         icon: 'user',
         path: 'user/login',
         component: dynamicWrapper(app, [], () => import('../routes/User/Login')),
       },
       {
-        name: <FormattedMessage id="menu.user.register"/>,
+        name: '用户注册',
+        id: 'menu.user.register',
         icon: 'user',
         path: 'user/register',
         component: dynamicWrapper(app, [], () => import('../routes/User/Register')),
       },
       {
-        name: <FormattedMessage id="menu.user.reset"/>,
+        name: '找回密码',
+        id: 'menu.user.reset',
         icon: 'user',
         path: 'user/reset',
         component: dynamicWrapper(app, [], () => import('../routes/User/Reset')),

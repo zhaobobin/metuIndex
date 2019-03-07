@@ -6,12 +6,12 @@ import { getPlainNode } from '~/utils/utils';
 import NotFound from "~/routes/Other/404";
 
 //国家化
-import {addLocaleData, IntlProvider} from 'react-intl';
+import { addLocaleData, IntlProvider } from 'react-intl';
 import enLocaleData from 'react-intl/locale-data/zh'
 import en_US from './locales/en_US';
 import zh_CN from './locales/zh_CN';
 addLocaleData(enLocaleData);
-const currentLang = navigator.language;
+const currentLang = 'en-US';  //navigator.language
 const messages = {
   'en-US': en_US,
   'zh-CN': zh_CN,

@@ -4,7 +4,7 @@
  * globalCompositeOperation： 'destination-over' 兼容Edge、IE
  * IE浏览器下，阻止跨域图片的渲染。drawImage
  */
-import styles from './PintuValidate.less';
+import styles from './Pintu.less';
 
 let errorNum = 0;       //拼图错误次数
 
@@ -229,6 +229,8 @@ class jigsaw {
     };
 
     let originX, originY, trail = [], isMouseDown = false, blockCanMove = true;
+
+    // pc
     this.slider.addEventListener('mousedown', function (e) {
       if(!blockCanMove) return;
       originX = e.x;
@@ -283,7 +285,60 @@ class jigsaw {
           this.sliderContainer.children[1].innerHTML = "<i></i> 失败过多，点此重试";
         }
       }
+    });
+    // pc end!
+
+    // mobile
+    this.slider.addEventListener('touchstart', function (e) {
+      if(!blockCanMove) return;
+      originX = e.targetTouches[0].clientX;
+      originY = e.targetTouches[0].clientY;
+      isMouseDown = true
+    });
+
+    document.addEventListener('touchmove', (e) => {
+      if (!isMouseDown) return false;
+      const moveX = e.targetTouches[0].clientX - originX;
+      const moveY = e.targetTouches[0].clientY - originY;
+
+      if (moveX < 0 || moveX + 38 >= w) return false;
+      this.slider.style.left = moveX + 'px';
+      let blockLeft = (w - 40 - 20) / (w - 40) * moveX;
+      this.block.style.left = blockLeft + 'px';
+
+      addClass(this.sliderContainer, styles.sliderContainer_active);
+      this.sliderMask.style.width = moveX + 'px';
+      trail.push(moveY)
+    });
+
+    document.addEventListener('touchend', (e) => {
+      if (!isMouseDown) return false;
+      isMouseDown = false;
+      if (e.targetTouches[0] && e.targetTouches[0].clientX === originX) return false;
+      removeClass(this.sliderContainer, styles.sliderContainer_active);
+      this.trail = trail;
+      const {spliced, verified} = this.verify();
+      if (spliced) {
+        if (verified) {
+          blockCanMove = false;
+          addClass(this.sliderContainer, styles.sliderContainer_success);
+          this.refreshIcon.className = '';
+          typeof this.onSuccess === 'function' && this.onSuccess()
+        } else {
+          addClass(this.sliderContainer, styles.sliderContainer_fail);
+          this.text.innerHTML = '再试一次';
+          this.reset()
+        }
+      } else {
+        addClass(this.sliderContainer, styles.sliderContainer_fail);
+        typeof this.onFail === 'function' && this.onFail();
+        setTimeout(() => {
+          this.reset()
+        }, 1000)
+      }
     })
+    // mobile end!
+
   }
 
   verify() {

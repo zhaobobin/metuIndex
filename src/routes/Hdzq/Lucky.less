@@ -1,0 +1,190 @@
+.container{
+  width: 100%;
+  height: 100%;
+  background: #FFB10B;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  overflow-y: auto;
+
+  .logo{
+    position: absolute;
+    left: 12px;
+    top: 12px;
+
+    img{
+      width: 84px;
+      height: 84px;
+    }
+  }
+
+  .content{
+    .bg{
+      width: 100%;
+      height: auto;
+    }
+
+    .download{
+      width: 254px;
+      margin: -50px auto 20px;
+      dl{
+        margin-bottom: 15px;
+        text-align: center;
+        dt{
+          margin-bottom: 10px;
+          font-size: 16px;
+          color: #353535;
+        }
+        dd{
+          color: #fff;
+          p{
+            margin-bottom: 10px;
+          }
+          .p1{
+            font-size: 28px;
+          }
+          .p2{
+            font-size: 14px;
+          }
+        }
+      }
+
+      a{
+        display: block;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        color:#353535;
+        background:#fff;
+        border-radius:5px;
+      }
+    }
+
+    .form{
+      width: 254px;
+      margin: -50px auto 20px;
+
+      .btn{
+        width: 100%;
+        border:none;
+      }
+
+      :global{
+        .ant-input{
+          text-align: center;
+          color: #fff;
+          border-color: #fff;
+          background:rgba(255,255,255,0.2);
+          &::placeholder{
+            color: #fff
+          }
+        }
+        .ant-input-affix-wrapper:hover .ant-input:not(.ant-input-disabled){
+          border-color: #fff;
+        }
+        .ant-btn-primary{
+          color: #353535;
+          background: #fff;
+        }
+        .ant-btn-primary[disabled]{
+          color: #B8B8B8;
+          background: #EFEFEF;
+        }
+      }
+
+    }
+
+    .desc{
+      padding: 24px;
+      dl{
+        dt{
+          margin-bottom: 15px;
+          height: 20px;
+          position: relative;
+          i{
+            display: block;
+            width:100%;
+            height:1px;
+            background:#fff;
+            position:absolute;
+            left:0;
+            top:10px;
+          }
+          strong{
+            display: block;
+            width: 80px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            font-size: 15px;
+            color: #fff;
+            background: #FFB10B;
+            position: absolute;
+            top:0;
+            left:50%;
+            margin-left:-40px;
+          }
+        }
+        dd{
+          padding: 20px 20px 10px;
+          border-radius: 5px;
+          background: #f8da7c;
+        }
+      }
+    }
+
+  }
+
+}
+
+.luckyModal{
+
+  :global{
+    .am-modal-header{
+      position: relative;
+      z-index: 9;
+    }
+    .am-modal-content, .am-modal-body{
+      position: relative;
+      z-index: 0;
+      overflow: visible;
+    }
+  }
+
+  .con{
+    padding: 15px;
+    position: relative;
+
+    img{
+      width: 200px;
+      height: auto;
+      position: absolute;
+      left: 50%;
+      top:-80px;
+      margin-left:-100px;
+    }
+
+    p{
+      margin-bottom:15px;
+    }
+    .p1{
+      color: #FFB400;
+      font-size: 26px;
+    }
+    .p2{
+      color: #7B7B7B;
+      font-size: 14px;
+    }
+    .hr{
+      margin: 20px 0;
+      height:0;
+      border:1px dashed rgba(156,162,153,.5)
+    }
+    button{
+      width:200px;
+      height:40px;
+      line-height:40px;
+    }
+  }
+}

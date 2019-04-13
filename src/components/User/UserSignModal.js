@@ -42,6 +42,7 @@ export default class UserSignModal extends React.Component {
         width="430px"
         footer={null}
         centered={true}
+        maskClosable={false}
         destroyOnClose={true}
         visible={signModalVisible}
         className={styles.userModal}

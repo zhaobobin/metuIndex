@@ -53,4 +53,7 @@ export default {
   'menu.user.logout.title': '安全退出？',
   'menu.user.center': '用户中心',
 
+  'menu.hdzq': '活动专区',
+  'menu.hdzq.lucky': '幸运抽奖',
+
 };

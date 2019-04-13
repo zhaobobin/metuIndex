@@ -160,6 +160,23 @@ export const getNavData = app => [
           },
         ]
       },
+
+      {
+        name: '活动专区',
+        id: 'hdzq',
+        key: 'hdzq',
+        path: 'hdzq',
+        isHide: true,
+        children: [
+          {
+            name: '幸运抽奖',
+            id: 'hdzq.lucky',
+            key: 'lucky',
+            path: 'lucky',
+            component: dynamicWrapper(app, [], () => import('../routes/Hdzq/Lucky')),
+          },
+        ]
+      },
     ]
   },
 

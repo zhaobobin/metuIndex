@@ -52,4 +52,7 @@ export default {
   'menu.user.logout.title': 'Security logout ?',
   'menu.user.center': 'User center',
 
+  'menu.hdzq': 'hdzq',
+  'menu.hdzq.lucky': 'lucky',
+
 };

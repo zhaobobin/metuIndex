@@ -5,6 +5,9 @@ import React from 'react';
 import { Row, Col, Input, Icon } from 'antd';
 import styles from './InputPassword.less'
 
+import eye_open from '~/assets/sign/signremind_open@2x.png'
+import eye_close from '~/assets/sign/invisible@2x.png'
+
 export default class InputPassword extends React.Component {
 
   constructor(props){
@@ -12,6 +15,7 @@ export default class InputPassword extends React.Component {
     this.ajaxFlag = true;
     this.state = {
       value: '',            //输入框的值
+      inputType: 'password',
       psdLevelVisible: false,
       psdLevel: '',
       psdLevelStyle: '',
@@ -96,50 +100,70 @@ export default class InputPassword extends React.Component {
     this.props.callback();
   };
 
+  changeInputType = () => {
+    let {inputType} = this.state;
+    this.setState({
+      inputType: inputType === 'text' ? 'password' : 'text'
+    })
+  };
+
   render(){
 
-    const { value, psdLevelVisible, psdLevel, psdLevelStyle } = this.state;
+    const { showPsdLevel } = this.props;
+    const { value, inputType, psdLevelVisible, psdLevel, psdLevelStyle } = this.state;
 
     return(
-      <Input
-        type="password"
-        size="large"
-        minLength="6"
-        maxLength="20"
-        autoComplete="off"
-        placeholder="密码"
-        onChange={this.changeValue}
-        onFocus={this.changePsdLevelVisible}
-        onBlur={this.changePsdLevelVisible}
-        value={value}
-        className={styles.password}
-        suffix={
-          <span>
-            {
-              value ?
-                <Icon
-                  type="close-circle"
-                  onClick={() => this.emitEmpty()}
+      <div className={styles.container}>
+        <Input
+          type={inputType}
+          size="large"
+          minLength="6"
+          maxLength="20"
+          autoComplete="off"
+          placeholder="密码"
+          onChange={this.changeValue}
+          onFocus={this.changePsdLevelVisible}
+          onBlur={this.changePsdLevelVisible}
+          value={value}
+          className={styles.password}
+          suffix={
+            <span>
+              {
+                value ?
+                  <Icon
+                    type="close-circle"
+                    onClick={() => this.emitEmpty()}
+                  />
+                  :
+                  null
+              }
+              <i className={styles.eye}>
+                <img
+                  src={inputType === 'text' ? eye_open : eye_close}
+                  className={inputType === 'text' ? styles.open : styles.close}
+                  onClick={this.changeInputType}
+                  width="20px"
+                  height="auto"
+                  alt="eye"
                 />
-                :
-                null
-            }
-            {
-              psdLevelVisible && value ?
-                <div className={styles.psdStatus + " " + psdLevelStyle} style={this.props.psdLevelStyle}>
-                  <p className={styles.box}>
-                    <span className={styles.line}><em className={styles.block}/></span>
-                    <span className={styles.line}><em className={styles.block}/></span>
-                    <span className={styles.line}><em className={styles.block}/></span>
-                    <span className={styles.text}>{psdLevel}</span>
-                  </p>
-                </div>
-                :
-                null
-            }
-          </span>
+              </i>
+            </span>
+          }
+        />
+        {
+          showPsdLevel && value ?
+            <div className={styles.psdStatus + " " + psdLevelStyle}>
+              <p className={styles.box}>
+                <span className={styles.line}><em className={styles.block}/></span>
+                <span className={styles.line}><em className={styles.block}/></span>
+                <span className={styles.line}><em className={styles.block}/></span>
+                <span className={styles.text}>{psdLevel}</span>
+              </p>
+            </div>
+            :
+            null
         }
-      />
+      </div>
     )
   }
 

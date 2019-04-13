@@ -9,7 +9,8 @@ export default {
   "ignoreMomentLocale": true,
   "theme": "./src/theme/theme.js",
   "extraBabelPlugins": [
-    ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": true }],
+    ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": true }, "antd"],
+    ["import", { "libraryName": "antd-mobile", "libraryDirectory": "es", "style": true }, "antd-mobile"],
   ],
   "alias": {
     "~": path.resolve(__dirname, "./src"),
@@ -44,7 +45,7 @@ export default {
   },
   "proxy": {
     "/api": {
-      "target": "http://localhost:8080/",
+      "target": ENV.api.test,
         "changeOrigin": true,
         "pathRewrite": { "^/api" : "" }
     }

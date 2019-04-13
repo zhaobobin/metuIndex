@@ -45,9 +45,18 @@ export default class UserLogin extends React.Component {
   };
 
   //手机号
-  mobileCallback = (value) => {
-    this.props.form.setFieldsValue({'tel': value});
-    this.props.form.validateFields(['tel'], (err, values) => {});
+  mobileCallback = (value, err) => {
+    if(err){
+      this.props.form.setFields({
+        'tel': {
+          value: value,
+          errors: [new Error(err)]
+        }
+      });
+    }else{
+      this.props.form.setFieldsValue({'tel': value});
+      this.props.form.validateFields(['tel'], (err, values) => {});
+    }
   };
 
   //密码
@@ -200,7 +209,7 @@ export default class UserLogin extends React.Component {
                       { required: true, message: '请输入密码' },
                       { min: 6, message: '密码长度只能在6-20位字符之间' },
                       { max: 20, message: '密码长度只能在6-20位字符之间' },
-                      { pattern: /^[A-Za-z0-9]+$/, message: '只能输入字母和数字' }
+                      // { pattern: /^[A-Za-z0-9]+$/, message: '只能输入字母和数字' }
                     ],
                   })(
                     <InputPassword callback={this.passwordCallback}/>
@@ -212,8 +221,7 @@ export default class UserLogin extends React.Component {
                     validateTrigger: 'onBlur',
                     rules: [
                       { required: true, message: '请输入验证码' },
-                      { len: 6, message: '手机验证码格式有误' },
-                      { pattern: /^[0-9]+$/, message: '只能输入数字' }
+                      { pattern: /^[0-9]{6}$/, message: '短信验证码错误' },
                     ]
                   })(
                     <InputSmscode

@@ -49,7 +49,6 @@ class BaseLayout extends React.Component {
       let appname = intl.formatMessage({id: 'env.appname'});
       title = this.foreachTitle(routeData, pathname).slice(3) + ' - ' + appname;
     }
-    console.log(title)
     return title;
   }
 

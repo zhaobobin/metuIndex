@@ -35,9 +35,18 @@ export default class UserRegister extends React.Component {
   };
 
   //手机号
-  mobileCallback = (value) => {
-    this.props.form.setFieldsValue({'tel': value});
-    this.props.form.validateFields(['tel'], (err, values) => {});
+  mobileCallback = (value, err) => {
+    if(err){
+      this.props.form.setFields({
+        'tel': {
+          value: value,
+          errors: [new Error(err)]
+        }
+      });
+    }else{
+      this.props.form.setFieldsValue({'tel': value});
+      this.props.form.validateFields(['tel'], (err, values) => {});
+    }
   };
 
   //昵称
@@ -47,22 +56,22 @@ export default class UserRegister extends React.Component {
   };
 
   //短信验证码回调
-  smscodeCallback = (value) => {
+  smscodeCallback = (value, err) => {
     //清空错误提示
-    if(value === 'clearError'){
-      this.props.form.setFields({
-        'smscode': {
-          value: '',
-          errors: ''
-        }
-      });
-      this.setState({smscodeSended: true});
-    }
-    else if(value === 'telError'){
+    if(err === 'telError'){
       this.props.form.setFields({
         'tel': {
           value: '',
           errors: [new Error('请输入手机号')]
+        }
+      });
+      this.setState({smscodeSended: true});
+    }
+    else if(err === 'clearError'){
+      this.props.form.setFields({
+        'smscode': {
+          value: '',
+          errors: ''
         }
       });
       this.setState({smscodeSended: true});
@@ -168,10 +177,8 @@ export default class UserRegister extends React.Component {
           <Form onSubmit={this.submit} className={styles.register}>
             <FormItem>
               {getFieldDecorator('tel', {
-                validateTrigger: 'onBlur',
                 rules: [
-                  { required: true, message: '请输入手机号' },
-                  { pattern: /^1[0-9]{10}$/, message: '手机号输入有误' }
+                  { required: true, message: '请输入手机号' }
                 ],
               })(
                 <InputMobile callback={this.mobileCallback}/>
@@ -199,7 +206,7 @@ export default class UserRegister extends React.Component {
                   { max: 20, message: '密码长度只能在6-20位字符之间' },
                 ],
               })(
-                <InputPassword psdLevelStyle={{width: '365px'}} callback={this.passwordCallback}/>
+                <InputPassword showPsdLevel={true} callback={this.passwordCallback}/>
               )}
             </FormItem>
 

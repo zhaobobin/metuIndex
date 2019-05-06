@@ -4,7 +4,6 @@ import { Layout } from 'antd';
 import { injectIntl } from 'react-intl';
 import DocumentTitle from 'react-document-title';
 import NotFound from "~/routes/Other/404";
-import { ENV } from '~/utils/utils';
 
 import GlobalHeader from '~/components/Common/GlobalHeader';
 import GlobalFooter from '~/components/Common/GlobalFooter';

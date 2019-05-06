@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import { Row, Col, Form, Input, Icon, Button, Checkbox, Tabs, Modal, Menu, Dropdown, notification } from 'antd';
+import { Form, Button, notification } from 'antd';
 import { hasErrors } from '~/utils/utils'
 import styles from './UserSign.less'
 

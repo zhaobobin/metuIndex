@@ -1,12 +1,10 @@
 /*
  * 图片详情
  */
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { connect } from 'dva';
-import { Link } from 'dva/router';
-import {Row, Col, Icon, Spin, notification} from 'antd';
-import Moment from 'moment';
-import {ENV, Storage, goBack} from "~/utils/utils";
+import { notification } from 'antd';
+import {ENV, goBack} from "~/utils/utils";
 
 import styles from './PhotoDetail.less';
 
@@ -14,13 +12,11 @@ import PhotoSwiper from '~/components/Photo/PhotoSwiper';
 import PhotoAction from '~/components/Photo/PhotoAction';
 import PhotoInfo from '~/components/Photo/PhotoInfo';
 
-const screenfull = require('screenfull');
-
 @connect(state => ({
   photo: state.photo,
   login: state.login,
 }))
-export default class PhotoDetail extends PureComponent {
+export default class PhotoDetail extends React.Component {
 
   state = {
     id: this.props.match.params.id,
@@ -72,7 +68,7 @@ export default class PhotoDetail extends PureComponent {
 
   render(){
 
-    const { id, list, currentKey, currentPhoto } = this.state;
+    const { list, currentKey, currentPhoto } = this.state;
 
     //console.log(list)
 

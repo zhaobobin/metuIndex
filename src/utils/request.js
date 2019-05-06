@@ -1,7 +1,6 @@
 import fetch from 'dva/fetch';
 import { notification } from 'antd';
 import { Base64 } from 'js-base64';
-import store from '../index';
 import {ENV, Storage} from '~/utils/utils';
 
 const codeMessage = {
@@ -74,12 +73,19 @@ export default function request(url, options) {
     .then(checkStatus)
     .then(response => response.json())
     .catch(error => {
-      const { dispatch } = store;
-      if (error.name === 401) {                     //登录超时
-        dispatch({
-          type: 'global/logout',
+      if (error.code) {
+        notification.error({
+          message: error.name,
+          description: error.message,
         });
       }
+      if ('stack' in error && 'message' in error) {
+        notification.error({
+          message: `请求错误: ${url}`,
+          description: error.message,
+        });
+      }
+      return error;
     });
 }
 

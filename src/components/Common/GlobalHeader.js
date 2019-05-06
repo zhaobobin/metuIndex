@@ -60,9 +60,9 @@ export default class GlobalHeader extends React.Component {
 
           <Col xs={6} sm={6} md={3} lg={2}>
             <div className={styles.logo}>
-              <Link to="/">
+              <a href="/">
                 <img src={logo} width="auto" height="100%" alt={ENV.appname}/>
-              </Link>
+              </a>
             </div>
           </Col>
 

@@ -44,6 +44,8 @@ export default function GlobalFooter (props) {
                 <span><Link to="service">服务条款</Link></span>
                 <span>|</span>
                 <span><Link to="contact">联系我们</Link></span>
+                <span>|</span>
+                <span><Link to="doc">开发文档</Link></span>
               </p>
             </div>
           </div>

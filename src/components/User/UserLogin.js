@@ -7,7 +7,7 @@ import styles from './UserSign.less'
 import InputMobile from '~/components/Form/InputMobile'
 import InputPassword from '~/components/Form/InputPassword'
 import InputSmscode from '~/components/Form/InputSmscode'
-import UserLoginScan from './UserLoginScan'
+import UserWechatLogin from './UserWechatLogin'
 
 const FormItem = Form.Item;
 const keys1 = ['tel', 'password'];
@@ -37,6 +37,7 @@ export default class UserLogin extends React.Component {
     this.props.form.resetFields();
   };
 
+  // 切换登录方式
   changeLoginType = (loginType) => {
     this.resetForm();
     this.setState({
@@ -267,7 +268,11 @@ export default class UserLogin extends React.Component {
               <hr/>
             </h4>
             <p>
-              <a className={styles.wechat} onClick={() => this.changeLoginType('scan')}>
+              <a
+                className={styles.wechat}
+                // onClick={this.wechatLogin}
+                onClick={() => this.changeLoginType('scan')}
+              >
                 <Icon type="wechat" />
               </a>
               <a className={styles.weibo}>
@@ -282,7 +287,7 @@ export default class UserLogin extends React.Component {
           {
             loginType === 'scan' ?
               <div className={styles.loginScan}>
-                <UserLoginScan/>
+                <UserWechatLogin/>
               </div>
               :
               null

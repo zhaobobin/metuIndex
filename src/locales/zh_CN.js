@@ -40,7 +40,7 @@ export default {
   'account.setting.social': '社交账号',
 
   'callback': '回调页',
-  'callback.wechat': '微信回调页',
+  'callback.wechat.login': '微信授权登录',
   'callback.weibo': '微博回调页',
   'callback.qq': 'QQ回调页',
 

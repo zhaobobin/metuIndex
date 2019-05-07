@@ -72,32 +72,33 @@ class BaseLayout extends React.Component {
 
     const layout = (
       <Layout style={{minHeight: '100vh'}}>
+
         <GlobalHeader navData={navData[0].children} location={location}/>
 
-          <GlobalContent>
-            {
-              loading ?
-                <Loading/>
-                :
-                <Switch>
-                  {
-                    getRouteData('BaseLayout').map(item =>
-                      (
-                        <Route
-                          exact={item.exact}
-                          key={item.path}
-                          path={item.path}
-                          component={item.component}
-                        />
-                      )
+        <GlobalContent>
+          {
+            loading ?
+              <Loading/>
+              :
+              <Switch>
+                {
+                  getRouteData('BaseLayout').map(item =>
+                    (
+                      <Route
+                        exact={item.exact}
+                        key={item.path}
+                        path={item.path}
+                        component={item.component}
+                      />
                     )
-                  }
-                  <Route component={NotFound} />
-                </Switch>
-            }
+                  )
+                }
+                <Route component={NotFound} />
+              </Switch>
+          }
 
-            <BackTop />
-          </GlobalContent>
+          <BackTop />
+        </GlobalContent>
 
         {
           path === 'publish' ? null : <GlobalFooter/>

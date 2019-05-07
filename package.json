@@ -38,7 +38,8 @@
     "react-photo-gallery": "^6.1.4",
     "react-simple-img": "^1.5.4",
     "screenfull": "^3.3.3",
-    "share-react": "^1.0.0"
+    "share-react": "^1.0.0",
+    "wxlogin.react": "^0.1.0"
   },
   "devDependencies": {
     "@babel/polyfill": "^7.0.0-beta.56",

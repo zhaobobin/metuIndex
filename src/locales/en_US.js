@@ -40,7 +40,7 @@ export default {
   'account.setting.social': 'Social',
 
   'callback': 'Callback Page',
-  'callback.wechat': 'Wechat Callback Page',
+  'callback.wechat.login': 'Wechat Login Callback Page',
   'callback.weibo': 'Weibo Callback Page',
   'callback.qq': 'QQ Callback Page',
 

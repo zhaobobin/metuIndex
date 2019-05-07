@@ -22,7 +22,11 @@ export default class Vision extends React.Component {
   }
 
   componentDidMount(){
-    window.addEventListener('scroll', this.handleScroll.bind(this));
+    window.addEventListener(
+      'scroll',
+      (e) => this.handleScroll(e),
+      { passive: false }
+    );
   }
 
   componentWillReceiveProps(nextProps){
@@ -32,7 +36,8 @@ export default class Vision extends React.Component {
   }
 
   //监控滚动
-  handleScroll(){
+  handleScroll(e){
+    e.preventDefault();
     let top = document.body.scrollTop || document.documentElement.scrollTop || window.pageYOffset;
     if(top > 64){
       this.setState({headerFixed: styles.fixed})

@@ -139,10 +139,10 @@ const BaseRoutes = app => [
         children: [
           {
             name: '微信回调',
-            id: 'callback.wechat',
-            key: 'wechat',
-            path: 'wechat',
-            component: dynamicWrapper(app, [], () => import('../routes/Callback/Wechat')),
+            id: 'callback.wechat.login',
+            key: 'wechatLogin',
+            path: 'wechatLogin',
+            component: dynamicWrapper(app, [], () => import('../routes/Callback/WechatLogin')),
           },
           {
             name: '微博回调',

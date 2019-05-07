@@ -32,14 +32,19 @@ export default class GlobalHeader extends React.Component {
     window.scrollTo(0, 0);                                  //重置滚动
     if(headerIsOpacity(pathname)){
       this.setState({pathname: pathname, headerOpacity: styles.opacity});
-      window.addEventListener('scroll', this.handleScroll.bind(this));
+      window.addEventListener(
+        'scroll',
+        (e) => this.handleScroll(e),
+        { passive: false }
+      );
     }else{
       this.setState({pathname: pathname, headerOpacity: ''})
     }
   }
 
   //监控滚动
-  handleScroll(){
+  handleScroll(e){
+    e.preventDefault();
     let scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
     if(scrollY > 0){
       this.setState({headerFixed: styles.fixed})

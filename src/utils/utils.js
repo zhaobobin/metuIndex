@@ -1,7 +1,7 @@
 import moment from 'moment';
 import { notification } from 'antd';
 import { parse, stringify } from 'qs';
-import WechatConfig from '~/config/wechat'
+// import WechatConfig from '~/config/wechat'
 const CryptoJS = require('crypto-js');  //引用AES源码js
 
 /**
@@ -187,19 +187,19 @@ export function yaoqingDecrypt(text) {
 /*************************** 通用工具函数 ***************************/
 
 // 生成微信长链接
-export function getWechatUrl() {
-  let url = WechatConfig.BaseUrl;
-  let params = {
-    appid: WechatConfig.AppId,
-    redirect_uri: encodeURI(WechatConfig.redirect_uri),
-    response_type: WechatConfig.response_type,
-    scope: WechatConfig.scope,
-  };
-  for (let i in params) {
-    url += (i + '=' + encodeURIComponent(params[i]) + '&');
-  }
-  return url.substring(0, url.lastIndexOf('&'));
-}
+// export function getWechatUrl() {
+//   let url = WechatConfig.BaseUrl;
+//   let params = {
+//     appid: WechatConfig.AppId,
+//     redirect_uri: encodeURI(WechatConfig.redirect_uri),
+//     response_type: WechatConfig.response_type,
+//     scope: WechatConfig.scope,
+//   };
+//   for (let i in params) {
+//     url += (i + '=' + encodeURIComponent(params[i]) + '&');
+//   }
+//   return url.substring(0, url.lastIndexOf('&'));
+// }
 
 //浏览器后退
 export function goBack(){

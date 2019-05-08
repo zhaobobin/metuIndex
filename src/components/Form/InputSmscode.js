@@ -70,6 +70,11 @@ export default class InputSmscode extends React.Component {
     this.props.callback(value);
   };
 
+  handleBlur = (e) => {
+    let value = e.target.value;
+    this.props.callback(value, 'smscodeError');
+  };
+
   //确定
   submit = () => {
 
@@ -166,10 +171,11 @@ export default class InputSmscode extends React.Component {
           <Col xs={14} sm={14} md={16} lg={16}>
             <Input
               size="large"
-              maxLength="4"
+              maxLength="6"
               autoComplete="off"
               placeholder="短信验证码"
               onChange={this.changeValue}
+              onBlur={this.handleBlur}
               value={value}
               suffix={
                 value ?

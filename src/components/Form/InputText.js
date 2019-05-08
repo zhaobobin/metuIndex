@@ -14,6 +14,12 @@ export default class InputText extends React.Component {
     }
   }
 
+  componentDidMount(){
+    this.setState({
+      value: this.props.defaultVaule
+    })
+  }
+
   changeValue = (e) => {
     let value = e.target.value;
     this.setState({ value });
@@ -33,11 +39,11 @@ export default class InputText extends React.Component {
     return(
       <Input
         size="large"
-        maxLength="11"
         autoComplete="off"
         placeholder={this.props.placeholder}
         onChange={this.changeValue}
         value={value}
+        disabled={this.props.disabled}
         suffix={
           value ?
             <Icon

@@ -11,7 +11,6 @@ import InputSmscode from '~/components/Form/InputSmscode'
 import FormXieyi from '~/components/Form/FormXieyi'
 
 const FormItem = Form.Item;
-const keys = ['tel', 'nickname', 'password', 'captcha', 'smscode', 'xieyi'];
 
 @connect(state => ({
   global: state.global
@@ -76,9 +75,17 @@ export default class UserRegister extends React.Component {
       });
       this.setState({smscodeSended: true});
     }
+    else if(err === 'smscodeError'){
+      this.props.form.setFields({
+        'smscode': {
+          value: '',
+          errors: [new Error('请输入短信验证码')]
+        }
+      });
+    }
     else{
       this.props.form.setFieldsValue({'smscode': value});
-      this.props.form.validateFields(['smscode'], (err, values) => {});
+      // this.props.form.validateFields(['smscode'], (err, values) => {});
     }
   };
 
@@ -100,7 +107,7 @@ export default class UserRegister extends React.Component {
     if(!this.ajaxFlag) return;
     this.ajaxFlag = false;
 
-    this.props.form.validateFields(keys, (err, values) => {
+    this.props.form.validateFields('', (err, values) => {
       if (!err) {
         this.register(values);
       }
@@ -110,15 +117,29 @@ export default class UserRegister extends React.Component {
 
   //注册
   register = (values) => {
+
+    let {wechat_userinfo} = this.props;
+
+    let data = {
+      userType: this.state.userType,
+      ...values
+    };
+
+    // 微信
+    if(wechat_userinfo) {
+      data.registerType = 'wechat';
+      data.wechat_openid = wechat_userinfo.openid;
+      data.nickname = wechat_userinfo.nickname;
+      data.gender = wechat_userinfo.sex;
+      data.userpic = wechat_userinfo.headimgurl;
+    }
+
     this.props.dispatch({
       type: 'global/register',
-      payload: {
-        userType: this.state.userType,
-        ...values
-      },
+      payload: data,
       callback: (res) => {
         if (res.status === 1) {
-          this.setUserModal(false, '2');
+          this.props.callback();
         }else{
           if(res.status > 10000) {
             this.setInputError(res.status, res.msg);
@@ -185,20 +206,23 @@ export default class UserRegister extends React.Component {
               )}
             </FormItem>
 
-            <FormItem>
-              {getFieldDecorator('nickname', {
-                validateTrigger: 'onBlur',
-                rules: [
-                  { required: true, message: '请输入昵称' },
-                  { pattern: /^[\u4E00-\u9FA5a-zA-Z0-9_]{2,10}$/, message: '只能输入汉子、字母、数字、下划线，2-10位' }
-                ],
-              })(
-                <InputText placeholder="昵称" callback={this.nicknameCallback}/>
-              )}
-            </FormItem>
+            {/*<FormItem>*/}
+              {/*{getFieldDecorator('nickname', {*/}
+                {/*initialValue: this.props.nickname || '',*/}
+                {/*validateFirst: true,*/}
+                {/*validateTrigger: 'onBlur',*/}
+                {/*rules: [*/}
+                  {/*{ required: true, message: '请输入昵称' },*/}
+                  {/*{ pattern: /^[\u4E00-\u9FA5a-zA-Z0-9_]{2,10}$/, message: '只能输入汉子、字母、数字、下划线，2-10位' }*/}
+                {/*],*/}
+              {/*})(*/}
+                {/*<InputText defaultVaule={this.props.nickname} placeholder="昵称" callback={this.nicknameCallback}/>*/}
+              {/*)}*/}
+            {/*</FormItem>*/}
 
             <FormItem>
               {getFieldDecorator('password', {
+                validateFirst: true,
                 validateTrigger: 'onBlur',
                 rules: [
                   { required: true, message: '请输入密码' },
@@ -212,11 +236,10 @@ export default class UserRegister extends React.Component {
 
             <FormItem>
               {getFieldDecorator('smscode', {
-                validateTrigger: 'onBlur',
+                validateFirst: true,
                 rules: [
                   { required: true, message: '请输入验证码' },
-                  { len: 6, message: '手机验证码格式有误' },
-                  { pattern: /^[0-9]+$/, message: '只能输入数字' }
+                  { pattern: /^[0-9]{6}$/, message: '请输入正确的短信验证码' },
                 ]
               })(
                 <InputSmscode

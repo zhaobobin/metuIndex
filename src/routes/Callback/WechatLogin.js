@@ -4,10 +4,13 @@
  * 刷新access_token：https://api.weixin.qq.com/sns/oauth2/refresh_token?appid=APPID&grant_type=refresh_token&refresh_token=REFRESH_TOKEN
  */
 import React from 'react';
+import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
-import { Row, Col } from 'antd';
+import { Row, Col, Button } from 'antd';
 import { ENV, Storage, getUrlParams } from '~/utils/utils'
 import styles from './WechatLogin.less'
+
+import UserRegister from '~/components/User/UserRegister';
 
 const paramsObj = getUrlParams() || '';
 
@@ -19,112 +22,122 @@ export default class WechatLogin extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      loginAuth: '',
       error: '',
       access_token: '',
+      wechat_userinfo: ''
     }
   }
 
   componentDidMount(){
-    this.getAccessToken();
+    this.wechatLoginAuth();
   }
 
-  init = () => {
-
-  };
-
-  // 获取access_token, 本地存储的state超过一小时视为过期
-  getAccessToken = () => {
+  // step1: 微信授权登录校验 code换取access_token，access_token查询wechat_userinfo
+  wechatLoginAuth = () => {
 
     let state = paramsObj.state;
-    if(!state || state !== Storage.get(ENV.storageWechatLoginState, 3600)){
+    if(!state || state !== Storage.get(ENV.storageWechatLoginState)){
       // 非法操作
-      this.setState({error: '非法操作：state过期'});
+      // this.setState({error: 'state已过期'});
+      this.props.dispatch(routerRedux.push('/'));
       return;
     }
 
     this.props.dispatch({
       type: 'global/post',
-      url: 'api/getWechatLoginAccessToken',
+      url: 'api/wechatLoginAuth',
       payload: {
-        code: paramsObj.code,
+        code: paramsObj.code,                   // code是一次性的参数，code的有效时间非常短，一般为30秒
       },
       callback: (res) => {
-        if(res.status === 1){
-          Storage.set(ENV.storageWechatLoginAccessToken, res.access_token);
-          Storage.set(ENV.storageWechatLoginRefreshToken, res.fresh_token);
+        if(res.status === 1){     // 已注册，直接登录
+          this.changeLoginStatus(res.data)
+        }
+        else if(res.status === 2){  //未注册，用户关联注册
           this.setState({
-            access_token: res.access_token
+            wechat_userinfo: res.data
           })
-        }else{
-          this.setState({error: '非法操作：code过期'});
+        }
+        else{
+          this.setState({error: 'code过期，错误码：' + res.msg});
         }
       }
     });
 
   };
 
-  // 刷新access_token
-  refreshAccessToken = () => {
+  // step2: 微信用户关联注册
+  registerCallback = () => {
+    this.props.dispatch(routerRedux.push('/'));
+  };
 
-    let state = paramsObj.state;
-    if(!state || state !== Storage.get(ENV.storageWechatLoginState, 3600)){
-      // 非法操作
-      this.setState({error: '非法操作：state过期'});
-      return;
-    }
-
+  // step3: 修改登录用户信息
+  changeLoginStatus = (data) => {
+    Storage.set(ENV.storageToken, data.token);              //保存token
     this.props.dispatch({
-      type: 'global/post',
-      url: 'api/refreshWechatLoginAccessToken',
+      type: 'global/changeLoginStatus',
       payload: {
-        refresh_token: Storage.get(ENV.storageWechatLoginRefreshToken),
-      },
-      callback: (res) => {
-        if(res.status === 1){
-          Storage.set(ENV.storageWechatLoginAccessToken, res.access_token);
-          Storage.set(ENV.storageWechatLoginRefreshToken, res.fresh_token);
-          this.setState({
-            access_token: res.access_token
-          })
-        }else{
-          this.setState({error: '非法操作：code过期'});
-        }
+        loading: false,
+        isAuth: true,
+        currentUser: data.currentUser,
+        token: data.token
       }
     });
-
+    this.props.dispatch(routerRedux.push('/'));
   };
 
-  // 登录
-  login = () => {
-
-  };
 
   render(){
+
+    const { error, wechat_userinfo } = this.state;
 
     return(
 
       <div className={styles.WechatLogin}>
 
         <Row>
-          <Col xs={0} sm={0} md={3} lg={5} />
-          <Col xs={24} sm={24} md={18} lg={14}>
+          <Col xs={0} sm={0} md={4} lg={6} />
+          <Col xs={24} sm={24} md={16} lg={12}>
 
             <div className={styles.container}>
-              <p>WechatLogin</p>
 
-              <div className={styles.wechatInfo}>
+              {
+                wechat_userinfo ?
+                  <div className={styles.wechat_userinfo}>
 
-              </div>
+                    <p className={styles.userinfo}>
+                      <img src={wechat_userinfo.headimgurl} alt="avatar"/>
+                      <span>尊敬的微信用户：</span>
+                      <span className={styles.nickname}>{wechat_userinfo.nickname}</span>
+                    </p>
 
-              <p className={styles.error}>{this.state.error}</p>
+                    <p className={styles.desc}>为了给您更好的服务，请关联一个{ENV.appname}账号，便于您下次快速登录</p>
 
-              <p className={styles.toekn}>{this.state.access_token}</p>
+                    <UserRegister
+                      wechat_userinfo={wechat_userinfo}
+                      nickname={wechat_userinfo.nickname}
+                      callback={this.registerCallback}
+                    />
+
+                  </div>
+                  :
+                  null
+              }
+
+              {
+                error ?
+                  <p className={styles.error}>
+                    <span>错误提示：</span>
+                    <span>{error}</span>
+                  </p>
+                  :
+                  null
+              }
 
             </div>
 
           </Col>
-          <Col xs={0} sm={0} md={3} lg={5} />
+          <Col xs={0} sm={0} md={4} lg={6} />
         </Row>
 
       </div>

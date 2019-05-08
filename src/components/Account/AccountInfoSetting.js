@@ -187,9 +187,9 @@ export default class UserInfoSetting extends PureComponent {
                   initialValue: currentUser.gender
                 })(
                   <Select onChange={this.handleSelectGender}>
-                    <Option value="男">男</Option>
-                    <Option value="女">女</Option>
-                    <Option value="不详">不详</Option>
+                    <Option value="1">男</Option>
+                    <Option value="2">女</Option>
+                    <Option value="0">不详</Option>
                   </Select>
                 )}
               </FormItem>

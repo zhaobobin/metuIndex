@@ -191,6 +191,7 @@ export default class UserLogin extends React.Component {
             <FormItem>
               {getFieldDecorator('tel', {
                 initialValue: lastTel,
+                validateFirst: true,
                 validateTrigger: 'onBlur',
                 rules: [
                   { required: true, message: '请输入手机号' },
@@ -205,6 +206,7 @@ export default class UserLogin extends React.Component {
               loginType === 'psd' ?
                 <FormItem>
                   {getFieldDecorator('password', {
+                    validateFirst: true,
                     validateTrigger: 'onBlur',
                     rules: [
                       { required: true, message: '请输入密码' },
@@ -219,6 +221,7 @@ export default class UserLogin extends React.Component {
                 :
                 <FormItem>
                   {getFieldDecorator('smscode', {
+                    validateFirst: true,
                     validateTrigger: 'onBlur',
                     rules: [
                       { required: true, message: '请输入验证码' },

@@ -373,3 +373,4 @@ metuIndex-currentMenu ————  记录MainMenu导航当前激活的key,用�
 
 [从 40029 和 state 来说说微信网页授权的安全问题](https://blog.csdn.net/weixin_37242696/article/details/80243325)
   
+[微信授权登录并获取用户信息接口开发](http://www.cnblogs.com/it-cen/p/4568278.html)

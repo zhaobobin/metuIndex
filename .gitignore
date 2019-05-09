@@ -5,8 +5,9 @@
 
 # production
 /dist
+/src/config/*
 
 # misc
 .DS_Store
 npm-debug.log*
-/config
+

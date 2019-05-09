@@ -23,7 +23,6 @@ export default class UserRegister extends React.Component {
     this.ajaxFlag = true;
     this.state = {
       userType: 'user',                               //用户类型
-      registerType: 'psd',                            //注册方式
 
       smscodeSended: false,                           //短信验证码是否已发送
     }
@@ -121,6 +120,7 @@ export default class UserRegister extends React.Component {
     let {wechat_userinfo} = this.props;
 
     let data = {
+      registerType: 'psd',                // 注册方式
       userType: this.state.userType,
       ...values
     };
@@ -129,7 +129,6 @@ export default class UserRegister extends React.Component {
     if(wechat_userinfo) {
       data.registerType = 'wechat';
       data.wechat_openid = wechat_userinfo.openid;
-      data.nickname = wechat_userinfo.nickname;
       data.gender = wechat_userinfo.sex;
       data.userpic = wechat_userinfo.headimgurl;
     }
@@ -206,19 +205,19 @@ export default class UserRegister extends React.Component {
               )}
             </FormItem>
 
-            {/*<FormItem>*/}
-              {/*{getFieldDecorator('nickname', {*/}
-                {/*initialValue: this.props.nickname || '',*/}
-                {/*validateFirst: true,*/}
-                {/*validateTrigger: 'onBlur',*/}
-                {/*rules: [*/}
-                  {/*{ required: true, message: '请输入昵称' },*/}
-                  {/*{ pattern: /^[\u4E00-\u9FA5a-zA-Z0-9_]{2,10}$/, message: '只能输入汉子、字母、数字、下划线，2-10位' }*/}
-                {/*],*/}
-              {/*})(*/}
-                {/*<InputText defaultVaule={this.props.nickname} placeholder="昵称" callback={this.nicknameCallback}/>*/}
-              {/*)}*/}
-            {/*</FormItem>*/}
+            <FormItem>
+              {getFieldDecorator('nickname', {
+                initialValue: this.props.nickname || '',
+                validateFirst: true,
+                validateTrigger: 'onBlur',
+                rules: [
+                  { required: true, message: '请输入昵称' },
+                  { pattern: /^[\u4E00-\u9FA5a-zA-Z0-9_]{2,10}$/, message: '只能输入汉子、字母、数字、下划线，2-10位' }
+                ],
+              })(
+                <InputText defaultVaule={this.props.nickname} placeholder="昵称" callback={this.nicknameCallback}/>
+              )}
+            </FormItem>
 
             <FormItem>
               {getFieldDecorator('password', {

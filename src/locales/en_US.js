@@ -41,8 +41,8 @@ export default {
 
   'callback': 'Callback Page',
   'callback.wechat.login': 'Wechat Login Callback Page',
-  'callback.weibo': 'Weibo Callback Page',
-  'callback.qq': 'QQ Callback Page',
+  'callback.weibo': 'Weibo Login Callback Page',
+  'callback.qqLogin': 'QQ Login Callback Page',
 
   'menu.user.login': 'Sign in',
   'menu.user.register': 'Sign up',

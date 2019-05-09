@@ -154,9 +154,9 @@ const BaseRoutes = app => [
           {
             name: 'QQ回调',
             id: 'callback.qq',
-            key: 'qq',
-            path: 'qq',
-            component: dynamicWrapper(app, [], () => import('../routes/Callback/Qq')),
+            key: 'qqLogin',
+            path: 'qqLogin',
+            component: dynamicWrapper(app, [], () => import('../routes/Callback/QqLogin.js')),
           },
         ]
       },

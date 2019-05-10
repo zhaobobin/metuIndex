@@ -73,7 +73,9 @@ export default class InputSmscode extends React.Component {
 
   handleBlur = (e) => {
     let value = e.target.value;
-    if(value.length < this.state.maxLength) this.props.callback(value, 'smscodeError');
+    if(value.length < this.state.maxLength){
+      this.props.callback(value, 'smscodeError');
+    }
   };
 
   //确定

@@ -23,8 +23,6 @@ export default class UserRegister extends React.Component {
     this.ajaxFlag = true;
     this.state = {
       userType: 'user',                               //用户类型
-
-      smscodeSended: false,                           //短信验证码是否已发送
     }
   }
 
@@ -63,7 +61,6 @@ export default class UserRegister extends React.Component {
           errors: [new Error('请输入手机号')]
         }
       });
-      this.setState({smscodeSended: true});
     }
     else if(err === 'clearError'){
       this.props.form.setFields({
@@ -72,13 +69,12 @@ export default class UserRegister extends React.Component {
           errors: ''
         }
       });
-      this.setState({smscodeSended: true});
     }
     else if(err === 'smscodeError'){
       this.props.form.setFields({
         'smscode': {
           value: '',
-          errors: [new Error('请输入短信验证码')]
+          errors: [new Error(!value ? '请输入短信验证码' : '短信验证码格式有误')]
         }
       });
     }

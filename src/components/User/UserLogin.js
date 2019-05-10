@@ -79,7 +79,6 @@ export default class UserLogin extends React.Component {
 
   // QQ登录
   qqLogin = () => {
-
     const QqLoginState = Encrypt('Qqlogin', ('metuwang' + Math.random()));
     Storage.set(ENV.storageQqLoginState, QqLoginState);
 

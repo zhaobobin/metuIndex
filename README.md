@@ -367,7 +367,77 @@ metuIndex-currentMenu ————  记录MainMenu导航当前激活的key,用�
 
 #### 微信授权登录
 
-参考：
+1. 前端获取code
+
+前端页面导入组件 import WxLogin from 'wxlogin.react';
+
+用户扫码WxLogin组件生成的二维码，进入回调页面，
+
+回调页面截取链接code，传给后端。
+
+```
+<WxLogin
+  option={{
+    appid: WechatConfig.AppId,
+    userServiceAPI: WechatConfig.redirect_uri,
+    scope: WechatConfig.scope,
+    state: WechatLoginState,
+    userServiceParams: {
+      from: 'pc',
+      flag: 'signin',
+      type: 'weixin',
+      env: 'development',
+      uid: '',
+    },
+    smartRedirect: '',
+    href: '',  // 'data:text/css;base64,' + Base64.encode('./UserWechatLoginHref.css')
+  }}
+  style={{
+    width: '100%',
+    height: '400px',
+    overflow: 'hidden',
+    textAlign: 'center'
+  }}
+/>
+```
+
+2. 后端查询access_token
+
+```
+function getAccessToken(code, cb){
+	var url = 'https://api.weixin.qq.com/sns/oauth2/access_token?';
+
+	var params = {
+		grant_type: 'authorization_code',
+		appid: config.AppId,
+		secret: config.AppSecret,
+		code: code,
+    };
+    for (let i in params) {
+		url += (i + '=' + encodeURIComponent(params[i]) + '&');
+	}
+
+	url = url.substring(0, url.lastIndexOf('&'));
+	request.get(
+		url,
+		function(error, response, body){
+		    if(!error && response.statusCode === 200){
+				var data = JSON.parse(body);
+		    	if(data.errcode){
+		    		cb({status: 0, msg: data.errcode})						// code过期
+		    	}else{
+		    		cb({status: 1, msg:'成功', data: data})
+		    	}
+	          
+	      }
+		}
+	)
+}
+```
+
+3. 后端查询wechat_userinfo
+
+##### 参考：
 
 [react之网页获取微信用户信息](https://www.jianshu.com/p/0a35c647cbb3)
 
@@ -375,29 +445,177 @@ metuIndex-currentMenu ————  记录MainMenu导航当前激活的key,用�
   
 [微信授权登录并获取用户信息接口开发](http://www.cnblogs.com/it-cen/p/4568278.html)
 
+##### 说明:
+
+state机制
+
+1) 登入页面生成state随机值，传入code查询链接，并保存至Storage。
+
+```
+const state = Encrypt('wechatlogin', ('xxxxxx' + Math.random()));
+
+Storage.set(ENV.storageWechatLoginState, state);
+```
+
+2) 回调页面截取链接中的state，并与本地存储中的state进行比较。
+
+```
+let state = paramsObj.state;
+if(!state || state !== Storage.get(ENV.storageWechatLoginState)){
+  return;
+}
+```
+
+3) 链接附带非法state的请求将会被拦截。
 
 #### QQ授权登录
 
-1. 获取code
+1. 前端获取code
 
 打开新窗口，截取链接中的code，传给后端
 
 ```
 qqLogin = () => {
+  const QqLoginState = Encrypt('Qqlogin', ('metuwang' + Math.random()));
+  Storage.set(ENV.storageQqLoginState, QqLoginState);
+
   let url = 'https://graph.qq.com/oauth2.0/authorize?';
   let params = {
     response_type: 'code',
-    client_id: config.AppId,
-    redirect_uri: encodeURI('http://www.metuwang.com/callback/qqLogin')
+    client_id: '101551625',
+    redirect_uri: encodeURI('http://www.metuwang.com/callback/qqLogin'),
+    state: QqLoginState
   };
   for (let i in params) {
     url += (i + '=' + params[i] + '&');
   }
   url = url.substring(0, url.lastIndexOf('&'));
-  openwindow(url, 'TencentLogin', 800, 600);
+  window.location.href = url;
 };
 ```
 
-2. 查询qq_userinfo
+2. 后端查询access_token
 
-后端得到code后，查询access_token，进而查询qq_userinfo
+```
+function getAccessToken(code, cb){
+	var url = 'https://graph.qq.com/oauth2.0/token?';
+
+	var params = {
+		grant_type: 'authorization_code',
+		client_id: config.AppId,
+		client_secret: config.AppKey,
+		code: code,
+		redirect_uri: encodeURI(config.redirect_uri),
+    };
+    for (let i in params) {
+		url += (i + '=' + encodeURIComponent(params[i]) + '&');
+	}
+
+	url = url.substring(0, url.lastIndexOf('&'));
+	request.get(
+		url,
+		function(error, response, body){
+		    if(!error && response.statusCode === 200){
+		    	var access_token = body.split('&')[0].split('=')[1];
+		    	if(!access_token){
+		    		cb({status: 0, msg: '获取access_token失败'})						// code过期
+		    	}else{
+		    		cb({status: 1, msg:'成功', data: access_token})
+		    	}
+	          
+	      }
+		}
+	)
+}
+```
+
+3. 后端查询openid
+
+```
+function getOpenid(access_token, cb){
+	
+	var url = 'https://graph.qq.com/oauth2.0/me?access_token=' + access_token;
+	request.get(
+		url,
+		function(error, response, body){
+		    if(!error && response.statusCode === 200){
+		    	// callback( {"client_id":"YOUR_APPID","openid":"YOUR_OPENID"} ); 
+		    	var json = JSON.parse(body.split('(')[1].split(')')[0])
+		    	if(!json.openid){
+		    		cb({status: 0, msg: '获取openid失败'})						// access_token失效
+		    	}else{
+		    		cb({status: 1, msg:'成功', data: json.openid})
+		    	}
+	          
+	      }
+		}
+	)
+}
+```
+
+4. 后端查询qq_uderinfo
+
+
+#### 微博授权登录
+
+1. 前端获取code
+
+```
+weiboLogin = () => {
+  const WeiboLoginState = Encrypt('Weibologin', ('metuwang' + Math.random()));
+  Storage.set(ENV.storageWeiboLoginState, WeiboLoginState);
+
+  let url = 'https://api.weibo.com/oauth2/authorize?';
+  let params = {
+    response_type: 'code',
+    client_id: '1779469029',
+    redirect_uri: encodeURI('http://www.metuwang.com/callback/weiboLogin'),
+    state: WeiboLoginState
+  };
+  for (let i in params) {
+    url += (i + '=' + params[i] + '&');
+  }
+  url = url.substring(0, url.lastIndexOf('&'));
+  window.location.href = url;
+};
+```
+
+2. 后端查询access_token
+
+```
+function getAccessToken(code, cb){
+
+	var url = 'https://api.weibo.com/oauth2/access_token?';
+
+	var params = {
+		grant_type: 'authorization_code',
+		client_id: config.AppId,
+		client_secret: config.AppSecret,
+		code: code,
+		redirect_uri: encodeURI(config.redirect_uri),
+    };
+
+    request.post(
+    	{
+    		url: url, 
+    		form: params
+    	}, 
+    	function (error ,response, body) {
+    		var data = JSON.parse(body);
+  			if(!error && response.statusCode === 200){
+
+		    	if(!data.access_token){
+		    		cb({status: 0, msg: '获取access_token失败'})						// code过期
+		    	}else{
+		    		cb({status: 1, msg:'成功', data: data})
+		    	}
+	          
+			}else{
+				cb({status: 0, msg: '获取access_token失败'})
+			}
+		}
+	)
+}
+```
+
+3. 后端查询用户信息weibo_userinfo

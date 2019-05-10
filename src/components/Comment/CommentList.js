@@ -43,7 +43,7 @@ export default class CommentList extends PureComponent {
     this.queryCommentList(this.props.id);
   }
 
-  componentWillReceiveProps(nextProps){
+  UNSAFE_componentWillReceiveProps(nextProps){
     if(nextProps.aid !== this.props.aid){
       this.queryCommentList(nextProps.aid);
     }

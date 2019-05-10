@@ -22,6 +22,7 @@ export default class InputSmscode extends React.Component {
     this.ajaxFlag = true;
     this.state = {
       value: '',            //输入框的值
+      maxLength: 6,
       tel: '',
       btnText: '获取验证码',
       btnStyle: styles.null,
@@ -72,7 +73,7 @@ export default class InputSmscode extends React.Component {
 
   handleBlur = (e) => {
     let value = e.target.value;
-    this.props.callback(value, 'smscodeError');
+    if(value.length < this.state.maxLength) this.props.callback(value, 'smscodeError');
   };
 
   //确定
@@ -159,7 +160,7 @@ export default class InputSmscode extends React.Component {
 
   render(){
 
-    const {value, btnText, btnStyle, pintuNo, modalVisible} = this.state;
+    const {maxLength, value, btnText, btnStyle, pintuNo, modalVisible} = this.state;
 
     const buttonStyle = this.props.buttonStyle || {height: '40px', lineHeight: '40px'};
 
@@ -171,7 +172,7 @@ export default class InputSmscode extends React.Component {
           <Col xs={14} sm={14} md={16} lg={16}>
             <Input
               size="large"
-              maxLength="6"
+              maxLength={maxLength}
               autoComplete="off"
               placeholder="短信验证码"
               onChange={this.changeValue}

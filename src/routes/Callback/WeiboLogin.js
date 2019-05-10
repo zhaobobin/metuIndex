@@ -1,13 +1,13 @@
 /**
- * QQ授权登录 - 回调页面
- * 截取链接中的code，然后传给后端，查询access_token与userinfo
+ * 微博授权登录 - 回调页面
+ * 截取链接中的code码，然后发给后端，去查询access_token
  */
 import React from 'react';
 import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
 import { Row, Col, Button } from 'antd';
 import { ENV, Storage, getUrlParams } from '~/utils/utils'
-import styles from './QqLogin.less'
+import styles from './WeiboLogin.less'
 
 import UserRegister from '~/components/User/UserRegister';
 
@@ -16,25 +16,25 @@ const paramsObj = getUrlParams() || '';
 @connect(state => ({
   global: state.global
 }))
-export default class QqLogin extends React.Component {
+export default class WeiboLogin extends React.Component {
 
   constructor(props){
     super(props);
     this.state = {
       error: '',
-      qq_userinfo: ''
+      weibo_userinfo: ''
     }
   }
 
   componentDidMount(){
-    this.qqLoginAuth();
+    this.weiboLoginAuth();
   }
 
-  // step1: QQ授权登录校验 code换取access_token，access_token查询qq_userinfo
-  qqLoginAuth = () => {
+  // step1: 微博授权登录校验 code换取access_token，access_token查询weibo_userinfo
+  weiboLoginAuth = () => {
 
     let state = paramsObj.state;
-    if(!state || state !== Storage.get(ENV.storageQqLoginState)){
+    if(!state || state !== Storage.get(ENV.storageWeiboLoginState)){
       // 非法操作
       // this.setState({error: 'state已过期'});
       this.props.dispatch(routerRedux.push('/'));
@@ -43,7 +43,7 @@ export default class QqLogin extends React.Component {
 
     this.props.dispatch({
       type: 'global/post',
-      url: 'api/qqLoginAuth',
+      url: 'api/weiboLoginAuth',
       payload: {
         code: paramsObj.code,                   // code是一次性的参数，code的有效时间非常短，一般为30秒
       },
@@ -53,7 +53,7 @@ export default class QqLogin extends React.Component {
         }
         else if(res.status === 2){  //未注册，用户关联注册
           this.setState({
-            qq_userinfo: res.data
+            weibo_userinfo: res.data
           })
         }
         else{
@@ -84,13 +84,14 @@ export default class QqLogin extends React.Component {
     this.props.dispatch(routerRedux.push('/'));
   };
 
+
   render(){
 
-    const { error, qq_userinfo } = this.state;
+    const { error, weibo_userinfo } = this.state;
 
     return(
 
-      <div className={styles.QqLogin}>
+      <div className={styles.WeiboLogin}>
 
         <Row>
           <Col xs={0} sm={0} md={4} lg={6} />
@@ -99,20 +100,20 @@ export default class QqLogin extends React.Component {
             <div className={styles.container}>
 
               {
-                qq_userinfo ?
-                  <div className={styles.qq_userinfo}>
+                weibo_userinfo ?
+                  <div className={styles.weibo_userinfo}>
 
                     <p className={styles.userinfo}>
-                      <img src={qq_userinfo.figureurl_2} alt="avatar"/>
-                      <span>尊敬的QQ用户：</span>
-                      <span className={styles.nickname}>{qq_userinfo.nickname}</span>
+                      <img src={weibo_userinfo.profile_image_url} alt="avatar"/>
+                      <span>尊敬的微博用户：</span>
+                      <span className={styles.nickname}>{weibo_userinfo.name}</span>
                     </p>
 
                     <p className={styles.desc}>为了给您更好的服务，请关联一个{ENV.appname}账号，便于您下次快速登录</p>
 
                     <UserRegister
-                      qq_userinfo={qq_userinfo}
-                      nickname={qq_userinfo.nickname}
+                      weibo_userinfo={weibo_userinfo}
+                      nickname={weibo_userinfo.name}
                       callback={this.registerCallback}
                     />
 

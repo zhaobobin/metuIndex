@@ -17,7 +17,7 @@ export const ENV = {
   appname: '迷图网',
   hometitle: '迷图网 - 摄影图片素材分享社区',
   keywords: '迷图网,摄影,图片,素材,分享,社区。',
-  description: '迷图网（www.metuwang.com）- 是一个致力于摄影分享、发现、售卖的专业平台，来自世界各地的摄影师是我们忠实的用户。让你与他人因图片相识，世界很大，我想看一看。',
+  description: '迷图网(www.metuwang.com)，是一个致力于摄影分享、发现、售卖的专业平台，来自世界各地的摄影师是我们忠实的用户。让你与他人因图片相识，世界那么大，我想去看看。',
   author: '迷图网(www.metuwang.com)',
   verification: '',
 
@@ -39,8 +39,9 @@ export const ENV = {
   storageCurrentMenu: 'metuIndex-currentMenu',
 
   storageWechatLoginState: 'metuIndex-WechatLoginState',    // 微信授权登录state
-  storageWechatLoginAccessToken: 'metuIndex-WechatLoginAccessToken',    // 微信授权登录access_token
-  storageWechatLoginRefreshToken: 'metuIndex-WechatLoginRefreshToken',    // 微信授权登录refresh_token
+  storageWeiboLoginState: 'metuIndex-WeiboLoginState',    // 微博授权登录state
+  storageQqLoginState: 'metuIndex-QqLoginState',    // QQ授权登录state
+
 };
 
 /**
@@ -185,6 +186,13 @@ export function yaoqingDecrypt(text) {
 }
 
 /*************************** 通用工具函数 ***************************/
+
+export function openwindow(url,name,iWidth,iHeight) {
+  //window.screen.height获得屏幕的高，window.screen.width获得屏幕的宽
+  let iTop = (window.screen.height-30-iHeight)/2;       //获得窗口的垂直位置;
+  let iLeft = (window.screen.width-10-iWidth)/2;        //获得窗口的水平位置;
+  window.open(url, name, 'height='+iHeight+',innerHeight='+iHeight+',width='+iWidth+',innerWidth='+iWidth+',top='+iTop+',left='+iLeft+',toolbar=no,menubar=no,scrollbars=auto,resizeable=no,location=no,status=no');
+}
 
 // 生成微信长链接
 // export function getWechatUrl() {

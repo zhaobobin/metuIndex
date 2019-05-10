@@ -43,7 +43,7 @@ export default class UserRegister extends React.Component {
       });
     }else{
       this.props.form.setFieldsValue({'tel': value});
-      this.props.form.validateFields(['tel'], (err, values) => {});
+      // this.props.form.validateFields(['tel'], (err, values) => {});
     }
   };
 
@@ -117,21 +117,39 @@ export default class UserRegister extends React.Component {
   //注册
   register = (values) => {
 
-    let {wechat_userinfo} = this.props;
-
     let data = {
       registerType: 'psd',                // 注册方式
       userType: this.state.userType,
       ...values
     };
 
+    // 第三方登录
+    let {wechat_userinfo, weibo_userinfo, qq_userinfo} = this.props;
+
     // 微信
     if(wechat_userinfo) {
       data.registerType = 'wechat';
       data.wechat_openid = wechat_userinfo.openid;
-      data.gender = wechat_userinfo.sex;
-      data.userpic = wechat_userinfo.headimgurl;
+      data.gender = wechat_userinfo.gender;
+      data.userpic = wechat_userinfo.profile_image_url;
     }
+
+    // 微博
+    if(weibo_userinfo) {
+      data.registerType = 'weibo';
+      data.weibo_uid = weibo_userinfo.uid;
+      data.gender = weibo_userinfo.sex;
+      data.userpic = weibo_userinfo.headimgurl;
+    }
+
+    // QQ
+    if(qq_userinfo) {
+      data.registerType = 'qq';
+      data.qq_openid = qq_userinfo.openid;
+      data.gender = qq_userinfo.gender;
+      data.userpic = qq_userinfo.figureurl_2;
+    }
+    // 第三方登录 end!!!
 
     this.props.dispatch({
       type: 'global/register',
@@ -235,10 +253,8 @@ export default class UserRegister extends React.Component {
 
             <FormItem>
               {getFieldDecorator('smscode', {
-                validateFirst: true,
                 rules: [
                   { required: true, message: '请输入验证码' },
-                  { pattern: /^[0-9]{6}$/, message: '请输入正确的短信验证码' },
                 ]
               })(
                 <InputSmscode

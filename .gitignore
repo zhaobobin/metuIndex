@@ -5,7 +5,7 @@
 
 # production
 /dist
-/src/config/*
+/src/config
 
 # misc
 .DS_Store

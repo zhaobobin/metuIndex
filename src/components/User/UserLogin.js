@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import { Form, Icon, Button, Checkbox, notification } from 'antd';
-import { ENV, Storage, hasErrors } from "~/utils/utils";
+import { ENV, Storage, hasErrors, Encrypt, openwindow } from "~/utils/utils";
 import styles from './UserSign.less'
 
 import InputMobile from '~/components/Form/InputMobile'
@@ -32,6 +32,10 @@ export default class UserLogin extends React.Component {
     }
   }
 
+  componentDidMount(){
+
+  }
+
   //重置表单
   resetForm = () => {
     this.props.form.resetFields();
@@ -45,6 +49,55 @@ export default class UserLogin extends React.Component {
     })
   };
 
+  // 微信登录
+  wechatLogin = () => {
+    this.resetForm();
+    this.setState({
+      loginType: 'scan'
+    })
+  };
+
+  // 微博登录
+  weiboLogin = () => {
+    const WeiboLoginState = Encrypt('Weibologin', ('metuwang' + Math.random()));
+    Storage.set(ENV.storageWeiboLoginState, WeiboLoginState);
+
+    let url = 'https://api.weibo.com/oauth2/authorize?';
+    let params = {
+      response_type: 'code',
+      client_id: '1779469029',
+      redirect_uri: encodeURI('http://www.metuwang.com/callback/weiboLogin'),
+      state: WeiboLoginState
+    };
+    for (let i in params) {
+      url += (i + '=' + params[i] + '&');
+    }
+    url = url.substring(0, url.lastIndexOf('&'));
+    window.location.href = url;
+    // openwindow(url, 'TencentLogin', 650, 600);
+  };
+
+  // QQ登录
+  qqLogin = () => {
+
+    const QqLoginState = Encrypt('Qqlogin', ('metuwang' + Math.random()));
+    Storage.set(ENV.storageQqLoginState, QqLoginState);
+
+    let url = 'https://graph.qq.com/oauth2.0/authorize?';
+    let params = {
+      response_type: 'code',
+      client_id: '101551625',
+      redirect_uri: encodeURI('http://www.metuwang.com/callback/qqLogin'),
+      state: QqLoginState
+    };
+    for (let i in params) {
+      url += (i + '=' + params[i] + '&');
+    }
+    url = url.substring(0, url.lastIndexOf('&'));
+    window.location.href = url;
+    // openwindow(url, 'TencentLogin', 650, 600);
+  };
+
   //手机号
   mobileCallback = (value, err) => {
     if(err){
@@ -56,7 +109,7 @@ export default class UserLogin extends React.Component {
       });
     }else{
       this.props.form.setFieldsValue({'tel': value});
-      this.props.form.validateFields(['tel'], (err, values) => {});
+      // this.props.form.validateFields(['tel'], (err, values) => {});
     }
   };
 
@@ -67,18 +120,9 @@ export default class UserLogin extends React.Component {
   };
 
   //短信验证码回调
-  smscodeCallback = (value) => {
+  smscodeCallback = (value, err) => {
     //清空错误提示
-    if(value === 'clearError'){
-      this.props.form.setFields({
-        'smscode': {
-          value: '',
-          errors: ''
-        }
-      });
-      this.setState({smscodeSended: true});
-    }
-    else if(value === 'telError'){
+    if(err === 'telError'){
       this.props.form.setFields({
         'tel': {
           value: '',
@@ -87,9 +131,26 @@ export default class UserLogin extends React.Component {
       });
       this.setState({smscodeSended: true});
     }
+    else if(err === 'clearError'){
+      this.props.form.setFields({
+        'smscode': {
+          value: '',
+          errors: ''
+        }
+      });
+      this.setState({smscodeSended: true});
+    }
+    else if(err === 'smscodeError'){
+      this.props.form.setFields({
+        'smscode': {
+          value: '',
+          errors: [new Error('请输入短信验证码')]
+        }
+      });
+    }
     else{
       this.props.form.setFieldsValue({'smscode': value});
-      this.props.form.validateFields(['smscode'], (err, values) => {});
+      // this.props.form.validateFields(['smscode'], (err, values) => {});
     }
   };
 
@@ -191,11 +252,8 @@ export default class UserLogin extends React.Component {
             <FormItem>
               {getFieldDecorator('tel', {
                 initialValue: lastTel,
-                validateFirst: true,
-                validateTrigger: 'onBlur',
                 rules: [
                   { required: true, message: '请输入手机号' },
-                  { pattern: /^1[0-9]{10}$/, message: '手机号输入有误' }
                 ],
               })(
                 <InputMobile default={lastTel} callback={this.mobileCallback}/>
@@ -221,11 +279,8 @@ export default class UserLogin extends React.Component {
                 :
                 <FormItem>
                   {getFieldDecorator('smscode', {
-                    validateFirst: true,
-                    validateTrigger: 'onBlur',
                     rules: [
                       { required: true, message: '请输入验证码' },
-                      { pattern: /^[0-9]{6}$/, message: '短信验证码错误' },
                     ]
                   })(
                     <InputSmscode
@@ -271,17 +326,13 @@ export default class UserLogin extends React.Component {
               <hr/>
             </h4>
             <p>
-              <a
-                className={styles.wechat}
-                // onClick={this.wechatLogin}
-                onClick={() => this.changeLoginType('scan')}
-              >
+              <a className={styles.wechat} onClick={this.wechatLogin}>
                 <Icon type="wechat" />
               </a>
-              <a className={styles.weibo}>
+              <a className={styles.weibo} onClick={this.weiboLogin}>
                 <Icon type="weibo" />
               </a>
-              <a className={styles.qq}>
+              <a className={styles.qq} onClick={this.qqLogin}>
                 <Icon type="qq" />
               </a>
             </p>

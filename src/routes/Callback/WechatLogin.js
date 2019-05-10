@@ -1,7 +1,6 @@
 /**
  * 微信授权登录 - 回调页面
- * 获取access_token：https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code
- * 刷新access_token：https://api.weixin.qq.com/sns/oauth2/refresh_token?appid=APPID&grant_type=refresh_token&refresh_token=REFRESH_TOKEN
+ * 截取链接中的code码，然后发给后端，去查询access_token
  */
 import React from 'react';
 import { routerRedux } from 'dva/router';
@@ -23,7 +22,6 @@ export default class WechatLogin extends React.Component {
     super(props);
     this.state = {
       error: '',
-      access_token: '',
       wechat_userinfo: ''
     }
   }

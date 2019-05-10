@@ -365,7 +365,7 @@ metuIndex-currentMenu ————  记录MainMenu导航当前激活的key,用�
 
 ### 疑难问题
 
-1.微信授权登录
+#### 微信授权登录
 
 参考：
 
@@ -374,3 +374,30 @@ metuIndex-currentMenu ————  记录MainMenu导航当前激活的key,用�
 [从 40029 和 state 来说说微信网页授权的安全问题](https://blog.csdn.net/weixin_37242696/article/details/80243325)
   
 [微信授权登录并获取用户信息接口开发](http://www.cnblogs.com/it-cen/p/4568278.html)
+
+
+#### QQ授权登录
+
+1. 获取code
+
+打开新窗口，截取链接中的code，传给后端
+
+```
+qqLogin = () => {
+  let url = 'https://graph.qq.com/oauth2.0/authorize?';
+  let params = {
+    response_type: 'code',
+    client_id: config.AppId,
+    redirect_uri: encodeURI('http://www.metuwang.com/callback/qqLogin')
+  };
+  for (let i in params) {
+    url += (i + '=' + params[i] + '&');
+  }
+  url = url.substring(0, url.lastIndexOf('&'));
+  openwindow(url, 'TencentLogin', 800, 600);
+};
+```
+
+2. 查询qq_userinfo
+
+后端得到code后，查询access_token，进而查询qq_userinfo

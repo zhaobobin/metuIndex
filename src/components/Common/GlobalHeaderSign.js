@@ -6,7 +6,7 @@ import {ENV, Storage} from "~/utils/utils";
 import {FormattedMessage} from 'react-intl';
 import styles from './GlobalHeaderSign.less';
 
-import UserSignModal from '~/components/User/UserSignModal';
+import UserSignModal from '~/blocks/User/UserSignModal';
 import { Confirm } from '~/components/Dialog/Dialog'
 
 @connect(state => ({

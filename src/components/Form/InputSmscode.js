@@ -1,10 +1,52 @@
 /**
  * 表单 - 短信验证码
+
+ 调用方式：
+   <InputSmscode
+     tel={hasErrors(getFieldsError(['tel'])) ? '' : getFieldValue('tel')}
+     callback={this.smscodeCallback}
+   />
+
+ 回调函数：
+  smscodeCallback = (value, err) => {
+    //清空错误提示
+    if(err === 'telError'){
+      this.props.form.setFields({
+        'tel': {
+          value: '',
+          errors: [new Error('请输入手机号')]
+        }
+      });
+      this.setState({smscodeSended: true});
+    }
+    else if(err === 'clearError'){
+      this.props.form.setFields({
+        'smscode': {
+          value: '',
+          errors: ''
+        }
+      });
+      this.setState({smscodeSended: true});
+    }
+    else if(err === 'smscodeError'){
+      this.props.form.setFields({
+        'smscode': {
+          value: '',
+          errors: [new Error(!value ? '请输入短信验证码' : '短信验证码格式有误')]
+        }
+      });
+    }
+    else{
+      this.props.form.setFieldsValue({'smscode': value});
+      // this.props.form.validateFields(['smscode'], (err, values) => {});
+    }
+  };
+ *
  */
 import React from 'react';
-import { connect } from 'dva';
-import { Row, Col, Input, Icon, notification } from 'antd';
-import { Modal, Toast } from 'antd-mobile'
+import {connect} from 'dva';
+import {Row, Col, Input, Icon, notification} from 'antd';
+import {Modal, Toast} from 'antd-mobile'
 import {filterTel} from '~/utils/utils'
 import styles from './InputSmscode.less';
 
@@ -17,7 +59,7 @@ let timer;
 }))
 export default class InputSmscode extends React.Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.ajaxFlag = true;
     this.state = {
@@ -33,7 +75,7 @@ export default class InputSmscode extends React.Component {
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.initBtnStyle(this.props.tel);
   }
 
@@ -45,7 +87,7 @@ export default class InputSmscode extends React.Component {
   }
 
   //初始化按钮样式
-  initBtnStyle(tel){
+  initBtnStyle(tel) {
     let {num} = this.state;
     let btnStyle = tel ?
       num === 60 ?
@@ -66,14 +108,14 @@ export default class InputSmscode extends React.Component {
   //改变输入值
   changeValue = (e) => {
     let value = e.target.value;
-    value = value.replace(/\D/g,'');
-    this.setState({ value });
+    value = value.replace(/\D/g, '');
+    this.setState({value});
     this.props.callback(value);
   };
 
   handleBlur = (e) => {
     let value = e.target.value;
-    if(value.length < this.state.maxLength){
+    if (value.length < this.state.maxLength) {
       this.props.callback(value, 'smscodeError');
     }
   };
@@ -83,26 +125,28 @@ export default class InputSmscode extends React.Component {
 
     let {tel} = this.props;
 
-    if(!tel) {
+    if (!tel) {
       this.props.callback(tel, 'telError');
       return;
     }
 
-    if(this.state.btnStyle !== styles.actived) return;
+    if (this.state.btnStyle !== styles.actived) return;
 
-    if(!this.ajaxFlag) return;
+    if (!this.ajaxFlag) return;
     this.ajaxFlag = false;
 
     this.setState({
       modalVisible: true
     });
 
-    setTimeout(() => { this.ajaxFlag = true }, 500);
+    setTimeout(() => {
+      this.ajaxFlag = true
+    }, 500);
   };
 
   //拼图回调
   pintuResult = (value) => {
-    if(!value) return;
+    if (!value) return;
     this.sendSmsCode();
   };
 
@@ -121,7 +165,7 @@ export default class InputSmscode extends React.Component {
           this.interval();                                      //执行倒计时
           this.props.callback('clearError');
           Toast.info(`已将短信验证码发送到您${filterTel(tel)}的手机当中，请注意查收！`, 2);
-        }else{
+        } else {
           Toast.info(res.msg, 2);
         }
       }
@@ -129,11 +173,11 @@ export default class InputSmscode extends React.Component {
   };
 
   //短信倒计时
-  interval(){
+  interval() {
     let num = 60;
     this.setState({btnText: '重新发送(' + num + 's)', btnStyle: styles.disabled, modalVisible: false});
     timer = setInterval(() => {
-      if(num === 1){
+      if (num === 1) {
         this.ajaxFlag = true;
         this.setState({
           btnText: '重新获取',
@@ -141,7 +185,7 @@ export default class InputSmscode extends React.Component {
           num: 60
         });
         clearInterval(timer);
-      }else{
+      } else {
         num--;
         this.setState({btnText: '重新发送(' + num + 's)', num: num});
       }
@@ -149,8 +193,8 @@ export default class InputSmscode extends React.Component {
   }
 
   //清空输入框
-  emitEmpty(){
-    this.setState({ value: '' });
+  emitEmpty() {
+    this.setState({value: ''});
     this.props.callback();
   };
 
@@ -160,7 +204,7 @@ export default class InputSmscode extends React.Component {
     });
   };
 
-  render(){
+  render() {
 
     const {maxLength, value, btnText, btnStyle, pintuNo, modalVisible} = this.state;
 
@@ -168,7 +212,7 @@ export default class InputSmscode extends React.Component {
 
     const modalWidth = document.body.clientWidth < 750 ? '95%' : '360px';
 
-    return(
+    return (
       <div>
         <Row gutter={10} className={styles.smscode}>
           <Col xs={14} sm={14} md={16} lg={16}>

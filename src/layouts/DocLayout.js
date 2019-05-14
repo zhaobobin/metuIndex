@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, NavLink, Route, Redirect, Switch } from 'dva/router';
 import DocumentTitle from 'react-document-title';
-import NotFound from "~/routes/Other/404";
+import NotFound from "~/pages/Other/404";
 import { ENV } from '~/utils/utils';
 
 import styles from './DocLayout.less'

@@ -5,7 +5,7 @@ import { Layout, BackTop } from 'antd';
 import { ENV, Storage } from '~/utils/utils';
 import { injectIntl } from 'react-intl';
 import DocumentTitle from 'react-document-title';
-import NotFound from "~/routes/Other/404";
+import NotFound from "~/pages/Other/404";
 
 import Loading from '~/components/Common/Loading';
 import GlobalHeader from '~/components/Common/GlobalHeader';

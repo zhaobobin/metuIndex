@@ -57,8 +57,12 @@
     ├—— assets                  图片等资源
       
     ├—— common                  自定义导航
+    
+    ├—— blocks                  通用模块 - 组件综合使用
       
-    ├—— components              自定义组件
+    ├—— components              通用组件
+    
+    ├—— containers              页面组件
       
     ├—— layouts                 布局组件，嵌套路由
       
@@ -270,7 +274,7 @@
   import { Layout, BackTop } from 'antd';
   import { ENV } from '~/utils/utils';
   import DocumentTitle from 'react-document-title';
-  import NotFound from "~/routes/Other/404";
+  import NotFound from "~/pages/Other/404";
   ```
 
 **导入公共组件**

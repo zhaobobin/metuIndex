@@ -9,19 +9,19 @@
       });
     };
  */
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { connect } from 'dva';
 import { Row, Col, Icon, Upload, Modal, notification } from 'antd';
 import {Storage, file2base64} from "~/utils/utils";
 import styles from './UploadPhoro.less'
 
-import PhotoCrop from '~/components/Photo/PhotoCrop';
+import PhotoCrop from '~/blocks/Photo/PhotoCrop';
 
 @connect(state => ({
   login: state.login,
   oss: state.oss
 }))
-export default class UploadAvatar extends PureComponent {
+export default class UploadAvatar extends React.Component {
 
   state = {
     loading: false,

@@ -3,7 +3,7 @@ import { Route, Redirect, Switch } from 'dva/router';
 import { Layout } from 'antd';
 import { injectIntl } from 'react-intl';
 import DocumentTitle from 'react-document-title';
-import NotFound from "~/routes/Other/404";
+import NotFound from "~/pages/Other/404";
 
 import GlobalHeader from '~/components/Common/GlobalHeader';
 import GlobalFooter from '~/components/Common/GlobalFooter';

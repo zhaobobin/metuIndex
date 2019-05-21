@@ -25,7 +25,7 @@ export default class Equipments extends React.Component {
     );
   }
 
-  componentWillReceiveProps(nextProps){
+  UNSAFE_componentWillReceiveProps(nextProps){
     if(nextProps.location.pathname !== this.state.pathname) {
       this.setState({pathname: nextProps.location.pathname})
     }

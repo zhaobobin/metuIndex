@@ -19,7 +19,7 @@ export default class EquipmentDetail extends PureComponent {
     console.log(keyword)
   }
 
-  componentWillReceiveProps(nextProps){
+  UNSAFE_componentWillReceiveProps(nextProps){
     if(nextProps.keyword !== this.state.keyword) {
       this.setState({keyword: nextProps.keyword})
     }

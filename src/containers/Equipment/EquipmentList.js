@@ -37,7 +37,7 @@ export default class EquipmentList extends PureComponent {
     });
   }
 
-  componentWillReceiveProps(nextProps){
+  UNSAFE_componentWillReceiveProps(nextProps){
     if(nextProps.keyword !== this.state.keyword) {
       this.queryEquipmentList({
         keyword: nextProps.keyword,

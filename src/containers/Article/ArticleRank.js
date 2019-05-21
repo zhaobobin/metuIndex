@@ -30,7 +30,7 @@ export default class ArticleRank extends PureComponent {
     this.queryArticleRank(this.props);
   }
 
-  componentWillReceiveProps(nextProps){
+  UNSAFE_componentWillReceiveProps(nextProps){
     if(nextProps.category !== this.props.category) this.queryArticleRank(nextProps);
   }
 

@@ -37,7 +37,7 @@ const UserRoutes = app => [
         name: '找回密码',
         id: 'menu.user.reset',
         icon: 'user',
-        path: 'user/reset',
+        path: 'user/reset/:step',
         component: dynamicWrapper(app, [], () => import('../pages/User/Reset')),
       },
     ],

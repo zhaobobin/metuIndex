@@ -33,7 +33,7 @@ export default class PhotoAction extends PureComponent {
   }
 
   //处理用户登录、退出时，重新渲染文章数据
-  componentWillReceiveProps(nextProps){
+  UNSAFE_componentWillReceiveProps(nextProps){
     if(nextProps.global.isAuth !== this.props.global.isAuth){
       this.initArticle(this.state.detail, nextProps.global)
     }

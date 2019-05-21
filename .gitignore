@@ -5,7 +5,7 @@
 
 # production
 /dist
-/src/config
+/src/config/wechat.js
 
 # misc
 .DS_Store

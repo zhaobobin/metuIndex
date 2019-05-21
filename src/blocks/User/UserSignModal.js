@@ -56,9 +56,9 @@ export default class UserSignModal extends React.Component {
           <div className={styles.body}>
             {
               signTabKey === '1' ?
-                <UserLogin callback={this.loginCallback}/>
+                <UserLogin showType="modal" callback={this.loginCallback}/>
                 :
-                <UserRegister callback={this.registerCallback}/>
+                <UserRegister showType="modal" callback={this.registerCallback}/>
             }
           </div>
         </div>

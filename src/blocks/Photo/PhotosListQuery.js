@@ -56,7 +56,7 @@ export default class PhotosListQuery extends PureComponent {
     })
   }
 
-  componentWillReceiveProps(nextProps){
+  UNSAFE_componentWillReceiveProps(nextProps){
 
     if(nextProps.keyword !== this.state.params.keyword) {
       this.queryPhotoList({

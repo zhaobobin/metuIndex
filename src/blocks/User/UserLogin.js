@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import { connect } from 'dva';
+import { routerRedux } from 'dva/router';
 import { Form, Icon, Button, Checkbox, notification } from 'antd';
 import { ENV, Storage, hasErrors, Encrypt, openwindow } from "~/utils/utils";
 import styles from './UserSign.less'
@@ -116,9 +117,18 @@ export default class UserLogin extends React.Component {
   };
 
   //密码
-  passwordCallback = (value) => {
-    this.props.form.setFieldsValue({'password': value});
-    this.props.form.validateFields(['password'], (err, values) => {});
+  passwordCallback = (value, err) => {
+    if(err){
+      this.props.form.setFields({
+        'password': {
+          value: value,
+          errors: [new Error(err)]
+        }
+      });
+    }else{
+      this.props.form.setFieldsValue({'password': value});
+      // this.props.form.validateFields(['password'], (err, values) => {});
+    }
   };
 
   //短信验证码回调
@@ -180,6 +190,7 @@ export default class UserLogin extends React.Component {
         }else{
           Storage.set(ENV.storageLastTel, '')
         }
+        values.password = Encrypt(values.tel, values.password);
         values.userType = userType;
         values.loginType = loginType;
         this.login(values);
@@ -197,23 +208,65 @@ export default class UserLogin extends React.Component {
         if(res.status === 1) {
           this.props.callback();
         }else{
-          notification.error({
-            message: '登录失败',
-            description: res.msg,
-          });
+          if(res.status > 10000) {
+            this.setInputError(res.status, res.msg);
+          }else{
+            notification.error({
+              message: '登录失败',
+              description: res.msg,
+            });
+          }
         }
       }
     });
   };
 
-  toRegister = () => {
-    this.props.dispatch({
-      type: 'global/changeSignModal',
-      payload: {
-        signModalVisible: true,
-        signTabKey: '2',
+  setInputError = (status, msg) => {
+    let key;
+    switch(status){
+      case 10001: key = 'tel'; break;
+      case 10002: key = 'password'; break;
+      default: break;
+    }
+    this.props.form.setFields({
+      [key]: {
+        value: '',
+        errors: [new Error(msg)]
       }
     });
+  };
+
+  toRegister = () => {
+
+    let {showType} = this.props;
+    if(showType){
+      this.props.dispatch({
+        type: 'global/changeSignModal',
+        payload: {
+          signModalVisible: true,
+          signTabKey: '2',
+        }
+      });
+    }else{
+      this.props.dispatch(routerRedux.push('/user/register'));
+    }
+
+  };
+
+  toPsdReset = () => {
+
+    let {showType} = this.props;
+    if(showType){
+      this.props.dispatch({
+        type: 'global/changeSignModal',
+        payload: {
+          signModalVisible: false,
+          signTabKey: '1',
+        }
+      });
+    }
+
+    this.props.dispatch(routerRedux.push('/user/reset'));
   };
 
   render(){
@@ -267,12 +320,8 @@ export default class UserLogin extends React.Component {
                 <FormItem>
                   {getFieldDecorator('password', {
                     validateFirst: true,
-                    validateTrigger: 'onBlur',
                     rules: [
                       { required: true, message: '请输入密码' },
-                      { min: 6, message: '密码长度只能在6-20位字符之间' },
-                      { max: 20, message: '密码长度只能在6-20位字符之间' },
-                      // { pattern: /^[A-Za-z0-9]+$/, message: '只能输入字母和数字' }
                     ],
                   })(
                     <InputPassword callback={this.passwordCallback}/>
@@ -302,7 +351,7 @@ export default class UserLogin extends React.Component {
                   })(
                     <Checkbox onChange={this.rememberChange}>记住账号</Checkbox>
                   )}
-                  <a className={styles.forgotPsd}>忘记密码</a><br/>
+                  <a className={styles.forgotPsd} onClick={this.toPsdReset}>忘记密码</a><br/>
                 </FormItem>
                 :
                 <FormItem style={{height: '40px'}}>
@@ -310,15 +359,39 @@ export default class UserLogin extends React.Component {
                 </FormItem>
             }
 
-            <Button
-              size="large"
-              type="primary"
-              htmlType="submit"
-              className={styles.btn}
-              style={{marginBottom: '20px'}}
-            >
-              登录
-            </Button>
+            {
+              loginType === 'psd' ?
+                <Button
+                  size="large"
+                  type="primary"
+                  htmlType="submit"
+                  className={styles.btn}
+                  style={{marginBottom: '20px'}}
+                  disabled={
+                    hasErrors(getFieldsError()) ||
+                    !getFieldValue('tel') ||
+                    !getFieldValue('password')
+                  }
+                >
+                  登录
+                </Button>
+                :
+                <Button
+                  size="large"
+                  type="primary"
+                  htmlType="submit"
+                  className={styles.btn}
+                  style={{marginBottom: '20px'}}
+                  disabled={
+                    hasErrors(getFieldsError()) ||
+                    !getFieldValue('tel') ||
+                    !getFieldValue('smscode')
+                  }
+                >
+                  登录
+                </Button>
+            }
+
 
           </Form>
 

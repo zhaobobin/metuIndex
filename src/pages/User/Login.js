@@ -19,7 +19,7 @@ export default class Login extends React.Component {
     }
   }
 
-  componentsDidMount(){
+  componentDidMount(){
 
   }
 
@@ -30,6 +30,13 @@ export default class Login extends React.Component {
 
   render(){
 
+    const style = {
+      width: '430px',
+      margin: '25px auto 0',
+      padding: '30px',
+      background: '#fff'
+    };
+
     return(
 
       <div>
@@ -38,7 +45,9 @@ export default class Login extends React.Component {
           <Col xs={0} sm={0} md={4} lg={6} />
           <Col xs={24} sm={24} md={16} lg={12}>
 
-            <UserLogin callback={this.loginCallback}/>
+            <div style={style}>
+              <UserLogin callback={this.loginCallback}/>
+            </div>
 
           </Col>
           <Col xs={0} sm={0} md={4} lg={6} />

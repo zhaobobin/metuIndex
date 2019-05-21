@@ -3,8 +3,9 @@
  */
 import React from 'react';
 import { connect } from 'dva';
+import { routerRedux } from 'dva/router';
 import { Form, Button, notification } from 'antd';
-import { hasErrors } from '~/utils/utils'
+import { hasErrors, Encrypt } from '~/utils/utils'
 import styles from './UserSign.less'
 
 import InputMobile from '~/components/Form/InputMobile'
@@ -107,6 +108,7 @@ export default class UserRegister extends React.Component {
 
     this.props.form.validateFields('', (err, values) => {
       if (!err) {
+        values.password = Encrypt(values.tel, values.password);
         this.register(values);
       }
       setTimeout(() => { this.ajaxFlag = true }, 500);
@@ -188,13 +190,20 @@ export default class UserRegister extends React.Component {
   };
 
   toLogin = () => {
-    this.props.dispatch({
-      type: 'global/changeSignModal',
-      payload: {
-        signModalVisible: true,
-        signTabKey: '1',
-      }
-    });
+
+    let {showType} = this.props;
+    if(showType){
+      this.props.dispatch({
+        type: 'global/changeSignModal',
+        payload: {
+          signModalVisible: true,
+          signTabKey: '1',
+        }
+      });
+    }else{
+      this.props.dispatch(routerRedux.push('/user/login'));
+    }
+
   };
 
   render(){
@@ -242,8 +251,7 @@ export default class UserRegister extends React.Component {
                 validateTrigger: 'onBlur',
                 rules: [
                   { required: true, message: '请输入密码' },
-                  { min: 6, message: '密码长度只能在6-20位字符之间' },
-                  { max: 20, message: '密码长度只能在6-20位字符之间' },
+                  { pattern: /^[A-Za-z0-9]{6,20}/, message: '只能输入6到20位到字母或数字组合' }
                 ],
               })(
                 <InputPassword showPsdLevel={true} callback={this.passwordCallback}/>

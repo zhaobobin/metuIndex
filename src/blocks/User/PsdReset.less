@@ -1,0 +1,79 @@
+@import '../../theme/index.less';
+
+.psdReset{
+
+  height:500px;
+  background:#fff;
+
+  h1{
+    margin-bottom: 50px;
+    font-size: 24px;
+    text-align: center;
+  }
+
+  :global{
+    .ant-form-item{
+      height:70px;
+      margin:0;
+    }
+    .ant-steps-item-tail{
+      top: 14px;
+    }
+    .ant-steps-item-tail:after{
+      height: 3px;
+    }
+    .ant-steps-item-process .ant-steps-item-tail:after,
+    .ant-steps-item-wait .ant-steps-item-tail:after{
+      background: @color_blue3;
+    }
+    .ant-steps-item-wait .ant-steps-item-icon{
+      border-color: @color_blue3;
+      background-color: @color_blue3;
+    }
+    .ant-steps-item-wait .ant-steps-icon{
+      color: #fff;
+    }
+  }
+
+  .form{
+
+    .title {
+      padding:0 20px;
+    }
+
+    .formContent{
+
+      margin-top: 50px;
+
+      .desc{
+        margin:30px 0;
+        text-align:center;
+      }
+
+      .formItemBox{
+        margin: 0 auto;
+      }
+    }
+
+    .btn{
+      width:100%;
+    }
+
+    .step4{
+      line-height: 2em;
+      color:@color_333;
+      .p1{
+        font-size:16px;
+        margin-bottom:20px;
+      }
+      .p2{
+        font-size:12px;
+      }
+    }
+
+  }
+
+}
+
+
+

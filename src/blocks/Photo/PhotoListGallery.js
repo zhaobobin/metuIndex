@@ -45,7 +45,7 @@ export default class PhotoListGallery extends PureComponent {
     this.loadMorePhotos(this.props);
   }
 
-  componentWillReceiveProps(nextProps){
+  UNSAFE_componentWillReceiveProps(nextProps){
     this.loadMorePhotos(nextProps);
   }
 

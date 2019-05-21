@@ -42,7 +42,7 @@ export default class ArticleListQuery extends React.Component {
     })
   }
 
-  componentWillReceiveProps(nextProps){
+  UNSAFE_componentWillReceiveProps(nextProps){
     if(nextProps.tag !== this.props.tag){
       this.queryArticleList({
         tag: nextProps.tag,

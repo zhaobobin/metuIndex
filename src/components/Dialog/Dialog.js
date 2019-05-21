@@ -1,5 +1,6 @@
 import React from 'react';
 import { Modal } from 'antd';
+import CountDown from '~/components/Number/CountDown';
 import styles from './Dialog.less'
 
 const modal_options = {
@@ -60,6 +61,44 @@ export function ArticleAlert(opt){
     okText: opt.btns ? opt.btns[0] : '确定',
     onOk() {
       return opt.callback(1)
+    },
+    onCancel() {
+      return opt.callback(-1)
+    },
+  });
+}
+
+export function ResultAlert(opt){
+  let modal = Modal.info({
+    ...modal_options,
+    maskStyle: opt.maskStyle || {},
+    maskClosable: false,
+    className: styles.modalAlert,
+    title: '',
+    content: (
+      <div className={styles.dialogContent}>
+        <img src={opt.img} alt="" />
+        <p><strong>{opt.title}</strong></p>
+        <p>
+          {
+            opt.time ?
+              <CountDown
+                num={opt.time}
+                onEnd={() => {
+                  modal.destroy();
+                  opt.callback(2);            //自动执行
+                }}
+              />
+              :
+              null
+          }
+          <span>{opt.msg}</span>
+        </p>
+      </div>
+    ),
+    okText: opt.btns ? opt.btns[0] : '确定',
+    onOk() {
+      return opt.callback(1)                  //手动关闭
     },
     onCancel() {
       return opt.callback(-1)

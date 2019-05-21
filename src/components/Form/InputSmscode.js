@@ -1,5 +1,8 @@
 /**
  * 表单 - 短信验证码
+ * auto [String]    自动发送
+ * tel [Number] 手机号
+ * callback [Function] 返回输入值
 
  调用方式：
    <InputSmscode
@@ -8,7 +11,7 @@
    />
 
  回调函数：
-  smscodeCallback = (value, err) => {
+ smscodeCallback = (value, err) => {
     //清空错误提示
     if(err === 'telError'){
       this.props.form.setFields({
@@ -17,7 +20,6 @@
           errors: [new Error('请输入手机号')]
         }
       });
-      this.setState({smscodeSended: true});
     }
     else if(err === 'clearError'){
       this.props.form.setFields({
@@ -26,7 +28,6 @@
           errors: ''
         }
       });
-      this.setState({smscodeSended: true});
     }
     else if(err === 'smscodeError'){
       this.props.form.setFields({
@@ -41,6 +42,7 @@
       // this.props.form.validateFields(['smscode'], (err, values) => {});
     }
   };
+
  *
  */
 import React from 'react';
@@ -77,6 +79,7 @@ export default class InputSmscode extends React.Component {
 
   componentDidMount() {
     this.initBtnStyle(this.props.tel);
+    if(this.props.auto) this.sendSmsCode();      //自动发送验证码
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -84,6 +87,10 @@ export default class InputSmscode extends React.Component {
     if (nextProps.tel !== this.props.tel) {
       this.initBtnStyle(nextProps.tel);
     }
+  }
+
+  componentWillUnmount(){
+    clearInterval(timer);
   }
 
   //初始化按钮样式
@@ -115,7 +122,7 @@ export default class InputSmscode extends React.Component {
 
   handleBlur = (e) => {
     let value = e.target.value;
-    if (value.length < this.state.maxLength) {
+    if (value.length !== this.state.maxLength) {
       this.props.callback(value, 'smscodeError');
     }
   };
@@ -163,7 +170,7 @@ export default class InputSmscode extends React.Component {
       callback: (res) => {
         if (res.status === 1) {
           this.interval();                                      //执行倒计时
-          this.props.callback('clearError');
+          this.props.callback('', 'clearError');
           Toast.info(`已将短信验证码发送到您${filterTel(tel)}的手机当中，请注意查收！`, 2);
         } else {
           Toast.info(res.msg, 2);

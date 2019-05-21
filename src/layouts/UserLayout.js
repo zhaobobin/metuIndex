@@ -5,7 +5,7 @@ import { injectIntl } from 'react-intl';
 import DocumentTitle from 'react-document-title';
 import NotFound from "~/pages/Other/404";
 
-import GlobalHeader from '~/components/Common/GlobalHeader';
+import GlobalHeaderMin from '~/components/Common/GlobalHeaderMin';
 import GlobalFooter from '~/components/Common/GlobalFooter';
 import GlobalContent from '~/components/Common/GlobalContent';
 
@@ -31,7 +31,7 @@ class UserLayout extends React.Component {
 
     const layout = (
       <Layout>
-        <GlobalHeader navData={navData[0].children} location={location}/>
+        <GlobalHeaderMin navData={navData[0].children} location={location}/>
 
         <GlobalContent>
 
@@ -49,6 +49,7 @@ class UserLayout extends React.Component {
               )
             }
             <Redirect exact from="/user" to="/user/login" />
+            <Redirect exact from="/user/reset" to="/user/reset/index" />
             <Route component={NotFound} />
           </Switch>
 

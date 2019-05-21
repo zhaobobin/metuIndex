@@ -30,7 +30,7 @@ export default class ArticleDetail extends React.Component {
   }
 
   //处理用户登录、退出时，重新渲染文章数据
-  componentWillReceiveProps(nextProps){
+  UNSAFE_componentWillReceiveProps(nextProps){
     if(nextProps.match.params.id !== this.props.match.params.id){
       let id = nextProps.match.params.id;
       this.queryArticleDetail(id);

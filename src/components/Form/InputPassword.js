@@ -19,6 +19,9 @@ export default class InputPassword extends React.Component {
       psdLevelVisible: false,
       psdLevel: '',
       psdLevelStyle: '',
+
+      minLength: 6,
+      maxLength: 20,
     }
   }
 
@@ -29,8 +32,37 @@ export default class InputPassword extends React.Component {
     this.props.callback(value);
   };
 
+  // 焦点
+  onFocus = () => {
+    this.changePsdLevelVisible();
+  };
+
+  // 失焦
+  onBlur = (e) => {
+
+    let value = e.target.value.replace(/ /g,'');
+    let { minLength, maxLength } = this.state;
+    let { showPsdLevel } = this.props;
+
+    if(value){
+      if(value.length < minLength){
+        this.props.callback(value, `密码长度不能小于${minLength}位`);
+      }
+      if(value.length > maxLength){
+        this.props.callback(value, `密码长度不能大于${maxLength}位`);
+      }
+    }else{
+      this.props.callback(value, '请输入密码');
+    }
+
+    if(showPsdLevel){
+      this.changePsdLevelVisible();
+    }
+
+  };
+
   //切换密码框显示
-  changePsdLevelVisible = (value) => {
+  changePsdLevelVisible = () => {
     let psdLevelVisible = !this.state.psdLevelVisible;
     this.setState({
       psdLevelVisible
@@ -109,21 +141,21 @@ export default class InputPassword extends React.Component {
 
   render(){
 
-    const { showPsdLevel } = this.props;
-    const { value, inputType, psdLevelVisible, psdLevel, psdLevelStyle } = this.state;
+    const { placeholder } = this.props;
+    const { value, inputType, psdLevelVisible, psdLevel, psdLevelStyle, minLength, maxLength } = this.state;
 
     return(
       <div className={styles.container}>
         <Input
           type={inputType}
           size="large"
-          minLength="6"
-          maxLength="20"
           autoComplete="off"
-          placeholder="密码"
+          minLength={minLength}
+          maxLength={maxLength}
+          placeholder={placeholder || '密码'}
           onChange={this.changeValue}
-          onFocus={this.changePsdLevelVisible}
-          onBlur={this.changePsdLevelVisible}
+          onFocus={this.onFocus}
+          onBlur={this.onBlur}
           value={value}
           className={styles.password}
           suffix={
@@ -151,7 +183,7 @@ export default class InputPassword extends React.Component {
           }
         />
         {
-          showPsdLevel && value ?
+          psdLevelVisible && value ?
             <div className={styles.psdStatus + " " + psdLevelStyle}>
               <p className={styles.box}>
                 <span className={styles.line}><em className={styles.block}/></span>

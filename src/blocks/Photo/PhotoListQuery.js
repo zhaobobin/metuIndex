@@ -42,7 +42,7 @@ export default class PhotoListQuery extends React.Component {
     })
   }
 
-  componentWillReceiveProps(nextProps){
+  UNSAFE_componentWillReceiveProps(nextProps){
 
     if(nextProps.category !== this.state.params.category) {
       this.queryPhotoList({

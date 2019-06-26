@@ -324,7 +324,7 @@ export default class UserLogin extends React.Component {
                       { required: true, message: '请输入密码' },
                     ],
                   })(
-                    <InputPassword callback={this.passwordCallback}/>
+                    <InputPassword hidePsdLevel={true} callback={this.passwordCallback}/>
                   )}
                 </FormItem>
                 :

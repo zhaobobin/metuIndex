@@ -1,5 +1,5 @@
 /**
- * 表单 - 图形验证码
+ * 单行文本输入框
  */
 import React from 'react';
 import { Row, Col, Input, Icon } from 'antd';
@@ -35,6 +35,7 @@ export default class InputText extends React.Component {
   render(){
 
     const { value } = this.state;
+    const { maxLength } = this.props;
 
     return(
       <Input
@@ -43,6 +44,7 @@ export default class InputText extends React.Component {
         placeholder={this.props.placeholder}
         onChange={this.changeValue}
         value={value}
+        maxLength={maxLength}
         disabled={this.props.disabled}
         suffix={
           value ?

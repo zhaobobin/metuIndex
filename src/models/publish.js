@@ -9,8 +9,8 @@ export default {
 
     submitting: false,                    //提交状态
     publishType: '',                      //发布类型：文章、图片
-    thumb: '',                            //缩略图（可选）
     content: '',                          //文章内容：文章模型
+    thumb: '',                            //缩略图（可选）
     photoList: '',                        //图片列表：图片模型
   },
 
@@ -41,7 +41,8 @@ export default {
       return {
         ...state,
         ...state,
-        content: payload.content
+        content: payload.content,
+        thumb: payload.thumb,
       };
     },
   }

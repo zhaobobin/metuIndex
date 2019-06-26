@@ -141,12 +141,15 @@ export default class InputPassword extends React.Component {
 
   render(){
 
-    const { placeholder } = this.props;
-    const { value, inputType, psdLevelVisible, psdLevel, psdLevelStyle, minLength, maxLength } = this.state;
+    const { placeholder, hidePsdLevel } = this.props;
+    const { value, inputType, psdLevel, psdLevelStyle, minLength, maxLength } = this.state;
+
+    const psdLevelVisible = hidePsdLevel ? false : this.state.psdLevelVisible
 
     return(
-      <div className={styles.container}>
+      <div className={styles.container + " " + styles.inputPassword}>
         <Input
+          className={styles.password}
           type={inputType}
           size="large"
           autoComplete="off"
@@ -157,7 +160,6 @@ export default class InputPassword extends React.Component {
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           value={value}
-          className={styles.password}
           suffix={
             <span>
               {

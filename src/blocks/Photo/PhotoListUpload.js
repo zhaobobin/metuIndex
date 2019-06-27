@@ -1,5 +1,5 @@
 /**
- * 图片上传
+ * 【作废】图片上传
  */
 import React, { Component } from 'react';
 import { routerRedux } from 'dva/router';

@@ -7,7 +7,7 @@ import styles from './Publish.less';
 import PublishPhotoContent from '~/containers/Publish/PublishPhotoContent';
 import PublishPhotoSlide from '~/containers/Publish/PublishPhotoSlide';
 
-export default function PublishArticle () {
+export default function PublishPhoto () {
   return(
     <div className={styles.container}>
       <div className={styles.left}>

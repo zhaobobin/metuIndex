@@ -17,12 +17,10 @@ export default class PublishPhotoContent extends React.Component {
     super(props);
     this.ajaxFlag = true;
     this.state = {
-      role: this.props.global.currentUser.role,
       uid: this.props.global.currentUser._id,
       modalVisible: false,
-      photoList: [],                                        //暂存图片列表
-      ossList: [],                                          //oss图片文件待删除列表
-      current: 0,
+      photoList: this.props.photoList || [],               //保存图片列表
+      currentPhotoIndex: 0,                                //默认选择的图片索引值
     }
   }
 
@@ -30,12 +28,12 @@ export default class PublishPhotoContent extends React.Component {
 
   }
 
-  //导入相册
+  // 从用户相册导入图片
   importAlbum = () => {
-    let uid = this.props.global.currentUser._id;
+    let {uid} = this.state;
     this.props.dispatch({
       type: 'global/post',
-      url: '/api/PhotoList',
+      url: '/api/photoList',
       payload: {
         uid
       },
@@ -46,8 +44,8 @@ export default class PublishPhotoContent extends React.Component {
   };
 
   //查询用户相册列表
-  queryAlbumList = () => {
-    let uid = this.props.global.currentUser._id;
+  queryAlbumList = (uid) => {
+
   };
 
   //图片上传前检查
@@ -69,50 +67,50 @@ export default class PublishPhotoContent extends React.Component {
     return isImg && isLt2M;
   };
 
-  //上传图片列表
+  //上传图片到oss
   handleUploadPhoto = ({file}) => {
+    // console.log(file)
+    let {uid, photoList} = this.state;
 
-    let photoList = this.state.photoList;
-    if(photoList.length > 0){
-      for(let i in photoList){
-        //上传时排除文件名雷同的文件
-        if(photoList[i].name === file.name) {
-          Alert({
-            title: '已存在雷同的图片!',
-            callback: () => {}
-          });
-          return false;
-        }
+    for(let i in photoList){
+      if(photoList[i].name === file.name) {         //阻止上传与列表图片雷同的文件
+        Alert({
+          title: '已存在雷同的图片!',
+          callback: () => {}
+        });
+        return false;
       }
     }
 
-    file2base64(file, (base64) => {
-      let imgData = {
-        loading: true,                                          //加载状态
-        key: '',                                                //对应oss中的键值
-        category: '',
-        name: file.name,                                        //完整文件名
-        title: file.name.replace(/(.*\/)*([^.]+).*/ig,"$2"),    //文件标题
-        tags: '',
-        description: '',
-        copyright: '',
-        base64: base64,                                         //用于显示上传时的缩略图
-        url: '',                                                //图片路径，用于显示
-        adminid: this.state.uid,
-        current: false,
-      };
-      photoList.push(imgData);
-      this.setState({ photoList });
-    });
-
     let option = {
-      uid: this.props.global.currentUser._id,
       category: 'photo',
       name: file.name.split('.')[0],
       unix: new Date().getTime(),
       type: file.name.split('.')[1],
     };
-    let key = option.uid + '/' + option.category + '_' + option.unix + '.' + option.type;
+    let key = uid + '/' + option.category + '_' + option.unix + '.' + option.type;
+
+    // 根据key查询图片是否已上传
+
+    //return;
+
+    file2base64(file, (base64) => {
+      let imgData = {
+        loading: true,                                          //加载状态
+        key,                                                //对应oss中的键值
+        category: '',
+        name: option.name,                                        //完整文件名
+        title: option.name.replace(/(.*\/)*([^.]+).*/ig,"$2"),    //文件标题
+        tags: '',
+        description: '',
+        copyright: '',
+        base64: base64,                                         //用于显示上传时的缩略图
+        url: '',                                                //图片路径，用于显示
+        cover: false,
+      };
+      photoList.push(imgData);
+      this.setState({ photoList });
+    });
 
     this.props.dispatch({
       type: 'oss/upload',
@@ -121,89 +119,49 @@ export default class PublishPhotoContent extends React.Component {
         file: file
       },
       callback: (url) => {
-        console.log(url)
-        let name = file.name,
-          current = this.state.current,
-          photoList = this.state.photoList,
-          ossList = this.addOssList(key);                      //添加ossList列表
+        // console.log(url)
         for(let i in photoList){
-          if(photoList[i].name === name){
-            photoList[i].key = key;
+          if(photoList[i].name === option.name){
             photoList[i].loading = false;
             photoList[i].url = url;
           }
-          photoList[i].current = false;
         }
         if(photoList.length > 0) {
-          current = photoList.length - 1;
-          photoList[current].current = true;
+          photoList[0].cover = true;
         }
+
         this.setState({
-          ossList,
           photoList,
-          current
         });
       }
     });
 
   };
 
-  addOssList = (key) => {
-
-  }
-
-  changeCurrent = (index) => {
-    let photoList = this.state.photoList;
-    for(let i in photoList){
-      let c = parseInt(i);
-      photoList[i].current = c === index;
-    }
-    this.setState({
-      photoList: photoList,
-      current: index
-    })
-  };
-
-  //保存图片
-  savePhoto(data){
-    //保存时，执行ossDel列表对应文件的删除操作
-    this.props.dispatch({
-      type: 'photo/add',
-      payload: data,
-      callback: (res) => {
-        if(res.status === 1){
-          this.queryList();
-          this.delOssList();
-          this.setState({
-            visible: false,
-            photoList: [],
-          });
-        }else{
-          Alert({
-            title: res.msg,
-            callback: () => {}
-          });
-        }
-      }
-    });
-  }
-
   //删除图片 - 仅删除暂存图片列表
-  delPhoto(index){
-    let photoList = this.state.photoList,
-      key = photoList[index].key,
-      ossList = this.updateOssList(key);
-    photoList.splice(index, 1);
+  delPhoto = (index) => {
+    let photoList = this.state.photoList;
+    photoList[index].del = true;
     this.setState({
-      ossList,
       photoList,
     })
   }
 
+  // 切换当前图片
+  changeCover = (index) => {
+    let photoList = this.state.photoList;
+    for(let i in photoList){
+      let c = parseInt(i);
+      photoList[i].cover = c === index;
+    }
+    this.setState({
+      photoList: photoList
+    })
+  };
+
   render(){
 
-    const { oss } = this.props;
-    const { photoList, current } = this.state;
+    const { photoList } = this.state;
 
     return(
       <div className={styles.container}>
@@ -215,28 +173,36 @@ export default class PublishPhotoContent extends React.Component {
           <Row gutter={10}>
 
             {
-              photoList.map((topic, index) => (
-                <Col span={6} key={index} className={styles.item} onClick={this.changeCurrent.bind(this, index)}>
-                  <div className={styles.imgBox}>
-                    <p className={styles.url}>
-                      <img
-                        src={topic.base64 ? topic.base64.url : topic.url + '?x-oss-process=style/thumb_m'}
-                        alt={topic.title}
-                      />
-                      {
-                        topic.loading ?
-                          <span className={styles.loading}><Icon type='loading' /></span>
-                          : ''
-                      }
-                    </p>
-                    {topic.current ? <p className={styles.border}/> : null}
-                    <p className={styles.action}>
-                      <span className={styles.del} onClick={this.delPhoto.bind(this, index)}>
-                        <Icon type="close" />
-                      </span>
-                    </p>
-                  </div>
-                </Col>
+              photoList.map((item, index) => (
+                item.del ?
+                  null
+                  :
+                  <Col
+                    span={6}
+                    key={index}
+                    className={styles.item}
+                    onClick={() => this.changeCover(index)}
+                  >
+                    <div className={styles.imgBox}>
+                      <p className={styles.url}>
+                        <img
+                          src={item.base64 ? item.base64.url : item.url + '?x-oss-process=style/thumb_m'}
+                          alt={item.title}
+                        />
+                        {
+                          item.loading ?
+                            <span className={styles.loading}><Icon type='loading' /></span>
+                            : ''
+                        }
+                      </p>
+                      {item.cover ? <p className={styles.border}/> : null}
+                      <p className={styles.action}>
+                        <span className={styles.del} onClick={ () =>this.delPhoto(index) }>
+                          <Icon type="close" />
+                        </span>
+                      </p>
+                    </div>
+                  </Col>
               ))
             }
 

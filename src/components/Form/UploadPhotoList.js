@@ -1,5 +1,5 @@
 /**
- * 上传图片列表
+ * 【作废】上传图片列表
  */
 import React, { Component } from 'react';
 import { routerRedux } from 'dva/router';
@@ -111,7 +111,6 @@ export default class UploadPhotoList extends Component {
         copyright: '',
         base64: base64,                                         //用于显示上传时的缩略图
         url: '',                                                //图片路径，用于显示
-        adminid: this.state.uid,
         current: false,
       };
       photoList.push(imgData);

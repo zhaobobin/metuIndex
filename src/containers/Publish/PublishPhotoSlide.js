@@ -50,6 +50,7 @@ export default class PublishRight extends React.Component {
     this.props.form.validateFields(['title'], (err, values) => {});
   };
 
+  // 确定
   formSubmit = (e) => {
     e.preventDefault();
     if(!this.ajaxFlag) return;
@@ -71,7 +72,7 @@ export default class PublishRight extends React.Component {
 
   };
 
-  //保存数据
+  // 保存数据
   saveData(params){
     let api = '',
       id = this.props.id;
@@ -98,9 +99,10 @@ export default class PublishRight extends React.Component {
     });
   }
 
-  //取消
+  // 取消
   formCancel = (e) => {
     e.preventDefault();
+
     confirm({
       title: '取消编辑?',
       okText: '确定',
@@ -111,6 +113,7 @@ export default class PublishRight extends React.Component {
       },
       onCancel() {},
     });
+
   };
 
   render(){
@@ -202,7 +205,7 @@ export default class PublishRight extends React.Component {
             size="large"
             type="primary"
             htmlType="submit"
-            disabled={!publish.content || global.submitting}
+            disabled={!publish.photoList || global.submitting}
           >
             发布
           </Button>

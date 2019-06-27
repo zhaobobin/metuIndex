@@ -4,21 +4,10 @@
  */
 import React, { PureComponent } from 'react';
 import { connect } from 'dva';
-import { Link } from 'dva/router';
-import {Row, Col, notification} from 'antd';
-import {Storage} from '~/utils/utils';
+import { notification } from 'antd';
 import InfiniteScroll from 'react-infinite-scroller';			//加载更多
 
 import PhotoListGallery from '~/blocks/Photo/PhotoListGallery';
-
-function getImgSize(url){
-  let img = new Image();
-  img.src = url;
-  return {
-    width: img.width,
-    height: img.height
-  }
-}
 
 @connect(state => ({
   global: state.global

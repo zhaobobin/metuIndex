@@ -1,5 +1,5 @@
 import request from '~/utils/request';
-import {ENV, Storage} from '~/utils/utils';
+// import {ENV, Storage} from '~/utils/utils';
 
 export default {
 

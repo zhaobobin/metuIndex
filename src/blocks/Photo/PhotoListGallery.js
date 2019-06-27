@@ -3,9 +3,8 @@
  * photos: 数组
  * <PhotoListGallery photos={photos}/>
  */
-import React, { PureComponent } from 'react';
-import { Link } from 'dva/router';
-import {Row, Col, Spin} from 'antd';
+import React from 'react';
+import { Row, Col } from 'antd';
 
 import Gallery from 'react-photo-gallery';
 import Measure from 'react-measure';
@@ -28,7 +27,7 @@ function debounce(func, wait, immediate) {
   };
 }
 
-export default class PhotoListGallery extends PureComponent {
+export default class PhotoListGallery extends React.Component {
 
   constructor(props){
     super(props);
@@ -86,8 +85,8 @@ export default class PhotoListGallery extends PureComponent {
           uid: photos[i].uid,
           title: photos[i].title,
           src: src,
-          width: parseInt(photos[i].thumb.width),
-          height: parseInt(photos[i].thumb.height),
+          width: parseInt(photos[i].thumb.width, 10),
+          height: parseInt(photos[i].thumb.height, 10),
           type: type
         };
 

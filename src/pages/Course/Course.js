@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import { Row, Col, Card } from 'antd';
+import { Row, Col } from 'antd';
 import styles from './Course.less';
 
 import ArticleSearch from '~/containers/Article/ArticleSearch'

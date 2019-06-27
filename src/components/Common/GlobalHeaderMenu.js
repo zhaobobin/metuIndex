@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink } from 'dva/router';
+import { NavLink } from 'dva/router';
 import { FormattedMessage } from 'react-intl';
 import styles from './GlobalHeaderMenu.less';
 

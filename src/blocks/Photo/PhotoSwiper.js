@@ -5,7 +5,6 @@
  * callback：返回当前图片信息
  */
 import React, { PureComponent } from 'react';
-import { connect } from 'dva';
 import {Row, Col, Icon, Spin} from 'antd';
 import {Storage, goBack} from "../../utils/utils";
 
@@ -213,8 +212,8 @@ export default class PhotoSwiper extends PureComponent {
               <div className={styles.scene}>
                 <div className={styles.sceneContainer}>
                   <div className={styles.spin}><Spin spinning={loading} size="large" /></div>
-                  <img className={styles.currentPhoto} src={currentPhoto.url + '?x-oss-process=style/cover'}/>
-                  {/*<img className={styles.currentPhoto} onLoad={this.loaded} src={currentPhoto.url + '?x-oss-process=style/cover'}/>*/}
+                  <img className={styles.currentPhoto} src={currentPhoto.url + '?x-oss-process=style/cover'} alt="photo"/>
+                  {/*<img className={styles.currentPhoto} onLoad={this.loaded} src={currentPhoto.url + '?x-oss-process=style/cover'} alt="photo"//>*/}
                 </div>
                 <a className={styles.mask} onClick={this.onChangeFullscreen}/>
                 <a className={styles.arrow+" "+styles.prev} title="上一张" onClick={this.prevPhoto}><Icon type="left" /></a>

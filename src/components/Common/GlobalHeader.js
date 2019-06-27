@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'dva/router';
 import { Row, Col } from 'antd';
 import { ENV } from '~/utils/utils';
 import styles from './GlobalHeader.less';

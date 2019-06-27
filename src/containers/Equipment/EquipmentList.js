@@ -5,7 +5,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'dva';
 import { Link, NavLink } from 'dva/router';
-import { Card, Table, Pagination, notification } from 'antd';
+import { Card, Table } from 'antd';
 import {Storage} from "../../utils/utils";
 
 import styles from './Equipment.less';

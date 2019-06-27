@@ -1,8 +1,8 @@
 /**
- * 表单 - 图形验证码
+ * 表单 - 密码
  */
 import React from 'react';
-import { Row, Col, Input, Icon } from 'antd';
+import { Input, Icon } from 'antd';
 import styles from './InputPassword.less'
 
 import eye_open from '~/assets/sign/signremind_open@2x.png'

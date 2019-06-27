@@ -7,7 +7,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
-import {Row, Col, Icon, Spin, notification} from 'antd';
+import { Icon } from 'antd';
 import Moment from 'moment';
 
 import styles from './PhotoInfo.less';
@@ -98,7 +98,10 @@ export default class PhotoInfo extends PureComponent {
               <div className={styles.section+" "+styles.post}>
                 <Link to={`/u/${detail.uid.username}`} className={styles.avatar}>
                   {
-                    detail.uid.avatar ? <img src={detail.uid.avatar + '?x-oss-process=style/thumb_s'} /> : <Icon type="user" />
+                    detail.uid.avatar ?
+                      <img src={detail.uid.avatar + '?x-oss-process=style/thumb_s'} alt="avatar"/>
+                      :
+                      <Icon type="user" />
                   }
                 </Link>
                 <p>

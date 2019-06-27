@@ -4,7 +4,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import { Row, Col } from 'antd';
-import {ENV, Storage} from "~/utils/utils";
+import { ENV } from "~/utils/utils";
 import styles from './ArticleDetail.less';
 
 import Loading from '~/components/Common/Loading';

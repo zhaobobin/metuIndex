@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
 import {Spin} from 'antd';
-import { getImgSize } from '~/utils/utils';
+// import { getImgSize } from '~/utils/utils';
 
 import styles from './HomeBanner.less';
 
@@ -63,7 +63,7 @@ export default class HomeBanner extends React.Component {
         {
           data ?
             <div className={styles.item}>
-              <img className={styles.hidden} src={data.thumb.url+'?x-oss-process=style/cover'} onLoad={this.onLoad} />
+              <img className={styles.hidden} src={data.thumb.url+'?x-oss-process=style/cover'} onLoad={this.onLoad} alt="banner" />
               {
                 data.uid ?
                   <p className={styles.info}>

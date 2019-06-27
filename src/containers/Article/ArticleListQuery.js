@@ -90,7 +90,7 @@ export default class ArticleListQuery extends React.Component {
 
   render(){
 
-    const { list, total, pageSize } = this.state;
+    const { list, total } = this.state;
 
     return(
       <div className="article-container">

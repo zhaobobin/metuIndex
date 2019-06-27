@@ -29,7 +29,7 @@ export default class AccountCenter extends PureComponent {
   componentDidMount(){
     let username = this.props.match.params.username;
     this.queryUserDetail(username);
-    document.title = '照片 - 用户中心' + " - " + ENV.appname;
+    document.title = `照片 - 用户中心 - ${ENV.appname}`;
   }
 
   queryUserDetail(username){
@@ -50,22 +50,24 @@ export default class AccountCenter extends PureComponent {
   handleTab = (key) => {
     switch(key){
       case "1":
-        document.title = '照片 - 用户中心' + " - " + ENV.appname;
+        document.title = `照片 - 用户中心 - ${ENV.appname}`;
         break;
       case "2":
-        document.title = '相册 - 用户中心' + " - " + ENV.appname;
+        document.title = `相册 - 用户中心 - ${ENV.appname}`;
         break;
       case "3":
-        document.title = '文章 - 用户中心' + " - " + ENV.appname;
+        document.title = `文章 - 用户中心 - ${ENV.appname}`;
         break;
       case "4":
-        document.title = '喜欢 - 用户中心' + " - " + ENV.appname;
+        document.title = `喜好 - 用户中心 - ${ENV.appname}`;
         break;
       case "5":
-        document.title = '收藏 - 用户中心' + " - " + ENV.appname;
+        document.title = `收藏 - 用户中心 - ${ENV.appname}`;
         break;
       case "6":
-        document.title = '关于 - 用户中心' + " - " + ENV.appname;
+        document.title = `关于 - 用户中心 - ${ENV.appname}`;
+        break;
+      default:
         break;
     }
     Storage.set('metuIndex-UserCenterKey', key);

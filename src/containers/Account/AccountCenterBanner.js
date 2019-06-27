@@ -144,7 +144,12 @@ export default class AccountCenterBanner extends React.Component {
       <div className={styles.userCenterBanner} style={{backgroundImage: bannerUrl}}>
         <div className={styles.detail}>
           <div className={styles.avatar}>
-            {detail.avatar ? <img src={detail.avatar + '?x-oss-process=style/thumb_s'} /> : <Icon type="user" />}
+            {
+              detail.avatar ?
+                <img src={detail.avatar + '?x-oss-process=style/thumb_s'} alt="avatar" />
+                :
+                <Icon type="user" />
+            }
           </div>
           <p className={styles.username}>{detail.username}</p>
           <p className={styles.info}>

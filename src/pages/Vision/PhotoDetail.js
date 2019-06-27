@@ -42,7 +42,7 @@ export default class PhotoDetail extends React.Component {
           let key = 0, currentPhoto = '';
           for(let i in list){
             if(list[i]._id === id){
-              key = parseInt(i);
+              key = parseInt(i, 10);
               currentPhoto = list[i];
             }
           }

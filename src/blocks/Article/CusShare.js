@@ -13,11 +13,6 @@ import QRCode from 'qrcode.react'
 import { ENV } from '~/utils/utils'
 import styles from './CusShare.less'
 
-//import logo from '~/assets/com/loading logo_120_120@2x.png'
-import weixinImg from '~/assets/share/websiteannouncement_icon2@2x.png'
-import qqImg from '~/assets/share/websiteannouncement_icon3@2x.png'
-import zoneImg from '~/assets/share/websiteannouncement_icon1@2x.png'
-
 export default function CusShare ({url, title, desc, style}) {
 
   //分享链接取，设置的url，或者浏览器当前url

@@ -2,8 +2,7 @@
 * 标签文章列表
 * */
 import React from 'react';
-import { Row, Col, Tabs } from 'antd';
-import { ENV } from "~/utils/utils";
+import { Tabs } from 'antd';
 import styles from './TagsArticle.less';
 
 import TagsArticleQuery from '~/containers/Tags/TagsArticleQuery'

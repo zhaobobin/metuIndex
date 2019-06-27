@@ -2,9 +2,6 @@
  * 器材详情 - 品牌详情、设备详情
  */
 import React, { PureComponent } from 'react';
-import { Link } from 'dva/router';
-import { Row, Col } from 'antd';
-
 import styles from './Equipment.less';
 
 export default class EquipmentDetail extends PureComponent {
@@ -27,7 +24,7 @@ export default class EquipmentDetail extends PureComponent {
 
   render(){
 
-    const {detail} = this.state;
+    // const {detail} = this.state;
 
     return(
 

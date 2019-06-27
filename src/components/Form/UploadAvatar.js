@@ -135,7 +135,7 @@ export default class UploadAvatar extends React.Component {
           >
             {
               url ?
-                <img src={url + '?x-oss-process=style/thumb_s'} width="85px" height="85px" />
+                <img src={url + '?x-oss-process=style/thumb_s'} width="85px" height="85px" alt="avatar" />
                 :
                 <div>
                   <Icon type={loading ? 'loading' : 'plus'} />

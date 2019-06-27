@@ -5,7 +5,7 @@ import React from 'react';
 import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
 import { Form, Icon, Button, Checkbox, notification } from 'antd';
-import { ENV, Storage, hasErrors, Encrypt, openwindow } from "~/utils/utils";
+import { ENV, Storage, hasErrors, Encrypt } from "~/utils/utils";
 import styles from './UserSign.less'
 
 import InputMobile from '~/components/Form/InputMobile'
@@ -98,7 +98,6 @@ export default class UserLogin extends React.Component {
     }
     url = url.substring(0, url.lastIndexOf('&'));
     window.location.href = url;
-    // openwindow(url, 'TencentLogin', 650, 600);
   };
 
   //手机号
@@ -112,7 +111,6 @@ export default class UserLogin extends React.Component {
       });
     }else{
       this.props.form.setFieldsValue({'tel': value});
-      // this.props.form.validateFields(['tel'], (err, values) => {});
     }
   };
 

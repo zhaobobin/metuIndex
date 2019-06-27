@@ -1,8 +1,8 @@
 /**
- * 表单 - 图形验证码
+ * 表单 - 手机号
  */
 import React from 'react';
-import { Row, Col, Input, Icon } from 'antd';
+import { Input, Icon } from 'antd';
 
 export default class InputMobile extends React.Component {
 

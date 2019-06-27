@@ -3,8 +3,7 @@
  */
 import React, { PureComponent } from 'react';
 import { connect } from 'dva';
-import { Link } from 'dva/router';
-import {Icon} from 'antd';
+import { Icon } from 'antd';
 import styles from './PhotoAction.less';
 
 import CusShare from '~/blocks/Article/CusShare'

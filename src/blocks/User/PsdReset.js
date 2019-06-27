@@ -6,9 +6,9 @@
 import React from 'react';
 import { connect } from 'dva';
 import { routerRedux, Redirect } from 'dva/router';
-import { Row, Col, Form, Button, Icon, Steps } from 'antd'
+import { Row, Col, Form, Button, Steps } from 'antd'
 import { Toast } from 'antd-mobile'
-import { hasErrors, Encrypt, filterTel } from '~/utils/utils'
+import { hasErrors, Encrypt } from '~/utils/utils'
 import styles from './PsdReset.less';
 
 import InputMobile from '~/components/Form/InputMobile'
@@ -80,7 +80,7 @@ export default class PsdReset extends React.Component {
   //初始化步骤条
   initStep = (step) => {
     for(let i in steps){
-      if(steps[i].key === step) this.setState({current: parseInt(i)})
+      if(steps[i].key === step) this.setState({current: parseInt(i, 10)})
     }
   };
 

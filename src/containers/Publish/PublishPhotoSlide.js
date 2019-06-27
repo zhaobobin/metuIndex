@@ -4,8 +4,7 @@
 import React from 'react';
 import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
-import { Row, Col, Form, Input, Select, Button, Modal, notification } from 'antd';
-import { hasErrors } from '~/utils/utils';
+import { Form, Input, Select, Button, Modal, notification } from 'antd';
 import styles from './PublishSlide.less';
 
 import PublishConfig from './PublishConfig'
@@ -117,8 +116,8 @@ export default class PublishRight extends React.Component {
   render(){
 
     const { detail } = this.state;
-    const { global, form } = this.props;
-    const { getFieldDecorator, getFieldsError } = form;
+    const { global, form, publish } = this.props;
+    const { getFieldDecorator } = form;
 
     //标签option
     const tagsOption = PublishConfig.tags.map((topic, index) => (
@@ -187,7 +186,7 @@ export default class PublishRight extends React.Component {
 
           <FormItem label="版权">
             {getFieldDecorator('copyright', {
-              initialValue: detail.copyright || undefined
+              initialValue: detail.copyright || 1
             })(
               <Select
                 size="large"
@@ -203,7 +202,7 @@ export default class PublishRight extends React.Component {
             size="large"
             type="primary"
             htmlType="submit"
-            disabled={global.submitting}
+            disabled={!publish.content || global.submitting}
           >
             发布
           </Button>

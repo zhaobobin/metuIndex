@@ -1,5 +1,5 @@
 import dynamic from 'dva/dynamic';
-import {FormattedMessage} from 'react-intl';
+// import {FormattedMessage} from 'react-intl';
 
 // wrapper of dynamic
 const dynamicWrapper = (app, models, component) => dynamic({

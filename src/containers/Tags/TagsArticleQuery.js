@@ -7,8 +7,8 @@
  */
 import React from 'react';
 import { connect } from 'dva';
-import {Pagination, notification} from 'antd';
-import {Storage} from '~/utils/utils';
+import { notification } from 'antd';
+import { Storage } from '~/utils/utils';
 import InfiniteScroll from 'react-infinite-scroller';			//加载更多
 
 import PhotoListMasonry from '~/blocks/Photo/PhotoListMasonry'

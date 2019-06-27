@@ -32,7 +32,17 @@ export default class PublishPhotoContent extends React.Component {
 
   //导入相册
   importAlbum = () => {
+    let uid = this.props.global.currentUser._id;
+    this.props.dispatch({
+      type: 'global/post',
+      url: '/api/PhotoList',
+      payload: {
+        uid
+      },
+      callback: (res) => {
 
+      }
+    })
   };
 
   //查询用户相册列表
@@ -111,6 +121,7 @@ export default class PublishPhotoContent extends React.Component {
         file: file
       },
       callback: (url) => {
+        console.log(url)
         let name = file.name,
           current = this.state.current,
           photoList = this.state.photoList,
@@ -136,6 +147,10 @@ export default class PublishPhotoContent extends React.Component {
     });
 
   };
+
+  addOssList = (key) => {
+
+  }
 
   changeCurrent = (index) => {
     let photoList = this.state.photoList;

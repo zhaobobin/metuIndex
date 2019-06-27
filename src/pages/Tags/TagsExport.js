@@ -2,8 +2,7 @@
 * 标签目录
 * */
 import React from 'react';
-import { Link } from 'dva/router';
-import {Row, Col, Card} from 'antd';
+import { Row, Col } from 'antd';
 
 //import styles from './IndexBase.less';
 
@@ -11,7 +10,7 @@ export default class TagsExport extends React.Component {
 
   render(){
 
-    const tag = this.props.match.params.tag;
+    // const tag = this.props.match.params.tag;
 
     return(
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'dva/router';
 import { connect } from 'dva';
-import { Row, Col, Tabs } from 'antd';
+import { Tabs } from 'antd';
 import { ENV } from '~/utils/utils';
 import styles from './AccountSetting.less';
 
@@ -19,22 +19,24 @@ export default class AccountSetting extends React.Component {
   };
 
   componentDidMount(){
-    document.title = '用户信息 - 设置' + " - " + ENV.appname;
+    document.title = `用户信息 - 设置 - ${ENV.appname}`;
   }
 
   handleTab = (key) => {
     switch(key){
       case "1":
-        document.title = '用户信息 - 设置' + " - " + ENV.appname;
+        document.title = `用户信息 - 设置 - ${ENV.appname}`;
         break;
       case "2":
-        document.title = '账户安全 - 设置' + " - " + ENV.appname;
+        document.title = `账户安全 - 设置 - ${ENV.appname}`;
         break;
       case "3":
-        document.title = '个人偏好 - 设置' + " - " + ENV.appname;
+        document.title = `个人偏好 - 设置 - ${ENV.appname}`;
         break;
       case "4":
-        document.title = '社交账号 - 设置' + " - " + ENV.appname;
+        document.title = `社交账号 - 设置 - ${ENV.appname}`;
+        break;
+      default:
         break;
     }
     this.setState({tabKey: key})

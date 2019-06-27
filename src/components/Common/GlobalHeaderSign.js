@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
 import { Button, Icon, Menu, Dropdown } from 'antd';
-import {ENV, Storage} from "~/utils/utils";
 import {FormattedMessage} from 'react-intl';
 import styles from './GlobalHeaderSign.less';
 

@@ -4,7 +4,6 @@
  */
 import React from 'react';
 import { connect } from 'dva';
-import {Storage, hasErrors, getImgSize, file2base64} from '~/utils/utils';
 
 import { EditorState, convertToRaw, convertFromHTML, ContentState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
@@ -82,9 +81,14 @@ export default class PublishArticleContent extends React.Component {
   }
 
   uploadImageCallback = (file) => {
-    console.log(file);
-    let key = this.props.global.currentUser._id + '/photo_' + new Date().getTime() + '.' + file.name.split('.')[1];
-    console.log(key)
+    let option = {
+      uid: this.props.global.currentUser._id,
+      category: 'photo',
+      name: file.name.split('.')[0],
+      unix: new Date().getTime(),
+      type: file.name.split('.')[1],
+    };
+    let key = option.uid + '/' + option.category + '_' + option.unix + '.' + option.type;
     return new Promise(
       (resolve, reject) => {
         this.props.dispatch({
@@ -93,10 +97,10 @@ export default class PublishArticleContent extends React.Component {
             key: key,
             file: file
           },
-          callback: (res) => {
-            if(res){
+          callback: (url) => {
+            if(url){
               let formDate = {
-                data: {link: res}
+                data: {link: url}
               }
               resolve(formDate)
             }else{

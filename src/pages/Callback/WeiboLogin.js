@@ -5,7 +5,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
-import { Row, Col, Button } from 'antd';
+import { Row, Col } from 'antd';
 import { ENV, Storage, getUrlParams } from '~/utils/utils'
 import styles from './WeiboLogin.less'
 

@@ -5,8 +5,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
-import { Card, Row, Col, notification } from 'antd';
-import {Storage} from "~/utils/utils";
+import { Card, Row, Col } from 'antd';
 
 import styles from './Equipment.less';
 
@@ -32,9 +31,9 @@ export default class EquipmentExplore extends PureComponent {
       callback: (res) => {
         let camera = [], lens = [];
 
-        for(let i in res.camera){
-
-        }
+        // for(let i in res.camera){
+        //
+        // }
 
         this.setState({
           loading: false,

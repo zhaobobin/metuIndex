@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import { Row, Col, Card, Tabs } from 'antd';
+import { Tabs } from 'antd';
 import styles from './HomePhotoList.less'
 
 import PhotosListQuery from '~/blocks/Photo/PhotosListQuery';

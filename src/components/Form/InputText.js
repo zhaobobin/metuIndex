@@ -1,8 +1,8 @@
 /**
- * 单行文本输入框
+ * 表单 - 单行文本输入框
  */
 import React from 'react';
-import { Row, Col, Input, Icon } from 'antd';
+import { Input, Icon } from 'antd';
 
 export default class InputText extends React.Component {
 

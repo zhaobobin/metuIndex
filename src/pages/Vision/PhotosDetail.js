@@ -3,9 +3,8 @@
  */
 import React from 'react';
 import { connect } from 'dva';
-import { Link } from 'dva/router';
-import {Row, Col, Icon, Spin, notification} from 'antd';
-import {ENV, Storage, goBack} from "~/utils/utils";
+import { notification } from 'antd';
+import { ENV, goBack } from "~/utils/utils";
 import styles from './PhotoDetail.less';
 
 import PhotoSwiper from '~/blocks/Photo/PhotoSwiper';

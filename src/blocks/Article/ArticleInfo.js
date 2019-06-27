@@ -51,7 +51,10 @@ export default class ArticleInfo extends React.Component {
       <div className={styles.info}>
         <Link to={`/u/${detail.uid.username}`} className={styles.avatar}>
           {
-            detail.uid.avatar ? <img src={detail.uid.avatar + '?x-oss-process=style/thumb_s'} /> : <Icon type="user" />
+            detail.uid.avatar ?
+              <img src={detail.uid.avatar + '?x-oss-process=style/thumb_s'} alt="avatar" />
+              :
+              <Icon type="user" />
           }
         </Link>
         <p>

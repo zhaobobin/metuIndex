@@ -1,17 +1,13 @@
 import React, { PureComponent } from 'react';
-import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
-import { Form, Input, Button, Icon, Row, Col, Card, Select, Switch, Table, Divider, Upload, Modal, Popconfirm, notification } from 'antd';
-import {Storage} from '~/utils/utils';
+import { Form, Input, Button, Row, Col, Card, Select } from 'antd';
 
 import UploadAvatar from '~/components/Form/UploadAvatar'
 import SelectCity from '~/components/Form/SelectCity'
 import SelectDate from '~/components/Form/SelectDate'
 
 const FormItem = Form.Item;
-const confirm = Modal.confirm;
-const { TextArea } = Input;
-const { Option, OptGroup } = Select;
+const { Option } = Select;
 
 const keys1 = ['avatar', 'nickname', 'fullname', 'gender', 'birthday', 'introduction', 'city', 'homepage'];
 const keys2 = ['address', 'zipcode', 'tel', 'qq', 'idcard'];

@@ -7,9 +7,9 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
-import {Card, Icon, notification} from 'antd';
+import { Icon, notification } from 'antd';
 import Moment from 'moment';
-import {Storage} from "../../utils/utils";
+// import {Storage} from "../../utils/utils";
 
 import styles from './ArticleRank.less';
 

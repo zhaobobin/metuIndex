@@ -7,7 +7,7 @@ import React from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
 import Moment from 'moment';
-import { Button, Form, Icon, Input, Popover, notification } from 'antd';
+import { Button, Form, Icon, Input, notification } from 'antd';
 import { filterStr } from "~/utils/utils";
 import styles from './CommentList.less';
 
@@ -262,7 +262,12 @@ export default class CommentList extends React.Component {
       list.map((topic, index) => (
         <li key={index} className={styles.item}>
           <Link className={styles.avatar} to={`/u/${topic.uid.username}`}>
-            {topic.uid.avatar ? <img src={topic.uid.avatar + '?x-oss-process=style/thumb_s'} /> : <Icon type="user" />}
+            {
+              topic.uid.avatar ?
+                <img src={topic.uid.avatar + '?x-oss-process=style/thumb_s'} alt="avatar" />
+                :
+                <Icon type="user" />
+            }
           </Link>
           <div className={styles.content}>
 
@@ -317,7 +322,12 @@ export default class CommentList extends React.Component {
                     topic.replyList.map((item, i) => (
                       <div key={i} className={styles.item}>
                         <Link className={styles.avatar} to={`/u/${item.uid.username}`}>
-                          {item.uid.avatar ? <img src={item.uid.avatar + '?x-oss-process=style/thumb_s'} /> : <Icon type="user" />}
+                          {
+                            item.uid.avatar ?
+                              <img src={item.uid.avatar + '?x-oss-process=style/thumb_s'} alt="avatar" />
+                              :
+                              <Icon type="user" />
+                          }
                         </Link>
 
                         <div className={styles.content + ' ' +styles.replyContent}>

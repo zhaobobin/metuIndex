@@ -13,8 +13,22 @@
         height:150px;
         background:#f1f1f1;
         position:relative;
-        img{max-width:100%;max-height:100%;margin:auto;
-          position:absolute;left:-999px;top:-999px;right:-999px;bottom:-999px;}
+        overflow: hidden;
+
+        img{
+          max-width:100%;
+          max-height:100%;
+          margin:auto;
+          transition: all .3s;
+          position:absolute;
+          left:-999px;
+          top:-999px;
+          right:-999px;
+          bottom:-999px;
+        }
+        &:hover img{
+          transform: scale(1.1);
+        }
       }
       .info{
         margin-left:200px;

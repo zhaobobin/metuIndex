@@ -4,7 +4,7 @@
  * tags：标签
  * currentPhoto：当前图片
  */
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
 import { Icon } from 'antd';
@@ -16,7 +16,7 @@ import styles from './PhotoInfo.less';
   global: state.global,
   oss: state.oss,
 }))
-export default class PhotoInfo extends PureComponent {
+export default class PhotoInfo extends React.Component {
 
   constructor(props){
     super(props);
@@ -61,9 +61,8 @@ export default class PhotoInfo extends PureComponent {
 
   render(){
 
-    const {detail, currentPhoto} = this.props;
-
-    //console.log(currentPhoto)
+    const { detail, currentPhoto } = this.props;
+    // console.log(currentPhoto)
 
     //tags
     const tagsList = detail.tags ?
@@ -73,21 +72,20 @@ export default class PhotoInfo extends PureComponent {
       : null;
 
     //图片元数据详情
-    let exifArr = [],
-      exifDetail = '',
-      exif = JSON.parse(currentPhoto.exif);
-    if(currentPhoto.exif){
-      for(let i in exif){
-        let obj = {name: i, value: exif[i].value};
-        exifArr.push(obj);
-      }
-      exifDetail = exifArr.map((topic, index) => (
+    let exifArr = [];
+    for(let i in currentPhoto.exif){
+      let o = {name: i, value: currentPhoto.exif[i].value}
+      exifArr.push(o)
+    }
+    const exifDetail = exifArr.length > 0 ?
+      exifArr.map((topic, index) => (
         <p key={index}>
           <label>{topic.name}</label>
           <span>{topic.value}</span>
         </p>
-      ));
-    }
+      ))
+      :
+      '';
 
     return(
       <div className={styles.photoInfo}>
@@ -125,13 +123,13 @@ export default class PhotoInfo extends PureComponent {
                 <p className={styles.tagList}>{tagsList}</p>
               </div>
               {
-                exif ?
+                currentPhoto.exif ?
                   <div className={styles.section+" "+styles.exif}>
                     <ul>
                       <li key="model" className={styles.camera}>
                         {
-                          exif.Model ?
-                            <Link to={`/equipments/camera-${currentPhoto.camera.name}`}>{exif.Model.value}</Link>
+                          currentPhoto.camera ?
+                            <Link to={`/equipments/camera-${currentPhoto.camera.modelName}`}>{currentPhoto.camera.model}</Link>
                             :
                             '无相机记录'
                         }
@@ -139,18 +137,18 @@ export default class PhotoInfo extends PureComponent {
                       </li>
                       <li key="lens" className={styles.lens}>
                         {
-                          exif.LensModel ?
-                            <Link to={`//equipments/lens-${currentPhoto.lens.name}`}>{exif.LensModel.value}</Link>
+                          currentPhoto.lens ?
+                            <Link to={`/equipments/lens-${currentPhoto.lens.modelName}`}>{currentPhoto.lens.model}</Link>
                             :
                             '无镜头记录'
                         }
                       </li>
                       {
-                        exif.FNumber ?
+                        currentPhoto.exposure ?
                           <li key="fn">
-                            <span>f{exif.FNumber.value},</span>
-                            <span>{exif.ExposureTime.value}s,</span>
-                            <span>ISO{exif.ISOSpeedRatings.value}</span>
+                            <span>f{currentPhoto.exposure.FNumber},</span>
+                            <span>{currentPhoto.exposure.ExposureTime}s,</span>
+                            <span>ISO{currentPhoto.exposure.ISOSpeedRatings}</span>
                           </li>
                           :
                           ''
@@ -164,7 +162,7 @@ export default class PhotoInfo extends PureComponent {
             : null
         }
 
-        <div className={styles.exifDetail+" "+this.state.exifShow}>
+        <div className={styles.exifDetail + " " + this.state.exifShow}>
           <p>
             <label><strong>EXIF信息</strong></label>
             <span><a className={styles.close} onClick={this.closeExifDetail}>关闭</a></span>

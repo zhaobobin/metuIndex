@@ -71,7 +71,7 @@ const BaseRoutes = app => [
         key: 'photos',
         path: 'photos/:id/:title',
         isHide: true,
-        component: dynamicWrapper(app, [], () => import('../pages/Vision/PhotosDetail')),
+        component: dynamicWrapper(app, ['oss'], () => import('../pages/Vision/PhotosDetail')),
       },
       {
         name: '照片',
@@ -79,7 +79,7 @@ const BaseRoutes = app => [
         key: 'photo',
         path: 'photo/:id/:title',
         isHide: true,
-        component: dynamicWrapper(app, ['photo'], () => import('../pages/Vision/PhotoDetail')),
+        component: dynamicWrapper(app, ['oss'], () => import('../pages/Vision/PhotoDetail')),
       },
       {
         name: '文章详情',

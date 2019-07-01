@@ -92,7 +92,6 @@ export default function request(url, options) {
 export function FetchGet(url){
   let option = {
     method: 'GET',
-    credentials: 'include',
     headers: {'Content-Type': 'application/json'}
   };
   return fetch(url, option)

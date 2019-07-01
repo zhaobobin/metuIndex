@@ -181,10 +181,12 @@ export default class PhotoSwiper extends PureComponent {
     //缩略图列表 - 加载完毕时渲染
     const thumbList = list.length > 0 ?
       list.map((topic, index) => (
-        index === currentKey ?
-          <a key={index} className={styles.thumbItem+" "+styles.current} onClick={() => this.photoHandle(index)} style={{backgroundImage: 'url('+ topic.url + '?x-oss-process=style/thumb_s)'}} />
-          :
-          <a key={index} className={styles.thumbItem} onClick={() => this.photoHandle(index)} style={{backgroundImage: 'url('+ topic.url + '?x-oss-process=style/thumb_s)'}} />
+        <div
+          key={index}
+          className={styles.thumbItem + " " + (index === currentKey ? styles.current : null)}
+          onClick={() => this.photoHandle(index)}
+          style={{backgroundImage: 'url('+ topic.url + '?x-oss-process=style/thumb_s)'}}
+        />
       ))
       :
       null;
@@ -212,7 +214,7 @@ export default class PhotoSwiper extends PureComponent {
               <div className={styles.scene}>
                 <div className={styles.sceneContainer}>
                   <div className={styles.spin}><Spin spinning={loading} size="large" /></div>
-                  <img className={styles.currentPhoto} src={currentPhoto.url + '?x-oss-process=style/cover'} alt="photo"/>
+                  <img className={styles.currentPhoto} src={currentPhoto.url + '?x-oss-process=style/cover'} alt="current"/>
                   {/*<img className={styles.currentPhoto} onLoad={this.loaded} src={currentPhoto.url + '?x-oss-process=style/cover'} alt="photo"//>*/}
                 </div>
                 <a className={styles.mask} onClick={this.onChangeFullscreen}/>

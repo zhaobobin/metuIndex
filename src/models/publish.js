@@ -11,8 +11,6 @@ export default {
     publishType: '',                      //发布类型：文章、图片
     content: '',                          //发布内容
     thumb: '',                            //缩略图（可选）
-    currentPhoto: 0,                      //默认当前展示的图片
-    photoList: '',                        //图片保存列表
   },
 
   effects: {

@@ -93,13 +93,13 @@ export const Storage = {
     let d = new Date();
     d.setTime(d.getTime() + (t * 24 * 60 * 60 * 1000));
     let expires ="expires="+ d.toUTCString();
-    document.cookie = key + "=" + value + "; " + expires;
+    window.document.cookie = key + "=" + value + "; " + expires;
   },
 
   //获取cookie
   getCookie: function (name) {
     let arr, reg = new RegExp("(^|)" + name + "=([^]*)(|$)");
-    if (arr = document.cookie.match(reg)) {
+    if (arr = window.document.cookie.match(reg)) {
       return arr[2];
     }
     else {
@@ -108,6 +108,14 @@ export const Storage = {
   },
 
 };
+
+/**
+ * 生成唯一编码id
+ * @returns {string}
+ */
+export function createRandomId() {
+  return (new Date()).getTime().toString().substr(0, 4) + Math.random().toString().substr(2, 5);
+}
 
 /**
  * 加密方法
@@ -244,7 +252,7 @@ export function getUrlParams() {
   let url = window.location.href.split('?')[1];
   if (!url) return false;
   let arr = url.split("&");
-  let obj = new Object();
+  let obj = {};
 
   // 将每一个数组元素以=分隔并赋给obj对象
   for (let i = 0; i < arr.length; i++) {

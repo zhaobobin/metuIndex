@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import { Row, Col, Icon, Button, Upload, Modal } from 'antd';
-import {Storage, hasErrors, file2base64} from '~/utils/utils';
+import { file2base64, createRandomId } from '~/utils/utils';
 import styles from './PublishPhotoContent.less';
 
 import { Alert } from '~/components/Dialog/Dialog'
@@ -85,28 +85,29 @@ export default class PublishPhotoContent extends React.Component {
     let option = {
       category: 'photo',
       name: file.name.split('.')[0],
-      unix: new Date().getTime(),
+      //unix: new Date().getTime(),
+      id: createRandomId(),
       type: file.name.split('.')[1],
     };
-    let key = uid + '/' + option.category + '_' + option.unix + '.' + option.type;
+    let key = uid + '/' + option.id + '.' + option.type;
 
     // 根据key查询图片是否已上传
 
-    //return;
-
     file2base64(file, (base64) => {
       let imgData = {
-        loading: true,                                          //加载状态
-        key,                                                //对应oss中的键值
-        category: '',
+        loading: true,                                            //加载状态
+        cover: false,                                             //是否作为封面
+        key,                                                      //对应oss中的键值
         name: option.name,                                        //完整文件名
-        title: option.name.replace(/(.*\/)*([^.]+).*/ig,"$2"),    //文件标题
-        tags: '',
-        description: '',
-        copyright: '',
-        base64: base64,                                         //用于显示上传时的缩略图
-        url: '',                                                //图片路径，用于显示
-        cover: false,
+        title: file.name.replace(/(.*\/)*([^.]+).*/ig,"$2"),      //文件标题
+        description: '',                                          //描述
+        base64: base64,                                           //用于显示上传时的缩略图
+        width: base64.width,                                      //图片宽度
+        height: base64.height,                                    //图片高度
+        exif: '',                                                 //图片源数据
+        camera: '',                                               //相机型号
+        lens: '',                                                 //镜头型号
+        url: '',                                                  //oss图片路径，用于显示
       };
       photoList.push(imgData);
       this.setState({ photoList });
@@ -120,19 +121,64 @@ export default class PublishPhotoContent extends React.Component {
       },
       callback: (url) => {
         // console.log(url)
-        for(let i in photoList){
-          if(photoList[i].name === option.name){
-            photoList[i].loading = false;
-            photoList[i].url = url;
-          }
-        }
-        if(photoList.length > 0) {
-          photoList[0].cover = true;
-        }
 
-        this.setState({
-          photoList,
+        // 查询exif
+        this.props.dispatch({
+          type: 'oss/exif',
+          payload: {
+            url
+          },
+          callback: (exif) => {
+            for(let i in photoList){
+              if(photoList[i].name === option.name){
+                photoList[i].loading = false;
+                photoList[i].url = url;
+                photoList[i].exif = exif;
+                //相机
+                photoList[i].camera = exif.Model.value ? {
+                  brand: exif.Model.value.split(' ')[0],
+                  brandName: exif.Model.value.split(' ')[0].toLowerCase(),
+                  model: exif.Model.value,
+                  modelName: exif.Model.value.replace(/\s+/g, "-").toLowerCase()
+                } : '';
+                //镜头
+                photoList[i].lens = exif.LensModel.value ? {
+                  brand: exif.LensModel.value.split(' ')[0],
+                  brandName: exif.LensModel.value.split(' ')[0].toLowerCase(),
+                  model: exif.LensModel.value,
+                  modelName: exif.LensModel.value.replace(/\s+/g, "-").toLowerCase()
+                } : '';
+                //曝光
+                photoList[i].exposure = {
+                  FNumber: exif.FNumber ? exif.FNumber.value : '',
+                  ExposureTime: exif.ExposureTime ? exif.ExposureTime.value : '',
+                  ISOSpeedRatings: exif.ISOSpeedRatings ? exif.ISOSpeedRatings.value : ''
+                }
+              }
+            }
+            if(photoList.length > 0) {
+              photoList[0].cover = true;
+            }
+
+            this.props.dispatch({
+              type: 'publish/savePhotoContent',
+              payload: {
+                content: photoList,
+                thumb: {
+                  url: photoList[0].url,
+                  width: photoList[0].width.toString(),
+                  height: photoList[0].height.toString()
+                },
+              }
+            });
+            console.log(photoList)
+            this.setState({
+              photoList,
+            });
+          }
         });
+
+
       }
     });
 
@@ -151,7 +197,7 @@ export default class PublishPhotoContent extends React.Component {
   changeCover = (index) => {
     let photoList = this.state.photoList;
     for(let i in photoList){
-      let c = parseInt(i);
+      let c = parseInt(i, 10);
       photoList[i].cover = c === index;
     }
     this.setState({
@@ -230,6 +276,9 @@ export default class PublishPhotoContent extends React.Component {
           </Row>
 
         </div>
+
+        <Modal/>
+
       </div>
     )
   }

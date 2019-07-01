@@ -61,7 +61,12 @@ export default class PublishRight extends React.Component {
     this.props.form.validateFields('', (err, values) => {
       if(!err){
         values.uid = global.currentUser._id;
-        values.content = publish.content;
+        for(let i in publish.content){
+          delete publish.content[i].loading;
+          delete publish.content[i].cover;
+          delete publish.content[i].base64;
+        }
+        values.content = JSON.stringify(publish.content);
         values.thumb = publish.thumb || '';
         if(values.tags) values.tags = values.tags.join(',');
         this.saveData(values)
@@ -77,10 +82,10 @@ export default class PublishRight extends React.Component {
     let api = '',
       id = this.props.id;
     if(id){
-      api = 'api/PhotocUpdate';
+      api = 'api/PhotosUpdate';
       params.id = id;
     }else{
-      api = 'api/PhotocAdd';
+      api = 'api/PhotosAdd';
     }
     //保存时，执行ossDel列表对应文件的删除操作
     this.props.dispatch({
@@ -93,7 +98,7 @@ export default class PublishRight extends React.Component {
           this.props.form.resetFields();
           this.props.dispatch(routerRedux.push('/u/'+this.props.global.currentUser.username));
         }else{
-          notification.error({message: res.msg});
+          notification.error({message: res.msg || res.msg.message});
         }
       }
     });
@@ -205,7 +210,7 @@ export default class PublishRight extends React.Component {
             size="large"
             type="primary"
             htmlType="submit"
-            disabled={!publish.photoList || global.submitting}
+            disabled={!publish.content || global.submitting}
           >
             发布
           </Button>

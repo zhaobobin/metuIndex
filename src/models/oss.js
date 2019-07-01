@@ -36,6 +36,8 @@ export default {
   },
 
   effects: {
+
+    // 列表
     *list({payload, callback}, {call, put}) {
       yield put({
         type: 'changeLoading',
@@ -57,6 +59,8 @@ export default {
         payload: false,
       })
     },
+
+    // 详情
     *detail({payload, callback}, {call, put}) {
       yield put({
         type: 'changeLoading',
@@ -78,8 +82,12 @@ export default {
         payload: false,
       })
     },
+
+    // 源数据
     *exif({payload, callback}, {call, put}) {
-      let url = payload.url + '?x-oss-process=image/info'
+
+      let url = payload.url + '?x-oss-process=image/info';
+
       yield FetchGet(url)
       .then((exif) => {
         if (exif.FNumber) {
@@ -95,6 +103,8 @@ export default {
         })
       })
     },
+
+    // 上传
     *upload({payload, callback}, {call, put}) {
       const res = yield call(
         (params) => {
@@ -118,6 +128,7 @@ export default {
           })
       }
     },
+
     *uploadBase64({payload, callback}, {call, put}) {
       const res = yield call(
         (params) => {
@@ -153,6 +164,7 @@ export default {
       }
 
     },
+
     *del({payload, callback}, {call, put}) {
       yield put({
         type: 'changeSubmitting',

@@ -7,10 +7,9 @@
 import React from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
-import { Icon } from 'antd';
-import Moment from 'moment';
-
 import styles from './PhotoInfo.less';
+
+import ArticleAuthorInfo from '~/blocks/Article/ArticleAuthorInfo'
 
 @connect(state => ({
   global: state.global,
@@ -23,6 +22,7 @@ export default class PhotoInfo extends React.Component {
     this.ajaxFlag = true;
     this.state = {
       exifShow: '',
+      followState: '',
     };
   }
 
@@ -93,35 +93,17 @@ export default class PhotoInfo extends React.Component {
         {
           detail ?
             <div className={styles.frame}>
-              <div className={styles.section+" "+styles.post}>
-                <Link to={`/u/${detail.uid.username}`} className={styles.avatar}>
-                  {
-                    detail.uid.avatar ?
-                      <img src={detail.uid.avatar + '?x-oss-process=style/thumb_s'} alt="avatar"/>
-                      :
-                      <Icon type="user" />
-                  }
-                </Link>
-                <p>
-                  <Link to={`/u/${detail.uid.username}`}>
-                    <span>{detail.uid.nickname}</span>
-                  </Link>
-                </p>
-                <p className={styles.date}>
-                  <span>{Moment(detail.createtime).format('YYYY-MM-DD')}</span>
-                  <span><Icon type="eye-o" /> {detail.views}</span>
-                </p>
-                <a className={styles.follow} onClick={this.handleFollow}>
-                  {
-                    this.state.followState ? <span>已关注</span> : <span>关注</span>
-                  }
-                </a>
+
+              <div className={styles.section+" "+styles.author}>
+                <ArticleAuthorInfo detail={detail} />
               </div>
+
               <div className={styles.section+" "+styles.title}>
                 <h1>{detail.title}</h1>
                 <p>{currentPhoto.title}</p>
                 <p className={styles.tagList}>{tagsList}</p>
               </div>
+
               {
                 currentPhoto.exif ?
                   <div className={styles.section+" "+styles.exif}>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'dva/router';
 import styles from './ArticleDetailShow.less'
 
-import ArticleInfo from './ArticleInfo'
+import ArticleAuthorInfo from './ArticleAuthorInfo'
 
 export default function ArticleDetailShow ({detail}) {
   return(
@@ -11,7 +11,9 @@ export default function ArticleDetailShow ({detail}) {
       <div className={styles.head}>
         <h1>{detail.title}</h1>
 
-        <ArticleInfo detail={detail}/>
+        <div className={styles.author}>
+          <ArticleAuthorInfo detail={detail}/>
+        </div>
 
       </div>
 

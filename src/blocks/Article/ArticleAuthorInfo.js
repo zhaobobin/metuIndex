@@ -1,15 +1,14 @@
 import React from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
-import {Icon} from 'antd';
+import { Icon } from 'antd';
 import Moment from 'moment';
-
-import styles from './ArticleInfo.less'
+import styles from './ArticleAuthorInfo.less'
 
 @connect(state => ({
   global: state.global,
 }))
-export default class ArticleInfo extends React.Component {
+export default class ArticleAuthorInfo extends React.Component {
 
   constructor(props){
     super(props);
@@ -45,14 +44,14 @@ export default class ArticleInfo extends React.Component {
 
   render(){
 
-    const {detail} = this.props;
+    const { detail } = this.props;
 
     return(
-      <div className={styles.info}>
+      <div className={styles.container}>
         <Link to={`/u/${detail.uid.username}`} className={styles.avatar}>
           {
             detail.uid.avatar ?
-              <img src={detail.uid.avatar + '?x-oss-process=style/thumb_s'} alt="avatar" />
+              <img src={detail.uid.avatar + '?x-oss-process=style/thumb_s'} alt="avatar"/>
               :
               <Icon type="user" />
           }

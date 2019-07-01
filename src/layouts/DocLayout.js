@@ -1,24 +1,26 @@
 import React from 'react';
 import { Link, NavLink, Route, Redirect, Switch } from 'dva/router';
 import DocumentTitle from 'react-document-title';
-import NotFound from "~/pages/Other/404";
 import { ENV } from '~/utils/utils';
+import { injectIntl } from 'react-intl';
+import NotFound from "~/pages/Other/404";
 
 import styles from './DocLayout.less'
 import logo from '~/assets/logo2.png'
 
-export default class DocLayout extends React.Component {
+class DocLayout extends React.Component {
 
   getPageTitle() {
-    const { location, getRouteData } = this.props;
+    const { intl, location, getRouteData } = this.props;
     const { pathname } = location;
-    const routeData = getRouteData('DocLayout');
-    let title = '';
-    for(let i in routeData){
-      if (pathname.indexOf(routeData[i].key) > -1) {
-        title = routeData[i].name + ' - ' + ENV.appname;
-      }
-    }
+    const appname = intl.formatMessage({id: 'env.appname'});
+
+    let title = appname;
+    getRouteData('DocLayout').forEach((item) => {
+      if (item.path !== pathname) return;
+      let routeName = intl.formatMessage({id: item.id});   //路径名称
+      title = routeName + ' - ' + intl.formatMessage({id: 'doc'}) + ' - ' + appname;
+    });
     return title;
   }
 
@@ -107,3 +109,5 @@ export default class DocLayout extends React.Component {
   }
 
 }
+
+export default injectIntl(DocLayout, {withRef: true});

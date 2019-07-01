@@ -4,6 +4,34 @@ import { Row, Col, Icon } from 'antd';
 import styles from './HomeTese.less'
 
 export default function HomeTese () {
+
+  const List = [
+    {
+      title: '发现',
+      desc: '他人镜头里的奇观',
+      url: '/community/popular',
+      icon: 'search',
+    },
+    {
+      title: '部落',
+      desc: '以图会友，相互交流',
+      url: '/tribe',
+      icon: 'team',
+    },
+    {
+      title: '活动',
+      desc: '精彩活动，不容错过',
+      url: '/contest',
+      icon: 'trophy',
+    },
+    {
+      title: '供稿',
+      desc: '好照片能赚钱',
+      url: '/publish/photo',
+      icon: 'edit',
+    },
+  ]
+
   return(
     <div className={styles.container}>
       <Row>
@@ -11,34 +39,17 @@ export default function HomeTese () {
         <Col xs={24} sm={24} md={16} lg={16}>
 
           <Row>
-            <Col xs={12} sm={12} md={6} lg={6} >
-              <Link className={styles.item} to="/">
-                <Icon type="search" />
-                <h3>发现</h3>
-                <p>他人镜头里的奇观</p>
-              </Link>
-            </Col>
-            <Col xs={12} sm={12} md={6} lg={6} >
-              <Link className={styles.item} to="/">
-                <Icon type="team" />
-                <h3>部落</h3>
-                <p>以图会友，相互交流</p>
-              </Link>
-            </Col>
-            <Col xs={12} sm={12} md={6} lg={6} >
-              <Link className={styles.item} to="/">
-                <Icon type="trophy" />
-                <h3>活动</h3>
-                <p>精彩活动，不容错过</p>
-              </Link>
-            </Col>
-            <Col xs={12} sm={12} md={6} lg={6} >
-              <Link className={styles.item} to="/">
-                <Icon type="edit" />
-                <h3>供稿</h3>
-                <p>好照片能赚钱</p>
-              </Link>
-            </Col>
+            {
+              List.map((item, index) => (
+                <Col xs={12} sm={12} md={6} lg={6} key={index}>
+                  <Link className={styles.item} to={item.url}>
+                    <Icon type={item.icon} />
+                    <h3>{item.title}</h3>
+                    <p>{item.desc}</p>
+                  </Link>
+                </Col>
+              ))
+            }
           </Row>
 
         </Col>

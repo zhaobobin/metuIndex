@@ -10,12 +10,17 @@ export default {
   'env.copyright': '©2015-2018 metuwang All rights reserved',
 
   'menu.home': 'Home',
-  'menu.vision': 'Vision',
-  'menu.course': 'Cuorse',
-  'menu.equipments': 'Equipments',
+  'menu.community': 'Community',
   'menu.photos': 'Photos',
   'menu.photo': 'Photo',
   'menu.article.detail': 'Article detail',
+  'menu.contest': 'Contest',
+
+  'menu.discover': 'Discover',
+  'menu.author': 'Photographer',
+  'menu.tribe': 'Tribe',
+  'menu.course': 'Cuorse',
+  'menu.equipments': 'Equipments',
   'menu.tags': 'Tags',
   'menu.tag': 'Tag',
 
@@ -54,5 +59,17 @@ export default {
 
   'menu.hdzq': 'hdzq',
   'menu.hdzq.lucky': 'lucky',
+
+  // 其他
+  'menu.help': 'Help',
+  'menu.service': 'Service',
+  'menu.contact': 'Contact',
+  'menu.sitemap': 'Sitemap',
+  'menu.doc': 'Doc',
+
+  // 文档
+  'doc': 'Doc',
+  'doc.button': 'Button',
+  'doc.ui': 'UI',
 
 };

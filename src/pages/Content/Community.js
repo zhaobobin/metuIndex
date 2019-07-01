@@ -2,14 +2,14 @@ import React from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
 import { Row, Col, Menu } from 'antd';
-import styles from './Vision.less';
+import styles from './Community.less';
 
 import PhotosListQuery from '~/blocks/Photo/PhotosListQuery';
 
 @connect(state => ({
   global: state.global,
 }))
-export default class Vision extends React.Component {
+export default class Community extends React.Component {
 
   constructor(props){
     super(props);
@@ -37,7 +37,7 @@ export default class Vision extends React.Component {
 
   //监控滚动
   handleScroll(e){
-    e.preventDefault();
+    // e.preventDefault();
     let top = document.body.scrollTop || document.documentElement.scrollTop || window.pageYOffset;
     if(top > 64){
       this.setState({headerFixed: styles.fixed})
@@ -68,25 +68,24 @@ export default class Vision extends React.Component {
               <Menu
                 mode="horizontal"
                 selectedKeys={[current]}
-                style={{background: 'none', border: 'none'}}
               >
                 <Menu.Item key="popular">
-                  <Link to="/vision/popular">热门</Link>
+                  <Link to="/community/popular">热门</Link>
                 </Menu.Item>
                 <Menu.Item key="editor">
-                  <Link to="/vision/editor">推荐</Link>
+                  <Link to="/community/editor">推荐</Link>
                 </Menu.Item>
                 <Menu.Item key="new">
-                  <Link to="/vision/new">最新</Link>
+                  <Link to="/community/new">最新</Link>
                 </Menu.Item>
                 <Menu.Item key="人像">
-                  <Link to="/vision/人像">人像</Link>
+                  <Link to="/community/人像">人像</Link>
                 </Menu.Item>
                 <Menu.Item key="人文">
-                  <Link to="/vision/人文">人文</Link>
+                  <Link to="/community/人文">人文</Link>
                 </Menu.Item>
                 <Menu.Item key="风光">
-                  <Link to="/vision/风光">风光</Link>
+                  <Link to="/community/风光">风光</Link>
                 </Menu.Item>
               </Menu>
 

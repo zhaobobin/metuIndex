@@ -12,11 +12,13 @@ const DocRoutes = app => [
     component: dynamicWrapper(app, [], () => import('../layouts/DocLayout')),
     layout: 'DocLayout',
     key: 'DocMenu',
-    name: '用户',
+    name: '开发文档',
+    id: 'doc',
     path: 'doc',
     children: [
       {
         name: '按钮',
+        id: 'doc.button',
         key: 'common',
         path: 'doc/button',
         exact: true,
@@ -24,6 +26,7 @@ const DocRoutes = app => [
       },
       {
         name: 'UI',
+        id: 'doc.ui',
         key: 'common',
         path: 'doc/ui',
         exact: true,

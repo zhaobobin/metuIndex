@@ -7,6 +7,18 @@
     padding-top: 10px;
     background: #fff;
     box-shadow: @box_shadow;
+    position: relative;
+
+    :global{
+      .ant-menu-horizontal{
+        text-align: center;
+        background: none;
+      }
+      .ant-menu-horizontal > .ant-menu-item{
+        display: inline-block;
+        float: none;
+      }
+    }
   }
 
   .fixed{

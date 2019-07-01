@@ -67,7 +67,7 @@ export default class PhotoInfo extends React.Component {
     //tags
     const tagsList = detail.tags ?
       detail.tags.map((topic, index) => (
-        <Link className={styles.tagItem} key={index} to={`tags/${topic}`}>{topic}</Link>
+        <Link className={styles.tagItem} key={index} to={`/tags/${topic}`}>{topic}</Link>
       ))
       : null;
 

@@ -10,12 +10,17 @@ export default {
   'env.copyright': '©2015-2018 迷图网 All rights reserved',
 
   'menu.home': '首页',
-  'menu.vision': '影像',
-  'menu.course': '教程',
-  'menu.equipments': '器材',
+  'menu.community': '社区',
   'menu.photos': '照片集',
   'menu.photo': '照片',
   'menu.article.detail': '文章详情',
+  'menu.contest': '活动',
+
+  'menu.discover': '发现',
+  'menu.author': '摄影师',
+  'menu.tribe': '部落',
+  'menu.course': '教程',
+  'menu.equipments': '器材',
   'menu.tags': '标签云',
   'menu.tag': '标签',
 
@@ -55,5 +60,18 @@ export default {
 
   'menu.hdzq': '活动专区',
   'menu.hdzq.lucky': '幸运抽奖',
+
+  // 其他
+  'menu.help': '帮助中心',
+  'menu.service': '服务条款',
+  'menu.contact': '联系我们',
+  'menu.sitemap': '网站地图',
+  'menu.doc': '开发文档',
+
+  // 文档
+  'doc': '开发文档',
+  'doc.button': '按钮',
+  'doc.ui': 'UI',
+
 
 };

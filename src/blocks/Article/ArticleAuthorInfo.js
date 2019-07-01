@@ -45,6 +45,7 @@ export default class ArticleAuthorInfo extends React.Component {
   render(){
 
     const { detail } = this.props;
+    const uid = this.props.global.currentUser._id;
 
     return(
       <div className={styles.container}>
@@ -65,11 +66,17 @@ export default class ArticleAuthorInfo extends React.Component {
           <span>{Moment(detail.createtime).format('YYYY-MM-DD')}</span>
           <span><Icon type="eye-o" /> {detail.views}</span>
         </p>
-        <a className={styles.follow} onClick={this.handleFollow}>
-          {
-            this.state.followState ? <span>已关注</span> : <span>关注</span>
-          }
-        </a>
+        {
+          detail.uid._id === uid ?
+            null
+            :
+            <a className={styles.follow} onClick={this.handleFollow}>
+              {
+                this.state.followState ? <span>已关注</span> : <span>关注</span>
+              }
+            </a>
+        }
+
       </div>
     )
   }

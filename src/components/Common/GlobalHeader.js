@@ -43,7 +43,7 @@ export default class GlobalHeader extends React.Component {
 
   //监控滚动
   handleScroll(e){
-    e.preventDefault();
+    // e.preventDefault();
     let scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
     if(scrollY > 0){
       this.setState({headerFixed: styles.fixed})

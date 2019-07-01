@@ -39,13 +39,15 @@ export default function GlobalFooter (props) {
                 <span>{ENV.copyright}</span>
               </p>
               <p>
-                <span><Link to="help">帮助中心</Link></span>
+                <span><Link to="/help">帮助中心</Link></span>
                 <span>|</span>
-                <span><Link to="service">服务条款</Link></span>
+                <span><Link to="/service">服务条款</Link></span>
                 <span>|</span>
-                <span><Link to="contact">联系我们</Link></span>
+                <span><Link to="/contact">联系我们</Link></span>
                 <span>|</span>
-                <span><Link to="doc">开发文档</Link></span>
+                <span><Link to="/sitemap">网站地图</Link></span>
+                <span>|</span>
+                <span><Link to="/doc">开发文档</Link></span>
               </p>
             </div>
           </div>

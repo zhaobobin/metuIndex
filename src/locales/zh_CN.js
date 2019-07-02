@@ -70,8 +70,9 @@ export default {
 
   // 文档
   'doc': '开发文档',
-  'doc.button': '按钮',
-  'doc.ui': 'UI',
+  'doc.demo': '示例',
+  'doc.introduce': '介绍',
+  'doc.components': '组件',
 
 
 };

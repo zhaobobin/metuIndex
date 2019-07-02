@@ -69,7 +69,8 @@ export default {
 
   // 文档
   'doc': 'Doc',
-  'doc.button': 'Button',
-  'doc.ui': 'UI',
+  'doc.demo': 'Demo',
+  'doc.introduce': 'Introduce',
+  'doc.components': 'Components',
 
 };

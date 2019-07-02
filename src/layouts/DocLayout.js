@@ -1,12 +1,12 @@
 import React from 'react';
-import { Link, NavLink, Route, Redirect, Switch } from 'dva/router';
+import { Link, Route, Redirect, Switch } from 'dva/router';
 import DocumentTitle from 'react-document-title';
-import { ENV } from '~/utils/utils';
 import { injectIntl } from 'react-intl';
 import NotFound from "~/pages/Other/404";
-
 import styles from './DocLayout.less'
+
 import logo from '~/assets/logo2.png'
+import DocSlideMenu from '~/blocks/Doc/DocSlideMenu'
 
 class DocLayout extends React.Component {
 
@@ -52,27 +52,7 @@ class DocLayout extends React.Component {
         </div>
 
         <div className={styles.slide}>
-          <div className={styles.menu}>
-            <ul>
-              {
-                Routes.map(item => (
-                  item.isHide ?
-                    null
-                    :
-                    <li key={item.path} >
-                      <p>
-                        <NavLink
-                          activeClassName={styles.active}
-                          to={item.path}
-                        >
-                          {item.name}
-                        </NavLink>
-                      </p>
-                    </li>
-                ))
-              }
-            </ul>
-          </div>
+          <DocSlideMenu routes={Routes}/>
         </div>
 
         <div className={styles.container}>
@@ -91,7 +71,7 @@ class DocLayout extends React.Component {
                   )
                 )
               }
-              <Redirect exact from="/doc" to="/doc/button" />
+              <Redirect exact from="/doc" to="/doc/introduce" />
               <Route component={NotFound} />
             </Switch>
           </div>

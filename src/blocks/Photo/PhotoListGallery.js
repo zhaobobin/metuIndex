@@ -96,7 +96,13 @@ export default class PhotoListGallery extends React.Component {
 
     return(
       <div ref={measureRef}>
-        <Gallery photos= {photoList} columns={columns} margin={5} ImageComponent={PhotoListItem} />
+        <Gallery
+          photos=
+            {photoList}
+          columns={columns}
+          margin={5}
+          ImageComponent={PhotoListItem}
+        />
       </div>
     )
   };

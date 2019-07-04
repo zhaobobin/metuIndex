@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import { Icon, Upload, notification } from 'antd';
-import { file2base64 } from '~/utils/utils';
+import { file2base64, createRandomId } from '~/utils/utils';
 import defauleBanner from '~/assets/banner.jpg';
 import styles from './AccountCenterBanner.less';
 
@@ -18,6 +18,7 @@ export default class AccountCenterBanner extends React.Component {
     super(props);
     this.ajaxFlag = true;
     this.state = {
+      uid: this.props.global.currentUser._id,
       detail: this.props.detail,
       editVisible: false,
       notification: '',
@@ -46,13 +47,14 @@ export default class AccountCenterBanner extends React.Component {
   handleUpload = ({file}) => {
     let _this = this;
     file2base64(file, function(data){
+      // console.log(data)
       if(data.width < 1000 || data.height < 400){
         notification.error({message: '背景图片要求：宽度>=1000px，高度>=400px'});
       }else{
         _this.setState({
           editVisible: true,
           file: file,
-          base64: data.base64
+          base64: data.url
         });
       }
     });
@@ -62,19 +64,19 @@ export default class AccountCenterBanner extends React.Component {
     if(!this.ajaxFlag) return;
     this.ajaxFlag = false;
 
-    let {file, base64} = this.state;
+    let { uid, file, base64 } = this.state;
     //console.log(file)
 
     this.setState({ notification: '上传中，请稍后...' });
 
     let option = {
-      uid: this.props.global.currentUser._id,
+      uid,
       category: 'banner',
       name: file.name.split('.')[0],
-      unix: new Date().getTime(),
+      id: createRandomId(),
       type: file.name.split('.')[1],
     };
-    let key = option.uid + '/' + option.category + '_' + option.unix + '.' + option.type;
+    let key = option.uid + '/' + option.category + '_' + option.id + '.' + option.type;
 
     this.props.dispatch({
       type: 'oss/uploadBase64',
@@ -83,14 +85,14 @@ export default class AccountCenterBanner extends React.Component {
         base64: base64
       },
       callback: (url) => {
-
+        // console.log(url)
         this.ajaxFlag = true;
 
         this.props.dispatch({
           type: 'global/post',
           url: 'api/UserBanner',
           payload: {
-            _id: this.props.global.currentUser._id,
+            _id: uid,
             banner: url
           },
           callback: (res) => {
@@ -128,6 +130,8 @@ export default class AccountCenterBanner extends React.Component {
 
     const {detail, editVisible, notification, base64} = this.state;
     const {currentUser} = this.props.global;
+    // console.log(detail)
+    // console.log(currentUser)
 
     const bannerUrl = detail.banner ?
       'url(' + detail.banner + '?x-oss-process=style/cover)'

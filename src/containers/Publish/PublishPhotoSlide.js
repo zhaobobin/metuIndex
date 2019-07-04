@@ -154,7 +154,6 @@ export default class PublishRight extends React.Component {
               rules: [
                 { required: true, message: '请输入文章标题！' },
                 { max: 20, message: '标题长度不能超过20个字！' },
-                { pattern: /^[\u0391-\uFFE5A-Za-z0-9,.]+$/, message: '不能输入特殊符号！' }
               ],
             })(
               <InputText maxLength={20} defaultVaule={this.props.title} placeholder="标题长度不能超过20个字" callback={this.titleCallback}/>

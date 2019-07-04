@@ -73,6 +73,9 @@ export default {
   'doc.demo': '示例',
   'doc.introduce': '介绍',
   'doc.components': '组件',
+  'doc.components.form': '表单',
+  'doc.model': '模型',
+  'doc.model.photo': '图片',
 
 
 };

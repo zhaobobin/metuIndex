@@ -35,7 +35,30 @@ const DocRoutes = app => [
         id: 'doc.components',
         key: 'components',
         path: 'doc/components',
-        component: dynamicWrapper(app, [], () => import('../pages/Doc/Doc')),
+        children: [
+          {
+            name: '表单',
+            id: 'doc.components.form',
+            key: 'components-form',
+            path: 'form',
+            component: dynamicWrapper(app, [], () => import('../pages/Doc/Doc')),
+          }
+        ]
+      },
+      {
+        name: '模型',
+        id: 'doc.model',
+        key: 'model',
+        path: 'doc/model',
+        children: [
+          {
+            name: '图片',
+            id: 'doc.model.photo',
+            key: 'model-photo',
+            path: 'photo',
+            component: dynamicWrapper(app, [], () => import('../pages/Doc/Doc')),
+          }
+        ]
       },
     ],
   },

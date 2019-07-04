@@ -72,5 +72,8 @@ export default {
   'doc.demo': 'Demo',
   'doc.introduce': 'Introduce',
   'doc.components': 'Components',
+  'doc.components.form': 'Form',
+  'doc.model': 'Model',
+  'doc.model.photo': 'Model photo',
 
 };

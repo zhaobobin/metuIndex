@@ -37,8 +37,7 @@ class DocLayout extends React.Component {
 
   render(){
 
-    const { getRouteData } = this.props;
-    const Routes = getRouteData('DocLayout');
+    const { getRouteData, navData } = this.props;
 
     const layout = (
       <div className={styles.docLayout}>
@@ -52,7 +51,7 @@ class DocLayout extends React.Component {
         </div>
 
         <div className={styles.slide}>
-          <DocSlideMenu routes={Routes}/>
+          <DocSlideMenu navData={navData[2].children}/>
         </div>
 
         <div className={styles.container}>
@@ -60,7 +59,7 @@ class DocLayout extends React.Component {
           <div className={styles.content}>
             <Switch>
               {
-                Routes.map(item =>
+                getRouteData('DocLayout').map(item =>
                   (
                     <Route
                       exact={item.exact}

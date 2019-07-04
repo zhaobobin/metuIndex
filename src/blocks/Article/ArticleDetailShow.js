@@ -11,9 +11,14 @@ export default function ArticleDetailShow ({detail}) {
       <div className={styles.head}>
         <h1>{detail.title}</h1>
 
-        <div className={styles.author}>
-          <ArticleAuthorInfo detail={detail}/>
-        </div>
+        {
+          detail.uid ?
+            <div className={styles.author}>
+              <ArticleAuthorInfo detail={detail}/>
+            </div>
+            :
+            null
+        }
 
       </div>
 

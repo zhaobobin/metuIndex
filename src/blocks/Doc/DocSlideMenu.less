@@ -3,6 +3,18 @@
 .menu{
   padding:24px 0;
 
+  :global{
+    .ant-menu-item{
+      padding:0;
+    }
+    .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{
+      background: none;
+      &:after{
+        border: none;
+      }
+    }
+  }
+
   dl{
     dt{
       padding: 0 24px;
@@ -12,11 +24,15 @@
 
   ul{
     li{
+      padding: 0;
       margin: 4px 0 8px 0;
+      h4{
+        margin-left: -24px;
+        padding: 0 16px 0 40px;
+      }
       a{
         display: block;
         line-height: 40px;
-        padding: 0 16px 0 40px;
         color: @color_333;
         text-decoration: none;
         position: relative;
@@ -43,6 +59,17 @@
           }
         }
       }
+
+      &.item a{
+        margin-left: -24px;
+        padding: 0 16px 0 40px;
+      }
+      &.subItem a{
+        margin-left: -48px;
+        padding: 0 16px 0 56px;
+      }
+
     }
   }
+
 }

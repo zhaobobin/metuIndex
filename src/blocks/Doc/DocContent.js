@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import codeBlock from './CodeBlock';
+// import codeBlock from './CodeBlock';
 import 'github-markdown-css';
 
 export default class DocContent extends React.Component {
@@ -44,9 +44,9 @@ export default class DocContent extends React.Component {
         className="markdown-body"
         source={detail}
         escapeHtml={false}
-        renderers={{
-          code: codeBlock,
-        }}
+        // renderers={{
+        //   code: codeBlock,
+        // }}
       />
     )
   }

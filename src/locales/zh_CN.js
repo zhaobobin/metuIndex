@@ -75,6 +75,7 @@ export default {
   'doc.components': '组件',
   'doc.components.form': '表单',
   'doc.model': '模型',
+  'doc.model.user': '用户',
   'doc.model.photo': '图片',
 
 

@@ -3,8 +3,21 @@
  */
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-// import codeBlock from './CodeBlock';
+import codeBlock from './CodeBlock';
 import 'github-markdown-css';
+
+function flatten(text, child) {
+  return typeof child === 'string'
+    ? text + child
+    : React.Children.toArray(child.props.children).reduce(flatten, text)
+}
+
+function HeadingRenderer(props) {
+  let children = React.Children.toArray(props.children)
+  let text = children.reduce(flatten, '')
+  let slug = text.toLowerCase().replace(/\W/g, '-')
+  return React.createElement('h' + props.level, {id: slug}, props.children)
+}
 
 export default class DocContent extends React.Component {
 
@@ -44,9 +57,10 @@ export default class DocContent extends React.Component {
         className="markdown-body"
         source={detail}
         escapeHtml={false}
-        // renderers={{
-        //   code: codeBlock,
-        // }}
+        renderers={{
+          // Heading: HeadingRenderer(),
+          // code: codeBlock,
+        }}
       />
     )
   }

@@ -4,6 +4,12 @@
 
   position: relative;
 
+  :global{
+    .ant-drawer-body{
+      padding: 0;
+    }
+  }
+
   .head{
     width:100%;
     height:64px;
@@ -15,7 +21,7 @@
     z-index:99;
 
     .logo{
-      float: left;
+      //float: left;
       a{
         display:block;
         padding: 16px 20px;
@@ -26,28 +32,45 @@
       }
 
     }
+    .drawer{
+      text-align: right;
+      height:64px;
+      line-height: 64px;
+      i{
+        margin: 17px 20px;
+        font-size: 30px;
+        color: #fff;
+      }
+    }
 
   }
 
+  .body{
+    position: absolute;
+    left: 0;
+    top: 64px;
+    right: 0;
+    bottom: 0;
+  }
+
+
   .slide{
     width:280px;
+    height: 100%;
+    padding-top: 64px;
     background:#fff;
     border-right: 1px solid #eaecef;
-    position:fixed;
-    top:64px;
+    position: fixed;
     left:0;
-    bottom:0;
-    z-index:9;
+    top:0;
     overflow:auto;
   }
 
   .container{
-    padding-top: 64px;
-    padding-left: 280px;
 
     .content{
       min-height: 800px;
-      padding: 40px 200px 150px 64px;
+      padding: 40px 200px 150px 20px;
     }
 
   }

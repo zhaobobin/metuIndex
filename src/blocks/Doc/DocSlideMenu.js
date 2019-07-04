@@ -2,7 +2,7 @@
  * 文档 - 菜单
  */
 import React from 'react';
-import { Link, NavLink, Route } from 'dva/router';
+import { NavLink } from 'dva/router';
 import { Menu } from 'antd'
 import styles from './DocSlideMenu.less'
 

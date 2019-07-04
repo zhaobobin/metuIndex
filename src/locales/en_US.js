@@ -74,6 +74,7 @@ export default {
   'doc.components': 'Components',
   'doc.components.form': 'Form',
   'doc.model': 'Model',
+  'doc.model.user': 'Model User',
   'doc.model.photo': 'Model photo',
 
 };

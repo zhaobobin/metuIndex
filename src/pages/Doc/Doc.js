@@ -16,6 +16,7 @@ export default function Doc (props) {
     keyword = pathname.split('/')[2] + '.' + pathname.split('/')[3]
   }
   // console.log(keyword)
+
   let url = `./markdown/${keyword}.md`;
 
   return(

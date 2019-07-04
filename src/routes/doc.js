@@ -52,6 +52,13 @@ const DocRoutes = app => [
         path: 'doc/model',
         children: [
           {
+            name: '用户',
+            id: 'doc.model.user',
+            key: 'model-user',
+            path: 'user',
+            component: dynamicWrapper(app, [], () => import('../pages/Doc/Doc')),
+          },
+          {
             name: '图片',
             id: 'doc.model.photo',
             key: 'model-photo',

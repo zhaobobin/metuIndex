@@ -12,13 +12,13 @@
 
 ## 指南
 
-- [区块](/doc/blocks)
+- 区块
 
   * [用户登录](/doc/blocks/user/login)
   
   * [用户注册](/doc/blocks/user/register)
 
-- [组件](/doc/components)
+- 组件
 
 - [工具](/doc/utils)
 

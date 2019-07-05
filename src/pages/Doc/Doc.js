@@ -8,10 +8,9 @@ export default function Doc (props) {
 
   let pathname = props.location.pathname;
   let keyword = pathname.split('/').slice(1).join('.');
-  console.log(keyword)
 
-  let url = `./markdown/${keyword}.md`;
-
+  let url = `/markdown/${keyword}.md`;
+  // console.log(url)
   return(
     <DocContent url={url} />
   )

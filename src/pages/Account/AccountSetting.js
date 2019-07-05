@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect } from 'dva/router';
 import { connect } from 'dva';
 import { Tabs } from 'antd';
-import { ENV } from '~/utils/utils';
+import ENV from '~/config/env'
 import styles from './AccountSetting.less';
 
 import AccountInfoSetting from '~/containers/Account/AccountInfoSetting'

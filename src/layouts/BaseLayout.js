@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'dva';
 import { Route, Switch } from 'dva/router';
 import { Layout, BackTop } from 'antd';
-import { ENV, Storage } from '~/utils/utils';
+import ENV from '~/config/env'
+import { Storage } from '~/utils/utils';
 import { injectIntl } from 'react-intl';
 import DocumentTitle from 'react-document-title';
 import NotFound from "~/pages/Other/404";

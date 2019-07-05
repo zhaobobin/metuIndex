@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'dva';
 import { Row, Col, Card, Tabs } from 'antd';
-import { ENV, Storage } from '~/utils/utils';
+import { Storage } from '~/utils/utils';
+import ENV from '~/config/env'
 import styles from './AccountCenter.less';
 
 import PhotosListQuery from '~/blocks/Photo/PhotosListQuery';

@@ -5,7 +5,9 @@ import React from 'react';
 import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
 import { Form, Icon, Button, Checkbox, notification } from 'antd';
-import { ENV, Storage, hasErrors, Encrypt } from "~/utils/utils";
+import ENV from '~/config/env'
+import { Storage, hasErrors } from "~/utils/utils";
+import { Encrypt, Decrypt } from '~/utils/crypto'
 import styles from './UserSign.less'
 
 import InputMobile from '~/components/Form/InputMobile'

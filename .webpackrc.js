@@ -1,4 +1,4 @@
-import { ENV } from './src/utils/utils';
+import { ENV } from './src/config/env';
 const path = require('path');
 
 export default {

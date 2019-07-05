@@ -4,7 +4,8 @@
 import React from 'react';
 import { connect } from 'dva';
 import { notification } from 'antd';
-import { ENV, goBack } from "~/utils/utils";
+import { goBack } from "~/utils/utils";
+import ENV from '~/config/env'
 import styles from './PhotoDetail.less';
 
 import PhotoSwiper from '~/blocks/Photo/PhotoSwiper';

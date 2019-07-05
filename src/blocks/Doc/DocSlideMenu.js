@@ -16,7 +16,7 @@ export default function DocSlideMenu ({navData}) {
 
       <Menu
         defaultSelectedKeys={['1']}
-        defaultOpenKeys={['components', 'model']}
+        defaultOpenKeys={['blocks', 'components', 'model']}
         mode="inline"
       >
         {
@@ -36,19 +36,35 @@ export default function DocSlideMenu ({navData}) {
               <SubMenu
                 key={item.key}
                 title={<h4>{item.name}</h4>}
-                className={styles.subItem}
               >
                 {
                   item.children.map((t, j) => (
-                    <Menu.Item key={j}>
-                      <NavLink
-                        exact
-                        to={`/${item.path}/${t.path}`}
-                        activeClassName={styles.active}
-                      >
-                        {t.name}
-                      </NavLink>
-                    </Menu.Item>
+                    t.children ?
+                      <Menu.ItemGroup key={j} title={t.name}>
+                        {
+                          t.children.map((x, y) => (
+                            <Menu.Item key={y}className={styles.groupItem}>
+                              <NavLink
+                                exact
+                                to={`/${item.path}/${t.path}/${x.path}`}
+                                activeClassName={styles.active}
+                              >
+                                {x.name}
+                              </NavLink>
+                            </Menu.Item>
+                          ))
+                        }
+                      </Menu.ItemGroup>
+                      :
+                      <Menu.Item key={j} className={styles.subItem}>
+                        <NavLink
+                          exact
+                          to={`/${item.path}/${t.path}`}
+                          activeClassName={styles.active}
+                        >
+                          {t.name}
+                        </NavLink>
+                      </Menu.Item>
                   ))
                 }
               </SubMenu>

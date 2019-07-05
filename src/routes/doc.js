@@ -31,6 +31,36 @@ const DocRoutes = app => [
         component: dynamicWrapper(app, [], () => import('../pages/Doc/Doc')),
       },
       {
+        name: '区块',
+        id: 'doc.blocks',
+        key: 'blocks',
+        path: 'doc/blocks',
+        children: [
+          {
+            name: '用户',
+            id: 'doc.user',
+            key: 'user',
+            path: 'user',
+            children: [
+              {
+                name: '登录',
+                id: 'doc.blocks.user.login',
+                key: 'blocks-user-login',
+                path: 'login',
+                component: dynamicWrapper(app, [], () => import('../pages/Doc/Doc')),
+              },
+              {
+                name: '注册',
+                id: 'doc.blocks.user.register',
+                key: 'blocks-user-register',
+                path: 'register',
+                component: dynamicWrapper(app, [], () => import('../pages/Doc/Doc')),
+              },
+            ]
+          }
+        ]
+      },
+      {
         name: '组件',
         id: 'doc.components',
         key: 'components',
@@ -41,7 +71,43 @@ const DocRoutes = app => [
             id: 'doc.components.form',
             key: 'components-form',
             path: 'form',
-            component: dynamicWrapper(app, [], () => import('../pages/Doc/Doc')),
+            children: [
+              {
+                name: '文本',
+                id: 'doc.components.form.text',
+                key: 'components-form-text',
+                path: 'text',
+                component: dynamicWrapper(app, [], () => import('../pages/Doc/Doc')),
+              },
+              {
+                name: '手机号',
+                id: 'doc.components.form.mobile',
+                key: 'components-form-mobile',
+                path: 'mobile',
+                component: dynamicWrapper(app, [], () => import('../pages/Doc/Doc')),
+              },
+              {
+                name: '密码',
+                id: 'doc.components.form.password',
+                key: 'components-form-password',
+                path: 'password',
+                component: dynamicWrapper(app, [], () => import('../pages/Doc/Doc')),
+              },
+              {
+                name: '短信验证',
+                id: 'doc.components.form.smscode',
+                key: 'components-form-smscode',
+                path: 'smscode',
+                component: dynamicWrapper(app, [], () => import('../pages/Doc/Doc')),
+              },
+              {
+                name: '邮箱',
+                id: 'doc.components.form.email',
+                key: 'components-form-email',
+                path: 'email',
+                component: dynamicWrapper(app, [], () => import('../pages/Doc/Doc')),
+              },
+            ]
           }
         ]
       },

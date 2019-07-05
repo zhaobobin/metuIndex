@@ -1,7 +1,8 @@
 import { routerRedux } from 'dva/router';
 import { notification } from 'antd';
 import request from '~/utils/request';
-import {ENV, Storage} from '~/utils/utils';
+import { Storage } from '~/utils/utils';
+import ENV from '~/config/env'
 
 export default {
 

@@ -6,7 +6,8 @@ import React from 'react';
 import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
 import { Row, Col } from 'antd';
-import { ENV, Storage, getUrlParams } from '~/utils/utils'
+import ENV from '~/config/env'
+import { Storage, getUrlParams } from '~/utils/utils'
 import styles from './WechatLogin.less'
 
 import UserRegister from '~/blocks/User/UserRegister';

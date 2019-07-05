@@ -3,10 +3,10 @@ import dva from 'dva';
 import browserHistory from 'history/createBrowserHistory';
 import './theme/base.less'
 
-const history = process.env.NODE_ENV === 'production' ? {history: browserHistory()} : {};
+// const history = process.env.NODE_ENV === 'production' ? {history: browserHistory()} : {};
 
 // 1. Initialize
-const app = dva(history);
+const app = dva({history: browserHistory()});
 
 // 2. Plugins
 //app.use();

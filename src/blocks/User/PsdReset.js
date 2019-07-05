@@ -8,7 +8,8 @@ import { connect } from 'dva';
 import { routerRedux, Redirect } from 'dva/router';
 import { Row, Col, Form, Button, Steps } from 'antd'
 import { Toast } from 'antd-mobile'
-import { hasErrors, Encrypt } from '~/utils/utils'
+import { hasErrors } from '~/utils/utils'
+import { Encrypt } from '~/utils/crypto'
 import styles from './PsdReset.less';
 
 import InputMobile from '~/components/Form/InputMobile'

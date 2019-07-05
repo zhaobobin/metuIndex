@@ -58,8 +58,8 @@ export default class DocContent extends React.Component {
         source={detail}
         escapeHtml={false}
         renderers={{
+          code: codeBlock,
           // Heading: HeadingRenderer(),
-          // code: codeBlock,
         }}
       />
     )

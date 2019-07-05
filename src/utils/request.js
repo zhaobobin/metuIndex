@@ -1,7 +1,8 @@
 import fetch from 'dva/fetch';
 import { notification } from 'antd';
 import { Base64 } from 'js-base64';
-import {ENV, Storage} from '~/utils/utils';
+import { Storage } from '~/utils/utils';
+import ENV from '~/config/env'
 
 const codeMessage = {
   200: '请求成功',

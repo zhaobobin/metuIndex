@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'dva/router';
 import { Row, Col } from 'antd';
-import { ENV } from '~/utils/utils';
+import ENV from '~/config/env'
 import styles from './GlobalHeader.less';
 
 import logo from '~/assets/logo2.png'

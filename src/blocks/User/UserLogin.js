@@ -5,14 +5,14 @@ import React from 'react';
 import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
 import { Form, Icon, Button, Checkbox, notification } from 'antd';
-import ENV from '~/config/env'
-import { Storage, hasErrors } from "~/utils/utils";
-import { Encrypt, Decrypt } from '~/utils/crypto'
+import ENV from '@/config/env'
+import { Storage, hasErrors } from "@/utils/utils";
+import { Encrypt, Decrypt } from '@/utils/crypto'
 import styles from './UserSign.less'
 
-import InputMobile from '~/components/Form/InputMobile'
-import InputPassword from '~/components/Form/InputPassword'
-import InputSmscode from '~/components/Form/InputSmscode'
+import InputMobile from '@/components/Form/InputMobile'
+import InputPassword from '@/components/Form/InputPassword'
+import InputSmscode from '@/components/Form/InputSmscode'
 import UserWechatLogin from './UserWechatLogin'
 
 const FormItem = Form.Item;

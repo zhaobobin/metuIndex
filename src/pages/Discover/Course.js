@@ -3,10 +3,10 @@ import { connect } from 'dva';
 import { Row, Col } from 'antd';
 import styles from './Course.less';
 
-import ArticleSearch from '~/containers/Article/ArticleSearch'
-import ArticleListQuery from '~/containers/Article/ArticleListQuery'
-import ArticleRank from '~/containers/Article/ArticleRank'
-import TagsRank from '~/containers/Tags/TagsRank'
+import ArticleSearch from '@/containers/Article/ArticleSearch'
+import ArticleListQuery from '@/containers/Article/ArticleListQuery'
+import ArticleRank from '@/containers/Article/ArticleRank'
+import TagsRank from '@/containers/Tags/TagsRank'
 
 @connect(state => ({
   global: state.global,

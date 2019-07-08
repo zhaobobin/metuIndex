@@ -3,11 +3,11 @@ import { Route, Redirect, Switch } from 'dva/router';
 import { Layout } from 'antd';
 import { injectIntl } from 'react-intl';
 import DocumentTitle from 'react-document-title';
-import NotFound from "~/pages/Other/404";
+import NotFound from "@/pages/Other/404";
 
-import GlobalHeaderMin from '~/components/Common/GlobalHeaderMin';
-import GlobalFooter from '~/components/Common/GlobalFooter';
-import GlobalContent from '~/components/Common/GlobalContent';
+import GlobalHeaderMin from '@/components/Common/GlobalHeaderMin';
+import GlobalFooter from '@/components/Common/GlobalFooter';
+import GlobalContent from '@/components/Common/GlobalContent';
 
 class UserLayout extends React.Component {
 

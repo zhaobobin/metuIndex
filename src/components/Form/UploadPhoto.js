@@ -12,7 +12,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'dva';
 import { Row, Col, Icon, Upload, notification } from 'antd';
-import {Storage} from "~/utils/utils";
+import {Storage} from "@/utils/utils";
 import styles from './UploadPhoro.less'
 
 @connect(state => ({

@@ -4,15 +4,15 @@
 import React from 'react';
 import { connect } from 'dva';
 import { notification } from 'antd';
-import { goBack } from "~/utils/utils";
-import ENV from '~/config/env'
+import { goBack } from "@/utils/utils";
+import ENV from '@/config/env'
 import styles from './PhotoDetail.less';
 
-import PhotoSwiper from '~/blocks/Photo/PhotoSwiper';
-import PhotoAction from '~/blocks/Photo/PhotoAction';
-import PhotoInfo from '~/blocks/Photo/PhotoInfo';
+import PhotoSwiper from '@/blocks/Photo/PhotoSwiper';
+import PhotoAction from '@/blocks/Photo/PhotoAction';
+import PhotoInfo from '@/blocks/Photo/PhotoInfo';
 
-import CommentList from '~/containers/Comment/CommentList';
+import CommentList from '@/containers/Comment/CommentList';
 
 
 @connect(state => ({

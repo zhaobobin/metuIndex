@@ -6,9 +6,9 @@ import { Link } from 'dva/router';
 import { Row, Col, Menu } from 'antd';
 import styles from './Equipments.less';
 
-import EquipmentExplore from '~/containers/Equipment/EquipmentExplore'
-import EquipmentList from '~/containers/Equipment/EquipmentList'
-import EquipmentDetail from '~/containers/Equipment/EquipmentDetail'
+import EquipmentExplore from '@/containers/Equipment/EquipmentExplore'
+import EquipmentList from '@/containers/Equipment/EquipmentList'
+import EquipmentDetail from '@/containers/Equipment/EquipmentDetail'
 
 export default class Equipments extends React.Component {
 

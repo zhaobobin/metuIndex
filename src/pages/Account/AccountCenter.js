@@ -1,16 +1,16 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'dva';
 import { Row, Col, Card, Tabs } from 'antd';
-import { Storage } from '~/utils/utils';
-import ENV from '~/config/env'
+import { Storage } from '@/utils/utils';
+import ENV from '@/config/env'
 import styles from './AccountCenter.less';
 
-import PhotosListQuery from '~/blocks/Photo/PhotosListQuery';
-import PhotoListMasonry from '~/blocks/Photo/PhotoListMasonry';
+import PhotosListQuery from '@/blocks/Photo/PhotosListQuery';
+import PhotoListMasonry from '@/blocks/Photo/PhotoListMasonry';
 
-import AccountCenterBanner from '~/containers/Account/AccountCenterBanner';
-import ArticleListQuery from '~/containers/Article/ArticleListQuery'
-import AccountAbout from '~/containers/Account/AccountAbout'
+import AccountCenterBanner from '@/containers/Account/AccountCenterBanner';
+import ArticleListQuery from '@/containers/Article/ArticleListQuery'
+import AccountAbout from '@/containers/Account/AccountAbout'
 
 const TabPane = Tabs.TabPane;
 

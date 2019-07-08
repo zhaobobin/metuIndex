@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'dva';
 import { Row, Col, Icon, Button, Upload, Modal } from 'antd';
-import { file2base64, createRandomId } from '~/utils/utils';
+import { file2base64, createRandomId } from '@/utils/utils';
 import styles from './PublishPhotoContent.less';
 
-import { Alert } from '~/components/Dialog/Dialog'
+import { Alert } from '@/components/Dialog/Dialog'
 
 @connect(state => ({
   global: state.global,

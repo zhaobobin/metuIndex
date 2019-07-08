@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'antd'
 
-import ArticleDetailShow from '~/blocks/Article/ArticleDetailShow'
+import ArticleDetailShow from '@/blocks/Article/ArticleDetailShow'
 import ServiceHtml from './ServiceHtml'
 
 export default class Service extends React.Component {

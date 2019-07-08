@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './Publish.less';
 
-import PublishArticleContent from '~/containers/Publish/PublishArticleContent';
-import PublishArticleSlide from '~/containers/Publish/PublishArticleSlide';
+import PublishArticleContent from '@/containers/Publish/PublishArticleContent';
+import PublishArticleSlide from '@/containers/Publish/PublishArticleSlide';
 
 export default function PublishArticle () {
   return(

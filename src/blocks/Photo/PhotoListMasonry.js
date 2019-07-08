@@ -8,7 +8,7 @@ import React from 'react';
 import { Link } from 'dva/router';
 import {Row, Col} from 'antd';
 import styles from './PhotoList.less';
-import logo from '~/assets/logo.png';
+import logo from '@/assets/logo.png';
 
 import Masonry from 'react-masonry-component';		        //瀑布流
 const masonryOptions = {

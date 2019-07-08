@@ -2,16 +2,16 @@ import React from 'react';
 import { connect } from 'dva';
 import { Route, Switch } from 'dva/router';
 import { Layout, BackTop } from 'antd';
-import ENV from '~/config/env'
-import { Storage } from '~/utils/utils';
+import ENV from '@/config/env'
+import { Storage } from '@/utils/utils';
 import { injectIntl } from 'react-intl';
 import DocumentTitle from 'react-document-title';
-import NotFound from "~/pages/Other/404";
+import NotFound from "@/pages/Other/404";
 
-import Loading from '~/components/Common/Loading';
-import GlobalHeader from '~/components/Common/GlobalHeader';
-import GlobalFooter from '~/components/Common/GlobalFooter';
-import GlobalContent from '~/components/Common/GlobalContent';
+import Loading from '@/components/Common/Loading';
+import GlobalHeader from '@/components/Common/GlobalHeader';
+import GlobalFooter from '@/components/Common/GlobalFooter';
+import GlobalContent from '@/components/Common/GlobalContent';
 
 @connect(state => ({
   global: state.global

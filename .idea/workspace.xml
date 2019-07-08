@@ -1,0 +1,1218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9867b411-40dc-42b9-8dd8-31005ea1b8dc" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/.webpackrc.js" afterPath="$PROJECT_DIR$/.webpackrc.js" />
+      <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change beforePath="$PROJECT_DIR$/public/markdown/doc.components.form.password.md" afterPath="$PROJECT_DIR$/public/markdown/doc.components.form.password.md" />
+      <change beforePath="$PROJECT_DIR$/public/markdown/doc.components.form.smscode.md" afterPath="$PROJECT_DIR$/public/markdown/doc.components.form.smscode.md" />
+      <change beforePath="$PROJECT_DIR$/public/markdown/doc.crypto.md" afterPath="$PROJECT_DIR$/public/markdown/doc.crypto.md" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/Article/ArticleEditor.js" afterPath="$PROJECT_DIR$/src/blocks/Article/ArticleEditor.js" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/Article/ArticleListShow.js" afterPath="$PROJECT_DIR$/src/blocks/Article/ArticleListShow.js" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/Article/CusShare.js" afterPath="$PROJECT_DIR$/src/blocks/Article/CusShare.js" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/Photo/PhotoAction.js" afterPath="$PROJECT_DIR$/src/blocks/Photo/PhotoAction.js" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/Photo/PhotoInfo.js" afterPath="$PROJECT_DIR$/src/blocks/Photo/PhotoInfo.js" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/Photo/PhotoListItem.js" afterPath="$PROJECT_DIR$/src/blocks/Photo/PhotoListItem.js" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/Photo/PhotoListMasonry.js" afterPath="$PROJECT_DIR$/src/blocks/Photo/PhotoListMasonry.js" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/Photo/PhotoListQuery.js" afterPath="$PROJECT_DIR$/src/blocks/Photo/PhotoListQuery.js" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/Photo/PhotosListQuery.js" afterPath="$PROJECT_DIR$/src/blocks/Photo/PhotosListQuery.js" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/User/PsdReset.js" afterPath="$PROJECT_DIR$/src/blocks/User/PsdReset.js" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/User/UserLogin.js" afterPath="$PROJECT_DIR$/src/blocks/User/UserLogin.js" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/User/UserRegister.js" afterPath="$PROJECT_DIR$/src/blocks/User/UserRegister.js" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/User/UserSign.less" afterPath="$PROJECT_DIR$/src/blocks/User/UserSign.less" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/User/UserSignModal.js" afterPath="$PROJECT_DIR$/src/blocks/User/UserSignModal.js" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/User/UserWechatLogin.js" afterPath="$PROJECT_DIR$/src/blocks/User/UserWechatLogin.js" />
+      <change beforePath="$PROJECT_DIR$/src/components/Common/GlobalFooter.js" afterPath="$PROJECT_DIR$/src/components/Common/GlobalFooter.js" />
+      <change beforePath="$PROJECT_DIR$/src/components/Common/GlobalHeader.js" afterPath="$PROJECT_DIR$/src/components/Common/GlobalHeader.js" />
+      <change beforePath="$PROJECT_DIR$/src/components/Common/GlobalHeaderMin.js" afterPath="$PROJECT_DIR$/src/components/Common/GlobalHeaderMin.js" />
+      <change beforePath="$PROJECT_DIR$/src/components/Common/GlobalHeaderSign.js" afterPath="$PROJECT_DIR$/src/components/Common/GlobalHeaderSign.js" />
+      <change beforePath="$PROJECT_DIR$/src/components/Common/LoadingBg.js" afterPath="$PROJECT_DIR$/src/components/Common/LoadingBg.js" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dialog/Dialog.js" afterPath="$PROJECT_DIR$/src/components/Dialog/Dialog.js" />
+      <change beforePath="$PROJECT_DIR$/src/components/Form/FormXieyi.js" afterPath="$PROJECT_DIR$/src/components/Form/FormXieyi.js" />
+      <change beforePath="$PROJECT_DIR$/src/components/Form/InputPassword.js" afterPath="$PROJECT_DIR$/src/components/Form/InputPassword.js" />
+      <change beforePath="$PROJECT_DIR$/src/components/Form/InputSmscode.js" afterPath="$PROJECT_DIR$/src/components/Form/InputSmscode.js" />
+      <change beforePath="$PROJECT_DIR$/src/components/Form/Pintu.js" afterPath="$PROJECT_DIR$/src/components/Form/Pintu.js" />
+      <change beforePath="$PROJECT_DIR$/src/components/Form/UploadAvatar.js" afterPath="$PROJECT_DIR$/src/components/Form/UploadAvatar.js" />
+      <change beforePath="$PROJECT_DIR$/src/components/Form/UploadPhoto.js" afterPath="$PROJECT_DIR$/src/components/Form/UploadPhoto.js" />
+      <change beforePath="$PROJECT_DIR$/src/components/Form/UploadPhotoList.js" afterPath="$PROJECT_DIR$/src/components/Form/UploadPhotoList.js" />
+      <change beforePath="$PROJECT_DIR$/src/config/env.js" afterPath="$PROJECT_DIR$/src/config/env.js" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Account/AccountCenterBanner.js" afterPath="$PROJECT_DIR$/src/containers/Account/AccountCenterBanner.js" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Account/AccountInfoSetting.js" afterPath="$PROJECT_DIR$/src/containers/Account/AccountInfoSetting.js" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Article/ArticleListQuery.js" afterPath="$PROJECT_DIR$/src/containers/Article/ArticleListQuery.js" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Comment/CommentList.js" afterPath="$PROJECT_DIR$/src/containers/Comment/CommentList.js" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Home/HomeBanner.js" afterPath="$PROJECT_DIR$/src/containers/Home/HomeBanner.js" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Home/HomePhotoList.js" afterPath="$PROJECT_DIR$/src/containers/Home/HomePhotoList.js" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Publish/PublishArticleSlide.js" afterPath="$PROJECT_DIR$/src/containers/Publish/PublishArticleSlide.js" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Publish/PublishPhotoContent.js" afterPath="$PROJECT_DIR$/src/containers/Publish/PublishPhotoContent.js" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Publish/PublishPhotoSlide.js" afterPath="$PROJECT_DIR$/src/containers/Publish/PublishPhotoSlide.js" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Tags/TagsArticleQuery.js" afterPath="$PROJECT_DIR$/src/containers/Tags/TagsArticleQuery.js" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/BaseLayout.js" afterPath="$PROJECT_DIR$/src/layouts/BaseLayout.js" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/DocLayout.js" afterPath="$PROJECT_DIR$/src/layouts/DocLayout.js" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/UserLayout.js" afterPath="$PROJECT_DIR$/src/layouts/UserLayout.js" />
+      <change beforePath="$PROJECT_DIR$/src/models/global.js" afterPath="$PROJECT_DIR$/src/models/global.js" />
+      <change beforePath="$PROJECT_DIR$/src/models/oss.js" afterPath="$PROJECT_DIR$/src/models/oss.js" />
+      <change beforePath="$PROJECT_DIR$/src/models/publish.js" afterPath="$PROJECT_DIR$/src/models/publish.js" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Account/AccountCenter.js" afterPath="$PROJECT_DIR$/src/pages/Account/AccountCenter.js" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Account/AccountSetting.js" afterPath="$PROJECT_DIR$/src/pages/Account/AccountSetting.js" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Account/PublishArticle.js" afterPath="$PROJECT_DIR$/src/pages/Account/PublishArticle.js" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Account/PublishPhoto.js" afterPath="$PROJECT_DIR$/src/pages/Account/PublishPhoto.js" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Callback/QqLogin.js" afterPath="$PROJECT_DIR$/src/pages/Callback/QqLogin.js" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Callback/WechatLogin.js" afterPath="$PROJECT_DIR$/src/pages/Callback/WechatLogin.js" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Callback/WeiboLogin.js" afterPath="$PROJECT_DIR$/src/pages/Callback/WeiboLogin.js" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Content/ArticleDetail.js" afterPath="$PROJECT_DIR$/src/pages/Content/ArticleDetail.js" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Content/Community.js" afterPath="$PROJECT_DIR$/src/pages/Content/Community.js" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Content/PhotoDetail.js" afterPath="$PROJECT_DIR$/src/pages/Content/PhotoDetail.js" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Content/PhotosDetail.js" afterPath="$PROJECT_DIR$/src/pages/Content/PhotosDetail.js" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Discover/Course.js" afterPath="$PROJECT_DIR$/src/pages/Discover/Course.js" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Discover/Equipments.js" afterPath="$PROJECT_DIR$/src/pages/Discover/Equipments.js" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Discover/TagsArticle.js" afterPath="$PROJECT_DIR$/src/pages/Discover/TagsArticle.js" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Doc/Doc.js" afterPath="$PROJECT_DIR$/src/pages/Doc/Doc.js" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Home/Home.js" afterPath="$PROJECT_DIR$/src/pages/Home/Home.js" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Other/403.js" afterPath="$PROJECT_DIR$/src/pages/Other/403.js" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Other/404.js" afterPath="$PROJECT_DIR$/src/pages/Other/404.js" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Other/500.js" afterPath="$PROJECT_DIR$/src/pages/Other/500.js" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Other/Service.js" afterPath="$PROJECT_DIR$/src/pages/Other/Service.js" />
+      <change beforePath="$PROJECT_DIR$/src/pages/User/Login.js" afterPath="$PROJECT_DIR$/src/pages/User/Login.js" />
+      <change beforePath="$PROJECT_DIR$/src/pages/User/Register.js" afterPath="$PROJECT_DIR$/src/pages/User/Register.js" />
+      <change beforePath="$PROJECT_DIR$/src/pages/User/Reset.js" afterPath="$PROJECT_DIR$/src/pages/User/Reset.js" />
+      <change beforePath="$PROJECT_DIR$/src/routes/router.js" afterPath="$PROJECT_DIR$/src/routes/router.js" />
+      <change beforePath="$PROJECT_DIR$/src/utils/crypto.js" afterPath="$PROJECT_DIR$/src/utils/crypto.js" />
+      <change beforePath="$PROJECT_DIR$/src/utils/request.js" afterPath="$PROJECT_DIR$/src/utils/request.js" />
+      <change beforePath="$PROJECT_DIR$/src/utils/utils.js" afterPath="$PROJECT_DIR$/src/utils/utils.js" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>search</find>
+      <find>location</find>
+      <find>pathname</find>
+      <find>hash</find>
+      <find>getPlainNode</find>
+      <find>mark</find>
+      <find>NavLink</find>
+      <find>Link</find>
+      <find>highlight.js</find>
+      <find>markdown</find>
+      <find>500px</find>
+      <find>imgStyle</find>
+      <find>OSS</find>
+      <find>base64</find>
+      <find>detail</find>
+      <find>file2base64</find>
+      <find>PhotoListItem</find>
+      <find>getRouteData</find>
+      <find>Routes</find>
+      <find>padding-left</find>
+      <find>WechatLoginState</find>
+      <find>import { ENV } from '~/utils/utils'</find>
+      <find>Storage</find>
+      <find>ENV</find>
+      <find>Encrypt</find>
+      <find>WechatConfig</find>
+      <find>appname</find>
+      <find>ENV.appname</find>
+      <find>~@</find>
+      <find>~/</find>
+    </findStrings>
+    <replaceStrings>
+      <replace />
+    </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/pages/User/Register.js" />
+        <option value="$PROJECT_DIR$/src/pages/User/Login.js" />
+        <option value="$PROJECT_DIR$/src/components/Common/GlobalHeaderMin.js" />
+        <option value="$PROJECT_DIR$/src/layouts/DocLayout.js" />
+        <option value="$PROJECT_DIR$/src/pages/Home/Home.js" />
+        <option value="$PROJECT_DIR$/src/components/Common/GlobalHeader.js" />
+        <option value="$PROJECT_DIR$/src/components/Common/GlobalFooter.js" />
+        <option value="$PROJECT_DIR$/src/components/Common/GlobalHeaderSign.js" />
+        <option value="$PROJECT_DIR$/src/components/Common/LoadingBg.js" />
+        <option value="$PROJECT_DIR$/src/layouts/UserLayout.js" />
+        <option value="$PROJECT_DIR$/src/components/Form/Pintu.js" />
+        <option value="$PROJECT_DIR$/src/components/Form/FormXieyi.js" />
+        <option value="$PROJECT_DIR$/src/components/Form/UploadPhotoList.js" />
+        <option value="$PROJECT_DIR$/src/components/Form/UploadAvatar.js" />
+        <option value="$PROJECT_DIR$/src/blocks/Photo/PhotoListMasonry.js" />
+        <option value="$PROJECT_DIR$/src/components/Form/InputPassword.js" />
+        <option value="$PROJECT_DIR$/src/components/Form/InputSmscode.js" />
+        <option value="$PROJECT_DIR$/src/components/Form/UploadPhoto.js" />
+        <option value="$PROJECT_DIR$/src/layouts/BaseLayout.js" />
+        <option value="$PROJECT_DIR$/src/blocks/Article/ArticleEditor.js" />
+        <option value="$PROJECT_DIR$/src/blocks/Photo/PhotoListItem.js" />
+        <option value="$PROJECT_DIR$/src/blocks/Article/ArticleListShow.js" />
+        <option value="$PROJECT_DIR$/src/blocks/Photo/PhotoListQuery.js" />
+        <option value="$PROJECT_DIR$/src/models/oss.js" />
+        <option value="$PROJECT_DIR$/src/utils/request.js" />
+        <option value="$PROJECT_DIR$/src/routes/router.js" />
+        <option value="$PROJECT_DIR$/src/blocks/Photo/PhotosListQuery.js" />
+        <option value="$PROJECT_DIR$/src/models/global.js" />
+        <option value="$PROJECT_DIR$/src/blocks/Photo/PhotoAction.js" />
+        <option value="$PROJECT_DIR$/src/models/publish.js" />
+        <option value="$PROJECT_DIR$/src/blocks/Photo/PhotoInfo.js" />
+        <option value="$PROJECT_DIR$/src/blocks/User/UserSignModal.js" />
+        <option value="$PROJECT_DIR$/src/blocks/Article/CusShare.js" />
+        <option value="$PROJECT_DIR$/src/blocks/User/UserRegister.js" />
+        <option value="$PROJECT_DIR$/src/pages/Other/Service.js" />
+        <option value="$PROJECT_DIR$/src/blocks/User/PsdReset.js" />
+        <option value="$PROJECT_DIR$/src/blocks/User/UserWechatLogin.js" />
+        <option value="$PROJECT_DIR$/src/pages/Content/ArticleDetail.js" />
+        <option value="$PROJECT_DIR$/src/pages/Content/PhotosDetail.js" />
+        <option value="$PROJECT_DIR$/src/pages/Content/PhotoDetail.js" />
+        <option value="$PROJECT_DIR$/src/pages/Discover/TagsArticle.js" />
+        <option value="$PROJECT_DIR$/src/pages/Account/PublishArticle.js" />
+        <option value="$PROJECT_DIR$/src/pages/Discover/Equipments.js" />
+        <option value="$PROJECT_DIR$/src/pages/Discover/Course.js" />
+        <option value="$PROJECT_DIR$/src/pages/Account/PublishPhoto.js" />
+        <option value="$PROJECT_DIR$/src/pages/Content/Community.js" />
+        <option value="$PROJECT_DIR$/public/markdown/doc.components.form.smscode.md" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/public/markdown/doc.crypto.md" />
+        <option value="$PROJECT_DIR$/public/markdown/doc.components.form.password.md" />
+        <option value="$PROJECT_DIR$/src/blocks/User/UserLogin.js" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBowerSettings">
+    <exe-path>/usr/local/bin/bower</exe-path>
+    <config-path />
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER">
+    <package-json value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="y" value="23" />
+    <option name="width" value="1680" />
+    <option name="height" value="961" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>AngularJS</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="metuIndex" type="b2602c69:ProjectViewProjectNode" />
+              <item name="metuIndex" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
+    <property name="HbShouldOpenHtmlAsHb" value="disabled" />
+    <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
+    <property name="ejs.open.delimiter" value="&lt;%" />
+    <property name="ejs.close.delimiter" value="%&gt;" />
+    <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="/usr/local/bin/node" />
+    <property name="node.js.path.for.package.stylelint" value="project" />
+    <property name="node.js.selected.package.stylelint" value="" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="$PROJECT_DIR$/node_modules/eslint" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.selected.package.standard" value="$PROJECT_DIR$/node_modules/eslint" />
+    <property name="node.js.path.for.package.jscs" value="project" />
+    <property name="node.js.selected.package.jscs" value="" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/css" />
+      <recent name="$PROJECT_DIR$/public/images" />
+      <recent name="$PROJECT_DIR$/public/markdown" />
+      <recent name="$PROJECT_DIR$/src/blocks/Doc" />
+      <recent name="$PROJECT_DIR$/src/pages/Content" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/blocks/Article" />
+      <recent name="$PROJECT_DIR$/src/containers" />
+      <recent name="$PROJECT_DIR$/src/routes" />
+      <recent name="$PROJECT_DIR$/src/components/FormTool" />
+      <recent name="$PROJECT_DIR$/src/routes/Publish" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9867b411-40dc-42b9-8dd8-31005ea1b8dc" name="Default" comment="" />
+      <created>1532865174755</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1532865174755</updated>
+      <workItem from="1532865176270" duration="14000" />
+      <workItem from="1533010706145" duration="251000" />
+      <workItem from="1533713536587" duration="564000" />
+      <workItem from="1533714510501" duration="5560000" />
+      <workItem from="1533801702574" duration="4582000" />
+      <workItem from="1533820320531" duration="7133000" />
+      <workItem from="1533861110475" duration="20913000" />
+      <workItem from="1533909193280" duration="4301000" />
+      <workItem from="1534125298561" duration="17764000" />
+      <workItem from="1534208400708" duration="14597000" />
+      <workItem from="1534237929841" duration="8658000" />
+      <workItem from="1534304646392" duration="921000" />
+      <workItem from="1537434360135" duration="582000" />
+      <workItem from="1537496558710" duration="2523000" />
+      <workItem from="1542592178588" duration="64000" />
+      <workItem from="1543105204333" duration="232000" />
+      <workItem from="1547644825110" duration="5631000" />
+      <workItem from="1547706233217" duration="1000" />
+      <workItem from="1547734593108" duration="1914000" />
+      <workItem from="1548666866444" duration="2526000" />
+      <workItem from="1548727334838" duration="16968000" />
+      <workItem from="1548830498614" duration="5717000" />
+      <workItem from="1548839595006" duration="897000" />
+      <workItem from="1548898446852" duration="3286000" />
+      <workItem from="1548905738079" duration="521000" />
+      <workItem from="1548914941239" duration="2435000" />
+      <workItem from="1550025468772" duration="501000" />
+      <workItem from="1550026724299" duration="16989000" />
+      <workItem from="1550121220784" duration="13337000" />
+      <workItem from="1550193219341" duration="17020000" />
+      <workItem from="1550221830426" duration="1289000" />
+      <workItem from="1550475044065" duration="211000" />
+      <workItem from="1550477259919" duration="4615000" />
+      <workItem from="1550541208588" duration="13578000" />
+      <workItem from="1550627889732" duration="5084000" />
+      <workItem from="1550650815409" duration="99000" />
+      <workItem from="1550650940460" duration="2599000" />
+      <workItem from="1550712392338" duration="13586000" />
+      <workItem from="1550755949252" duration="504000" />
+      <workItem from="1550800211425" duration="5081000" />
+      <workItem from="1550812700423" duration="9788000" />
+      <workItem from="1550828463403" duration="242000" />
+      <workItem from="1551060988925" duration="194000" />
+      <workItem from="1551144942186" duration="541000" />
+      <workItem from="1551926845927" duration="227000" />
+      <workItem from="1551927652761" duration="2991000" />
+      <workItem from="1551938536407" duration="1195000" />
+      <workItem from="1551948551552" duration="4793000" />
+      <workItem from="1551965431108" duration="2934000" />
+      <workItem from="1552484928879" duration="513000" />
+      <workItem from="1552573598192" duration="335000" />
+      <workItem from="1555132243937" duration="2380000" />
+      <workItem from="1555135950965" duration="8056000" />
+      <workItem from="1555161657992" duration="764000" />
+      <workItem from="1557121623730" duration="12427000" />
+      <workItem from="1557189152744" duration="18684000" />
+      <workItem from="1557278124405" duration="826000" />
+      <workItem from="1557279433263" duration="17670000" />
+      <workItem from="1557364173358" duration="17327000" />
+      <workItem from="1557453082063" duration="1864000" />
+      <workItem from="1557460623844" duration="8829000" />
+      <workItem from="1557798599469" duration="8014000" />
+      <workItem from="1557817359088" duration="305000" />
+      <workItem from="1558316632042" duration="38000" />
+      <workItem from="1558317048980" duration="5964000" />
+      <workItem from="1558329975771" duration="10340000" />
+      <workItem from="1558408240125" duration="3749000" />
+      <workItem from="1558496190115" duration="2000" />
+      <workItem from="1561511397042" duration="18737000" />
+      <workItem from="1561538231888" duration="869000" />
+      <workItem from="1561596896878" duration="18857000" />
+      <workItem from="1561683477218" duration="2004000" />
+      <workItem from="1561694011729" duration="10904000" />
+      <workItem from="1561866205811" duration="313000" />
+      <workItem from="1561873649938" duration="8215000" />
+      <workItem from="1561943404247" duration="15436000" />
+      <workItem from="1561980760439" duration="11512000" />
+      <workItem from="1562028492427" duration="3989000" />
+      <workItem from="1562045169811" duration="3793000" />
+      <workItem from="1562118434874" duration="1117000" />
+      <workItem from="1562123381109" duration="5905000" />
+      <workItem from="1562201294399" duration="1754000" />
+      <workItem from="1562206152442" duration="9048000" />
+      <workItem from="1562226346832" duration="2531000" />
+      <workItem from="1562304147950" duration="1348000" />
+      <workItem from="1562307032331" duration="6338000" />
+      <workItem from="1562315245913" duration="3004000" />
+      <workItem from="1562338748056" duration="737000" />
+      <workItem from="1562567470505" duration="386000" />
+      <workItem from="1562573113897" duration="1357000" />
+    </task>
+    <task id="LOCAL-00001" summary="metuIndex">
+      <created>1547650024511</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1547650024512</updated>
+    </task>
+    <task id="LOCAL-00002" summary="metuIndex">
+      <created>1548732805343</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1548732805343</updated>
+    </task>
+    <task id="LOCAL-00003" summary="metuIndex">
+      <created>1550051703336</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1550051703336</updated>
+    </task>
+    <task id="LOCAL-00004" summary="metuIndex">
+      <created>1550136948406</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1550136948406</updated>
+    </task>
+    <task id="LOCAL-00005" summary="metuIndex">
+      <created>1550220982965</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1550220982965</updated>
+    </task>
+    <task id="LOCAL-00006" summary="metuIndex">
+      <created>1550482406097</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1550482406097</updated>
+    </task>
+    <task id="LOCAL-00007" summary="metuIndex">
+      <created>1550568658083</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1550568658083</updated>
+    </task>
+    <task id="LOCAL-00008" summary="metuIndex">
+      <created>1550742339131</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1550742339131</updated>
+    </task>
+    <task id="LOCAL-00009" summary="metuIndex">
+      <created>1550826054349</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1550826054349</updated>
+    </task>
+    <task id="LOCAL-00010" summary="metuIndex">
+      <created>1551968586583</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1551968586583</updated>
+    </task>
+    <task id="LOCAL-00011" summary="metuIndex">
+      <created>1555163843265</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1555163843266</updated>
+    </task>
+    <task id="LOCAL-00012" summary="metuIndex">
+      <created>1557125493027</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1557125493028</updated>
+    </task>
+    <task id="LOCAL-00013" summary="metuIndex">
+      <created>1557126598584</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1557126598584</updated>
+    </task>
+    <task id="LOCAL-00014" summary="metuIndex">
+      <created>1557216439064</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1557216439064</updated>
+    </task>
+    <task id="LOCAL-00015" summary="metuIndex">
+      <created>1557308280828</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1557308280829</updated>
+    </task>
+    <task id="LOCAL-00016" summary="metuIndex">
+      <created>1557365273612</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1557365273612</updated>
+    </task>
+    <task id="LOCAL-00017" summary="metuIndex">
+      <created>1557470791571</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1557470791572</updated>
+    </task>
+    <task id="LOCAL-00018" summary="metuIndex">
+      <created>1557480583721</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1557480583721</updated>
+    </task>
+    <task id="LOCAL-00019" summary="metuIndex">
+      <created>1557813146869</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1557813146870</updated>
+    </task>
+    <task id="LOCAL-00020" summary="metuIndex">
+      <created>1558420445111</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1558420445111</updated>
+    </task>
+    <task id="LOCAL-00021" summary="metuIndex">
+      <created>1561531256014</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1561531256014</updated>
+    </task>
+    <task id="LOCAL-00022" summary="metuIndex">
+      <created>1561604121693</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1561604121693</updated>
+    </task>
+    <task id="LOCAL-00023" summary="metuIndex">
+      <created>1561627922157</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1561627922157</updated>
+    </task>
+    <task id="LOCAL-00024" summary="metuIndex">
+      <created>1561950023845</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1561950023845</updated>
+    </task>
+    <task id="LOCAL-00025" summary="metuIndex">
+      <created>1561951824342</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1561951824342</updated>
+    </task>
+    <task id="LOCAL-00026" summary="metuIndex">
+      <created>1561964837229</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1561964837229</updated>
+    </task>
+    <task id="LOCAL-00027" summary="metuIndex">
+      <created>1562032061364</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1562032061364</updated>
+    </task>
+    <task id="LOCAL-00028" summary="metuIndex">
+      <created>1562202645869</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1562202645869</updated>
+    </task>
+    <task id="LOCAL-00029" summary="metuIndex">
+      <created>1562230263924</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1562230263924</updated>
+    </task>
+    <task id="LOCAL-00030" summary="metuIndex">
+      <created>1562338833475</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1562338833475</updated>
+    </task>
+    <task id="LOCAL-00031" summary="metuIndex">
+      <created>1562339468205</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1562339468205</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="492194000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1680" height="963" extended-state="6" />
+    <layout>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289941" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4687131" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985258" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20454545" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289941" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985258" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24385749" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="metuIndex" />
+    <option name="LAST_COMMIT_MESSAGE" value="metuIndex" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/pages/User/Register.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="7" lean-forward="true" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/User/Login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="7" lean-forward="true" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Common/GlobalHeaderMin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="7" column="31" lean-forward="false" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/layouts/DocLayout.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="27" lean-forward="false" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Common/GlobalHeader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="7" column="31" lean-forward="false" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/Home/Home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="9" column="28" lean-forward="false" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Common/GlobalFooter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="3" column="18" lean-forward="false" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Common/GlobalHeaderSign.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="21" column="3" lean-forward="true" selection-start-line="21" selection-start-column="3" selection-end-line="21" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Common/LoadingBg.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="33" lean-forward="false" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/layouts/UserLayout.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="28" lean-forward="false" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Form/Pintu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="59" column="19" lean-forward="false" selection-start-line="59" selection-start-column="19" selection-end-line="59" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Form/FormXieyi.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#22#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Form/UploadPhotoList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="27" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+          <folding>
+            <element signature="e#22#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Form/UploadAvatar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="17" column="24" lean-forward="false" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blocks/Photo/PhotoListMasonry.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="10" column="19" lean-forward="false" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Form/InputPassword.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="8" column="24" lean-forward="false" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Form/InputSmscode.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="54" column="28" lean-forward="false" selection-start-line="54" selection-start-column="28" selection-end-line="54" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Form/UploadPhoto.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="17" column="20" lean-forward="true" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+          <folding>
+            <element signature="e#253#298#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/layouts/BaseLayout.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="13" column="28" lean-forward="false" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blocks/Article/ArticleEditor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="60" lean-forward="false" selection-start-line="2" selection-start-column="60" selection-end-line="2" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blocks/Photo/PhotoListItem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="23" lean-forward="false" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blocks/Article/ArticleListShow.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#52#78#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blocks/Photo/PhotoListQuery.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="e#32#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/oss.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="5" column="34" lean-forward="false" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/request.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="4" column="18" lean-forward="false" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="16" column="17" lean-forward="true" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#259#316#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blocks/Photo/PhotosListQuery.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#47#92#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/global.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="4" column="18" lean-forward="false" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blocks/Photo/PhotoAction.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="8" column="23" lean-forward="false" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/publish.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="22" lean-forward="false" selection-start-line="0" selection-start-column="22" selection-end-line="0" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blocks/Photo/PhotoInfo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="11" column="32" lean-forward="false" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blocks/User/UserSignModal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="8" column="27" lean-forward="false" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blocks/Article/CusShare.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="12" column="18" lean-forward="false" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blocks/User/UserRegister.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="15" column="24" lean-forward="false" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/Other/Service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="3" column="32" lean-forward="false" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blocks/User/PsdReset.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="16" column="27" lean-forward="false" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blocks/User/UserWechatLogin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="9" column="26" lean-forward="false" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/Content/ArticleDetail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="11" column="26" lean-forward="false" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/Content/PhotosDetail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="14" column="26" lean-forward="false" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/Content/PhotoDetail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="11" column="24" lean-forward="false" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/Discover/TagsArticle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="7" column="31" lean-forward="false" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/Account/PublishArticle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="4" column="34" lean-forward="false" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/Discover/Equipments.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="30" lean-forward="false" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/Discover/Course.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="8" column="23" lean-forward="false" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/Account/PublishPhoto.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="7" column="32" lean-forward="false" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/Content/Community.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/markdown/doc.components.form.smscode.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="-1819">
+            <caret line="58" column="28" lean-forward="false" selection-start-line="58" selection-start-column="28" selection-end-line="58" selection-end-column="28" />
+            <folding />
+          </first_editor>
+          <second_editor>
+            <markdownNavigatorState />
+          </second_editor>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="-3158">
+            <caret line="284" column="30" lean-forward="false" selection-start-line="284" selection-start-column="30" selection-end-line="284" selection-end-column="30" />
+            <folding />
+          </first_editor>
+          <second_editor>
+            <markdownNavigatorState />
+          </second_editor>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/markdown/doc.crypto.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="-162">
+            <caret line="3" column="22" lean-forward="false" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
+            <folding />
+          </first_editor>
+          <second_editor>
+            <markdownNavigatorState />
+          </second_editor>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/markdown/doc.components.form.password.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="286">
+            <caret line="12" column="24" lean-forward="false" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
+            <folding />
+          </first_editor>
+          <second_editor>
+            <markdownNavigatorState />
+          </second_editor>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blocks/User/UserLogin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="14" column="27" lean-forward="false" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

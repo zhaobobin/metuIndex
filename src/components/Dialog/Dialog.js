@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal } from 'antd';
-import CountDown from '~/components/Number/CountDown';
+import CountDown from '@/components/Number/CountDown';
 import styles from './Dialog.less'
 
 const modal_options = {

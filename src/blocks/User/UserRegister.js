@@ -5,15 +5,15 @@ import React from 'react';
 import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
 import { Form, Button, notification } from 'antd';
-import { hasErrors } from '~/utils/utils'
-import { Encrypt } from '~/utils/crypto'
+import { hasErrors } from '@/utils/utils'
+import { Encrypt } from '@/utils/crypto'
 import styles from './UserSign.less'
 
-import InputMobile from '~/components/Form/InputMobile'
-import InputText from '~/components/Form/InputText'
-import InputPassword from '~/components/Form/InputPassword'
-import InputSmscode from '~/components/Form/InputSmscode'
-import FormXieyi from '~/components/Form/FormXieyi'
+import InputMobile from '@/components/Form/InputMobile'
+import InputText from '@/components/Form/InputText'
+import InputPassword from '@/components/Form/InputPassword'
+import InputSmscode from '@/components/Form/InputSmscode'
+import FormXieyi from '@/components/Form/FormXieyi'
 
 const FormItem = Form.Item;
 

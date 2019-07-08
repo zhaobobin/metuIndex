@@ -4,7 +4,7 @@ import { routerRedux } from 'dva/router';
 import { Row, Col } from 'antd';
 //import styles from './index.less';
 
-import PsdReset from '~/blocks/User/PsdReset'
+import PsdReset from '@/blocks/User/PsdReset'
 
 @connect(state => ({
   global: state.global,

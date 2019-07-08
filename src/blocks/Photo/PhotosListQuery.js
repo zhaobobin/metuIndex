@@ -7,7 +7,7 @@ import { connect } from 'dva';
 import { notification } from 'antd';
 import InfiniteScroll from 'react-infinite-scroller';			//加载更多
 
-import PhotoListGallery from '~/blocks/Photo/PhotoListGallery';
+import PhotoListGallery from '@/blocks/Photo/PhotoListGallery';
 
 @connect(state => ({
   global: state.global

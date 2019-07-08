@@ -8,7 +8,7 @@ import { connect } from 'dva';
 import { Link } from 'dva/router';
 import Moment from 'moment';
 import { Button, Form, Icon, Input, notification } from 'antd';
-import { filterStr } from "~/utils/utils";
+import { filterStr } from "@/utils/utils";
 import styles from './CommentList.less';
 
 const FormItem = Form.Item;

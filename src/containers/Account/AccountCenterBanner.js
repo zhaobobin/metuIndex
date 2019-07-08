@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'dva';
 import { Icon, Upload, notification } from 'antd';
-import { file2base64, createRandomId } from '~/utils/utils';
-import defauleBanner from '~/assets/banner.jpg';
+import { file2base64, createRandomId } from '@/utils/utils';
+import defauleBanner from '@/assets/banner.jpg';
 import styles from './AccountCenterBanner.less';
 
-import PhotoCrop from '~/blocks/Photo/PhotoCrop';
+import PhotoCrop from '@/blocks/Photo/PhotoCrop';
 
 @connect(state => ({
   global: state.global,

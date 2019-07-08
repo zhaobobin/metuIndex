@@ -8,13 +8,13 @@ import { connect } from 'dva';
 import { routerRedux, Redirect } from 'dva/router';
 import { Row, Col, Form, Button, Steps } from 'antd'
 import { Toast } from 'antd-mobile'
-import { hasErrors } from '~/utils/utils'
-import { Encrypt } from '~/utils/crypto'
+import { hasErrors } from '@/utils/utils'
+import { Encrypt } from '@/utils/crypto'
 import styles from './PsdReset.less';
 
-import InputMobile from '~/components/Form/InputMobile'
-import InputPassword from '~/components/Form/InputPassword'
-import InputSmscode from '~/components/Form/InputSmscode'
+import InputMobile from '@/components/Form/InputMobile'
+import InputPassword from '@/components/Form/InputPassword'
+import InputSmscode from '@/components/Form/InputSmscode'
 
 const FormItem = Form.Item;
 const Step = Steps.Step;

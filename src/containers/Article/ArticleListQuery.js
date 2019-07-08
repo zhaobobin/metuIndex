@@ -5,9 +5,9 @@
 import React from 'react';
 import { connect } from 'dva';
 import {Pagination, notification} from 'antd';
-import {Storage} from '../../utils/utils';
+import {Storage} from '@/utils/utils';
 
-import ArticleListShow from '~/blocks/Article/ArticleListShow'
+import ArticleListShow from '@/blocks/Article/ArticleListShow'
 
 @connect(state => ({
   global: state.global

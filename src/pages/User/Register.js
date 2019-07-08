@@ -4,7 +4,7 @@ import { routerRedux } from 'dva/router';
 import { Row, Col } from 'antd';
 //import styles from './index.less';
 
-import UserRegister from '~/blocks/User/UserRegister';
+import UserRegister from '@/blocks/User/UserRegister';
 
 @connect(state => ({
   global: state.global,

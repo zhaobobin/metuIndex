@@ -6,11 +6,11 @@ import React from 'react';
 import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
 import { Row, Col } from 'antd';
-import ENV from '~/config/env'
-import { Storage, getUrlParams } from '~/utils/utils'
+import ENV from '@/config/env'
+import { Storage, getUrlParams } from '@/utils/utils'
 import styles from './WeiboLogin.less'
 
-import UserRegister from '~/blocks/User/UserRegister';
+import UserRegister from '@/blocks/User/UserRegister';
 
 const paramsObj = getUrlParams() || '';
 

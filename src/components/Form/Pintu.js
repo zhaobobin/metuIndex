@@ -57,7 +57,7 @@ function removeClass(tag, className) {
 function getRandomImg() {
   //let url = 'https://picsum.photos/300/160/?image=' + getRandomNumberByRange(0, 1084);
   let num = randNum(0, 50);
-  return require('~/assets/pintu/pintu' + num + '.jpeg');
+  return require('@/assets/pintu/pintu' + num + '.jpeg');
 }
 
 function draw(ctx, x, y, operation) {

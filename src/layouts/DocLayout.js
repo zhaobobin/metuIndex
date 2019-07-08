@@ -3,11 +3,11 @@ import { Link, Route, Redirect, Switch } from 'dva/router';
 import DocumentTitle from 'react-document-title';
 import { injectIntl } from 'react-intl';
 import { Drawer, Icon, Row, Col } from 'antd'
-import NotFound from "~/pages/Other/404";
+import NotFound from "@/pages/Other/404";
 import styles from './DocLayout.less'
 
-import logo from '~/assets/logo2.png'
-import DocSlideMenu from '~/blocks/Doc/DocSlideMenu'
+import logo from '@/assets/logo2.png'
+import DocSlideMenu from '@/blocks/Doc/DocSlideMenu'
 
 class DocLayout extends React.Component {
 

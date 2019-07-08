@@ -4,7 +4,7 @@ export default function LoadingBg (props) {
     margin: 'auto',
     width: '500px',
     height: '180px',
-    background: `url(${require('~/assets/com/loading.gif')}) no-repeat center center`,
+    background: `url(${require('@/assets/com/loading.gif')}) no-repeat center center`,
     ...props.style,
   };
 

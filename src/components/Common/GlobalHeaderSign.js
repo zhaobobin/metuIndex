@@ -5,8 +5,8 @@ import { Button, Icon, Menu, Dropdown } from 'antd';
 import {FormattedMessage} from 'react-intl';
 import styles from './GlobalHeaderSign.less';
 
-import UserSignModal from '~/blocks/User/UserSignModal';
-import { Confirm } from '~/components/Dialog/Dialog'
+import UserSignModal from '@/blocks/User/UserSignModal';
+import { Confirm } from '@/components/Dialog/Dialog'
 
 @connect(state => ({
   global: state.global

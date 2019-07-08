@@ -5,8 +5,8 @@ import React from 'react';
 import { Input, Icon } from 'antd';
 import styles from './InputPassword.less'
 
-import eye_open from '~/assets/sign/signremind_open@2x.png'
-import eye_close from '~/assets/sign/invisible@2x.png'
+import eye_open from '@/assets/sign/signremind_open@2x.png'
+import eye_close from '@/assets/sign/invisible@2x.png'
 
 export default class InputPassword extends React.Component {
 

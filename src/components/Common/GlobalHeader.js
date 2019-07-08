@@ -1,11 +1,11 @@
 import React from 'react';
 import { Row, Col } from 'antd';
-import ENV from '~/config/env'
+import ENV from '@/config/env'
 import styles from './GlobalHeader.less';
 
-import logo from '~/assets/logo2.png'
-import GlobalHeaderMenu from '~/components/Common/GlobalHeaderMenu'
-import GlobalHeaderSign from '~/components/Common/GlobalHeaderSign'
+import logo from '@/assets/logo2.png'
+import GlobalHeaderMenu from '@/components/Common/GlobalHeaderMenu'
+import GlobalHeaderSign from '@/components/Common/GlobalHeaderSign'
 
 function headerIsOpacity(pathname){
   let path = pathname.split('/')[1];

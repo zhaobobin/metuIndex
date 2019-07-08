@@ -12,10 +12,10 @@
 import React from 'react';
 import { connect } from 'dva';
 import { Row, Col, Icon, Upload, Modal, notification } from 'antd';
-import {Storage, file2base64} from "~/utils/utils";
+import {Storage, file2base64} from "@/utils/utils";
 import styles from './UploadPhoro.less'
 
-import PhotoCrop from '~/blocks/Photo/PhotoCrop';
+import PhotoCrop from '@/blocks/Photo/PhotoCrop';
 
 @connect(state => ({
   login: state.login,

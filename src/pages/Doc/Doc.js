@@ -2,7 +2,7 @@
  * 文档
  */
 import React from 'react';
-import DocContent from '~/blocks/Doc/DocContent'
+import DocContent from '@/blocks/Doc/DocContent'
 
 export default function Doc (props) {
 

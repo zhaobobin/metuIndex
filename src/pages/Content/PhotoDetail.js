@@ -4,12 +4,12 @@
 import React from 'react';
 import { connect } from 'dva';
 import { notification } from 'antd';
-import {ENV, goBack} from "~/utils/utils";
+import {ENV, goBack} from "@/utils/utils";
 import styles from './PhotoDetail.less';
 
-import PhotoSwiper from '~/blocks/Photo/PhotoSwiper';
-import PhotoAction from '~/blocks/Photo/PhotoAction';
-import PhotoInfo from '~/blocks/Photo/PhotoInfo';
+import PhotoSwiper from '@/blocks/Photo/PhotoSwiper';
+import PhotoAction from '@/blocks/Photo/PhotoAction';
+import PhotoInfo from '@/blocks/Photo/PhotoInfo';
 
 @connect(state => ({
   photo: state.photo,

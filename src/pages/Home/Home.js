@@ -2,12 +2,12 @@
  * 首页
  */
 import React from 'react';
-import LoadLazy from '~/components/Common/LoadLazy'
+import LoadLazy from '@/components/Common/LoadLazy'
 
-import HomeBanner from '~/containers/Home/HomeBanner';
-import HomeTese from '~/containers/Home/HomeTese';
-import HomeDesc from '~/containers/Home/HomeDesc';
-import HomePhotoList from '~/containers/Home/HomePhotoList';
+import HomeBanner from '@/containers/Home/HomeBanner';
+import HomeTese from '@/containers/Home/HomeTese';
+import HomeDesc from '@/containers/Home/HomeDesc';
+import HomePhotoList from '@/containers/Home/HomePhotoList';
 
 export default function Home () {
 

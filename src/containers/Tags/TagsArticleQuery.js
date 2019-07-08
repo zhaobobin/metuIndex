@@ -8,10 +8,10 @@
 import React from 'react';
 import { connect } from 'dva';
 import { notification } from 'antd';
-import { Storage } from '~/utils/utils';
+import { Storage } from '@/utils/utils';
 import InfiniteScroll from 'react-infinite-scroller';			//加载更多
 
-import PhotoListMasonry from '~/blocks/Photo/PhotoListMasonry'
+import PhotoListMasonry from '@/blocks/Photo/PhotoListMasonry'
 
 @connect(state => ({
   article: state.article

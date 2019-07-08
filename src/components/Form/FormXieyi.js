@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import { Checkbox } from 'antd';
-import { ArticleAlert } from '~/components/Dialog/Dialog'
+import { ArticleAlert } from '@/components/Dialog/Dialog'
 
 export default class FormXieyi extends React.Component {
 

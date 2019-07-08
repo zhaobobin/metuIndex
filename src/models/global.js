@@ -1,8 +1,8 @@
 import { routerRedux } from 'dva/router';
 import { notification } from 'antd';
-import request from '~/utils/request';
-import { Storage } from '~/utils/utils';
-import ENV from '~/config/env'
+import request from '@/utils/request';
+import { Storage } from '@/utils/utils';
+import ENV from '@/config/env'
 
 export default {
 
@@ -94,7 +94,7 @@ export default {
         );
         yield callback(res);
 
-        if(res.code === 0){
+        if(res.status === 1){
           Storage.set(ENV.storageToken, res.data.token);               //保存token
           yield put({
             type: 'changeLoginStatus',

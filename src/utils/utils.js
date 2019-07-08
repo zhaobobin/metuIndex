@@ -1,7 +1,7 @@
 import moment from 'moment';
 import { notification } from 'antd';
 import { parse, stringify } from 'qs';
-// import WechatConfig from '~/config/wechat'
+// import WechatConfig from '@/config/wechat'
 
 /**
  * Storage 本地存储 检验过期

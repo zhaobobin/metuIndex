@@ -212,7 +212,7 @@
 修改路由配置函数，实现对布局组件的加载
 
   ```
-  import { getPlainNode } from '~/utils/utils';
+  import { getPlainNode } from '@/utils/utils';
 
   function getRouteData(navData, path) {
     if (!navData.some(item => item.layout === path) ||
@@ -272,17 +272,17 @@
   import React from 'react';
   import { Route, Switch } from 'dva/router';
   import { Layout, BackTop } from 'antd';
-  import { ENV } from '~/utils/utils';
+  import { ENV } from '@/utils/utils';
   import DocumentTitle from 'react-document-title';
-  import NotFound from "~/pages/Other/404";
+  import NotFound from "@/pages/Other/404";
   ```
 
 **导入公共组件**
 
   ```
-  import GlobalHeader from '~/components/Common/GlobalHeader';
-  import GlobalFooter from '~/components/Common/GlobalFooter';
-  import GlobalContent from '~/components/Common/GlobalContent';
+  import GlobalHeader from '@/components/Common/GlobalHeader';
+  import GlobalFooter from '@/components/Common/GlobalFooter';
+  import GlobalContent from '@/components/Common/GlobalContent';
   ```
     
 **组织页面布局**

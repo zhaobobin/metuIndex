@@ -4,8 +4,8 @@
 import React from 'react';
 import styles from './Publish.less';
 
-import PublishPhotoContent from '~/containers/Publish/PublishPhotoContent';
-import PublishPhotoSlide from '~/containers/Publish/PublishPhotoSlide';
+import PublishPhotoContent from '@/containers/Publish/PublishPhotoContent';
+import PublishPhotoSlide from '@/containers/Publish/PublishPhotoSlide';
 
 export default function PublishPhoto () {
   return(

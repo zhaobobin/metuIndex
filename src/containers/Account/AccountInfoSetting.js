@@ -2,9 +2,9 @@ import React, { PureComponent } from 'react';
 import { connect } from 'dva';
 import { Form, Input, Button, Row, Col, Card, Select } from 'antd';
 
-import UploadAvatar from '~/components/Form/UploadAvatar'
-import SelectCity from '~/components/Form/SelectCity'
-import SelectDate from '~/components/Form/SelectDate'
+import UploadAvatar from '@/components/Form/UploadAvatar'
+import SelectCity from '@/components/Form/SelectCity'
+import SelectDate from '@/components/Form/SelectDate'
 
 const FormItem = Form.Item;
 const { Option } = Select;

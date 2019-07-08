@@ -4,12 +4,12 @@
 import React from 'react';
 import { connect } from 'dva';
 import { Row, Col } from 'antd';
-import ENV from '~/config/env'
+import ENV from '@/config/env'
 import styles from './ArticleDetail.less';
 
-import Loading from '~/components/Common/Loading';
-import ArticleDetailShow from '~/blocks/Article/ArticleDetailShow';
-import CommentList from '~/containers/Comment/CommentList';
+import Loading from '@/components/Common/Loading';
+import ArticleDetailShow from '@/blocks/Article/ArticleDetailShow';
+import CommentList from '@/containers/Comment/CommentList';
 
 @connect(state => ({
   global: state.global,

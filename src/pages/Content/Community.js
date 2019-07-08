@@ -4,7 +4,7 @@ import { Link } from 'dva/router';
 import { Row, Col, Menu } from 'antd';
 import styles from './Community.less';
 
-import PhotosListQuery from '~/blocks/Photo/PhotosListQuery';
+import PhotosListQuery from '@/blocks/Photo/PhotosListQuery';
 
 @connect(state => ({
   global: state.global,

@@ -5,7 +5,7 @@ import React from 'react';
 import { Tabs } from 'antd';
 import styles from './TagsArticle.less';
 
-import TagsArticleQuery from '~/containers/Tags/TagsArticleQuery'
+import TagsArticleQuery from '@/containers/Tags/TagsArticleQuery'
 
 const TabPane = Tabs.TabPane;
 

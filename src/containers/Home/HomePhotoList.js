@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import { Tabs } from 'antd';
 import styles from './HomePhotoList.less'
 
-import PhotosListQuery from '~/blocks/Photo/PhotosListQuery';
+import PhotosListQuery from '@/blocks/Photo/PhotosListQuery';
 const TabPane = Tabs.TabPane;
 
 @connect(state => ({

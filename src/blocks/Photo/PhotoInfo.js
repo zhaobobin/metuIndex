@@ -9,7 +9,7 @@ import { connect } from 'dva';
 import { Link } from 'dva/router';
 import styles from './PhotoInfo.less';
 
-import ArticleAuthorInfo from '~/blocks/Article/ArticleAuthorInfo'
+import ArticleAuthorInfo from '@/blocks/Article/ArticleAuthorInfo'
 
 @connect(state => ({
   global: state.global,

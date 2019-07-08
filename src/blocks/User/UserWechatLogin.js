@@ -4,10 +4,10 @@
  */
 import React from 'react';
 import WxLogin from 'wxlogin.react';
-import WechatConfig from '~/config/wechat'
-import ENV from '~/config/env'
-import { Storage } from '~/utils/utils'
-import { Encrypt } from '~/utils/crypto'
+import WechatConfig from '@/config/wechat'
+import ENV from '@/config/env'
+import { Storage } from '@/utils/utils'
+import { Encrypt } from '@/utils/crypto'
 
 export default class UserWechatLogin extends React.Component {
 

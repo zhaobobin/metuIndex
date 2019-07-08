@@ -20,6 +20,7 @@ export default {
   email: '',
   icp: 'ICP经营许可证 京B2-20160180',
   beian: '京ICP备16058155号-1',
+  company: '北京掘金者科技有限公司',
   copyright: '©2015-2018 迷图网 All rights reserved',
   slogan: '影像点亮生活',
   web: 'www.metuwang.com',

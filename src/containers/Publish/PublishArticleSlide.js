@@ -7,8 +7,8 @@ import { connect } from 'dva';
 import { Form, Input, Select, Button, Modal, notification } from 'antd';
 import styles from './PublishSlide.less';
 
-// import UploadPhoto from '~/components/Form/UploadPhoto'
-import InputText from '~/components/Form/InputText'
+// import UploadPhoto from '@/components/Form/UploadPhoto'
+import InputText from '@/components/Form/InputText'
 
 const FormItem = Form.Item;
 const confirm = Modal.confirm;

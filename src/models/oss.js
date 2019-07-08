@@ -3,7 +3,7 @@
  key生成规则：用户id/保存类别_当前时间戳.图片类型
  let key = this.props.global.currentUser._id + '/photo_' + new Date().getTime() + '.' + file.name.split('.')[1];
  */
-import request, {FetchGet} from "~/utils/request"
+import request, {FetchGet} from "@/utils/request"
 import {notification} from 'antd'
 
 const getClient = function (data) {

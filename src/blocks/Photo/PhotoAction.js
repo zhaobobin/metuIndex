@@ -6,7 +6,7 @@ import { connect } from 'dva';
 import { Icon } from 'antd';
 import styles from './PhotoAction.less';
 
-import CusShare from '~/blocks/Article/CusShare'
+import CusShare from '@/blocks/Article/CusShare'
 
 @connect(state => ({
   global: state.global,

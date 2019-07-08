@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'dva';
 import { Modal } from 'antd';
-import ENV from '~/config/env'
+import ENV from '@/config/env'
 import styles from './UserSignModal.less';
 
-import logo from '~/assets/logo.png'
-import UserLogin from '~/blocks/User/UserLogin';
-import UserRegister from '~/blocks/User/UserRegister';
+import logo from '@/assets/logo.png'
+import UserLogin from '@/blocks/User/UserLogin';
+import UserRegister from '@/blocks/User/UserRegister';
 
 @connect(state => ({
   global: state.global

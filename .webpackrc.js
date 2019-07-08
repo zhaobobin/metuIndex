@@ -13,8 +13,7 @@ export default {
     ["import", { "libraryName": "antd-mobile", "libraryDirectory": "es", "style": true }, "antd-mobile"],
   ],
   "alias": {
-    "~": path.resolve(__dirname, "./src"),
-    "~@": path.resolve(__dirname, "./src/theme"),
+    "@": path.resolve(__dirname, "./src"),
   },
   "env": {
     "development": {

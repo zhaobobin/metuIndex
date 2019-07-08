@@ -10,7 +10,7 @@ import React from 'react';
 import { Icon } from 'antd'
 import { Qq, Weibo } from 'share-react';
 import QRCode from 'qrcode.react'
-import ENV from '~/config/env'
+import ENV from '@/config/env'
 import styles from './CusShare.less'
 
 export default function CusShare ({url, title, desc, style}) {

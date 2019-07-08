@@ -1,15 +1,15 @@
 import React from 'react';
 import { Router, Route, Switch } from 'dva/router';
 import cloneDeep from 'lodash/cloneDeep';
-import { getNavData } from '~/routes/nav';
-import { getPlainNode } from '~/utils/utils';
-import NotFound from "~/pages/Other/404";
+import { getNavData } from '@/routes/nav';
+import { getPlainNode } from '@/utils/utils';
+import NotFound from "@/pages/Other/404";
 
 //国家化
 import { addLocaleData, IntlProvider } from 'react-intl';
 import enLocaleData from 'react-intl/locale-data/zh'
-import en_US from '~/locales/en_US';
-import zh_CN from '~/locales/zh_CN';
+import en_US from '@/locales/en_US';
+import zh_CN from '@/locales/zh_CN';
 addLocaleData(enLocaleData);
 const currentLang = navigator.language;  //navigator.language
 const messages = {

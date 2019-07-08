@@ -5,7 +5,7 @@
 import React from 'react';
 import { Link } from 'dva/router';
 import Moment from 'moment';
-import logo from '~/assets/logo2.png';
+import logo from '@/assets/logo2.png';
 import styles from './ArticleListShow.less';
 
 export default class ArticleListShow extends React.Component {

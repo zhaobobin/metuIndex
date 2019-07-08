@@ -1,7 +1,7 @@
 ## 加密
 
 ```
-import { ENV } from '~/utils/utils'
+import { ENV } from '@/utils/utils'
 const CryptoJS = require('crypto-js');
 
 /**

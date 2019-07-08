@@ -1,4 +1,4 @@
-import { ENV } from '~/utils/utils'
+import ENV from '@/config/env'
 const CryptoJS = require('crypto-js');
 
 /**

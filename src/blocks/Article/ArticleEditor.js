@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import {Storage, hasErrors, getImgSize, file2base64} from '~/utils/utils';
+import {Storage, hasErrors, getImgSize, file2base64} from '@/utils/utils';
 
 import { EditorState, convertToRaw, ContentState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';

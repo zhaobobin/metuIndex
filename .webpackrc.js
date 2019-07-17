@@ -14,6 +14,7 @@ export default {
   ],
   "alias": {
     "@": path.resolve(__dirname, "./src"),
+    '@ant-design/icons/lib/dist$': path.resolve(__dirname, './src/utils/icons.js')
   },
   "env": {
     "development": {

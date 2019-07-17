@@ -2,7 +2,7 @@
  * 表单 - 单行文本输入框
  */
 import React from 'react';
-import { Input, Icon } from 'antd';
+import { Input } from 'antd';
 
 export default class InputText extends React.Component {
 
@@ -26,12 +26,6 @@ export default class InputText extends React.Component {
     this.props.callback(value);
   };
 
-  //清空输入框
-  emitEmpty(){
-    this.setState({ value: '' });
-    this.props.callback();
-  };
-
   render(){
 
     const { value } = this.state;
@@ -46,15 +40,7 @@ export default class InputText extends React.Component {
         value={value}
         maxLength={maxLength}
         disabled={this.props.disabled}
-        suffix={
-          value ?
-            <Icon
-              type="close-circle"
-              onClick={() => this.emitEmpty()}
-            />
-            :
-            null
-        }
+        allowClear={true}
       />
     )
   }

@@ -1,8 +1,8 @@
 import fetch from 'dva/fetch';
 import { notification } from 'antd';
 import { Base64 } from 'js-base64';
-import { Storage } from '@/utils/utils';
-import ENV from '@/config/env'
+import Storage from '@/utils/storage';
+import ENV from '@/config/env';
 
 const codeMessage = {
   200: '请求成功',
@@ -50,7 +50,7 @@ function checkStatus(response) {
  * @param  {object} [options] The options we want to pass to "fetch"
  * @return {object}           An object containing either "data" or "err"
  */
-export default function request(url, options) {
+export default function Request(url, options) {
 
   const defaultOptions = {
     credentials: 'include',

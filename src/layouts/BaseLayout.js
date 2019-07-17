@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import { Route, Switch } from 'dva/router';
 import { Layout, BackTop } from 'antd';
 import ENV from '@/config/env'
-import { Storage } from '@/utils/utils';
+import Storage from '@/utils/storage';
 import { injectIntl } from 'react-intl';
 import DocumentTitle from 'react-document-title';
 import NotFound from "@/pages/Other/404";

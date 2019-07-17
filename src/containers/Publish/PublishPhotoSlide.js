@@ -82,10 +82,10 @@ export default class PublishRight extends React.Component {
     let api = '',
       id = this.props.id;
     if(id){
-      api = 'api/PhotosUpdate';
+      api = '/api/PhotosUpdate';
       params.id = id;
     }else{
-      api = 'api/PhotosAdd';
+      api = '/api/PhotosAdd';
     }
     //保存时，执行ossDel列表对应文件的删除操作
     this.props.dispatch({

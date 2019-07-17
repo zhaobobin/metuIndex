@@ -25,6 +25,7 @@ export default {
   slogan: '影像点亮生活',
   web: 'www.metuwang.com',
   worktime: '9:00-17:30',
+  iv: '1269571569321021',
 
   storageToken: 'metuIndex-token',
   storageLastTel: 'metuIndex-lastTel',

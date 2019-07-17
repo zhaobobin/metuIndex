@@ -8,13 +8,13 @@
 import React from 'react';
 import { connect } from 'dva';
 import { notification } from 'antd';
-import { Storage } from '@/utils/utils';
+import Storage from '@/utils/storage';
 import InfiniteScroll from 'react-infinite-scroller';			//加载更多
 
 import PhotoListMasonry from '@/blocks/Photo/PhotoListMasonry'
 
 @connect(state => ({
-  article: state.article
+  global: state.global
 }))
 export default class ArticleListQuery extends React.Component {
 
@@ -58,7 +58,8 @@ export default class ArticleListQuery extends React.Component {
     Storage.set('metu-ajaxFlag', false);
 
     this.props.dispatch({
-      type: 'tags/article',
+      type: 'global/post',
+      url: '/api/TagsArticle',
       payload: params,
       callback: (res) => {
         Storage.set('metu-ajaxFlag', true);

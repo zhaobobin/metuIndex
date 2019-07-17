@@ -95,6 +95,14 @@ const BaseRoutes = app => [
         component: dynamicWrapper(app, [], () => import('../pages/Discover/Tribe')),
       },
       {
+        name: '圈子',
+        id: 'menu.cricle',
+        key: 'cricle',
+        path: 'cricle',
+        isHide: true,
+        component: dynamicWrapper(app, [], () => import('../pages/Discover/Cricle')),
+      },
+      {
         name: '教程',
         id: 'menu.course',
         key: 'course',

@@ -5,7 +5,8 @@ import React, { Component } from 'react';
 import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
 import { Form, Input, Button, Icon, Row, Col, Card, InputNumber, Select, Table, Divider, Upload, Modal, Popconfirm, notification } from 'antd';
-import {Storage, checkRole, hasErrors, file2base64} from '@/utils/utils';
+import Storage from '@/utils/storage';
+import { checkRole, hasErrors, file2base64 } from '@/utils/utils';
 import styles from './UploadPhotoList.less'
 
 const FormItem = Form.Item;

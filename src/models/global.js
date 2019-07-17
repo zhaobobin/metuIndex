@@ -1,8 +1,8 @@
 import { routerRedux } from 'dva/router';
 import { notification } from 'antd';
-import request from '@/utils/request';
-import { Storage } from '@/utils/utils';
-import ENV from '@/config/env'
+import Request from '@/utils/request';
+import Storage from '@/utils/storage';
+import ENV from '@/config/env';
 
 export default {
 
@@ -33,7 +33,7 @@ export default {
   effects: {
     *init({ payload }, { call, put }) {
       const res = yield call(
-        (params) => {return request('api/init', {method: 'POST', body: params})},
+        (params) => {return Request('/api/init', {method: 'POST', body: params})},
         payload
       );
       if(res.status === 1){
@@ -45,7 +45,7 @@ export default {
     },
     *register({ payload, callback }, { call, put }) {
       const res = yield call(
-        (params) => {return request('api/register', {method: 'POST', body: params})},
+        (params) => {return Request('/api/register', {method: 'POST', body: params})},
         payload
       );
       if(res.status === 1){
@@ -65,7 +65,7 @@ export default {
 
     *login({ payload, callback }, { call, put }) {
       const res = yield call(
-        (params) => {return request('api/login', {method: 'POST', body: params})},
+        (params) => {return Request('/api/login', {method: 'POST', body: params})},
         payload
       );
       if(res.status === 1){
@@ -89,7 +89,7 @@ export default {
       if(payload.refreshToken) {
 
         const res = yield call(
-          (params) => {return request('/api/token', {method: 'POST', body: params})},
+          (params) => {return Request('/api/token', {method: 'POST', body: params})},
           payload
         );
         yield callback(res);
@@ -123,7 +123,7 @@ export default {
 
     *logout({ payload, callback }, { call, put }) {
       const res = yield call(
-        (params) => {return request('api/logout', {method: 'POST', body: params})},
+        (params) => {return Request('/api/logout', {method: 'POST', body: params})},
         payload
       );
       if(res.status === 1){
@@ -146,7 +146,7 @@ export default {
         res = storage;
       }else{
         res = yield call(
-          (params) => {return request(url, {method: 'POST', body: params})},
+          (params) => {return Request(url, {method: 'POST', body: params})},
           payload
         );
         if(res.status === 1 && exp) Storage.set(url, res);
@@ -175,7 +175,7 @@ export default {
 
     *get({ url, payload, callback }, { call, put }) {
       const res = yield call(
-        (params) => {return request(url, {method: 'GET', body: params})},
+        (params) => {return Request(url, {method: 'GET', body: params})},
         payload
       );
       yield callback(res);

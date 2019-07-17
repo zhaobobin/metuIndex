@@ -5,7 +5,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import {Pagination, notification} from 'antd';
-import {Storage} from '@/utils/utils';
+import Storage from '@/utils/storage';
 
 import ArticleListShow from '@/blocks/Article/ArticleListShow'
 
@@ -45,7 +45,7 @@ export default class ArticleListQuery extends React.Component {
 
     this.props.dispatch({
       type: 'global/post',
-      url: 'api/ArticleList',
+      url: '/api/ArticleList',
       payload: params,
       callback: (res) => {
         window.scrollTo(0, 0);

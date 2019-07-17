@@ -5,7 +5,7 @@ import React from 'react';
 import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
 import { Form, Button, notification } from 'antd';
-import { hasErrors } from '@/utils/utils'
+import Validator from '@/utils/validator'
 import { Encrypt } from '@/utils/crypto'
 import styles from './UserSign.less'
 
@@ -176,10 +176,10 @@ export default class UserRegister extends React.Component {
   setInputError = (status, msg) => {
     let key;
     switch(status){
-      case 10001: key = 'tel'; break;
-      case 10002: key = 'password'; break;
-      case 10003: key = 'nickname'; break;
-      case 10004: key = 'smscode'; break;
+      case 20001: key = 'tel'; break;
+      case 20002: key = 'password'; break;
+      case 20003: key = 'nickname'; break;
+      case 20004: key = 'smscode'; break;
       default: break;
     }
     this.props.form.setFields({
@@ -235,11 +235,8 @@ export default class UserRegister extends React.Component {
             <FormItem>
               {getFieldDecorator('nickname', {
                 initialValue: this.props.nickname || '',
-                validateFirst: true,
-                validateTrigger: 'onBlur',
                 rules: [
                   { required: true, message: '请输入昵称' },
-                  { pattern: /^[\u4E00-\u9FA5a-zA-Z0-9_]{2,10}$/, message: '只能输入汉子、字母、数字、下划线，2-10位' }
                 ],
               })(
                 <InputText defaultVaule={this.props.nickname} placeholder="昵称" callback={this.nicknameCallback}/>
@@ -248,11 +245,8 @@ export default class UserRegister extends React.Component {
 
             <FormItem>
               {getFieldDecorator('password', {
-                validateFirst: true,
-                validateTrigger: 'onBlur',
                 rules: [
                   { required: true, message: '请输入密码' },
-                  { pattern: /^[A-Za-z0-9]{6,20}/, message: '只能输入6到20位到字母或数字组合' }
                 ],
               })(
                 <InputPassword showPsdLevel={true} callback={this.passwordCallback}/>
@@ -266,7 +260,7 @@ export default class UserRegister extends React.Component {
                 ]
               })(
                 <InputSmscode
-                  tel={hasErrors(getFieldsError(['tel'])) ? '' : getFieldValue('tel')}
+                  tel={Validator.hasErrors(getFieldsError(['tel'])) ? '' : getFieldValue('tel')}
                   callback={this.smscodeCallback}
                 />
               )}
@@ -287,7 +281,14 @@ export default class UserRegister extends React.Component {
               htmlType="submit"
               className={styles.btn}
               style={{marginBottom: '10px'}}
-              disabled={!getFieldValue('xieyi')}
+              disabled={
+                Validator.hasErrors(getFieldsError()) ||
+                !getFieldValue('tel') ||
+                !getFieldValue('nickname') ||
+                !getFieldValue('password') ||
+                !getFieldValue('smscode') ||
+                !getFieldValue('xieyi')
+              }
             >
               注册
             </Button>

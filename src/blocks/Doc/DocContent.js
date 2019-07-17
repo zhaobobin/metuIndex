@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import codeBlock from './CodeBlock';
+// import codeBlock from './CodeBlock';
 import 'github-markdown-css';
 
 function flatten(text, child) {
@@ -58,7 +58,7 @@ export default class DocContent extends React.Component {
         source={detail}
         escapeHtml={false}
         renderers={{
-          code: codeBlock,
+          // code: codeBlock,
           // Heading: HeadingRenderer(),
         }}
       />

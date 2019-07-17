@@ -6,7 +6,8 @@
  */
 import React, { PureComponent } from 'react';
 import {Row, Col, Icon, Spin} from 'antd';
-import {Storage, goBack} from "../../utils/utils";
+import Storage from '@/utils/storage';
+import { goBack } from '@/utils/utils';
 
 import styles from './PhotoSwiper.less';
 
@@ -217,7 +218,7 @@ export default class PhotoSwiper extends PureComponent {
                   <img className={styles.currentPhoto} src={currentPhoto.url + '?x-oss-process=style/cover'} alt="current"/>
                   {/*<img className={styles.currentPhoto} onLoad={this.loaded} src={currentPhoto.url + '?x-oss-process=style/cover'} alt="photo"//>*/}
                 </div>
-                <a className={styles.mask} onClick={this.onChangeFullscreen}/>
+                <a className={styles.mask} onClick={this.onChangeFullscreen}><i/></a>
                 <a className={styles.arrow+" "+styles.prev} title="上一张" onClick={this.prevPhoto}><Icon type="left" /></a>
                 <a className={styles.arrow+" "+styles.next} title="下一张" onClick={this.nextPhoto}><Icon type="right" /></a>
               </div>

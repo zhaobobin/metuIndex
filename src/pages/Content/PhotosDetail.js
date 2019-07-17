@@ -34,7 +34,7 @@ export default class AlbumDetail extends React.Component {
   queryArticleDetail(id){
     this.props.dispatch({
       type: 'global/post',
-      url: 'api/PhotosDetail',
+      url: '/api/PhotosDetail',
       payload: {
         id: id
       },

@@ -13,9 +13,9 @@ export default function HomeTese () {
       icon: 'search',
     },
     {
-      title: '部落',
+      title: '圈子',
       desc: '以图会友，相互交流',
-      url: '/tribe',
+      url: '/cricle',
       icon: 'team',
     },
     {

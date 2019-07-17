@@ -40,7 +40,7 @@ export default class ArticleDetail extends React.Component {
   queryArticleDetail(id){
     this.props.dispatch({
       type: 'global/post',
-      url: 'api/ArticleDetail',
+      url: '/api/ArticleDetail',
       payload: {
         id: id
       },

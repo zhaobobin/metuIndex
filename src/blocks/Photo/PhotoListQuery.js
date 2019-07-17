@@ -5,7 +5,7 @@ import React from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
 import {Row, Col, notification} from 'antd';
-import {Storage} from '@/utils/utils';
+import Storage from '@/utils/storage';
 
 import PhotoListGallery from '@/blocks/Photo/PhotoListGallery';
 import InfiniteScroll from 'react-infinite-scroller';			//加载更多

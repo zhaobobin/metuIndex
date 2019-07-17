@@ -90,7 +90,7 @@ export default class AccountCenterBanner extends React.Component {
 
         this.props.dispatch({
           type: 'global/post',
-          url: 'api/UserBanner',
+          url: '/api/UserBanner',
           payload: {
             _id: uid,
             banner: url

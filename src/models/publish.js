@@ -1,4 +1,7 @@
-import request from '@/utils/request';
+/**
+ * 内容发布 - 用于保存编辑文章的状态
+ */
+import Request from '@/utils/request';
 
 export default {
 
@@ -15,7 +18,7 @@ export default {
   effects: {
     *init({ payload }, { call, put }) {
       const res = yield call(
-        (params) => {return request('api/init', {method: 'POST', body: params})},
+        (params) => {return Request('api/init', {method: 'POST', body: params})},
         payload
       );
       if(res.status === 1){

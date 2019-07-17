@@ -9,7 +9,7 @@ import { connect } from 'dva';
 import { Link } from 'dva/router';
 import { Icon, notification } from 'antd';
 import Moment from 'moment';
-// import {Storage} from "../../utils/utils";
+// import Storage from '@/utils/storage';
 
 import styles from './ArticleRank.less';
 
@@ -46,7 +46,7 @@ export default class ArticleRank extends PureComponent {
 
     this.props.dispatch({
       type: 'global/post',
-      url: 'api/ArticleRank',
+      url: '/api/ArticleRank',
       payload: params,
       callback: (res) => {
         this.ajaxFlag = true;

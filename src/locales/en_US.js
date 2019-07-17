@@ -19,6 +19,7 @@ export default {
   'menu.discover': 'Discover',
   'menu.author': 'Photographer',
   'menu.tribe': 'Tribe',
+  'menu.cricle': 'Cricle',
   'menu.course': 'Cuorse',
   'menu.equipments': 'Equipments',
   'menu.tags': 'Tags',

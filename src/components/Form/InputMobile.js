@@ -2,7 +2,8 @@
  * 表单 - 手机号
  */
 import React from 'react';
-import { Input, Icon } from 'antd';
+import { Input } from 'antd';
+import Validator from '@/utils/validator';
 
 export default class InputMobile extends React.Component {
 
@@ -14,27 +15,13 @@ export default class InputMobile extends React.Component {
     }
   }
 
-  // 是否是手机号
-  isPhone = (tel) => {
-    let reg = /^1[0-9]{10}$/;
-    return reg.test(tel);
-  };
-
-  // 是否是1开头的手机格式
-  checkPhone = (value) => {
-    if (value.substr(0, 1) === '1') {
-      return value.length <= 11;
-    } else {
-      return false;
-    }
-  };
-
   // 监控手机号输入
   changeValue = (e) => {
     let value = e.target.value;
+    if(value.length === 1 && value !== '1') value = '';
     value = value.replace(/\D/g,'');
     this.setState({ value });
-    if(this.checkPhone(value)){
+    if(Validator.checkMobile(value)){
       this.props.callback(value);
     }else{
       this.props.callback(value, '请输入正确的手机号');
@@ -45,7 +32,7 @@ export default class InputMobile extends React.Component {
   mobileOnBlur = (e) => {
     let value = e.target.value;
     if(value){
-      if(this.isPhone(value)){
+      if(Validator.isMobile(value)){
         this.props.callback(value);
       }else{
         this.props.callback(value, '请输入正确的手机号');
@@ -55,12 +42,6 @@ export default class InputMobile extends React.Component {
     }
   };
 
-  //清空输入框
-  emitEmpty(){
-    this.setState({ value: '' });
-    this.props.callback();
-  };
-
   render(){
 
     const { value } = this.state;
@@ -68,21 +49,13 @@ export default class InputMobile extends React.Component {
     return(
       <Input
         size="large"
-        maxLength="11"
+        maxLength={11}
         autoComplete="off"
         placeholder="手机号"
         onChange={this.changeValue}
         onBlur={this.mobileOnBlur}
         value={value}
-        suffix={
-          value ?
-            <Icon
-              type="close-circle"
-              onClick={() => this.emitEmpty()}
-            />
-            :
-            null
-        }
+        allowClear={true}
       />
     )
   }

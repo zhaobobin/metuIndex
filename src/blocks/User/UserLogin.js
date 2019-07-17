@@ -5,10 +5,11 @@ import React from 'react';
 import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
 import { Form, Icon, Button, Checkbox, notification } from 'antd';
-import ENV from '@/config/env'
-import { Storage, hasErrors } from "@/utils/utils";
-import { Encrypt, Decrypt } from '@/utils/crypto'
-import styles from './UserSign.less'
+import ENV from '@/config/env';
+import Validator from '@/utils/validator';
+import Storage from '@/utils/storage';
+import { Encrypt } from '@/utils/crypto';
+import styles from './UserSign.less';
 
 import InputMobile from '@/components/Form/InputMobile'
 import InputPassword from '@/components/Form/InputPassword'
@@ -57,7 +58,7 @@ export default class UserLogin extends React.Component {
 
   // 微信登录
   wechatLogin = () => {
-    this.resetForm();
+    // this.resetForm();
     this.setState({
       loginType: 'scan'
     })
@@ -190,7 +191,8 @@ export default class UserLogin extends React.Component {
         }else{
           Storage.set(ENV.storageLastTel, '')
         }
-        values.password = Encrypt(values.tel, values.password);
+        if(values.password) values.password = Encrypt(values.tel, values.password);
+        if(values.smscode) values.smscode = Encrypt(values.tel, values.smscode);
         values.userType = userType;
         values.loginType = loginType;
         this.login(values);
@@ -226,6 +228,8 @@ export default class UserLogin extends React.Component {
     switch(status){
       case 10001: key = 'tel'; break;
       case 10002: key = 'password'; break;
+      case 10003: key = 'tel'; break;
+      case 10004: key = 'smscode'; break;
       default: break;
     }
     this.props.form.setFields({
@@ -335,7 +339,7 @@ export default class UserLogin extends React.Component {
                     ]
                   })(
                     <InputSmscode
-                      tel={hasErrors(getFieldsError(['tel'])) ? '' : getFieldValue('tel')}
+                      tel={Validator.hasErrors(getFieldsError(['tel'])) ? '' : getFieldValue('tel')}
                       callback={this.smscodeCallback}
                     />
                   )}
@@ -359,38 +363,20 @@ export default class UserLogin extends React.Component {
                 </FormItem>
             }
 
-            {
-              loginType === 'psd' ?
-                <Button
-                  size="large"
-                  type="primary"
-                  htmlType="submit"
-                  className={styles.btn}
-                  style={{marginBottom: '20px'}}
-                  disabled={
-                    hasErrors(getFieldsError()) ||
-                    !getFieldValue('tel') ||
-                    !getFieldValue('password')
-                  }
-                >
-                  登录
-                </Button>
-                :
-                <Button
-                  size="large"
-                  type="primary"
-                  htmlType="submit"
-                  className={styles.btn}
-                  style={{marginBottom: '20px'}}
-                  disabled={
-                    hasErrors(getFieldsError()) ||
-                    !getFieldValue('tel') ||
-                    !getFieldValue('smscode')
-                  }
-                >
-                  登录
-                </Button>
-            }
+            <Button
+              size="large"
+              type="primary"
+              htmlType="submit"
+              className={styles.btn}
+              style={{marginBottom: '20px'}}
+              disabled={
+                Validator.hasErrors(getFieldsError()) ||
+                !getFieldValue('tel') ||
+                !getFieldValue(loginType === 'psd' ? 'password' : 'smscode')
+              }
+            >
+              登录
+            </Button>
 
 
           </Form>

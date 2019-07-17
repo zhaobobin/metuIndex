@@ -2,11 +2,9 @@
  * 表单 - 密码
  */
 import React from 'react';
-import { Input, Icon } from 'antd';
-import styles from './InputPassword.less'
-
-import eye_open from '@/assets/sign/signremind_open@2x.png'
-import eye_close from '@/assets/sign/invisible@2x.png'
+import { Input } from 'antd';
+import Validator from '@/utils/validator';
+import styles from './InputPassword.less';
 
 export default class InputPassword extends React.Component {
 
@@ -15,7 +13,6 @@ export default class InputPassword extends React.Component {
     this.ajaxFlag = true;
     this.state = {
       value: '',            //输入框的值
-      inputType: 'password',
       psdLevelVisible: false,
       psdLevel: '',
       psdLevelStyle: '',
@@ -69,33 +66,10 @@ export default class InputPassword extends React.Component {
     })
   };
 
-  //检查密码强度
-  checkPsdLevel = (value) => {
-    // 0： 表示第一个级别， 1：表示第二个级别， 2：表示第三个级别， 3： 表示第四个级别， 4：表示第五个级别
-    let modes = 0;
-    if (value.length < 8) {//最初级别
-      return modes;
-    }
-    if (/\d/.test(value)) {//如果用户输入的密码 包含了数字
-      modes++;
-    }
-    if (/[a-z]/.test(value)) {//如果用户输入的密码 包含了小写的a到z
-      modes++;
-    }
-    if (/\W/.test(value)) {//如果是非数字 字母 下划线
-      modes++;
-    }
-    if (/[A-Z]/.test(value)) {//如果用户输入的密码 包含了大写的A到Z
-      modes++;
-    }
-    return modes;
-  };
-
   checkPsd = (value) => {
     let psdLevel, psdLevelStyle;
-
     if(value) {
-      let psdModes = this.checkPsdLevel(value);
+      let psdModes = Validator.checkPsdLevel(value);
       switch(psdModes){
         case 1 :
           psdLevel = '';
@@ -126,31 +100,16 @@ export default class InputPassword extends React.Component {
     });
   };
 
-  //清空输入框
-  emitEmpty(){
-    this.setState({ value: '' });
-    this.props.callback();
-  };
-
-  changeInputType = () => {
-    let {inputType} = this.state;
-    this.setState({
-      inputType: inputType === 'text' ? 'password' : 'text'
-    })
-  };
-
   render(){
 
     const { placeholder, hidePsdLevel } = this.props;
-    const { value, inputType, psdLevel, psdLevelStyle, minLength, maxLength } = this.state;
+    const { value, psdLevel, psdLevelStyle, minLength, maxLength } = this.state;
 
     const psdLevelVisible = hidePsdLevel ? false : this.state.psdLevelVisible
 
     return(
-      <div className={styles.container + " " + styles.inputPassword}>
-        <Input
-          className={styles.password}
-          type={inputType}
+      <div className={styles.container}>
+        <Input.Password
           size="large"
           autoComplete="off"
           minLength={minLength}
@@ -160,29 +119,7 @@ export default class InputPassword extends React.Component {
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           value={value}
-          suffix={
-            <span>
-              {
-                value ?
-                  <Icon
-                    type="close-circle"
-                    onClick={() => this.emitEmpty()}
-                  />
-                  :
-                  null
-              }
-              <i className={styles.eye}>
-                <img
-                  src={inputType === 'text' ? eye_open : eye_close}
-                  className={inputType === 'text' ? styles.open : styles.close}
-                  onClick={this.changeInputType}
-                  width="20px"
-                  height="auto"
-                  alt="eye"
-                />
-              </i>
-            </span>
-          }
+          allowClear={true}
         />
         {
           psdLevelVisible && value ?

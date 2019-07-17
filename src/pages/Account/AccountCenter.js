@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'dva';
 import { Row, Col, Card, Tabs } from 'antd';
-import { Storage } from '@/utils/utils';
 import ENV from '@/config/env'
+import Storage from '@/utils/storage';
 import styles from './AccountCenter.less';
 
 import PhotosListQuery from '@/blocks/Photo/PhotosListQuery';
@@ -36,7 +36,7 @@ export default class AccountCenter extends PureComponent {
   queryUserDetail(username){
     this.props.dispatch({
       type: 'global/post',
-      url: 'api/UserDetail',
+      url: '/api/UserDetail',
       payload: {
         username: username
       },

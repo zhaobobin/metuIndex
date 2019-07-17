@@ -10,8 +10,8 @@ const CryptoJS = require('crypto-js');
  */
 export function Encrypt(k, text){
   const DecryptKey = (k + ENV.web).substring(0, 16);
-  const key = CryptoJS.enc.Utf8.parse(DecryptKey);                          //十六位十六进制数作为密钥
-  const iv = CryptoJS.enc.Utf8.parse('1269571569321021');                   //十六位十六进制数作为密钥偏移量
+  const key = CryptoJS.enc.Utf8.parse(DecryptKey);              //十六位十六进制数作为密钥
+  const iv = CryptoJS.enc.Utf8.parse(ENV.iv);                   //十六位十六进制数作为密钥偏移量
 
   let encrypted = CryptoJS.AES.encrypt(
     text.toString(),
@@ -34,8 +34,8 @@ export function Encrypt(k, text){
  */
 export function Decrypt(k, text){
   const DecryptKey = (k + ENV.web).substring(0, 16);
-  const key = CryptoJS.enc.Utf8.parse(DecryptKey);                          //十六位十六进制数作为密钥
-  const iv = CryptoJS.enc.Utf8.parse('1269571569321021');                   //十六位十六进制数作为密钥偏移量
+  const key = CryptoJS.enc.Utf8.parse(DecryptKey);               //十六位十六进制数作为密钥
+  const iv = CryptoJS.enc.Utf8.parse(ENV.iv);                    //十六位十六进制数作为密钥偏移量
 
   let encryptedHexStr = CryptoJS.enc.Hex.parse(text);
   let srcs = CryptoJS.enc.Base64.stringify(encryptedHexStr);

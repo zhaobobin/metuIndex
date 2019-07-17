@@ -55,7 +55,7 @@ export default class CommentList extends React.Component {
 
     this.props.dispatch({
       type: 'global/post',
-      url: 'api/CommentList',
+      url: '/api/CommentList',
       payload: {
         aid: this.state.aid,
         currentPage: this.state.pageSize,

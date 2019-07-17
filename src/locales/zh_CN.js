@@ -19,6 +19,7 @@ export default {
   'menu.discover': '发现',
   'menu.author': '摄影师',
   'menu.tribe': '部落',
+  'menu.cricle': '圈子',
   'menu.course': '教程',
   'menu.equipments': '器材',
   'menu.tags': '标签云',

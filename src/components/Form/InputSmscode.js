@@ -47,9 +47,9 @@
  */
 import React from 'react';
 import { connect } from 'dva';
-import { Row, Col, Input, Icon } from 'antd';
-import { Modal, Toast } from 'antd-mobile'
-import { filterTel } from '@/utils/utils'
+import { Row, Col, Input } from 'antd';
+import { Modal, Toast } from 'antd-mobile';
+import { filterTel } from '@/utils/utils';
 import styles from './InputSmscode.less';
 
 import PintuValidate from '@/components/Form/PintuValidate'
@@ -199,12 +199,6 @@ export default class InputSmscode extends React.Component {
     }, 1000)
   }
 
-  //清空输入框
-  emitEmpty() {
-    this.setState({value: ''});
-    this.props.callback();
-  };
-
   modalCancel = () => {
     this.setState({
       modalVisible: false
@@ -231,16 +225,7 @@ export default class InputSmscode extends React.Component {
               onChange={this.changeValue}
               onBlur={this.handleBlur}
               value={value}
-              suffix={
-                value ?
-                  <Icon
-                    type="close-circle"
-                    className={styles.clearInput}
-                    onClick={() => this.emitEmpty()}
-                  />
-                  :
-                  null
-              }
+              allowClear={true}
             />
           </Col>
           <Col xs={10} sm={10} md={8} lg={8}>

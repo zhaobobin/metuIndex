@@ -2,7 +2,7 @@
  * 表单 - 图形验证码
  */
 import React from 'react';
-import { Row, Col, Input, Icon } from 'antd';
+import { Row, Col, Input } from 'antd';
 
 export default class InputCaptcha extends React.Component {
 
@@ -28,12 +28,6 @@ export default class InputCaptcha extends React.Component {
     this.props.callback(value);
   };
 
-  //清空输入框
-  emitEmpty(){
-    this.setState({ value: '' });
-    this.props.callback();
-  };
-
   render(){
 
     const { captcha, value } = this.state;
@@ -48,15 +42,7 @@ export default class InputCaptcha extends React.Component {
             placeholder="验证码"
             onChange={this.changeValue}
             value={value}
-            suffix={
-              value ?
-                <Icon
-                  type="close-circle"
-                  onClick={() => this.emitEmpty()}
-                />
-                :
-                null
-            }
+            allowClear={true}
           />
         </Col>
         <Col span={8}>

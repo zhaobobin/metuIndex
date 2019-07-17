@@ -31,7 +31,7 @@ export default class TagsRank extends React.Component {
 
     this.props.dispatch({
       type: 'global/post',
-      url: 'api/TagsRank',
+      url: '/api/TagsRank',
       payload: params,
       callback: (res) => {
         this.ajaxFlag = true;

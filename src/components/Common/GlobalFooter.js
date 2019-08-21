@@ -47,7 +47,7 @@ export default function GlobalFooter (props) {
                 <span>|</span>
                 <span><Link to="/sitemap">网站地图</Link></span>
                 <span>|</span>
-                <span><Link to="/doc">开发文档</Link></span>
+                <span><a href={ENV.doc} target="_blank" rel="noopener noreferrer nofollow">开发文档</a></span>
               </p>
             </div>
           </div>

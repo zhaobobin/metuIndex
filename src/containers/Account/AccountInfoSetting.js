@@ -10,7 +10,7 @@ const FormItem = Form.Item;
 const { Option } = Select;
 
 const keys1 = ['avatar', 'nickname', 'fullname', 'gender', 'birthday', 'introduction', 'city', 'homepage'];
-const keys2 = ['address', 'zipcode', 'tel', 'qq', 'idcard'];
+const keys2 = ['address', 'zipcode', 'mobile', 'qq', 'idcard'];
 
 @connect(state => ({
   global: state.global,
@@ -265,7 +265,7 @@ export default class UserInfoSetting extends PureComponent {
               </FormItem>
 
               <FormItem {...formItemLayout} label="手机" hasFeedback>
-                {getFieldDecorator('tel', {
+                {getFieldDecorator('mobile', {
                   initialValue: currentUser.tel,
                   rules: [
                     { pattern: /^1[0-9]{10}$/, message: '手机号码输入格式有误！' }

@@ -19,8 +19,21 @@ import GlobalContent from '@/components/Common/GlobalContent';
 class BaseLayout extends React.Component {
 
   componentDidMount(){
+    // this.init();
+    // this.token();
+  }
+
+  init() {
     this.props.dispatch({
       type: 'global/init',
+      payload: {}
+    });
+  }
+
+  token() {
+    if(!Storage.get(ENV.storageToken)) return;
+    this.props.dispatch({
+      type: 'global/token',
       payload: {}
     });
   }

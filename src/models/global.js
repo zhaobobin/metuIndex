@@ -10,7 +10,7 @@ export default {
 
   state: {
 
-    loading: true,
+    loading: false,
 
     isAuth: false,
     status: undefined,
@@ -45,7 +45,7 @@ export default {
     },
     *register({ payload, callback }, { call, put }) {
       const res = yield call(
-        (params) => {return Request('/api/register', {method: 'POST', body: params})},
+        (params) => {return Request('/api/v1/user/register', {method: 'POST', body: params})},
         payload
       );
       if(res.status === 1){
@@ -57,7 +57,7 @@ export default {
             currentUser: res.data.currentUser,
           }
         });
-        Storage.set(ENV.storageLastTel, payload.tel);
+        Storage.set(ENV.storageLastTel, payload.mobile);
         Storage.set(ENV.storageToken, res.data.token);              //保存token
       }
       yield callback(res);
@@ -65,7 +65,7 @@ export default {
 
     *login({ payload, callback }, { call, put }) {
       const res = yield call(
-        (params) => {return Request('/api/login', {method: 'POST', body: params})},
+        (params) => {return Request('/api/v1/user/login', {method: 'POST', body: params})},
         payload
       );
       if(res.status === 1){
@@ -77,7 +77,7 @@ export default {
             currentUser: res.data.currentUser,
           }
         });
-        Storage.set(ENV.storageLastTel, payload.tel);
+        Storage.set(ENV.storageLastTel, payload.mobile);
         Storage.set(ENV.storageToken, res.data.token);              //保存token
       }
       yield callback(res);
@@ -89,7 +89,7 @@ export default {
       if(payload.refreshToken) {
 
         const res = yield call(
-          (params) => {return Request('/api/token', {method: 'POST', body: params})},
+          (params) => {return Request('/api/v1/user/current', {method: 'POST', body: params})},
           payload
         );
         yield callback(res);
@@ -123,7 +123,7 @@ export default {
 
     *logout({ payload, callback }, { call, put }) {
       const res = yield call(
-        (params) => {return Request('/api/logout', {method: 'POST', body: params})},
+        (params) => {return Request('/api/v1/user/logout', {method: 'POST', body: params})},
         payload
       );
       if(res.status === 1){

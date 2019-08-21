@@ -1,6 +1,6 @@
 import ENV from './src/config/env';
 const path = require('path');
-
+console.log(ENV)
 export default {
   "entry": "src/index.js",
   "outputPath": "./dist/index/",
@@ -47,7 +47,7 @@ export default {
     "/api": {
       "target": ENV.api.test,
         "changeOrigin": true,
-        "pathRewrite": { "^/api" : "" }
+        // "pathRewrite": { "^/api" : "" }
     }
   }
 }

@@ -1,12 +1,12 @@
 import '@babel/polyfill';
 import dva from 'dva';
-import browserHistory from 'history/createBrowserHistory';
+import {createBrowserHistory} from 'history';
 import './theme/base.less'
 
 // const history = process.env.NODE_ENV === 'production' ? {history: browserHistory()} : {};
 
 // 1. Initialize
-const app = dva({history: browserHistory()});
+const app = dva({history: createBrowserHistory()});
 
 // 2. Plugins
 //app.use();

@@ -39,14 +39,14 @@ export default class UserRegister extends React.Component {
   mobileCallback = (value, err) => {
     if(err){
       this.props.form.setFields({
-        'tel': {
+        'mobile': {
           value: value,
           errors: [new Error(err)]
         }
       });
     }else{
-      this.props.form.setFieldsValue({'tel': value});
-      // this.props.form.validateFields(['tel'], (err, values) => {});
+      this.props.form.setFieldsValue({'mobile': value});
+      // this.props.form.validateFields(['mobile'], (err, values) => {});
     }
   };
 
@@ -59,9 +59,9 @@ export default class UserRegister extends React.Component {
   //短信验证码回调
   smscodeCallback = (value, err) => {
     //清空错误提示
-    if(err === 'telError'){
+    if(err === 'mobileError'){
       this.props.form.setFields({
-        'tel': {
+        'mobile': {
           value: '',
           errors: [new Error('请输入手机号')]
         }
@@ -157,17 +157,15 @@ export default class UserRegister extends React.Component {
       type: 'global/register',
       payload: data,
       callback: (res) => {
-        if (res.status === 1) {
+        if (res.code === 0) {
           this.props.callback();
         }else{
-          if(res.status > 10000) {
-            this.setInputError(res.status, res.msg);
-          }else{
-            notification.error({
-              message: '注册失败',
-              description: res.msg,
-            });
-          }
+          this.props.form.setFields({
+            [res.key]: {
+              value: '',
+              errors: [new Error(res.message)]
+            }
+          });
         }
       }
     });
@@ -176,7 +174,7 @@ export default class UserRegister extends React.Component {
   setInputError = (status, msg) => {
     let key;
     switch(status){
-      case 20001: key = 'tel'; break;
+      case 20001: key = 'mobile'; break;
       case 20002: key = 'password'; break;
       case 20003: key = 'nickname'; break;
       case 20004: key = 'smscode'; break;
@@ -223,7 +221,7 @@ export default class UserRegister extends React.Component {
 
           <Form onSubmit={this.submit} className={styles.register}>
             <FormItem>
-              {getFieldDecorator('tel', {
+              {getFieldDecorator('mobile', {
                 rules: [
                   { required: true, message: '请输入手机号' }
                 ],
@@ -260,7 +258,7 @@ export default class UserRegister extends React.Component {
                 ]
               })(
                 <InputSmscode
-                  tel={Validator.hasErrors(getFieldsError(['tel'])) ? '' : getFieldValue('tel')}
+                  mobile={Validator.hasErrors(getFieldsError(['mobile'])) ? '' : getFieldValue('mobile')}
                   callback={this.smscodeCallback}
                 />
               )}
@@ -283,7 +281,7 @@ export default class UserRegister extends React.Component {
               style={{marginBottom: '10px'}}
               disabled={
                 Validator.hasErrors(getFieldsError()) ||
-                !getFieldValue('tel') ||
+                !getFieldValue('mobile') ||
                 !getFieldValue('nickname') ||
                 !getFieldValue('password') ||
                 !getFieldValue('smscode') ||

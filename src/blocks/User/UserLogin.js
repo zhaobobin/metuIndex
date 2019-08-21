@@ -17,8 +17,8 @@ import InputSmscode from '@/components/Form/InputSmscode'
 import UserWechatLogin from './UserWechatLogin'
 
 const FormItem = Form.Item;
-const keys1 = ['tel', 'password'];
-const keys2 = ['tel', 'smscode'];
+const keys1 = ['mobile', 'password'];
+const keys2 = ['mobile', 'smscode'];
 
 @connect(state => ({
   global: state.global
@@ -30,7 +30,6 @@ export default class UserLogin extends React.Component {
     super(props);
     this.ajaxFlag = true;
     this.state = {
-      userType: 'user',                               //用户类型
       loginType: 'psd',                               //登录方式
 
       remember: Storage.get(ENV.storageRemenber) !== null ? Storage.get(ENV.storageRemenber) : true,
@@ -107,13 +106,13 @@ export default class UserLogin extends React.Component {
   mobileCallback = (value, err) => {
     if(err){
       this.props.form.setFields({
-        'tel': {
+        'mobile': {
           value: value,
           errors: [new Error(err)]
         }
       });
     }else{
-      this.props.form.setFieldsValue({'tel': value});
+      this.props.form.setFieldsValue({'mobile': value});
     }
   };
 
@@ -137,7 +136,7 @@ export default class UserLogin extends React.Component {
     //清空错误提示
     if(err === 'telError'){
       this.props.form.setFields({
-        'tel': {
+        'mobile': {
           value: '',
           errors: [new Error('请输入手机号')]
         }
@@ -181,19 +180,18 @@ export default class UserLogin extends React.Component {
     if(!this.ajaxFlag) return;
     this.ajaxFlag = false;
 
-    let { userType, loginType } = this.state;
+    let { loginType } = this.state;
     let keys = loginType === 'psd' ? keys1 : keys2;
 
     this.props.form.validateFields(keys, (err, values) => {
       if (!err) {
         if(values.remember){
-          Storage.set(ENV.storageLastTel, values.tel)
+          Storage.set(ENV.storageLastTel, values.mobile)
         }else{
           Storage.set(ENV.storageLastTel, '')
         }
-        if(values.password) values.password = Encrypt(values.tel, values.password);
-        if(values.smscode) values.smscode = Encrypt(values.tel, values.smscode);
-        values.userType = userType;
+        if(values.password) values.password = Encrypt(values.mobile, values.password);
+        if(values.smscode) values.smscode = Encrypt(values.mobile, values.smscode);
         values.loginType = loginType;
         this.login(values);
       }
@@ -207,17 +205,15 @@ export default class UserLogin extends React.Component {
       type: 'global/login',
       payload: values,
       callback: (res) => {
-        if(res.status === 1) {
+        if(res.code === 0) {
           this.props.callback();
         }else{
-          if(res.status > 10000) {
-            this.setInputError(res.status, res.msg);
-          }else{
-            notification.error({
-              message: '登录失败',
-              description: res.msg,
-            });
-          }
+          this.props.form.setFields({
+            [res.key]: {
+              value: '',
+              errors: [new Error(res.message)]
+            }
+          });
         }
       }
     });
@@ -226,9 +222,9 @@ export default class UserLogin extends React.Component {
   setInputError = (status, msg) => {
     let key;
     switch(status){
-      case 10001: key = 'tel'; break;
+      case 10001: key = 'mobile'; break;
       case 10002: key = 'password'; break;
-      case 10003: key = 'tel'; break;
+      case 10003: key = 'mobile'; break;
       case 10004: key = 'smscode'; break;
       default: break;
     }
@@ -309,7 +305,7 @@ export default class UserLogin extends React.Component {
           <Form onSubmit={this.submit}>
 
             <FormItem>
-              {getFieldDecorator('tel', {
+              {getFieldDecorator('mobile', {
                 initialValue: lastTel,
                 rules: [
                   { required: true, message: '请输入手机号' },
@@ -339,7 +335,7 @@ export default class UserLogin extends React.Component {
                     ]
                   })(
                     <InputSmscode
-                      tel={Validator.hasErrors(getFieldsError(['tel'])) ? '' : getFieldValue('tel')}
+                      tel={Validator.hasErrors(getFieldsError(['mobile'])) ? '' : getFieldValue('mobile')}
                       callback={this.smscodeCallback}
                     />
                   )}
@@ -371,7 +367,7 @@ export default class UserLogin extends React.Component {
               style={{marginBottom: '20px'}}
               disabled={
                 Validator.hasErrors(getFieldsError()) ||
-                !getFieldValue('tel') ||
+                !getFieldValue('mobile') ||
                 !getFieldValue(loginType === 'psd' ? 'password' : 'smscode')
               }
             >

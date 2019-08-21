@@ -246,7 +246,7 @@ class jigsaw {
     document.addEventListener(
       'mousemove',
       (e) => {
-        e.preventDefault();
+        //e.preventDefault();
         if (!isMouseDown) return false;
         const moveX = e.x - originX;
         const moveY = e.y - originY;

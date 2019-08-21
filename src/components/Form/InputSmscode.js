@@ -6,7 +6,7 @@
 
  调用方式：
    <InputSmscode
-     tel={hasErrors(getFieldsError(['tel'])) ? '' : getFieldValue('tel')}
+     tel={hasErrors(getFieldsError(['mobile'])) ? '' : getFieldValue('mobile')}
      callback={this.smscodeCallback}
    />
 
@@ -15,7 +15,7 @@
     //清空错误提示
     if(err === 'telError'){
       this.props.form.setFields({
-        'tel': {
+        'mobile': {
           value: '',
           errors: [new Error('请输入手机号')]
         }
@@ -67,7 +67,7 @@ export default class InputSmscode extends React.Component {
     this.state = {
       value: '',            //输入框的值
       maxLength: 6,
-      tel: '',
+      mobile: '',
       btnText: '获取验证码',
       btnStyle: styles.null,
       num: 60,                     //倒计时
@@ -78,14 +78,14 @@ export default class InputSmscode extends React.Component {
   }
 
   componentDidMount() {
-    this.initBtnStyle(this.props.tel);
+    this.initBtnStyle(this.props.mobile);
     if(this.props.auto) this.sendSmsCode();      //自动发送验证码
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     //按钮在激活状态，才重置倒计时
-    if (nextProps.tel !== this.props.tel) {
-      this.initBtnStyle(nextProps.tel);
+    if (nextProps.mobile !== this.props.mobile) {
+      this.initBtnStyle(nextProps.mobile);
     }
   }
 
@@ -94,9 +94,9 @@ export default class InputSmscode extends React.Component {
   }
 
   //初始化按钮样式
-  initBtnStyle(tel) {
+  initBtnStyle(mobile) {
     let {num} = this.state;
-    let btnStyle = tel ?
+    let btnStyle = mobile ?
       num === 60 ?
         styles.actived
         :
@@ -107,7 +107,7 @@ export default class InputSmscode extends React.Component {
         :
         styles.disabled;
     this.setState({
-      tel,
+      mobile,
       btnStyle,
     })
   }
@@ -130,10 +130,10 @@ export default class InputSmscode extends React.Component {
   //确定
   submit = () => {
 
-    let {tel} = this.props;
+    let {mobile} = this.props;
 
-    if (!tel) {
-      this.props.callback(tel, 'telError');
+    if (!mobile) {
+      this.props.callback(mobile, 'mobileError');
       return;
     }
 
@@ -159,19 +159,19 @@ export default class InputSmscode extends React.Component {
 
   //发送验证码
   sendSmsCode = () => {
-    let {tel} = this.props;
+    let {mobile} = this.props;
     this.props.dispatch({
       type: 'global/post',
       url: 'api/smsCode',
       payload: {
-        tel: tel,
+        mobile,
         userType: 'user'
       },
       callback: (res) => {
         if (res.status === 1) {
           this.interval();                                      //执行倒计时
           this.props.callback('', 'clearError');
-          Toast.info(`已将短信验证码发送到您${filterTel(tel)}的手机当中，请注意查收！`, 2);
+          Toast.info(`已将短信验证码发送到您${filterTel(mobile)}的手机当中，请注意查收！`, 2);
         } else {
           Toast.info(res.msg, 2);
         }
@@ -188,7 +188,7 @@ export default class InputSmscode extends React.Component {
         this.ajaxFlag = true;
         this.setState({
           btnText: '重新获取',
-          btnStyle: this.state.tel ? styles.actived : styles.null,
+          btnStyle: this.state.mobile ? styles.actived : styles.null,
           num: 60
         });
         clearInterval(timer);

@@ -54,7 +54,7 @@ export default class PsdReset extends React.Component {
     this.loading = false;
     this.state = {
       current: 0,
-      tel: '',
+      mobile: '',
       smscodeSended: false,
       autoSubmitTimer: 5,
     }
@@ -75,7 +75,7 @@ export default class PsdReset extends React.Component {
   // 清空输入框
   emitEmpty(key){
     this.props.form.resetFields([key]);
-    if(key === 'tel') this.setState({tel: ''});
+    if(key === 'mobile') this.setState({mobile: ''});
   };
 
   //初始化步骤条
@@ -89,13 +89,13 @@ export default class PsdReset extends React.Component {
   mobileCallback = (value, err) => {
     if(err){
       this.props.form.setFields({
-        'tel': {
+        'mobile': {
           value: value,
           errors: [new Error(err)]
         }
       });
     }else{
-      this.props.form.setFieldsValue({'tel': value});
+      this.props.form.setFieldsValue({'mobile': value});
     }
   };
 
@@ -179,24 +179,24 @@ export default class PsdReset extends React.Component {
   // step 1 - 检验手机号
   next1 = () => {
 
-    this.props.form.validateFields(['tel'], (err, values) => {
+    this.props.form.validateFields(['mobile'], (err, values) => {
       if(!err){
         this.props.dispatch({
           type: 'global/post',
-          url: 'api/checkTel',
+          url: 'api/v1/user/checkPhone',
           payload: {
-            tel: values.tel
+            mobile: values.mobile
           },
           callback: (res) => {
             if(res.status === 1) {
               this.setState({
-                tel: values.tel
+                mobile: values.mobile
               });
               this.props.dispatch(routerRedux.push('/user/reset/smscode'));
             }else{
               this.props.form.setFields({
-                'tel': {
-                  value: values.tel,
+                'mobile': {
+                  value: values.mobile,
                   errors: [new Error(res.msg)]
                 }
               });
@@ -230,7 +230,7 @@ export default class PsdReset extends React.Component {
     this.ajaxFlag = false;
 
     this.loading = true;
-    let { tel, smscode } = this.state;
+    let { mobile, smscode } = this.state;
 
     this.props.form.validateFields(['password', 'rpassword'], (err, values) => {
       if (!err) {
@@ -238,9 +238,9 @@ export default class PsdReset extends React.Component {
           type: 'global/post',
           url: 'api/resetPsd',
           payload:{
-            tel: tel,
-            smscode: smscode,
-            password: Encrypt(tel, values.password)
+            mobile,
+            smscode,
+            password: Encrypt(mobile, values.password)
           },
           callback: (res) => {
             setTimeout(() => {
@@ -284,7 +284,7 @@ export default class PsdReset extends React.Component {
 
   render(){
 
-    const { current, tel, autoSubmitTimer, smscodeSended } = this.state;
+    const { current, mobile, autoSubmitTimer, smscodeSended } = this.state;
 
     const { getFieldDecorator, getFieldValue, getFieldsError } = this.props.form;
 
@@ -292,14 +292,14 @@ export default class PsdReset extends React.Component {
       <div className={styles.step1}>
         <div className={styles.formItemBox}>
           <FormItem>
-            {getFieldDecorator('tel', {
-              initialValue: tel,
+            {getFieldDecorator('mobile', {
+              initialValue: mobile,
               validateFirst: true,
               rules: [
                 { required: true, message: '请输入手机号码' },
               ],
             })(
-              <InputMobile default={tel} callback={this.mobileCallback}/>
+              <InputMobile default={mobile} callback={this.mobileCallback}/>
             )}
           </FormItem>
         </div>
@@ -318,7 +318,7 @@ export default class PsdReset extends React.Component {
             })(
               <InputSmscode
                 // auto={true}
-                tel={hasErrors(getFieldsError(['tel'])) ? '' : getFieldValue('tel')}
+                mobile={hasErrors(getFieldsError(['mobile'])) ? '' : getFieldValue('mobile')}
                 callback={this.smscodeCallback}
               />
             )}
@@ -371,7 +371,7 @@ export default class PsdReset extends React.Component {
         <h1>找回密码</h1>
 
         {
-          current > 0 && !tel ?
+          current > 0 && !mobile ?
             <Redirect to="/user/reset/index" />
             :
             <Form className={styles.form}>
@@ -400,7 +400,7 @@ export default class PsdReset extends React.Component {
                             type="primary"
                             className={styles.btn}
                             onClick={this.next1}
-                            disabled={hasErrors(getFieldsError(['tel'])) || !getFieldValue('tel')}
+                            disabled={hasErrors(getFieldsError(['mobile'])) || !getFieldValue('mobile')}
                           >
                             下一步
                           </Button>

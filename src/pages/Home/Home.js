@@ -14,9 +14,9 @@ export default function Home () {
   return(
     <div>
 
-      <LoadLazy height="35%">
-        <HomeBanner/>
-      </LoadLazy>
+      {/*<LoadLazy height="35%">*/}
+        {/*<HomeBanner/>*/}
+      {/*</LoadLazy>*/}
 
       <LoadLazy height="100px">
         <HomeTese/>
@@ -26,9 +26,9 @@ export default function Home () {
         <HomeDesc/>
       </LoadLazy>
 
-      <LoadLazy height="500px">
-        <HomePhotoList/>
-      </LoadLazy>
+      {/*<LoadLazy height="500px">*/}
+        {/*<HomePhotoList/>*/}
+      {/*</LoadLazy>*/}
 
     </div>
   )

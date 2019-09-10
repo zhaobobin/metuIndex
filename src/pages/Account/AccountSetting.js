@@ -14,9 +14,12 @@ const TabPane = Tabs.TabPane;
 }))
 export default class AccountSetting extends React.Component {
 
-  state = {
-    tabKey: '1'
-  };
+  constructor(props){
+    super(props);
+    this.state = {
+      tabKey: '1'
+    }
+  }
 
   componentDidMount(){
     document.title = `用户信息 - 设置 - ${ENV.appname}`;

@@ -143,12 +143,64 @@ const BaseRoutes = app => [
 
       // 账户
       {
-        name: '用户中心',
-        id: 'menu.user.center',
-        key: 'center',
-        path: 'u/:username',
+        name: '账户中心',
+        id: 'menu.users',
+        key: 'users',
+        path: 'users/:username',
         isHide: true,
         component: dynamicWrapper(app, ['oss'], () => import('../pages/Account/AccountCenter')),
+        children: [
+          {
+            name: '图片',
+            id: 'menu.users.photos',
+            key: 'photos',
+            path: 'photos',
+            component: dynamicWrapper(app, ['oss'], () => import('../pages/Account/AccountPhotos')),
+          },
+          {
+            name: '文章',
+            id: 'menu.users.articles',
+            key: 'articles',
+            path: 'articles',
+            component: dynamicWrapper(app, ['oss'], () => import('../pages/Account/AccountArticles')),
+          },
+          {
+            name: '关注',
+            id: 'menu.users.following',
+            key: 'following',
+            path: 'following',
+            component: dynamicWrapper(app, ['oss'], () => import('../pages/Account/AccountFollowing')),
+          },
+          {
+            name: '点赞',
+            id: 'menu.users.favoring',
+            key: 'favoring',
+            path: 'favoring',
+            component: dynamicWrapper(app, ['oss'], () => import('../pages/Account/AccountFavoring')),
+          },
+          {
+            name: '收藏',
+            id: 'menu.users.collecting',
+            key: 'collecting',
+            path: 'collecting',
+            component: dynamicWrapper(app, ['oss'], () => import('../pages/Account/AccountCollecting')),
+          },
+          {
+            name: '简介',
+            id: 'menu.users.detail',
+            key: 'detail',
+            path: 'detail',
+            component: dynamicWrapper(app, ['oss'], () => import('../pages/Account/AccountDetail')),
+          },
+          {
+            name: '编辑个人资料',
+            id: 'menu.account.edit',
+            key: 'edit',
+            path: 'edit',
+            isHide: true,
+            component: dynamicWrapper(app, ['oss'], () => import('../pages/Account/AccountEdit')),
+          },
+        ]
       },
       {
         name: '用户设置',

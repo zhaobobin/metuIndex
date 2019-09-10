@@ -2,34 +2,37 @@
  * 器材列表查询
  * <EquipmentListQuery keyword={this.state.keyword}/>
  */
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { connect } from 'dva';
 import { Link, NavLink } from 'dva/router';
 import { Card, Table } from 'antd';
+import ENV from '@/config/env'
 import Storage from '@/utils/storage';
 
 import styles from './Equipment.less';
 
 @connect(state => ({
-  equipments: state.equipments,
+  global: state.global,
 }))
-export default class EquipmentList extends PureComponent {
+export default class EquipmentList extends React.Component {
 
-  state = {
-    loading: true,
+  constructor(props){
+    super(props);
+    this.ajaxFlag = true;
+    this.state = {
+      loading: true,
 
-    keyword: this.props.keyword ? this.props.keyword : null,                      //category-brand-model 分类-品牌-型号
-    currentPage: this.props.currentPage ? this.props.currentPage : 1,					    //当前页数
-    pageSize: Storage.get('metu-pageSize') ? Storage.get('metu-pageSize') : 10,		//每页数量
+      keyword: this.props.keyword || null,                      //category-brand-model 分类-品牌-型号
+      currentPage: this.props.currentPage || 1,					    //当前页数
+      pageSize: Storage.get(ENV.storage.perPage) || 10,		//每页数量
 
-    brand: '',
-    list: '',
-    total: 0,
-  };
+      brand: '',
+      list: '',
+      total: 0,
+    };
+  }
 
   componentDidMount(){
-    //console.log(this.props.keyword)
-    Storage.set('metu-ajaxFlag', true);
     this.queryEquipmentList({
       keyword: this.state.keyword,
       currentPage: this.state.currentPage,
@@ -48,8 +51,8 @@ export default class EquipmentList extends PureComponent {
   }
 
   queryEquipmentList(query){
-    if(!Storage.get('metu-ajaxFlag')) return;
-    Storage.set('metu-ajaxFlag', false);
+    if(!this.ajaxFlag) return;
+    this.ajaxFlag = false;
 
     let keyword = query.keyword.split('-');
     let params = {
@@ -58,14 +61,16 @@ export default class EquipmentList extends PureComponent {
     };
 
     this.props.dispatch({
-      type: 'equipments/list',
+      type: 'global/request',
+      url: 'equipments',
+      method: 'GET',
       payload: {
         params: params,
         currentPage: query.currentPage,
         pageSize: query.pageSize
       },
       callback: (res) => {
-        Storage.set('metu-ajaxFlag', true);
+        setTimeout(() => { this.ajaxFlag = true }, 500)
         if(res.status === 1){
           this.setState({
             loading: false,
@@ -82,7 +87,7 @@ export default class EquipmentList extends PureComponent {
 
   //表格分页
   handleTableChange = (pagination, filters, sorter) => {
-    Storage.set('metu-pageSize', pagination.pageSize);
+    Storage.set(ENV.storage.perPage);
     this.queryEquipmentList({
       keyword: this.state.keyword,
       currentPage: pagination.current,

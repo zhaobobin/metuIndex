@@ -1,11 +1,13 @@
 /**
  * 【作废】图片上传
  */
-import React, { Component } from 'react';
+import React from 'react';
 import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
 import { Form, Input, Button, Icon, Row, Col, Card, InputNumber, Select, Table, Divider, Upload, Modal, Popconfirm, notification } from 'antd';
-import {Storage, checkRole, hasErrors, file2base64} from '../../utils/utils';
+import ENV from '@/config/env'
+import Storage from '@/utils/storage';
+import { checkRole, hasErrors, file2base64 } from '@/utils/utils';
 import styles from './PhotoListUpload.less'
 
 const FormItem = Form.Item;
@@ -21,16 +23,20 @@ const keys = ['category', 'title', 'tags', 'description', 'copyright'];
   oss: state.oss,
 }))
 @Form.create()
-export default class PhotoListUpload extends Component {
+export default class PhotoListUpload extends Resct.Component {
 
-  state = {
-    role: this.props.login.currentUser.role,
-    uid: this.props.login.currentUser._id,
-    visible: false,
-    photoList: [],                                        //暂存图片列表
-    ossList: [],                                          //oss图片文件待删除列表
-    current: 0,
-  };
+  constructor(props){
+    super(props);
+    this.ajaxFlag = true;
+    this.state = {
+      role: this.props.login.currentUser.role,
+      uid: this.props.login.currentUser._id,
+      visible: false,
+      photoList: [],                                        //暂存图片列表
+      ossList: [],                                          //oss图片文件待删除列表
+      current: 0,
+    };
+  }
 
   //初始化
   componentDidMount(){
@@ -295,8 +301,8 @@ export default class PhotoListUpload extends Component {
 
     if(!checkRole(this.state.role.roleid)) return;
 
-    if(!Storage.get('metu-ajaxFlag')) return;
-    Storage.set('metu-ajaxFlag', false);
+    if(!this.ajaxFlag) return;
+    this.ajaxFlag = false;
 
     this.props.form.validateFields(keys, (err, values) => {
       if(!err){
@@ -323,7 +329,7 @@ export default class PhotoListUpload extends Component {
       }
     });
 
-    setTimeout(() => { Storage.set('metu-ajaxFlag', true) }, 500);
+    setTimeout(() => { this.ajaxFlag = true }, 500);
 
   };
 
@@ -356,7 +362,7 @@ export default class PhotoListUpload extends Component {
         params: {},
         sort: '',
         currentPage: 1,
-        pageSize: Storage.get('metu-pageSize') ? Storage.get('metu-pageSize') : 10
+        pageSize: Storage.get(ENV.storage.perPage) || 10
       },
       callback: (res) => {}
     });

@@ -3,8 +3,8 @@
  key生成规则：用户id/保存类别_当前时间戳.图片类型
  let key = this.props.global.currentUser._id + '/photo_' + new Date().getTime() + '.' + file.name.split('.')[1];
  */
-import request, {FetchGet} from "@/utils/request"
-import {notification} from 'antd'
+import Request from "@/utils/request"
+import { notification } from 'antd'
 
 const getClient = function (data) {
   return new window.OSS.Wrapper({
@@ -45,7 +45,7 @@ export default {
       })
       const res = yield call(
         (params) => {
-          return request('/api/PhotoList', {method: 'POST', body: params,})
+          return Request('/api/PhotoList', {method: 'POST', body: params,})
         },
         {payload}
       )
@@ -68,7 +68,7 @@ export default {
       })
       const res = yield call(
         (params) => {
-          return request('/api/FileOssEdit', {method: 'POST', body: params,})
+          return Request('/api/FileOssEdit', {method: 'POST', body: params,})
         },
         {}
       )
@@ -88,7 +88,8 @@ export default {
 
       let url = payload.url + '?x-oss-process=image/info';
 
-      yield FetchGet(url)
+      // yield FetchGet(url)
+      yield Request(url, { method: 'GET' })
       .then((exif) => {
         if (exif.FNumber) {
           let FNumber = exif.FNumber.value                              //转换光圈值
@@ -108,7 +109,7 @@ export default {
     *upload({payload, callback}, {call, put}) {
       const res = yield call(
         (params) => {
-          return request('/api/FileOssEdit', {method: 'POST', body: params,})
+          return Request('/api/FileOssEdit', {method: 'POST', body: params,})
         },
         {}
       )
@@ -132,7 +133,7 @@ export default {
     *uploadBase64({payload, callback}, {call, put}) {
       const res = yield call(
         (params) => {
-          return request('/api/FileOssEdit', {method: 'POST', body: params,})
+          return Request('/api/FileOssEdit', {method: 'POST', body: params,})
         },
         {}
       )
@@ -172,7 +173,7 @@ export default {
       })
       const res = yield call(
         (params) => {
-          return request('/api/FileOssEdit', {method: 'POST', body: params,})
+          return Request('/api/FileOssEdit', {method: 'POST', body: params,})
         },
         {}
       )

@@ -9,16 +9,19 @@ import GlobalHeaderSign from '@/components/Common/GlobalHeaderSign'
 
 function headerIsOpacity(pathname){
   let path = pathname.split('/')[1];
-  return (path === '' || path === 'u')
+  return (path === '' || path === 'users')
 }
 
 export default class GlobalHeader extends React.Component {
 
-  state = {
-    pathname: this.props.location.pathname,
-    headerOpacity: headerIsOpacity(this.props.location.pathname) ? styles.opacity : '',	  //导航默认样式
-    headerFixed: ''
-  };
+  constructor(props){
+    super(props);
+    this.state = {
+      pathname: this.props.location.pathname,
+      headerOpacity: headerIsOpacity(this.props.location.pathname) ? styles.opacity : '',	  //导航默认样式
+      headerFixed: ''
+    };
+  }
 
   UNSAFE_componentWillReceiveProps(nextProps){
     if(nextProps.location.pathname !== this.state.pathname){

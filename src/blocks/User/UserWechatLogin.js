@@ -14,7 +14,7 @@ export default class UserWechatLogin extends React.Component {
   render(){
 
     const WechatLoginState = Encrypt('wechatlogin', ('metuwang' + Math.random()));
-    Storage.set(ENV.storageWechatLoginState, WechatLoginState);
+    Storage.set(ENV.storage.wechatLoginState, WechatLoginState);
 
     return(
       <div>

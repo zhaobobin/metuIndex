@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "ali-oss": "^4.11.2",
-    "antd": "^3.20.3",
+    "antd": "^3.23.2",
     "antd-mobile": "^2.2.13",
     "china-division": "^2.1.1",
     "copy-to-clipboard": "^3.0.8",
@@ -21,7 +21,7 @@
     "dva-loading": "^2.0.4",
     "html-to-draftjs": "^1.4.0",
     "lodash": "^4.17.14",
-    "moment": "^2.22.2",
+    "moment": "^2.24.0",
     "qrcode.react": "^0.9.2",
     "react": "^16.2.0",
     "react-container-query": "^0.11.0",
@@ -43,7 +43,8 @@
     "wxlogin.react": "^0.1.0"
   },
   "devDependencies": {
-    "@babel/polyfill": "^7.0.0-beta.56",
+    "babel-jest": "^23.4.2",
+    "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-dva-hmr": "^0.3.2",
     "babel-plugin-import": "^1.8.0",
     "babel-plugin-module-resolver": "^3.1.1",
@@ -61,6 +62,6 @@
     "eslint-plugin-react": "^7.1.0",
     "husky": "^0.12.0",
     "redbox-react": "^1.4.3",
-    "roadhog": "^2.4.9"
+    "roadhog": "2.5.0-beta.4"
   }
 }

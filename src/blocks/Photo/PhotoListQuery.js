@@ -5,7 +5,7 @@ import React from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
 import {Row, Col, notification} from 'antd';
-import Storage from '@/utils/storage';
+// import Storage from '@/utils/storage';
 
 import PhotoListGallery from '@/blocks/Photo/PhotoListGallery';
 import InfiniteScroll from 'react-infinite-scroller';			//加载更多
@@ -15,26 +15,29 @@ import InfiniteScroll from 'react-infinite-scroller';			//加载更多
 }))
 export default class PhotoListQuery extends React.Component {
 
-  state = {
+  constructor(props){
+    super(props);
+    this.ajaxFlag = true;
+    this.state = {
 
-    params: {
-      category: this.props.category ? this.props.category : '',
-      uid: this.props.uid ? this.props.uid : '',								                      //用户id
-    },
+      params: {
+        category: this.props.category ? this.props.category : '',
+        uid: this.props.uid ? this.props.uid : '',								                      //用户id
+      },
 
-    currentPage: this.props.currentPage ? this.props.currentPage : 1,					      //当前页数
-    itemsPerPage: this.props.itemsPerPage ? this.props.itemsPerPage : 10,			      //每页数量
-    maxQueryPage: this.props.maxQueryPage ? this.props.maxQueryPage : undefined,    //最大查询页数，默认undefined
-    initializing: 1,
+      currentPage: this.props.currentPage ? this.props.currentPage : 1,					      //当前页数
+      itemsPerPage: this.props.itemsPerPage ? this.props.itemsPerPage : 10,			      //每页数量
+      maxQueryPage: this.props.maxQueryPage ? this.props.maxQueryPage : undefined,    //最大查询页数，默认undefined
+      initializing: 1,
 
-    loading: true,
-    list: [],
-    total: 0,
-    hasMore: true
-  };
+      loading: true,
+      list: [],
+      total: 0,
+      hasMore: true
+    };
+  }
 
   componentDidMount(){
-    Storage.set('metu-ajaxFlag', true);
     this.queryPhotoList({
       params: this.state.params,
       currentPage: this.state.currentPage,
@@ -59,13 +62,16 @@ export default class PhotoListQuery extends React.Component {
 
   queryPhotoList(query){
 
+    if(!this.ajaxFlag) return;
+    this.ajaxFlag = false;
+
     let list = query.clearList ? [] : this.state.list;
 
     this.props.dispatch({
       type: 'photo/list',
       payload: query,
       callback: (res) => {
-        Storage.set('metu-ajaxFlag', true);
+        setTimeout(() => { this.ajaxFlag = true }, 500)
         if(res.status === 1){
           this.setState({
             params: query.params,
@@ -86,8 +92,6 @@ export default class PhotoListQuery extends React.Component {
   LoadMore = (page) => {
     if(!page) return;
     if(this.state.maxQueryPage && page > this.state.maxQueryPage) return;
-    if(!Storage.get('metu-ajaxFlag')) return;
-    Storage.set('metu-ajaxFlag', false);
 
     let _this = this;
     setTimeout(function(){

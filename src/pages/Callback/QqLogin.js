@@ -36,7 +36,7 @@ export default class QqLogin extends React.Component {
   qqLoginAuth = () => {
 
     let state = paramsObj.state;
-    if(!state || state !== Storage.get(ENV.storageQqLoginState)){
+    if(!state || state !== Storage.get(ENV.storage.qqLoginState)){
       // 非法操作
       // this.setState({error: 'state已过期'});
       this.props.dispatch(routerRedux.push('/'));
@@ -73,7 +73,7 @@ export default class QqLogin extends React.Component {
 
   // step3: 修改登录用户信息
   changeLoginStatus = (data) => {
-    Storage.set(ENV.storageToken, data.token);              //保存token
+    Storage.set(ENV.storage.token, data.token);              //保存token
     this.props.dispatch({
       type: 'global/changeLoginStatus',
       payload: {

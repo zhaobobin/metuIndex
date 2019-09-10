@@ -6,7 +6,6 @@
  */
 import React, { PureComponent } from 'react';
 import {Row, Col, Icon, Spin} from 'antd';
-import Storage from '@/utils/storage';
 import { goBack } from '@/utils/utils';
 
 import styles from './PhotoSwiper.less';
@@ -15,23 +14,25 @@ const screenfull = require('screenfull');
 
 export default class PhotoSwiper extends PureComponent {
 
-  state = {
-    loading: true,
-    list: this.props.list,
-    photoTotal: this.props.list.length,							    //图片总数
-    thumbLen: this.props.list.length - 1,						    //thumb长度，从0开始计算
-    currentPhoto: this.props.list[this.props.currentKey],			//当前图片信息
-    currentKey: this.props.currentKey,		                      //thumb当前key
-    currentIndex: 1,												            //thumb当前索引
-    translate: -58 - this.props.currentKey * 116,							//thumb位移
-    screenfull: false,
-    screenfullType: 'arrows-alt',
-    swiperClass: styles.photoSwiper,
-  };
+  constructor(props){
+    super(props);
+    this.scrollFlag = true;
+    this.state = {
+      loading: true,
+      list: this.props.list,
+      photoTotal: this.props.list.length,							    //图片总数
+      thumbLen: this.props.list.length - 1,						    //thumb长度，从0开始计算
+      currentPhoto: this.props.list[this.props.currentKey],			//当前图片信息
+      currentKey: this.props.currentKey,		                      //thumb当前key
+      currentIndex: 1,												            //thumb当前索引
+      translate: -58 - this.props.currentKey * 116,							//thumb位移
+      screenfull: false,
+      screenfullType: 'arrows-alt',
+      swiperClass: styles.photoSwiper,
+    };
+  }
 
   componentDidMount(){
-
-    Storage.set('scrollFlag', true);                        //避免鼠标滚动的频繁操作
 
     let _this = this;
 
@@ -63,26 +64,28 @@ export default class PhotoSwiper extends PureComponent {
 
   //取消事件监听
   componentWillUnmount(){
-    document.removeEventListener('DOMMouseScroll', this.scrollFunc.bind(this), false);
+    document.removeEventListener('DOMMouseScroll', this.scrollFunc, false);
     window.onmousewheel = document.onmousewheel = '';
   }
 
   //监控鼠标进入
   mouseEnter(){
     //监听鼠标滚轮
-    if(document.addEventListener) document.addEventListener('DOMMouseScroll', this.scrollFunc.bind(this), false);	//W3C
-    window.onmousewheel = document.onmousewheel = this.scrollFunc.bind(this);									//IE/Opera/Chrome
+    if(document.addEventListener) document.addEventListener('DOMMouseScroll', this.scrollFunc, false);	//W3C
+    window.onmousewheel = document.onmousewheel = this.scrollFunc;									//IE/Opera/Chrome
   }
   //监控鼠标离开
   mouseLeave(){
-    document.removeEventListener('DOMMouseScroll', this.scrollFunc.bind(this), false);
+    document.removeEventListener('DOMMouseScroll', this.scrollFunc, false);
     window.onmousewheel = document.onmousewheel = '';
   }
 
   //判断鼠标滚动方向
-  scrollFunc(e){
-    if(!Storage.get('scrollFlag')) return;
-    Storage.set('scrollFlag', false);
+  scrollFunc = (e) => {
+
+    if(!this.scrollFlag) return;
+    this.scrollFlag = false;
+
     e = e || window.event;
     if(e.wheelDelta){						  //IE/Opera/Chrome
       if(e.wheelDelta === 120){		//向上
@@ -100,7 +103,7 @@ export default class PhotoSwiper extends PureComponent {
         this.nextPhoto()
       }
     }
-    setTimeout(function(){ Storage.set('scrollFlag', true) }, 300);
+    setTimeout(() => { this.scrollFlag = true }, 300);
   }
 
   //加载优化、img下载完成后再渲染组件

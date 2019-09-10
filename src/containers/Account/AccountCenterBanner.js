@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import { Icon, Upload, notification } from 'antd';
+import { Avatar, Upload, notification } from 'antd';
 import { file2base64, createRandomId } from '@/utils/utils';
 import defauleBanner from '@/assets/banner.jpg';
 import styles from './AccountCenterBanner.less';
@@ -21,7 +21,7 @@ export default class AccountCenterBanner extends React.Component {
       uid: this.props.global.currentUser._id,
       detail: this.props.detail,
       editVisible: false,
-      notification: '',
+      uploadMessage: '',
       file: '',                               //选取的图片文件
       base64: '',                             //裁剪用，待上传图片
     };
@@ -67,7 +67,7 @@ export default class AccountCenterBanner extends React.Component {
     let { uid, file, base64 } = this.state;
     //console.log(file)
 
-    this.setState({ notification: '上传中，请稍后...' });
+    this.setState({ uploadMessage: '上传中，请稍后...' });
 
     let option = {
       uid,
@@ -97,7 +97,7 @@ export default class AccountCenterBanner extends React.Component {
           },
           callback: (res) => {
             if(res.status === 1){
-              this.setState({ detail: res.data, editVisible: false, notification: '' });
+              this.setState({ detail: res.data, editVisible: false, uploadMessage: '' });
             }else{
               notification.error({
                 message: '更新错误！',
@@ -123,25 +123,20 @@ export default class AccountCenterBanner extends React.Component {
   };
   //取消
   cancelBanner = () => {
-    this.setState({ editVisible: false, notification: '', base64: '' });
+    this.setState({ editVisible: false, uploadMessage: '', base64: '' });
   };
 
   render(){
 
-    const {detail, editVisible, notification, base64} = this.state;
+    const {detail, editVisible, uploadMessage, base64} = this.state;
     const {currentUser} = this.props.global;
     // console.log(detail)
     // console.log(currentUser)
 
-    const bannerUrl = detail.banner ?
-      'url(' + detail.banner + '?x-oss-process=style/cover)'
+    const bannerUrl = detail.cover_url ?
+      'url(' + detail.cover_url + '?x-oss-process=style/cover)'
       :
       'url(' + defauleBanner + ')';
-
-    const city = detail.city === '中国' ?
-      detail.city
-      :
-      detail.city.split(' - ')[0];
 
     return(
 
@@ -149,23 +144,23 @@ export default class AccountCenterBanner extends React.Component {
         <div className={styles.detail}>
           <div className={styles.avatar}>
             {
-              detail.avatar ?
-                <img src={detail.avatar + '?x-oss-process=style/thumb_s'} alt="avatar" />
+              detail.avatar_url ?
+                <Avatar src={detail.avatar_url + '?x-oss-process=style/thumb_s'} size={100} />
                 :
-                <Icon type="user" />
+                <Avatar icon="user" size={100} />
             }
           </div>
-          <p className={styles.username}>{detail.username}</p>
+          <p className={styles.username}>{detail.nickname}</p>
           <p className={styles.info}>
-            <span>{city}</span>
-            <span>关注 {detail.follow.length}</span>
-            <span>粉丝 {detail.fans.length}</span>
+            <span>{detail.location || '中国'}</span>
+            <span>关注 {detail.following_number}</span>
+            <span>粉丝 {detail.followers_number}</span>
           </p>
         </div>
 
         {
-          notification ?
-            <p className={styles.notification}><span>{notification}</span></p>
+          uploadMessage ?
+            <p className={styles.uploadMessage}><span>{uploadMessage}</span></p>
             : null
         }
 

@@ -4,7 +4,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
-import { Form, Icon, Button, Checkbox, notification } from 'antd';
+import { Form, Icon, Button, Checkbox } from 'antd';
 import ENV from '@/config/env';
 import Validator from '@/utils/validator';
 import Storage from '@/utils/storage';
@@ -32,7 +32,7 @@ export default class UserLogin extends React.Component {
     this.state = {
       loginType: 'psd',                               //登录方式
 
-      remember: Storage.get(ENV.storageRemenber) !== null ? Storage.get(ENV.storageRemenber) : true,
+      remember: Storage.get(ENV.storage.remenber) !== null ? Storage.get(ENV.storage.remenber) : true,
 
       errorCount: 0,                                  //表单输入错误次数
     }
@@ -66,7 +66,7 @@ export default class UserLogin extends React.Component {
   // 微博登录
   weiboLogin = () => {
     const WeiboLoginState = Encrypt('Weibologin', ('metuwang' + Math.random()));
-    Storage.set(ENV.storageWeiboLoginState, WeiboLoginState);
+    Storage.set(ENV.storage.weiboLoginState, WeiboLoginState);
 
     let url = 'https://api.weibo.com/oauth2/authorize?';
     let params = {
@@ -86,7 +86,7 @@ export default class UserLogin extends React.Component {
   // QQ登录
   qqLogin = () => {
     const QqLoginState = Encrypt('Qqlogin', ('metuwang' + Math.random()));
-    Storage.set(ENV.storageQqLoginState, QqLoginState);
+    Storage.set(ENV.storage.qqLoginState, QqLoginState);
 
     let url = 'https://graph.qq.com/oauth2.0/authorize?';
     let params = {
@@ -169,7 +169,7 @@ export default class UserLogin extends React.Component {
   //记住账号
   rememberChange = () => {
     let rememberState = !this.state.remember;
-    Storage.set(ENV.storageRemenber, rememberState);
+    Storage.set(ENV.storage.remenber, rememberState);
     this.setState({remember: rememberState});
   };
 
@@ -186,7 +186,7 @@ export default class UserLogin extends React.Component {
     this.props.form.validateFields(keys, (err, values) => {
       if (!err) {
         if(values.remember){
-          Storage.set(ENV.storageLastTel, values.mobile)
+          Storage.set(ENV.storage.lastTel, values.mobile)
         }else{
           Storage.set(ENV.storageLastTel, '')
         }
@@ -208,10 +208,11 @@ export default class UserLogin extends React.Component {
         if(res.code === 0) {
           this.props.callback();
         }else{
+          const message = res.message.split(' ');
           this.props.form.setFields({
-            [res.key]: {
+            [message[0]]: {
               value: '',
-              errors: [new Error(res.message)]
+              errors: [new Error(message[1])]
             }
           });
         }
@@ -311,7 +312,7 @@ export default class UserLogin extends React.Component {
                   { required: true, message: '请输入手机号' },
                 ],
               })(
-                <InputMobile default={lastTel} callback={this.mobileCallback}/>
+                <InputMobile autoFocus={true} default={lastTel} callback={this.mobileCallback}/>
               )}
             </FormItem>
 

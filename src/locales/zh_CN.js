@@ -13,7 +13,7 @@ export default {
   'menu.community': '社区',
   'menu.photos': '照片集',
   'menu.photo': '照片',
-  'menu.article.detail': '文章详情',
+  'menu.article.detail': '文章详情22',
   'menu.contest': '活动',
 
   'menu.discover': '发现',
@@ -57,7 +57,15 @@ export default {
   'menu.user.setting': '设置',
   'menu.user.logout': '退出',
   'menu.user.logout.title': '安全退出？',
-  'menu.user.center': '用户中心',
+
+  'menu.users': '用户中心',
+  'menu.users.photos': '图片',
+  'menu.users.articles': '文章',
+  'menu.users.following': '关注',
+  'menu.users.favoring': '点赞',
+  'menu.users.collecting': '收藏',
+  'menu.users.detail': '简介',
+  'menu.users.edit': '编辑个人资料',
 
   'menu.hdzq': '活动专区',
   'menu.hdzq.lucky': '幸运抽奖',

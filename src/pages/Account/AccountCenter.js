@@ -1,153 +1,78 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { connect } from 'dva';
-import { Row, Col, Card, Tabs } from 'antd';
-import ENV from '@/config/env'
-import Storage from '@/utils/storage';
+import { Route, Redirect, Switch } from 'dva/router';
 import styles from './AccountCenter.less';
 
-import PhotosListQuery from '@/blocks/Photo/PhotosListQuery';
-import PhotoListMasonry from '@/blocks/Photo/PhotoListMasonry';
-
+import NotFound from "@/pages/Other/404";
 import AccountCenterBanner from '@/containers/Account/AccountCenterBanner';
-import ArticleListQuery from '@/containers/Article/ArticleListQuery'
-import AccountAbout from '@/containers/Account/AccountAbout'
-
-const TabPane = Tabs.TabPane;
+import AccountMenu from '@/containers/Account/AccountMenu'
+import RouteExtend from '@/components/Common/RouteExtend'
+const Routes = RouteExtend('users');
 
 @connect(state => ({
   global: state.global,
   oss: state.oss,
 }))
+export default class AccountCenter extends React.Component {
 
-export default class AccountCenter extends PureComponent {
-
-  state = {
-    username: this.props.match.params.username,
-    detail: '',
-    tabKey: Storage.get('metuIndex-UserCenterKey') ? Storage.get('metuIndex-UserCenterKey') : '1'
-  };
+  constructor(props){
+    super(props);
+    this.state = {
+      loading: true,
+      username: '',
+      detail: '',
+    };
+  }
 
   componentDidMount(){
-    let username = this.props.match.params.username;
+    const username = this.props.match.params.username;
     this.queryUserDetail(username);
-    document.title = `照片 - 用户中心 - ${ENV.appname}`;
   }
 
   queryUserDetail(username){
     this.props.dispatch({
-      type: 'global/post',
-      url: '/api/UserDetail',
+      type: 'global/userinfo',
       payload: {
-        username: username
-      },
-      callback: (res) => {
-        if(res.status === 1){
-          this.setState({detail: res.data})
-        }
+        username
       }
     });
   }
 
-  handleTab = (key) => {
-    switch(key){
-      case "1":
-        document.title = `照片 - 用户中心 - ${ENV.appname}`;
-        break;
-      case "2":
-        document.title = `相册 - 用户中心 - ${ENV.appname}`;
-        break;
-      case "3":
-        document.title = `文章 - 用户中心 - ${ENV.appname}`;
-        break;
-      case "4":
-        document.title = `喜好 - 用户中心 - ${ENV.appname}`;
-        break;
-      case "5":
-        document.title = `收藏 - 用户中心 - ${ENV.appname}`;
-        break;
-      case "6":
-        document.title = `关于 - 用户中心 - ${ENV.appname}`;
-        break;
-      default:
-        break;
-    }
-    Storage.set('metuIndex-UserCenterKey', key);
-    this.setState({tabKey: key})
-    //this.forceUpdate();                             //更新当前视图
-  };
-
   render(){
 
-    const {tabKey, detail} = this.state;
-
-    const queryOption = {
-      itemsPerPage: 12,                 //每页数量
-      maxQueryPage: 2,                  //最大页数
-    };
+    const { userInfo } = this.props.global;
 
     return(
 
-      <div className={styles.userCenter}>
+      <div className={styles.container}>
 
         {
-          detail ?
-            <AccountCenterBanner detail={detail} />
-            :
+          !userInfo ?
             null
+            :
+            <div className={styles.content}>
+              <AccountCenterBanner detail={userInfo} />
+
+              <AccountMenu routes={Routes} username={userInfo.username} />
+
+              <div className={styles.content}>
+                <Switch>
+                  {
+                    Routes.children.map(item => (
+                      <Route
+                        exact={item.exact}
+                        key={item.path}
+                        path={`/${Routes.path}/${item.path}`}
+                        component={item.component}
+                      />
+                    ))
+                  }
+                  <Redirect exact from={`/${Routes.key}/${userInfo.username}`} to={`/${Routes.key}/${userInfo.username}/photos`}/>
+                  <Route component={NotFound} />
+                </Switch>
+              </div>
+            </div>
         }
-
-        <Tabs defaultActiveKey={tabKey}
-          animated={false}
-          onChange={this.handleTab}
-        >
-
-          <TabPane tab="照片" key="1">
-            {tabKey === '1' && detail ? <PhotosListQuery api="api/PhotosList" {...queryOption} category="userPhotoList" uid={detail._id}/> : null}
-          </TabPane>
-
-          <TabPane tab="相册" key="2">
-            {tabKey === '2' && detail ? <PhotosListQuery api="api/AlbumList" {...queryOption} category="" uid={detail._id}/> : null}
-          </TabPane>
-
-          <TabPane tab="文章" key="3">
-            <Row>
-              <Col xs={0} sm={0} md={3} lg={5} />
-              <Col xs={24} sm={24} md={18} lg={14}>
-                {tabKey === '3' && detail ?
-                  <Card bordered={true}>
-                    <ArticleListQuery uid={detail._id}/>
-                  </Card>
-                  : null
-                }
-              </Col>
-              <Col xs={0} sm={0} md={3} lg={5} />
-            </Row>
-          </TabPane>
-
-          <TabPane tab="喜欢" key="4">
-            {tabKey === '4' && detail ? <PhotoListMasonry data={detail.like} type="photos" /> : null}
-          </TabPane>
-
-          <TabPane tab="收藏" key="5">
-            {tabKey === '5' && detail ? <PhotoListMasonry data={detail.collect} type="photos" /> : null}
-          </TabPane>
-
-          <TabPane tab="关于" key="6">
-            <Row>
-              <Col xs={0} sm={0} md={3} lg={5} />
-              <Col xs={24} sm={24} md={18} lg={14}>
-                {tabKey === '6' && detail ?
-                  <Card bordered={true}>
-                    <AccountAbout detail={detail} />
-                  </Card>
-                  : null
-                }
-              </Col>
-              <Col xs={0} sm={0} md={3} lg={5} />
-            </Row>
-          </TabPane>
-
-        </Tabs>
 
       </div>
 

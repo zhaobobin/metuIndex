@@ -21,7 +21,7 @@ export default class UserSign extends React.Component {
     }
   }
 
-  //登录注册modal状态
+  // 切换登录注册modal状态
   setUserModal(value, key){
     this.props.dispatch({
       type: 'global/changeSignModal',
@@ -32,7 +32,7 @@ export default class UserSign extends React.Component {
     });
   }
 
-  //退出登录
+  // 退出登录
   logout = () => {
     Confirm({
       title: '退出登录?',
@@ -61,7 +61,7 @@ export default class UserSign extends React.Component {
                 overlay={
                   <Menu>
                     <Menu.Item>
-                      <Link to={`/u/${currentUser.nickname}`}>
+                      <Link to={`/users/${currentUser.username}`}>
                         <FormattedMessage id="menu.user.account"/>
                       </Link>
                     </Menu.Item>
@@ -78,7 +78,7 @@ export default class UserSign extends React.Component {
                   </Menu>
                 }
               >
-                <Link className={styles.userInfo} to={`/u/${currentUser.username}`}>
+                <Link className={styles.userInfo} to={`/users/${currentUser.username}`}>
                   {
                     currentUser.avatar ?
                       <img src={currentUser.avatar + '?x-oss-process=style/thumb_s'} alt="avatar" />

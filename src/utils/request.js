@@ -52,21 +52,29 @@ function checkStatus(response) {
  */
 export default function Request(url, options) {
 
+  url = ENV.api_base + url;
+
   const defaultOptions = {
     credentials: 'include',
   };
-
   const newOptions = { ...defaultOptions, ...options };
-  if (newOptions.method !== 'GET') {
+
+  if (newOptions.method === 'GET') {
+    newOptions.headers = {
+      'Accept': 'application/json',
+      ...newOptions.headers,
+    };
+    delete newOptions.body;
+  } else {
     newOptions.headers = {
       'Accept': 'application/json',
       'Content-Type': 'application/json; charset=utf-8',
       ...newOptions.headers,
     };
     newOptions.body = JSON.stringify(newOptions.body);
-    //HttpBasicAuth
-    if(Storage.get(ENV.storageToken)) {
-      newOptions.headers['Authorization'] = 'Basic ' + Base64.encode(Storage.get(ENV.storageToken) + ':')      //读取本地token
+    // HttpBasicAuth
+    if(Storage.get(ENV.storage.token)) {
+      newOptions.headers['Authorization'] = 'Basic ' + Base64.encode(Storage.get(ENV.storage.token) + ':'); //读取本地token
     }
   }
 

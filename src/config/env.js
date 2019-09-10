@@ -5,10 +5,12 @@
 
 module.exports = {
 
+  api_base: '/api/v1',
+
   api: {
-    old: 'http://127.0.0.1:8080/',  // express
-    test: 'http://127.0.0.1:7001/', // egg
-    pro: 'http://www.metuwang.com/',
+    old: 'http://127.0.0.1:8080',  // express
+    test: 'http://127.0.0.1:7001', // egg
+    pro: 'http://www.metuwang.com',
   },
 
   info: {
@@ -55,9 +57,11 @@ module.exports = {
     token: 'metuIndex-token',
     lastTel: 'metuIndex-lastTel',
     remenber: 'metuIndex-remenber',
-    history: 'metuIndex-history',
+    routerHistory: 'metuIndex-routerHistory',
     theme: 'metuIndex-theme',
     currentMenu: 'metuIndex-currentMenu',
+    userCenterTabKey: 'metuIndex-userCenterTabKey',
+    perPage: 'metuIndex-perPage',
 
     wechatLoginState: 'metuIndex-WechatLoginState', // 微信授权登录state
     weiboLoginState: 'metuIndex-WeiboLoginState', // 微博授权登录state

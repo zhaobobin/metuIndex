@@ -56,7 +56,15 @@ export default {
   'menu.user.setting': 'Settings',
   'menu.user.logout': 'Sign out',
   'menu.user.logout.title': 'Security logout ?',
-  'menu.user.center': 'User center',
+
+  'menu.users': 'User Center',
+  'menu.users.photos': 'User Photos',
+  'menu.users.articles': 'User Articles',
+  'menu.users.following': 'User Following',
+  'menu.users.favoring': 'User Favoring',
+  'menu.users.collecting': 'User Collecting',
+  'menu.users.detail': 'User Introduction',
+  'menu.users.edit': 'Edit User data',
 
   'menu.hdzq': 'hdzq',
   'menu.hdzq.lucky': 'lucky',

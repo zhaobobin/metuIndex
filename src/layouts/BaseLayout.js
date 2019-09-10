@@ -8,7 +8,8 @@ import { injectIntl } from 'react-intl';
 import DocumentTitle from 'react-document-title';
 import NotFound from "@/pages/Other/404";
 
-import Loading from '@/components/Common/Loading';
+// import Loading from '@/components/Common/Loading';
+import LoadingBg from '@/components/Common/LoadingBg';
 import GlobalHeader from '@/components/Common/GlobalHeader';
 import GlobalFooter from '@/components/Common/GlobalFooter';
 import GlobalContent from '@/components/Common/GlobalContent';
@@ -19,19 +20,11 @@ import GlobalContent from '@/components/Common/GlobalContent';
 class BaseLayout extends React.Component {
 
   componentDidMount(){
-    // this.init();
-    // this.token();
-  }
-
-  init() {
-    this.props.dispatch({
-      type: 'global/init',
-      payload: {}
-    });
+    Storage.remove(ENV.storage.history)
+    this.token();
   }
 
   token() {
-    if(!Storage.get(ENV.storageToken)) return;
     this.props.dispatch({
       type: 'global/token',
       payload: {}
@@ -44,9 +37,9 @@ class BaseLayout extends React.Component {
       //返回页面顶部
       window.scrollTo(0, 0);
       //添加路由历史
-      let routerHistory = Storage.get(ENV.storageHistory) || [];
+      let routerHistory = Storage.get(ENV.storage.routerHistory, 3600*24) || [];
       routerHistory.push(nextProps.location.pathname);
-      Storage.set(ENV.storageHistory, routerHistory);
+      Storage.set(ENV.storage.routerHistory, routerHistory);
     }
   }
 
@@ -84,32 +77,38 @@ class BaseLayout extends React.Component {
     const path = location.pathname.split('/')[1];
     const { loading } = this.props.global;
 
-    const layout = (
+    const layout = loading ?
+      <LoadingBg
+        style={{
+          width: '100%',
+          height: '100%',
+          position: 'absolute',
+          left: 0,
+          top: 0,
+        }}
+      />
+      :
       <Layout style={{minHeight: '100vh'}}>
 
         <GlobalHeader navData={navData[0].children} location={location}/>
 
         <GlobalContent>
-          {
-            loading ?
-              <Loading/>
-              :
-              <Switch>
-                {
-                  getRouteData('BaseLayout').map(item =>
-                    (
-                      <Route
-                        exact={item.exact}
-                        key={item.path}
-                        path={item.path}
-                        component={item.component}
-                      />
-                    )
-                  )
-                }
-                <Route component={NotFound} />
-              </Switch>
-          }
+
+          <Switch>
+            {
+              getRouteData('BaseLayout').map(item =>
+                (
+                  <Route
+                    exact={item.exact}
+                    key={item.path}
+                    path={item.path}
+                    component={item.component}
+                  />
+                )
+              )
+            }
+            <Route component={NotFound} />
+          </Switch>
 
           <BackTop />
         </GlobalContent>
@@ -119,7 +118,6 @@ class BaseLayout extends React.Component {
         }
 
       </Layout>
-    );
 
     return(
       <DocumentTitle title={this.getPageTitle()}>

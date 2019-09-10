@@ -8,7 +8,6 @@
 import React from 'react';
 import { connect } from 'dva';
 import { notification } from 'antd';
-import Storage from '@/utils/storage';
 import InfiniteScroll from 'react-infinite-scroller';			//加载更多
 
 import PhotoListMasonry from '@/blocks/Photo/PhotoListMasonry'
@@ -18,22 +17,25 @@ import PhotoListMasonry from '@/blocks/Photo/PhotoListMasonry'
 }))
 export default class ArticleListQuery extends React.Component {
 
-  state = {
+  constructor(props){
+    super(props);
+    this.ajaxFlag = true;
+    this.state = {
 
-    tag: this.props.tag ? this.props.tag : '',
-    sort: this.props.sort ? this.props.sort : '',
+      tag: this.props.tag ? this.props.tag : '',
+      sort: this.props.sort ? this.props.sort : '',
 
-    currentPage: this.props.currentPage ? this.props.currentPage : 1,					//当前页数
-    pageSize: this.props.pageSize ? this.props.pageSize : 10,			            //每页数量
-    initializing: 1,
+      currentPage: this.props.currentPage ? this.props.currentPage : 1,					//当前页数
+      pageSize: this.props.pageSize ? this.props.pageSize : 10,			            //每页数量
+      initializing: 1,
 
-    total: 0,
-    list: '',
-    hasMore: true
-  };
+      total: 0,
+      list: '',
+      hasMore: true
+    };
+  }
 
   componentDidMount(){
-    Storage.set('metu-ajaxFlag', true);
     this.queryArticleList({
       tag: this.state.tag,
       sort: this.state.sort,
@@ -54,15 +56,15 @@ export default class ArticleListQuery extends React.Component {
   }
 
   queryArticleList(params){
-    if(!Storage.get('metu-ajaxFlag')) return;
-    Storage.set('metu-ajaxFlag', false);
+    if(!this.ajaxFlag) return;
+    this.ajaxFlag = false;
 
     this.props.dispatch({
       type: 'global/post',
       url: '/api/TagsArticle',
       payload: params,
       callback: (res) => {
-        Storage.set('metu-ajaxFlag', true);
+        setTimeout(() => { this.ajaxFlag = true }, 500)
         if(res.status === 1){
           for(let i in res.data){
             if(res.data[i].tags) res.data[i].tags = res.data[i].tags.split(',');
@@ -83,8 +85,6 @@ export default class ArticleListQuery extends React.Component {
   //加载更多
   LoadMore = (page) => {
     if(!page) return;
-    if(!Storage.get('metu-ajaxFlag')) return;
-    Storage.set('metu-ajaxFlag', false);
     let _this = this;
     setTimeout(function(){
       _this.queryArticleList();

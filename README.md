@@ -458,14 +458,14 @@ state机制
 ```
 const state = Encrypt('wechatlogin', ('xxxxxx' + Math.random()));
 
-Storage.set(ENV.storageWechatLoginState, state);
+Storage.set(ENV.storage.wechatLoginState, state);
 ```
 
 2) 回调页面截取链接中的state，并与本地存储中的state进行比较。
 
 ```
 let state = paramsObj.state;
-if(!state || state !== Storage.get(ENV.storageWechatLoginState)){
+if(!state || state !== Storage.get(ENV.storage.wechatLoginState)){
   return;
 }
 ```
@@ -481,7 +481,7 @@ if(!state || state !== Storage.get(ENV.storageWechatLoginState)){
 ```
 qqLogin = () => {
   const QqLoginState = Encrypt('Qqlogin', ('metuwang' + Math.random()));
-  Storage.set(ENV.storageQqLoginState, QqLoginState);
+  Storage.set(ENV.storage.qqLoginState, QqLoginState);
 
   let url = 'https://graph.qq.com/oauth2.0/authorize?';
   let params = {
@@ -567,7 +567,7 @@ function getOpenid(access_token, cb){
 ```
 weiboLogin = () => {
   const WeiboLoginState = Encrypt('Weibologin', ('metuwang' + Math.random()));
-  Storage.set(ENV.storageWeiboLoginState, WeiboLoginState);
+  Storage.set(ENV.storage.weiboLoginState, WeiboLoginState);
 
   let url = 'https://api.weibo.com/oauth2/authorize?';
   let params = {

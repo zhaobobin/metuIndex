@@ -53,7 +53,6 @@ export default {
   'menu.user.login': 'Sign in',
   'menu.user.register': 'Sign up',
   'menu.user.account': 'My profile',
-  'menu.user.setting': 'Settings',
   'menu.user.logout': 'Sign out',
   'menu.user.logout.title': 'Security logout ?',
 
@@ -65,6 +64,10 @@ export default {
   'menu.users.collecting': 'User Collecting',
   'menu.users.detail': 'User Introduction',
   'menu.users.edit': 'Edit User data',
+
+  'menu.user.settings': 'Settings',
+  'menu.user.settings.bind': 'Bind',
+  'menu.user.settings.profile': 'Profile',
 
   'menu.hdzq': 'hdzq',
   'menu.hdzq.lucky': 'lucky',

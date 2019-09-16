@@ -1,48 +1,30 @@
-.userCenterBanner {
+.container{
+
   width: 100%;
   height: 0;
-  padding-bottom: 25%;
+  padding-bottom: 40%;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   //background-attachment: fixed;
   background-color: #eee;
-  position: relative;
-  &:before {
-    position: absolute;
-    content: '';
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, .3))
-  }
-
-  .detail {
-    height: 100px;
-    position: absolute;
-    left: 50px;
-    bottom: 50px;
-    .avatar {
-      float: left;
-    }
-    p {
-      margin-left: 130px;
-      color: #fff;
-      &.username {
-        font-size: 22px;
-        font-weight: 500;
-      }
-      span {
-        margin-right: 20px;
-      }
-    }
-  }
+  //position: relative;
+  //z-index: 0;
+  //&:before {
+  //  position: absolute;
+  //  content: '';
+  //  width: 100%;
+  //  height: 100%;
+  //  top: 0;
+  //  left: 0;
+  //  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, .5))
+  //}
 
   .upload {
-    position: absolute;
+    position: fixed;
     right: 50px;
     bottom: 80px;
+    z-index: 99;
     &:hover {
       text-decoration: underline
     }

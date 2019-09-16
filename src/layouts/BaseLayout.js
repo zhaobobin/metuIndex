@@ -24,6 +24,10 @@ class BaseLayout extends React.Component {
     this.token();
   }
 
+  componentWillUnmount(){
+
+  }
+
   token() {
     this.props.dispatch({
       type: 'global/token',
@@ -35,7 +39,7 @@ class BaseLayout extends React.Component {
   UNSAFE_componentWillReceiveProps(nextProps){
     if(nextProps.location.pathname !== this.props.location.pathname){
       //返回页面顶部
-      window.scrollTo(0, 0);
+      // window.scrollTo(0, 0);
       //添加路由历史
       let routerHistory = Storage.get(ENV.storage.routerHistory, 3600*24) || [];
       routerHistory.push(nextProps.location.pathname);

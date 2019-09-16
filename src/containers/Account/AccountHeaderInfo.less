@@ -1,0 +1,50 @@
+@import '../../theme/index.less';
+
+.container{
+
+  height: 210px;
+  text-align: center;
+  background: #fff;
+  position: relative;
+  z-index: 9;
+
+  .btns{
+    padding: 10px;
+    height: 52px;
+    text-align: right;
+    button{
+      margin-left: 10px;
+      min-width: 100px;
+    }
+  }
+
+  .avatar {
+    width: 104px;
+    height: 104px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: -52px;
+    left: 50%;
+    margin-left: -52px;
+  }
+
+  .username{
+    margin: 20px 0;
+    font-size: 18px;
+    font-weight: normal;
+  }
+
+  .headline{
+    margin-bottom: 20px;
+    color: @color_888;
+  }
+
+  .info{
+    color: #b1b1b1;
+    span{
+      margin: 0 10px;
+    }
+  }
+
+}

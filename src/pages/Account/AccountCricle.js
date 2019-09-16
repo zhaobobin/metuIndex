@@ -1,5 +1,5 @@
 /**
- * 账户 - 文章
+ * 账户 - 圈子
  */
 import React from 'react'
 import { connect } from 'dva';
@@ -9,7 +9,7 @@ import { Row, Col } from 'antd';
 @connect(state => ({
   global: state.global,
 }))
-export default class AccountArticles extends React.Component {
+export default class AccountCricle extends React.Component {
 
   constructor(props){
     super(props);
@@ -33,7 +33,7 @@ export default class AccountArticles extends React.Component {
 
     this.props.dispatch({
       type: 'global/request',
-      url: `/users/${_id}/articles`,
+      url: `/users/${_id}/cricles`,
       method: 'GET',
       payload: {},
       callback: (res) => {
@@ -54,7 +54,7 @@ export default class AccountArticles extends React.Component {
   render(){
     return(
       <div>
-        文章
+        圈子
       </div>
     )
   }

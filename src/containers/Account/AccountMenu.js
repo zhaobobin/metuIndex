@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import { NavLink } from 'dva/router';
+import { FormattedMessage } from 'react-intl';
 import styles from './AccountMenu.less';
 
 export default function AccountMenu({ routes, username }) {
@@ -20,7 +21,7 @@ export default function AccountMenu({ routes, username }) {
                   activeClassName={styles.active}
                   to={`/${routes.key}/${username}/${item.path}`}
                 >
-                  {item.name}
+                  <FormattedMessage id={item.id}/>
                 </NavLink>
             }
           </li>

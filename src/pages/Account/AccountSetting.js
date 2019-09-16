@@ -22,26 +22,10 @@ export default class AccountSetting extends React.Component {
   }
 
   componentDidMount(){
-    document.title = `用户信息 - 设置 - ${ENV.appname}`;
+
   }
 
   handleTab = (key) => {
-    switch(key){
-      case "1":
-        document.title = `用户信息 - 设置 - ${ENV.appname}`;
-        break;
-      case "2":
-        document.title = `账户安全 - 设置 - ${ENV.appname}`;
-        break;
-      case "3":
-        document.title = `个人偏好 - 设置 - ${ENV.appname}`;
-        break;
-      case "4":
-        document.title = `社交账号 - 设置 - ${ENV.appname}`;
-        break;
-      default:
-        break;
-    }
     this.setState({tabKey: key})
     //this.forceUpdate();                             //更新当前视图
   };

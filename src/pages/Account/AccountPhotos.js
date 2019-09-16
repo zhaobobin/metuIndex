@@ -22,7 +22,7 @@ export default class AccountPhotos extends React.Component {
   }
 
   componentDidMount(){
-    const { _id } = this.props.global.userInfo;
+    const { _id } = this.props.global.profileUser;
     this.queryList(_id);
   }
 

@@ -98,14 +98,14 @@ export default function Request(url, options) {
     });
 }
 
-export function FetchGet(url){
-  let option = {
-    method: 'GET',
-    headers: {'Content-Type': 'application/json'}
-  };
-  return fetch(url, option)
-    .then(response => response.json())
-    .catch((error) => {
-      return error;
-    });
-}
+// export function FetchGet(url){
+//   let option = {
+//     method: 'GET',
+//     headers: {'Content-Type': 'application/json'}
+//   };
+//   return fetch(url, option)
+//     .then(response => response.json())
+//     .catch((error) => {
+//       return error;
+//     });
+// }

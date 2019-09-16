@@ -148,7 +148,7 @@ const BaseRoutes = app => [
         key: 'users',
         path: 'users/:username',
         isHide: true,
-        component: dynamicWrapper(app, ['oss'], () => import('../pages/Account/AccountCenter')),
+        component: dynamicWrapper(app, ['oss'], () => import('../pages/Account/_layout')),
         children: [
           {
             name: '图片',
@@ -204,11 +204,27 @@ const BaseRoutes = app => [
       },
       {
         name: '用户设置',
-        id: 'menu.user.setting',
-        key: 'setting',
-        path: 'setting',
+        id: 'menu.user.settings',
+        key: 'settings',
+        path: 'settings',
         isHide: true,
-        component: dynamicWrapper(app, ['oss'], () => import('../pages/Account/AccountSetting')),
+        component: dynamicWrapper(app, [], () => import('../pages/Settings/_layout')),
+        children: [
+          {
+            name: '帐号绑定',
+            id: 'menu.user.settings.bind',
+            key: 'bind',
+            path: 'bind',
+            component: dynamicWrapper(app, [], () => import('../pages/Settings/SettingsBind')),
+          },
+          {
+            name: '个人信息',
+            id: 'menu.user.settings.profile',
+            key: 'profile',
+            path: 'profile',
+            component: dynamicWrapper(app, [], () => import('../pages/Settings/SettingsProfile')),
+          },
+        ]
       },
       {
         name: '发布',

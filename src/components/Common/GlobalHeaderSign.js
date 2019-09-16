@@ -66,8 +66,8 @@ export default class UserSign extends React.Component {
                       </Link>
                     </Menu.Item>
                     <Menu.Item>
-                      <Link to="/setting">
-                        <FormattedMessage id="menu.user.setting"/>
+                      <Link to="/settings">
+                        <FormattedMessage id="menu.user.settings"/>
                       </Link>
                     </Menu.Item>
                     <Menu.Item>

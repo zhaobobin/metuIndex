@@ -1286,7 +1286,7 @@ antd-mobile@^2.2.13:
 
 antd@^3.23.2:
   version "3.23.2"
-  resolved "https://registry.npm.taobao.org/antd/download/antd-3.23.2.tgz?cache=0&sync_timestamp=1567770307698&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fantd%2Fdownload%2Fantd-3.23.2.tgz#6fcbe5b22a932913a33dce0b6b76b4a60c30a403"
+  resolved "https://registry.npm.taobao.org/antd/download/antd-3.23.2.tgz#6fcbe5b22a932913a33dce0b6b76b4a60c30a403"
   dependencies:
     "@ant-design/create-react-context" "^0.2.4"
     "@ant-design/icons" "~2.1.1"

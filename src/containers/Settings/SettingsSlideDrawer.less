@@ -1,0 +1,64 @@
+@import '../../theme/index.less';
+
+.drawer{
+
+  .btn{
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 0 4px 4px 0;
+    transition: all .3s ease;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+    background: #fff;
+    position: fixed;
+    top: 80px;
+    z-index: 1001;
+    cursor: pointer;
+
+    &.show{
+      left: 0;
+    }
+    &.close{
+      left: 256px;
+    }
+
+  }
+
+}
+
+.settingsDrawer{
+
+  :global{
+    .ant-drawer-body{
+      padding: 24px 0;
+    }
+  }
+
+  a{
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 50px;
+    color: #333;
+    position: relative;
+
+    &:hover{
+      color: @link_hover;
+    }
+    &.active{
+      color: @color_blue;
+      background: @color_blue3;
+    }
+
+    i{
+      font-size: 12px;
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      margin-top: -6px;
+    }
+
+  }
+
+}

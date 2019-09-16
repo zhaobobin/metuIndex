@@ -17,9 +17,9 @@ export default class GlobalHeader extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      pathname: this.props.location.pathname,
-      headerOpacity: headerIsOpacity(this.props.location.pathname) ? styles.opacity : '',	  //导航默认样式
-      headerFixed: ''
+      pathname: props.location.pathname,
+      headerOpacity: headerIsOpacity(props.location.pathname) ? styles.opacity : '',	  //导航默认样式
+      headerFixed: props.location.pathname === '/' ? styles.fixed : ''
     };
   }
 
@@ -31,22 +31,26 @@ export default class GlobalHeader extends React.Component {
 
   //监控路由变化
   hashChange(pathname){
-    window.scrollTo(0, 0);                                  //重置滚动
-    if(headerIsOpacity(pathname)){
-      this.setState({pathname: pathname, headerOpacity: styles.opacity});
-      window.addEventListener(
-        'scroll',
-        (e) => this.handleScroll(e),
-        { passive: false }
-      );
-    }else{
-      this.setState({pathname: pathname, headerOpacity: ''})
+    // window.scrollTo(0, 0);                                  //重置滚动
+    const path = pathname.split('/')[1];
+    switch(path){
+      case '':
+        window.addEventListener('scroll', this.handleScroll, false);
+        this.setState({pathname: pathname, headerOpacity: styles.opacity, headerFixed: styles.fixed});
+        break;
+      case 'users':
+        window.removeEventListener('scroll', this.handleScroll, false);
+        this.setState({pathname: pathname, headerOpacity: styles.opacity, headerFixed: ''});
+        break;
+      default:
+        window.removeEventListener('scroll', this.handleScroll, false);
+        this.setState({ pathname: pathname, headerOpacity: '', headerFixed: '' });
+        break;
     }
   }
 
   //监控滚动
-  handleScroll(e){
-    // e.preventDefault();
+  handleScroll = () => {
     let scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
     if(scrollY > 0){
       this.setState({headerFixed: styles.fixed})

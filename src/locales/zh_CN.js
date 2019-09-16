@@ -54,7 +54,6 @@ export default {
   'menu.user.register': '注册',
   'menu.user.reset': '忘记密码',
   'menu.user.account': '我的主页',
-  'menu.user.setting': '设置',
   'menu.user.logout': '退出',
   'menu.user.logout.title': '安全退出？',
 
@@ -66,6 +65,10 @@ export default {
   'menu.users.collecting': '收藏',
   'menu.users.detail': '简介',
   'menu.users.edit': '编辑个人资料',
+
+  'menu.user.settings': '用户设置',
+  'menu.user.settings.bind': '帐号绑定',
+  'menu.user.settings.profile': '个人信息',
 
   'menu.hdzq': '活动专区',
   'menu.hdzq.lucky': '幸运抽奖',

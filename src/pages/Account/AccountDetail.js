@@ -22,7 +22,7 @@ export default class AccountDetail extends React.Component {
   }
 
   componentDidMount(){
-    const { _id } = this.props.global.userInfo;
+    const { _id } = this.props.global.profileUser;
     this.queryDetail(_id);
   }
 
@@ -31,7 +31,7 @@ export default class AccountDetail extends React.Component {
     if(!this.ajaxFlag) return;
     this.ajaxFlag = false;
 
-    const include = 'address%zipcode%email%qq'
+    const include = 'address+zipcode+email+qq';
 
     this.props.dispatch({
       type: 'global/request',

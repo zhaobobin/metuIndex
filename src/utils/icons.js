@@ -44,6 +44,18 @@ export {
 export {
   default as EyeInvisibleOutline
 } from '@ant-design/icons/lib/outline/EyeInvisibleOutline';
+export {
+  default as wechat
+} from '@ant-design/icons/lib/outline/WechatOutline';
+export {
+  default as weibo
+} from '@ant-design/icons/lib/outline/WeiboOutline';
+export {
+  default as qq
+} from '@ant-design/icons/lib/outline/QqOutline';
+export {
+  default as menu
+} from '@ant-design/icons/lib/outline/MenuOutline';
 
 // export what antd other components need
 // export {

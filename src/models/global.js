@@ -15,7 +15,7 @@ export default {
     isAuth: false,
     lastTel: Storage.get(ENV.storage.lastTel) || '',
     currentUser: '',                                  //当前用户信息
-    userInfo: '',                                     //其他用户信息
+    profileUser: '',                                     //其他用户信息
 
     signModalVisible: false,                          //登录modal的显示状态
     signTabKey: '',                                   //登录modal中tab的默认key
@@ -111,6 +111,7 @@ export default {
           currentUser: '',
         }
       });
+      yield put(routerRedux.push({ pathname: '/' }));
 
       // const res = yield call(
       //   (params) => {return Request('/user/logout', {method: 'POST', body: params})},
@@ -135,9 +136,9 @@ export default {
       );
       if(res.code === 0){
         yield put({
-          type: 'changeUserInfo',
+          type: 'changeProfileUser',
           payload: {
-            userInfo: res.data,
+            profileUser: res.data,
           }
         });
       }else{
@@ -198,10 +199,10 @@ export default {
         token: payload.token,
       };
     },
-    changeUserInfo(state, { payload }) {
+    changeProfileUser(state, { payload }) {
       return {
         ...state,
-        userInfo: payload.userInfo,
+        profileUser: payload.profileUser,
       };
     },
     changeCurrentUser(state, { payload }) {

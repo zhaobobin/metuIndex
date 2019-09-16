@@ -1,0 +1,37 @@
+@import '../../theme/index.less';
+
+.menu{
+
+  padding: 10px 0 25px;
+
+  ul, li{
+    margin: 0;
+  }
+
+  a{
+    display: block;
+    height: 48px;
+    line-height: 48px;
+    padding: 0 50px;
+    color: #333;
+    position: relative;
+
+    &:hover{
+      color: @link_hover;
+    }
+    &.active{
+      color: #fff;
+      background: @color_blue;
+    }
+
+    i{
+      font-size: 12px;
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      margin-top: -6px;
+    }
+
+  }
+
+}

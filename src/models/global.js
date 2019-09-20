@@ -137,9 +137,24 @@ export default {
       if(res.code === 0){
         yield put({
           type: 'changeProfileUser',
-          payload: {
-            profileUser: res.data,
-          }
+          payload: res.data,
+        });
+      }else{
+        yield put(routerRedux.push({ pathname: '/404' }));
+      }
+    },
+
+    // 帐户详情
+    *accountDetail({ payload, callback }, { call, put }) {
+      const res = yield call(
+        (params) => {return Request('/user', {method: 'POST', body: params})},
+        payload
+      );
+      if(res.code === 0){
+        yield callback(res);
+        yield put({
+          type: 'changeCurrentUser',
+          payload: res.data,
         });
       }else{
         yield put(routerRedux.push({ pathname: '/404' }));
@@ -202,13 +217,13 @@ export default {
     changeProfileUser(state, { payload }) {
       return {
         ...state,
-        profileUser: payload.profileUser,
+        profileUser: payload,
       };
     },
     changeCurrentUser(state, { payload }) {
       return {
         ...state,
-        currentUser: payload.currentUser,
+        currentUser: Object.assign(state.currentUser, payload),
       };
     },
     changeSignModal(state, { payload }) {

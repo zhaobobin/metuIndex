@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'dva';
-import { Link } from 'dva/router';
-import { Button, Icon, Menu, Dropdown } from 'antd';
+import { Link, routerRedux } from 'dva/router';
+import { Avatar, Button, Icon, Menu, Dropdown } from 'antd';
 import {FormattedMessage} from 'react-intl';
 import styles from './GlobalHeaderSign.less';
 
+import GlobalHeaderSearch from '@/components/Common/GlobalHeaderSearch'
+import MessagesPopover from '@/blocks/Messages/MessagesPopover';
 import UserSignModal from '@/blocks/User/UserSignModal';
 import { Confirm } from '@/components/Dialog/Dialog'
 
@@ -55,7 +57,43 @@ export default class UserSign extends React.Component {
 
         {
           isAuth ?
-            <div key="logout">
+            <ul key="logout">
+
+              <li>
+                <GlobalHeaderSearch/>
+              </li>
+
+              <MessagesPopover>
+                <li>
+                  <a className={styles.message}>
+                    <Icon type="bell" style={{ fontSize: '24px' }} />
+                  </a>
+                </li>
+              </MessagesPopover>
+
+              <Dropdown
+                overlay={
+                  <Menu>
+                    <Menu.Item>
+                      <Link to="/publish/photo">
+                        <FormattedMessage id="menu.publish.photo"/>
+                      </Link>
+                    </Menu.Item>
+                    <Menu.Item>
+                      <Link to="/publish/article">
+                        <FormattedMessage id="menu.publish.article"/>
+                      </Link>
+                    </Menu.Item>
+                  </Menu>
+                }
+              >
+                <li>
+                  <Link to="/publish/photo" className={styles.hasIcon + ' ' + styles.publish}>
+                    <Icon type="cloud-upload" style={{ fontSize: '24px' }} />
+                    <FormattedMessage id="menu.publish"/>
+                  </Link>
+                </li>
+              </Dropdown>
 
               <Dropdown
                 overlay={
@@ -78,48 +116,40 @@ export default class UserSign extends React.Component {
                   </Menu>
                 }
               >
-                <Link className={styles.userInfo} to={`/users/${currentUser.username}`}>
-                  {
-                    currentUser.avatar ?
-                      <img src={currentUser.avatar + '?x-oss-process=style/thumb_s'} alt="avatar" />
-                      :
-                      <Icon type="user" />
-                  }
-                  <span className={styles.username}>{currentUser.nickname}</span>
-                </Link>
+                <li>
+                  <Link to={`/users/${currentUser.username}`} className={styles.hasIcon + ' ' + styles.user}>
+                    {
+                      currentUser.avatar_url ?
+                        <Avatar className={styles.avatar} src={currentUser.avatar_url + '?x-oss-process=style/thumb_s'} size={24} />
+                        :
+                        <Avatar className={styles.avatar} icon="user" size={24} />
+                    }
+                    <span className={styles.username}>{currentUser.nickname}</span>
+                  </Link>
+                </li>
               </Dropdown>
 
-              <Dropdown
-                overlay={
-                  <Menu>
-                    <Menu.Item>
-                      <Link to="/publish/photo">
-                        <FormattedMessage id="menu.publish.photo"/>
-                      </Link>
-                    </Menu.Item>
-                    <Menu.Item>
-                      <Link to="/publish/article">
-                        <FormattedMessage id="menu.publish.article"/>
-                      </Link>
-                    </Menu.Item>
-                  </Menu>
-                }
-              >
-                <Link to="/publish/photo"><Button className={styles.userBtn} type="primary">
-                  <FormattedMessage id="menu.publish"/>
-                </Button></Link>
-              </Dropdown>
-
-            </div>
+            </ul>
             :
-            <div key="login">
-              <Button className={styles.userBtn + " " + styles.loginBtn} onClick={ () => this.setUserModal(true, '1') }>
-                <FormattedMessage id="menu.user.login"/>
-              </Button>
-              <Button className={styles.userBtn} type="primary" onClick={ () => this.setUserModal(true, '2') }>
-                <FormattedMessage id="menu.user.register"/>
-              </Button>
-            </div>
+            <ul key="login">
+
+              <li className={styles.search}>
+                <GlobalHeaderSearch/>
+              </li>
+
+              <li>
+                <Button className={styles.userBtn} onClick={ () => this.setUserModal(true, '1') }>
+                  <FormattedMessage id="menu.user.login"/>
+                </Button>
+              </li>
+
+              <li>
+                <Button className={styles.userBtn} type="primary" onClick={ () => this.setUserModal(true, '2') }>
+                  <FormattedMessage id="menu.user.register"/>
+                </Button>
+              </li>
+
+            </ul>
         }
 
         <UserSignModal/>

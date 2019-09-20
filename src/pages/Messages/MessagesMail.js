@@ -1,20 +1,25 @@
+/**
+ * 消息中心 - 私信
+ */
 import React from 'react';
 import { Redirect } from 'dva/router';
 import { connect } from 'dva';
-import ENV from '@/config/env'
-import styles from './SettingsAccount.less'
+import { Button, Icon } from 'antd'
+import styles from './Messages.less'
 
 @connect(state => ({
   global: state.global
 }))
-export default class SettingsAccount extends React.Component {
+export default class MessagesMail extends React.Component {
 
   render(){
+
+    const { currentUser } = this.props.global;
 
     return(
       <div className={styles.container}>
 
-        SettingsAccount
+        MessagesMail
 
       </div>
     )

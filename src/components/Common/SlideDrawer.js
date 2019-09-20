@@ -5,7 +5,7 @@ import React from 'react';
 import { NavLink } from 'dva/router';
 import { Icon, Drawer } from 'antd';
 import { FormattedMessage } from 'react-intl';
-import styles from './SettingsSlideDrawer.less';
+import styles from './SlideDrawer.less';
 
 export default class SettingsSlideDrawer extends React.Component {
 
@@ -25,7 +25,7 @@ export default class SettingsSlideDrawer extends React.Component {
 
   render(){
 
-    const { routes } = this.props;
+    const { routes, title } = this.props;
     const { visible } = this.state;
 
     return(
@@ -44,7 +44,7 @@ export default class SettingsSlideDrawer extends React.Component {
         </div>
 
         <Drawer
-          title="帐号管理"
+          title={title}
           placement="left"
           closable={false}
           visible={visible}

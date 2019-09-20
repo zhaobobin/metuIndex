@@ -11,10 +11,9 @@ import styles from './_layout.less'
 import LoadingBg from '@/components/Common/LoadingBg'
 import SlideDrawer from '@/components/Common/SlideDrawer'
 import SlideMenu from '@/components/Common/SlideMenu'
-import SettingsSlideUserinfo from '@/containers/Settings/SettingsSlideUserinfo'
 
 import RouteExtend from '@/components/Common/RouteExtend'
-const Routes = RouteExtend('settings');
+const Routes = RouteExtend('messages');
 
 @connect(state => ({
   global: state.global
@@ -73,13 +72,12 @@ export default class _layout extends React.Component {
 
                     <Col xs={0} sm={0} md={5} lg={5}>
                       <div className={styles.slide}>
-                        <SettingsSlideUserinfo currentUser={currentUser}/>
                         <SlideMenu routes={Routes}/>
                       </div>
                     </Col>
 
                     <Col xs={24} sm={24} md={0} lg={0}>
-                      <SlideDrawer routes={Routes} title="个人设置" />
+                      <SlideDrawer routes={Routes} title="消息中心" />
                     </Col>
 
                     <Col xs={24} sm={24} md={19} lg={19}>
@@ -97,7 +95,7 @@ export default class _layout extends React.Component {
                                   />
                                 ))
                               }
-                              <Redirect exact from='/settings' to='/settings/bind' />
+                              <Redirect exact from='/messages' to='/messages/favor' />
                               <Route component={NotFound} />
                             </Switch>
                             :

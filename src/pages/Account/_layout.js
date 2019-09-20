@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
+import { Affix } from 'antd'
 import styles from './_layout.less'
 
 import AccountHeaderCover from '@/containers/Account/AccountHeaderCover'
@@ -61,7 +62,9 @@ export default class _layout extends React.Component {
 
         {
           profileUser ?
-            <AccountMenu routes={Routes} username={profileUser.username} />
+            <Affix>
+              <AccountMenu routes={Routes} username={profileUser.username} />
+            </Affix>
             :
             null
         }

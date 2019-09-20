@@ -24,10 +24,6 @@ class BaseLayout extends React.Component {
     this.token();
   }
 
-  componentWillUnmount(){
-
-  }
-
   token() {
     this.props.dispatch({
       type: 'global/token',

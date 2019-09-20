@@ -224,8 +224,92 @@ const BaseRoutes = app => [
             path: 'profile',
             component: dynamicWrapper(app, [], () => import('../pages/Settings/SettingsProfile')),
           },
+          {
+            name: '消息提醒',
+            id: 'menu.user.settings.message',
+            key: 'message',
+            path: 'message',
+            component: dynamicWrapper(app, [], () => import('../pages/Settings/SettingsMessage')),
+          },
+          {
+            name: '偏好设置',
+            id: 'menu.user.settings.preference',
+            key: 'preference',
+            path: 'preference',
+            component: dynamicWrapper(app, [], () => import('../pages/Settings/SettingsPreference')),
+          },
+          {
+            name: '实名认证',
+            id: 'menu.user.settings.authenticate',
+            key: 'authenticate',
+            path: 'authenticate',
+            component: dynamicWrapper(app, [], () => import('../pages/Settings/SettingsAuthenticate')),
+          },
         ]
       },
+
+      {
+        name: '消息中心',
+        id: 'menu.user.messages',
+        key: 'messages',
+        path: 'messages',
+        isHide: true,
+        component: dynamicWrapper(app, [], () => import('../pages/Messages/_layout')),
+        children: [
+          {
+            name: '点赞',
+            id: 'menu.user.messages.favor',
+            key: 'favor',
+            path: 'favor',
+            component: dynamicWrapper(app, [], () => import('../pages/Messages/MessagesFavor')),
+          },
+          {
+            name: '评论',
+            id: 'menu.user.messages.comment',
+            key: 'comment',
+            path: 'comment',
+            component: dynamicWrapper(app, [], () => import('../pages/Messages/MessagesComment')),
+          },
+          {
+            name: '关注',
+            id: 'menu.user.messages.follow',
+            key: 'follow',
+            path: 'follow',
+            component: dynamicWrapper(app, [], () => import('../pages/Messages/MessagesFollow')),
+          },
+          {
+            name: '收藏',
+            id: 'menu.user.messages.collect',
+            key: 'collect',
+            path: 'collect',
+            component: dynamicWrapper(app, [], () => import('../pages/Messages/MessagesCollect')),
+          },
+          {
+            name: '私信',
+            id: 'menu.user.messages.mail',
+            key: 'mail',
+            path: 'mail',
+            component: dynamicWrapper(app, [], () => import('../pages/Messages/MessagesMail')),
+          },
+          {
+            name: '通知',
+            id: 'menu.user.messages.notify',
+            key: 'motify',
+            path: 'notify',
+            component: dynamicWrapper(app, [], () => import('../pages/Messages/MessagesNotify')),
+          },
+        ]
+      },
+
+      {
+        name: '搜索结果',
+        id: 'menu.search.result',
+        key: 'search',
+        path: 'search',
+        isHide: true,
+        component: dynamicWrapper(app, [], () => import('../pages/Search/_layout')),
+      },
+
       {
         name: '发布',
         id: 'menu.publish',
@@ -274,7 +358,7 @@ const BaseRoutes = app => [
         key: 'help',
         path: 'help',
         isHide: true,
-        component: dynamicWrapper(app, ['oss'], () => import('../pages/Other/Help')),
+        component: dynamicWrapper(app, ['oss'], () => import('../pages/Help/_layout')),
       },
       {
         name: '服务条款',

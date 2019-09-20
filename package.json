@@ -37,6 +37,7 @@
     "react-measure": "^2.1.0",
     "react-photo-gallery": "^6.1.4",
     "react-simple-img": "^1.5.4",
+    "react-sticky": "^6.0.3",
     "react-syntax-highlighter": "^11.0.1",
     "screenfull": "^3.3.3",
     "share-react": "^1.0.0",

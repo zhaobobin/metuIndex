@@ -72,10 +72,11 @@ export default function Request(url, options) {
       ...newOptions.headers,
     };
     newOptions.body = JSON.stringify(newOptions.body);
-    // HttpBasicAuth
-    if(Storage.get(ENV.storage.token)) {
-      newOptions.headers['Authorization'] = 'Basic ' + Base64.encode(Storage.get(ENV.storage.token) + ':'); //读取本地token
-    }
+  }
+
+  // HttpBasicAuth
+  if(Storage.get(ENV.storage.token)) {
+    newOptions.headers['Authorization'] = 'Basic ' + Base64.encode(Storage.get(ENV.storage.token) + ':'); //读取本地token
   }
 
   return fetch(url, newOptions)

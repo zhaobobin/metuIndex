@@ -5,7 +5,7 @@ import React from 'react';
 import { NavLink } from 'dva/router';
 import { Icon } from 'antd'
 import { FormattedMessage } from 'react-intl';
-import styles from './SettingsSlideMenu.less';
+import styles from './SlideMenu.less';
 
 export default function SettingsSlideMenu ({ routes }) {
 

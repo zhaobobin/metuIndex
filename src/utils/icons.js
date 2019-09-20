@@ -45,17 +45,42 @@ export {
   default as EyeInvisibleOutline
 } from '@ant-design/icons/lib/outline/EyeInvisibleOutline';
 export {
-  default as wechat
+  default as WechatOutline
 } from '@ant-design/icons/lib/outline/WechatOutline';
 export {
-  default as weibo
+  default as WeiboOutline
 } from '@ant-design/icons/lib/outline/WeiboOutline';
 export {
-  default as qq
+  default as QqOutline
 } from '@ant-design/icons/lib/outline/QqOutline';
 export {
-  default as menu
+  default as MenuOutline
 } from '@ant-design/icons/lib/outline/MenuOutline';
+export {
+  default as MailOutline
+} from '@ant-design/icons/lib/outline/MailOutline';
+export {
+  default as MobileOutline
+} from '@ant-design/icons/lib/outline/MobileOutline';
+export {
+  default as SafetyOutline
+} from '@ant-design/icons/lib/outline/SafetyOutline';
+export {
+  default as MessageOutline
+} from '@ant-design/icons/lib/outline/MessageOutline';
+export {
+  default as CloudUploadOutline
+} from '@ant-design/icons/lib/outline/CloudUploadOutline';
+export {
+  default as BellOutline
+} from '@ant-design/icons/lib/outline/BellOutline';
+export {
+  default as SettingOutline
+} from '@ant-design/icons/lib/outline/SettingOutline';
+export {
+  default as SearchOutline
+} from '@ant-design/icons/lib/outline/SearchOutline';
+
 
 // export what antd other components need
 // export {
@@ -71,9 +96,6 @@ export {
 // export {
 //   default as ExclamationCircleFill
 // } from '@ant-design/icons/lib/fill/ExclamationCircleFill';
-// export {
-//   default as SearchOutline
-// } from '@ant-design/icons/lib/outline/SearchOutline';
 // export {
 //   default as StarFill
 // } from '@ant-design/icons/lib/fill/StarFill';

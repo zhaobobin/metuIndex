@@ -54,7 +54,7 @@ export default {
   'menu.user.register': '注册',
   'menu.user.reset': '忘记密码',
   'menu.user.account': '我的主页',
-  'menu.user.logout': '退出',
+  'menu.user.logout': '安全退出',
   'menu.user.logout.title': '安全退出？',
 
   'menu.users': '用户中心',
@@ -66,9 +66,23 @@ export default {
   'menu.users.detail': '简介',
   'menu.users.edit': '编辑个人资料',
 
-  'menu.user.settings': '用户设置',
+  'menu.user.settings': '个人设置',
   'menu.user.settings.bind': '帐号绑定',
   'menu.user.settings.profile': '个人信息',
+  'menu.user.settings.message': '消息提醒',
+  'menu.user.settings.preference': '偏好设置',
+  'menu.user.settings.authenticate': '实名认证',
+
+  'menu.user.messages': '消息中心',
+  'menu.user.messages.favor': '点赞',
+  'menu.user.messages.comment': '评论',
+  'menu.user.messages.follow': '关注',
+  'menu.user.messages.collect': '收藏',
+  'menu.user.messages.mail': '私信',
+  'menu.user.messages.notify': '通知',
+
+  'menu.search': '搜索',
+  'menu.search.result': '搜索结果',
 
   'menu.hdzq': '活动专区',
   'menu.hdzq.lucky': '幸运抽奖',

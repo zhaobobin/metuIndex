@@ -68,6 +68,20 @@ export default {
   'menu.user.settings': 'Settings',
   'menu.user.settings.bind': 'Bind',
   'menu.user.settings.profile': 'Profile',
+  'menu.user.settings.message': 'Message',
+  'menu.user.settings.preference': 'Preference',
+  'menu.user.settings.authenticate': 'Authenticate',
+
+  'menu.user.messages': 'Messages',
+  'menu.user.messages.favor': 'Favor',
+  'menu.user.messages.comment': 'Comment',
+  'menu.user.messages.follow': 'Follow',
+  'menu.user.messages.collect': 'Collect',
+  'menu.user.messages.mail': 'Mail',
+  'menu.user.messages.notify': 'Notify',
+
+  'menu.search': 'Search',
+  'menu.search.result': 'Search Result',
 
   'menu.hdzq': 'hdzq',
   'menu.hdzq.lucky': 'lucky',

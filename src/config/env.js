@@ -66,6 +66,9 @@ module.exports = {
     wechatLoginState: 'metuIndex-WechatLoginState', // 微信授权登录state
     weiboLoginState: 'metuIndex-WeiboLoginState', // 微博授权登录state
     qqLoginState: 'metuIndex-QqLoginState', // QQ授权登录state
+
+    accountAuth: 'metuIndex-accountAuth', // 帐号身份验证
+
   },
 
 };

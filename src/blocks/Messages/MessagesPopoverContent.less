@@ -1,0 +1,48 @@
+@import '../../theme/index.less';
+
+.container{
+  margin: -12px -16px;
+  width: 360px;
+
+  :global{
+    .ant-tabs-nav{
+      width: 100%;
+    }
+    .ant-tabs-nav .ant-tabs-tab{
+      margin: 0;
+      width: 16.66%;
+    }
+  }
+
+  .content{
+    padding: 0 15px 20px;
+    height: 300px;
+    overflow: auto;
+  }
+
+  .foot{
+    padding: 0 16px;
+    height: 40px;
+    line-height: 40px;
+    border-top: 1px solid @border;
+
+    a{
+      color: @color_888;
+      &:hover{
+        color: @link_hover;
+      }
+    }
+
+    .settings{
+      float: left;
+      i{
+        margin-right: 5px;
+      }
+    }
+    .all{
+      float: right;
+    }
+
+  }
+
+}

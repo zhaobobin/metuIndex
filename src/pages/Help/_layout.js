@@ -3,6 +3,10 @@ import { Row, Col } from 'antd'
 
 export default class Help extends React.Component {
 
+  componentDidMount(){
+    window.scrollTo(0, 0);
+  }
+
   render(){
 
     return(

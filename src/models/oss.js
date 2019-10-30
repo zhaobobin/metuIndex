@@ -3,8 +3,8 @@
  key生成规则：用户id/保存类别_当前时间戳.图片类型
  let key = this.props.global.currentUser._id + '/photo_' + new Date().getTime() + '.' + file.name.split('.')[1];
  */
-import Request from "@/utils/request"
 import { notification } from 'antd'
+import { ENV, Storage, Request } from '@/utils'
 
 const getClient = function (data) {
   return new window.OSS.Wrapper({
@@ -88,32 +88,31 @@ export default {
 
       let url = payload.url + '?x-oss-process=image/info';
 
-      // yield FetchGet(url)
-      yield Request(url, { method: 'GET' })
-      .then((exif) => {
-        if (exif.FNumber) {
-          let FNumber = exif.FNumber.value                              //转换光圈值
-          exif.FNumber.value = (FNumber.split('/')[0] / FNumber.split('/')[1]).toString()
-        }
-        return callback(exif)
-      })
-      .catch(function (err) {
-        notification.error({
-          message: 'exif查询失败！',
-          description: err,
-        })
-      })
+      const exif = yield Request(url, { method: 'GET' })
+
+      if (exif && exif.FNumber) {
+        let FNumber = exif.FNumber.value                              //转换光圈值
+        exif.FNumber.value = (FNumber.split('/')[0] / FNumber.split('/')[1]).toString()
+      }
+      yield callback(exif);
+
     },
 
     // 上传
     *upload({payload, callback}, {call, put}) {
-      const res = yield call(
-        (params) => {
-          return Request('/api/FileOssEdit', {method: 'POST', body: params,})
-        },
-        {}
-      )
-      if (res.status === 1) {
+      let res,
+        ossToken = Storage.get(ENV.ossToken, 7200)
+      if(ossToken){
+        res = ossToken
+      } else {
+        res = yield call(
+          (params) => {return Request(`${ENV.api_base}/oss/token`, {method: 'POST', body: params})},
+          {}
+        )
+        Storage.set(ENV.ossToken, res)
+      }
+
+      if (res.code === 0) {
         let client = getClient(res.data)
         client.multipartUpload(payload.key, payload.file, {})
           .then(function (r) {
@@ -127,17 +126,19 @@ export default {
               //description: err,
             })
           })
+      } else {
+        notification.error({
+          message: res.message,
+        })
       }
     },
 
     *uploadBase64({payload, callback}, {call, put}) {
       const res = yield call(
-        (params) => {
-          return Request('/api/FileOssEdit', {method: 'POST', body: params,})
-        },
+        (params) => {return Request('/api/FileOssEdit', {method: 'POST', body: params})},
         {}
       )
-      if (res.status === 1) {
+      if (res.code === 0) {
 
         let client = getClient(res.data)
 

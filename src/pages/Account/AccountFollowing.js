@@ -3,7 +3,7 @@
  */
 import React from 'react'
 import { connect } from 'dva';
-import {  routerRedux } from 'dva/router';
+import { routerRedux } from 'dva/router';
 import { Row, Col } from 'antd';
 
 @connect(state => ({

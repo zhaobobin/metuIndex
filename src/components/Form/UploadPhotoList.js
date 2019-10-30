@@ -1,11 +1,11 @@
 /**
  * 【作废】上传图片列表
  */
-import React, { Component } from 'react';
+import React from 'react';
 import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
 import { Form, Input, Button, Icon, Row, Col, Card, InputNumber, Select, Table, Divider, Upload, Modal, Popconfirm, notification } from 'antd';
-import Storage from '@/utils/storage';
+import { Storage } from '@/utils';
 import { checkRole, hasErrors, file2base64 } from '@/utils/utils';
 import styles from './UploadPhotoList.less'
 
@@ -22,7 +22,7 @@ const keys = ['category', 'title', 'tags', 'description', 'copyright'];
   oss: state.oss,
 }))
 @Form.create()
-export default class UploadPhotoList extends Component {
+export default class UploadPhotoList extends React.Component {
 
   state = {
     role: this.props.global.currentUser.role,

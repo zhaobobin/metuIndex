@@ -1,8 +1,6 @@
 import { routerRedux } from 'dva/router';
 import { notification } from 'antd';
-import Request from '@/utils/request';
-import Storage from '@/utils/storage';
-import ENV from '@/config/env';
+import {ENV, Storage, Request} from '@/utils';
 
 export default {
 
@@ -27,7 +25,7 @@ export default {
 
     *register({ payload, callback }, { call, put }) {
       const res = yield call(
-        (params) => {return Request('/user/register', {method: 'POST', body: params})},
+        (params) => {return Request(`${ENV.api_base}/user/register`, {method: 'POST', body: params})},
         payload
       );
       if(res.code === 0){
@@ -46,7 +44,7 @@ export default {
 
     *login({ payload, callback }, { call, put }) {
       const res = yield call(
-        (params) => {return Request('/user/login', {method: 'POST', body: params})},
+        (params) => {return Request(`${ENV.api_base}/user/login`, {method: 'POST', body: params})},
         payload
       );
       if(res.code === 0){
@@ -70,7 +68,7 @@ export default {
       if(Storage.get(ENV.storage.token)) {
 
         const res = yield call(
-          (params) => {return Request('/user/token', {method: 'POST', body: params})},
+          (params) => {return Request(`${ENV.api_base}/user/token`, {method: 'POST', body: params})},
           payload
         );
 
@@ -111,7 +109,7 @@ export default {
           currentUser: '',
         }
       });
-      yield put(routerRedux.push({ pathname: '/' }));
+      // yield put(routerRedux.push({ pathname: '/' }));
 
       // const res = yield call(
       //   (params) => {return Request('/user/logout', {method: 'POST', body: params})},
@@ -131,7 +129,7 @@ export default {
 
     *userinfo({ payload }, { call, put }) {
       const res = yield call(
-        (params) => {return Request(`/users/${params.username}`, {method: 'GET', body: params})},
+        (params) => {return Request(`${ENV.api_base}/users/${params.username}`, {method: 'GET', body: params})},
         payload
       );
       if(res.code === 0){
@@ -147,7 +145,7 @@ export default {
     // 帐户详情
     *accountDetail({ payload, callback }, { call, put }) {
       const res = yield call(
-        (params) => {return Request('/user', {method: 'POST', body: params})},
+        (params) => {return Request(`${ENV.api_base}/user`, {method: 'POST', body: params})},
         payload
       );
       if(res.code === 0){
@@ -169,7 +167,7 @@ export default {
         res = storage;
       }else{
         res = yield call(
-          (params) => {return Request(url, {method: method || 'POST', body: params})},
+          (params) => {return Request(`${ENV.api_base}${url}`, {method: method || 'POST', body: params})},
           payload
         );
         if(res.code === 0 && exp) Storage.set(url, res);

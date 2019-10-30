@@ -13,7 +13,7 @@ export default function PhotoListItem ({ index, photo, margin }) {
       key={index}
       className={styles.photoGalleryItem}
       style={{margin, width: photo.width, height: photo.height}}
-      to={`/${photo.type}/${photo._id}/${photo.title}-by-${photo.uid.nickname}`}
+      to={`/${photo.type}/${photo._id}/${photo.title}-by-${photo.author.nickname}`}
     >
       <LoadLazy
         width={photo.width}

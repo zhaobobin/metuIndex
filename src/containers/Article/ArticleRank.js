@@ -9,7 +9,7 @@ import { connect } from 'dva';
 import { Link } from 'dva/router';
 import { Icon, notification } from 'antd';
 import Moment from 'moment';
-// import Storage from '@/utils/storage';
+// import { ENV, Storage } from '@/utils';
 
 import styles from './ArticleRank.less';
 
@@ -71,11 +71,11 @@ export default class ArticleRank extends PureComponent {
         {
           list.map((topic, index) => (
             <li className={styles.item} key={index}>
-              <Link to={`/course/${topic._id}/${topic.title}-by-${topic.uid.nickname}`}>
+              <Link to={`/course/${topic._id}/${topic.title}-by-${topic.author.nickname}`}>
                 <strong className={styles.title}>{topic.title}</strong>
                 <p className={styles.desc}>{topic.description}</p>
                 <p className={styles.info}>
-                  <span><Icon type="user" /> {topic.uid.nickname}</span>
+                  <span><Icon type="user" /> {topic.author.nickname}</span>
                   <span><Icon type="clock-circle-o" /> {Moment(topic.createtime).format('YYYY-MM-DD')}</span>
                   <span><Icon type="eye-o" /> {topic.views}</span>
                   <span><Icon type="message" /> {topic.comments.length}</span>

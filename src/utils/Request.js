@@ -1,8 +1,7 @@
 import fetch from 'dva/fetch';
 import { notification } from 'antd';
 import { Base64 } from 'js-base64';
-import Storage from '@/utils/storage';
-import ENV from '@/config/env';
+import { ENV, Storage } from '@/utils';
 
 const codeMessage = {
   200: '请求成功',
@@ -52,18 +51,21 @@ function checkStatus(response) {
  */
 export default function Request(url, options) {
 
-  url = ENV.api_base + url;
-
-  const defaultOptions = {
-    credentials: 'include',
-  };
-  const newOptions = { ...defaultOptions, ...options };
+  const newOptions = options;
 
   if (newOptions.method === 'GET') {
     newOptions.headers = {
       'Accept': 'application/json',
       ...newOptions.headers,
     };
+    if(options.body[0]){
+      let query = "";
+      for(let i in options.body){
+        query += i + "=" + options.body[i] + "&";
+      }
+      query = query.substring(0, query.length - 1);
+      url = `${url}?${query}`
+    }
     delete newOptions.body;
   } else {
     newOptions.headers = {
@@ -99,14 +101,14 @@ export default function Request(url, options) {
     });
 }
 
-// export function FetchGet(url){
-//   let option = {
-//     method: 'GET',
-//     headers: {'Content-Type': 'application/json'}
-//   };
-//   return fetch(url, option)
-//     .then(response => response.json())
-//     .catch((error) => {
-//       return error;
-//     });
-// }
+export function FetchGet(url){
+  let option = {
+    method: 'GET',
+    headers: {'Content-Type': 'application/json'}
+  };
+  return fetch(url, option)
+    .then(response => response.json())
+    .catch((error) => {
+      return error;
+    });
+}

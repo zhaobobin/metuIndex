@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'dva';
 import { Link, routerRedux } from 'dva/router';
 import { Avatar, Button, Icon, Menu, Dropdown } from 'antd';
-import {FormattedMessage} from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import styles from './GlobalHeaderSign.less';
 
 import GlobalHeaderSearch from '@/components/Common/GlobalHeaderSearch'

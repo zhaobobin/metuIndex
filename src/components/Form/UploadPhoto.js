@@ -9,17 +9,17 @@
       });
     };
  */
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { connect } from 'dva';
 import { Row, Col, Icon, Upload, notification } from 'antd';
-import Storage from '@/utils/storage';
+import { Storage } from '@/utils';
 import styles from './UploadPhoro.less'
 
 @connect(state => ({
   global: state.global,
   oss: state.oss
 }))
-export default class UploadPhoto extends PureComponent {
+export default class UploadPhoto extends React.Component {
 
   constructor(props){
     super(props);

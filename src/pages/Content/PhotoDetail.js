@@ -4,7 +4,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import { notification } from 'antd';
-import ENV from "@/config/env";
+import { ENV } from '@/utils';
 import { goBack } from "@/utils/utils";
 import styles from './PhotoDetail.less';
 
@@ -13,33 +13,41 @@ import PhotoAction from '@/blocks/Photo/PhotoAction';
 import PhotoInfo from '@/blocks/Photo/PhotoInfo';
 
 @connect(state => ({
-  photo: state.photo,
-  login: state.login,
+  global: state.global
 }))
 export default class PhotoDetail extends React.Component {
 
-  state = {
-    id: this.props.match.params.id,
-    list: '',									                                                //列表数据
-    currentPhoto: '',												                                  //当前图片信息
-    currentKey: '',                                                           //当前图片索引值
-  };
+  constructor(props){
+    super(props);
+    this.state = {
+      list: '',									                                                //列表数据
+      currentPhoto: '',												                                  //当前图片信息
+      currentKey: '',                                                           //当前图片索引值
+    };
+  }
 
   componentDidMount(){
-    let id = this.state.id;
+    let id = this.props.match.params.id;
     this.initPhoto(id);
   }
 
-  initPhoto(id){
+  UNSAFE_componentWillReceiveProps(nextProps){
+    if(nextProps.match.params.id !== this.props.match.params.id) {
+      let id = nextProps.match.params.id;
+      this.initPhoto(id);
+    }
+  }
 
+  initPhoto(id){
+console.log(id)
     this.props.dispatch({
-      type: 'photo/listByUser',
-      payload: {
-        id: id
-      },
+      type: 'global/request',
+      url: `/photos/${id}`,
+      method: 'GET',
+      payload: {},
       callback: (res) => {
         let list = res.data;
-        if(res.status === 1){
+        if(res.code === 0){
           let key = 0, currentPhoto = '';
           for(let i in list){
             if(list[i]._id === id){
@@ -70,7 +78,7 @@ export default class PhotoDetail extends React.Component {
 
     const { list, currentKey, currentPhoto } = this.state;
 
-    //console.log(list)
+    console.log(currentPhoto)
 
     return(
       <div className={styles.photoDetail}>

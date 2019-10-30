@@ -1,17 +1,16 @@
 /*
- * 图片列表 - 对应oss存储，无限加载查询
+ * 相册列表 - 无限加载查询
+ * <PhotoListQuery />
  */
 import React from 'react';
 import { connect } from 'dva';
-import { Link } from 'dva/router';
-import {Row, Col, notification} from 'antd';
-// import Storage from '@/utils/storage';
-
-import PhotoListGallery from '@/blocks/Photo/PhotoListGallery';
+import { notification } from 'antd';
 import InfiniteScroll from 'react-infinite-scroller';			//加载更多
 
+import PhotoListGallery from '@/blocks/Photo/PhotoListGallery';
+
 @connect(state => ({
-  photo: state.photo
+  global: state.global
 }))
 export default class PhotoListQuery extends React.Component {
 
@@ -21,15 +20,16 @@ export default class PhotoListQuery extends React.Component {
     this.state = {
 
       params: {
-        category: this.props.category ? this.props.category : '',
-        uid: this.props.uid ? this.props.uid : '',								                      //用户id
+        keyword: this.props.keyword || '',
+        topics: this.props.topics || '',
       },
 
-      currentPage: this.props.currentPage ? this.props.currentPage : 1,					      //当前页数
-      itemsPerPage: this.props.itemsPerPage ? this.props.itemsPerPage : 10,			      //每页数量
-      maxQueryPage: this.props.maxQueryPage ? this.props.maxQueryPage : undefined,    //最大查询页数，默认undefined
+      page: this.props.page || 1,					      //当前页数
+      per_page: this.props.per_page || 10,			      //每页数量
+      maxQueryPage: this.props.maxQueryPage || undefined,    //最大查询页数，默认undefined
       initializing: 1,
 
+      url: '',
       loading: true,
       list: [],
       total: 0,
@@ -38,90 +38,84 @@ export default class PhotoListQuery extends React.Component {
   }
 
   componentDidMount(){
-    this.queryPhotoList({
-      params: this.state.params,
-      currentPage: this.state.currentPage,
-      pageSize: this.state.itemsPerPage
+    let {url} = this.props;
+    this.queryPhotoList(url, {
+      ...this.state.params,
+      page: this.state.page,
+      per_page: this.state.per_page
     })
   }
 
   UNSAFE_componentWillReceiveProps(nextProps){
-
-    if(nextProps.category !== this.state.params.category) {
-      this.queryPhotoList({
+    if(nextProps.url !== this.props.url || nextProps.keyword !== this.props.keyword) {
+      this.queryPhotoList(nextProps.url, {
         clearList: true,
-        params: {
-          ...this.state.params,
-          category: nextProps.category,
-        },
-        currentPage: 1,
-        pageSize: this.state.itemsPerPage
+        keyword: nextProps.keyword,
+        page: 1,
+        per_page: this.state.per_page
       });
     }
   }
 
-  queryPhotoList(query){
-
-    if(!this.ajaxFlag) return;
-    this.ajaxFlag = false;
+  queryPhotoList(url, query){
 
     let list = query.clearList ? [] : this.state.list;
 
     this.props.dispatch({
-      type: 'photo/list',
+      type: 'global/request',
+      url,
+      method: 'GET',
       payload: query,
       callback: (res) => {
-        setTimeout(() => { this.ajaxFlag = true }, 500)
-        if(res.status === 1){
+        this.ajaxFlag = true;
+        if(res.code === 0){
           this.setState({
-            params: query.params,
-            currentPage: this.state.currentPage + 1,
+            url,
             loading: false,
-            list: list.concat(res.data),
-            total: res.total,
-            hasMore: res.hasMore
+            params: query.params,
+            page: this.state.page + 1,
+            list: list.concat(res.data.list),
+            total: res.data.count,
+            hasMore: res.data.hasMore
           })
         }else{
-          notification.error({message: '提示', description: res.msg});
+          notification.error({message: '提示', description: res.message});
         }
       }
     });
   }
 
-  //加载更多
+  //Masonry布局 - 滚动加载更多
   LoadMore = (page) => {
     if(!page) return;
     if(this.state.maxQueryPage && page > this.state.maxQueryPage) return;
-
+    if(!this.ajaxFlag) return;
+    this.ajaxFlag = false;
+    let {url} = this.state;
     let _this = this;
     setTimeout(function(){
-      _this.queryPhotoList({
+      _this.queryPhotoList(url, {
         params: _this.state.params,
-        currentPage: _this.state.currentPage,
-        pageSize: _this.state.itemsPerPage
+        page: _this.state.page,
+        per_page: _this.state.per_page
       });
     }, 200)
   };
 
   render(){
 
-    const { category, list, hasMore } = this.state;
+    const { list, hasMore } = this.state;
 
     return(
       <div className="photo-container">
-        {
-          list.length > 0 ?
-            <InfiniteScroll
-              pageStart={0}
-              initialLoad={false}
-              loadMore={this.LoadMore}
-              hasMore={hasMore}
-            >
-              <PhotoListGallery photos={list} category={category} type="photo" />
-            </InfiniteScroll>
-            :
-            null
-        }
+        <InfiniteScroll
+          pageStart={0}
+          initialLoad={false}
+          loadMore={this.LoadMore}
+          hasMore={hasMore}
+        >
+          <PhotoListGallery photos={list} type="photos" />
+        </InfiniteScroll>
       </div>
     )
   }

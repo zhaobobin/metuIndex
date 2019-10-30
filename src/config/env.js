@@ -68,6 +68,7 @@ module.exports = {
     qqLoginState: 'metuIndex-QqLoginState', // QQ授权登录state
 
     accountAuth: 'metuIndex-accountAuth', // 帐号身份验证
+    ossToken: 'metuIndex-ossToken', // ossToken
 
   },
 

@@ -4,7 +4,7 @@ import { Link } from 'dva/router';
 import { Row, Col, Affix, Menu } from 'antd';
 import styles from './Community.less';
 
-import PhotosListQuery from '@/blocks/Photo/PhotosListQuery';
+import PhotoListQuery from '@/blocks/Photo/PhotoListQuery';
 
 @connect(state => ({
   global: state.global,
@@ -16,7 +16,6 @@ export default class Community extends React.Component {
     this.ajaxFlag = true;
     this.state = {
       pathname: this.props.location.pathname,
-      key: '',
     }
   }
 
@@ -34,7 +33,7 @@ export default class Community extends React.Component {
 
     const queryOption = {
       keyword: current,
-      itemsPerPage: 6,                 //每页数量
+      per_page: 6,                 //每页数量
     };
 
     return (
@@ -70,7 +69,9 @@ export default class Community extends React.Component {
           <Col xs={0} sm={0} md={1} lg={1} />
           <Col xs={24} sm={24} md={22} lg={22}>
 
-            <PhotosListQuery api="api/PhotosList" {...queryOption} />
+            <div className={styles.list}>
+              <PhotoListQuery url="/photos" {...queryOption} />
+            </div>
 
           </Col>
           <Col xs={0} sm={0} md={1} lg={1} />

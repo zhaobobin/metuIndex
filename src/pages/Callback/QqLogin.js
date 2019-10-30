@@ -6,8 +6,7 @@ import React from 'react';
 import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
 import { Row, Col } from 'antd';
-import ENV from '@/config/env'
-import Storage from '@/utils/storage';
+import { ENV, Storage } from '@/utils';
 import { getUrlParams } from '@/utils/utils'
 import styles from './QqLogin.less'
 

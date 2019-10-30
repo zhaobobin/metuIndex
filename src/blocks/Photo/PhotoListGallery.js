@@ -82,7 +82,7 @@ export default class PhotoListGallery extends React.Component {
         let src = photos[i].thumb.url + '?x-oss-process=style/thumb';
         let photo = {
           _id: photos[i]._id,
-          uid: photos[i].uid,
+          author: photos[i].author,
           title: photos[i].title,
           src: src,
           width: parseInt(photos[i].thumb.width, 10),
@@ -97,8 +97,7 @@ export default class PhotoListGallery extends React.Component {
     return(
       <div ref={measureRef}>
         <Gallery
-          photos=
-            {photoList}
+          photos={photoList}
           columns={columns}
           margin={5}
           ImageComponent={PhotoListItem}

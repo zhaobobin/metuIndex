@@ -12,7 +12,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import { Row, Col, Icon, Upload, Modal, notification } from 'antd';
-import Storage from '@/utils/storage';
+import { Storage } from '@/utils';
 import { file2base64 } from "@/utils/utils";
 import styles from './UploadPhoro.less'
 

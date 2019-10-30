@@ -26,7 +26,7 @@ export default class PhotoListMasonry extends  React.Component {
         <Col key={index} xs={12} sm={12} md={8} lg={6} className={styles.photoItem}>
           {
             topic.modelType === 'article' ?
-              <Link className={styles.article} to={`/${topic.modelType}/${topic._id}/${topic.title}-by-${topic.uid.nickname}`}>
+              <Link className={styles.article} to={`/${topic.modelType}/${topic._id}/${topic.title}-by-${topic.author.nickname}`}>
                 {
                   topic.thumb ?
                     <img src={`${topic.thumb.url}?x-oss-process=style/thumb`} alt={topic.title} />
@@ -36,7 +36,7 @@ export default class PhotoListMasonry extends  React.Component {
                 <p className={styles.info}><span className={styles.title}>{topic.title}</span></p>
               </Link>
               :
-              <Link className={styles.photo} to={`/${type}/${topic._id}/${topic.title}-by-${topic.uid.nickname}`}>
+              <Link className={styles.photo} to={`/${type}/${topic._id}/${topic.title}-by-${topic.author.nickname}`}>
                 <img className={styles.thumb} src={`${topic.thumb.url}?x-oss-process=style/thumb`} alt={topic.title} />
                 <p className={styles.cover}><span className={styles.title}>{topic.title}</span></p>
               </Link>

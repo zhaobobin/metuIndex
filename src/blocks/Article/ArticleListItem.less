@@ -1,0 +1,95 @@
+.item {
+  padding: 20px 0;
+  border-bottom: 1px solid #eaeaea;
+  .body {
+    overflow: hidden;
+    .thumb {
+      float: left;
+      width: 180px;
+      height: 150px;
+      background: #f1f1f1;
+      position: relative;
+      overflow: hidden;
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+        margin: auto;
+        transition: all .3s;
+        position: absolute;
+        left: -999px;
+        top: -999px;
+        right: -999px;
+        bottom: -999px;
+      }
+      &:hover img {
+        transform: scale(1.1);
+      }
+    }
+    .info {
+      margin-left: 200px;
+      h2 {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 2em;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        a {
+          color: #333;
+          &:hover {
+            color: #1890ff
+          }
+        }
+      }
+      .desc {
+        display: -webkit-box;
+        font-size: 16px;
+        line-height: 1.7em;
+        color: #999;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 4;
+        overflow: hidden;
+      }
+    }
+  }
+
+  .foot {
+    margin-top: 10px;
+    padding: 0 10px;
+    line-height: 20px;
+    overflow: hidden;
+    p {
+      margin: 0;
+    }
+    .tags {
+      float: left;
+      width: 50%;
+      min-height: 20px;
+      font-size: 14px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      a {
+        display: inline-block;
+        margin-right: 15px;
+        color: #666;
+        &:hover {
+          color: #1890ff
+        }
+      }
+    }
+    .handler {
+      float: left;
+      width: 50%;
+      min-height: 20px;
+      font-size: 14px;
+      color: #999;
+      text-align: right;
+      span {
+        display: inline-block;
+        margin-left: 15px;
+      }
+    }
+  }
+}

@@ -5,8 +5,7 @@ import React from 'react';
 import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
 import { Form, Button } from 'antd';
-import Validator from '@/utils/validator'
-import { Encrypt } from '@/utils/crypto'
+import { Validator, Encrypt } from '@/utils';
 import styles from './UserSign.less'
 
 import InputMobile from '@/components/Form/InputMobile'
@@ -160,11 +159,10 @@ export default class UserRegister extends React.Component {
         if (res.code === 0) {
           this.props.callback();
         }else{
-          const message = res.message.split(' ');
           this.props.form.setFields({
-            [message[0]]: {
+            [res.error_key]: {
               value: '',
-              errors: [new Error(message[1])]
+              errors: [new Error(res.message)]
             }
           });
         }

@@ -12,7 +12,7 @@ export default function ArticleDetailShow ({detail}) {
         <h1>{detail.title}</h1>
 
         {
-          detail.uid ?
+          detail.author ?
             <div className={styles.author}>
               <ArticleAuthorInfo detail={detail}/>
             </div>

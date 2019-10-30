@@ -5,7 +5,6 @@
  */
 import React, { PureComponent } from 'react';
 import RGL, { Responsive, WidthProvider } from "react-grid-layout";
-import PhotoItem from './PhotoItem';
 import styles from './PhotoList.less';
 
 const ReactGridLayout = WidthProvider(RGL);

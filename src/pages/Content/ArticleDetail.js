@@ -4,7 +4,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import { Row, Col } from 'antd';
-import ENV from '@/config/env'
+import { ENV } from '@/utils';
 import styles from './ArticleDetail.less';
 
 import Loading from '@/components/Common/Loading';
@@ -39,15 +39,15 @@ export default class ArticleDetail extends React.Component {
 
   queryArticleDetail(id){
     this.props.dispatch({
-      type: 'global/post',
-      url: '/api/ArticleDetail',
-      payload: {
-        id: id
-      },
+      type: 'global/request',
+      url: `/articles/${id}`,
+      method: 'GET',
+      payload: {},
       callback: (res) => {
-        if(res.status === 1){
+        if(res.code === 0){
+          window.scrollTo(0, 0);
           let data = res.data;
-          document.title = data.title + " - " + data.uid.nickname + " - " + ENV.appname;
+          document.title = data.title + " - " + data.author.nickname + " - " + ENV.appname;
           if(data.tags && typeof(data.tags) === 'string') data.tags = data.tags.split(',');
           this.setState({
             id: id,
@@ -76,10 +76,10 @@ export default class ArticleDetail extends React.Component {
 
                 <div className={styles.comment}>
                   {
-                    detail.allow_comment ?
-                      <CommentList id={id} />
-                      :
+                    detail.allow_comment === 0 ?
                       null
+                      :
+                      <CommentList id={id} />
                   }
                 </div>
 

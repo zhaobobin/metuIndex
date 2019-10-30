@@ -4,8 +4,8 @@
 import React from 'react'
 import { Link } from 'dva/router'
 import {connect} from 'dva'
-import {Button, Icon} from 'antd'
-import ENV from '@/config/env'
+import { Button, Icon } from 'antd'
+import { ENV } from '@/utils';
 import styles from './SettingsAuthenticate.less'
 
 @connect(state => ({

@@ -1,7 +1,7 @@
 /**
  * 内容发布 - 用于保存编辑文章的状态
  */
-import Request from '@/utils/request';
+import { Request } from "@/utils"
 
 export default {
 
@@ -11,23 +11,14 @@ export default {
 
     submitting: false,                    //提交状态
     publishType: '',                      //发布类型：文章、图片
-    content: '',                          //发布内容
+    content: '',                          //文章内容
+    images: '',                          //影集内容
     thumb: '',                            //缩略图（可选）
   },
 
   effects: {
-    *init({ payload }, { call, put }) {
-      const res = yield call(
-        (params) => {return Request('api/init', {method: 'POST', body: params})},
-        payload
-      );
-      if(res.status === 1){
-        yield put({
-          type: 'changeAppInfo',
-          payload: res,
-        });
-      }
-    },
+
+
 
   },
 
@@ -48,7 +39,7 @@ export default {
     savePhotoContent(state, {payload}) {
       return {
         ...state,
-        content: payload.content,
+        images: payload.images,
         thumb: payload.thumb,
       };
     },

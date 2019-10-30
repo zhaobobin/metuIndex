@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import { Modal } from 'antd';
-import ENV from '@/config/env'
+import { ENV } from '@/utils'
 import styles from './UserSignModal.less';
 
 import logo from '@/assets/logo.png'

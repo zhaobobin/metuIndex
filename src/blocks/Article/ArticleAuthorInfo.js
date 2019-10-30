@@ -5,6 +5,8 @@ import { Icon } from 'antd';
 import Moment from 'moment';
 import styles from './ArticleAuthorInfo.less'
 
+import SignAuth from '@/blocks/Auth/SignAuth'
+
 @connect(state => ({
   global: state.global,
 }))
@@ -18,28 +20,9 @@ export default class ArticleAuthorInfo extends React.Component {
     };
   }
 
-  //检查登录状态
-  checkLogin = () => {
-    let {isAuth} = this.props.global;
-    if(!isAuth){
-      this.props.dispatch({
-        type: 'global/changeSignModal',
-        payload: {
-          signModalVisible: true,
-          signTabKey: '1',
-        }
-      });
-      this.ajaxFlag = true;
-      return false;
-    }
-    return true;
-  };
-
   //关注
-  handleFollow = () => {
-    if(!this.ajaxFlag) return;
-    this.ajaxFlag = false;
-    if(!this.checkLogin()) return false;								//检查登录状态
+  followingUser = () => {
+    // todo
   };
 
   render(){
@@ -49,30 +32,39 @@ export default class ArticleAuthorInfo extends React.Component {
 
     return(
       <div className={styles.container}>
-        <Link to={`/u/${detail.uid.username}`} className={styles.avatar}>
+        <Link to={`/users/${detail.author.username}`} className={styles.avatar}>
           {
-            detail.uid.avatar ?
-              <img src={detail.uid.avatar + '?x-oss-process=style/thumb_s'} alt="avatar"/>
+            detail.author.avatar_url ?
+              <img src={detail.author.avatar_url + '?x-oss-process=style/thumb_s'} alt="avatar"/>
               :
               <Icon type="user" />
           }
         </Link>
         <p>
-          <Link to={`/u/${detail.uid.username}`}>
-            <span>{detail.uid.nickname}</span>
+          <Link to={`/users/${detail.author.username}`}>
+            <span>{detail.author.nickname}</span>
           </Link>
         </p>
         <p className={styles.date}>
-          <span>{Moment(detail.createtime).format('YYYY-MM-DD')}</span>
-          <span><Icon type="eye-o" /> {detail.views}</span>
+          <span>{Moment(detail.create_at).format('YYYY-MM-DD')}</span>
+          <span><Icon type="eye-o" /> {detail.view_number}</span>
         </p>
         {
-          detail.uid._id === uid ?
+          detail.author._id === uid ?
             null
             :
-            <a className={styles.follow} onClick={this.handleFollow}>
+            <a className={styles.follow}>
               {
-                this.state.followState ? <span>已关注</span> : <span>关注</span>
+                this.state.followState ?
+                  <span>已关注</span>
+                  :
+                  <SignAuth
+                    onRef={ref => this.signAuth = ref}
+                    callback={this.followingUser}
+                  >
+                    <span onClick={() => this.signAuth.check()}>关注</span>
+                  </SignAuth>
+
               }
             </a>
         }

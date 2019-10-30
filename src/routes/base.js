@@ -53,7 +53,7 @@ const BaseRoutes = app => [
         component: dynamicWrapper(app, ['oss'], () => import('../pages/Content/PhotosDetail')),
       },
       {
-        name: '照片',
+        name: '图片',
         id: 'menu.photo',
         key: 'photo',
         path: 'photo/:id/:title',
@@ -107,7 +107,7 @@ const BaseRoutes = app => [
         id: 'menu.course',
         key: 'course',
         path: 'course',
-        component: dynamicWrapper(app, [], () => import('../pages/Discover/Course')),
+        component: dynamicWrapper(app, [], () => import('../pages/Content/Course')),
       },
       {
         name: '器材',

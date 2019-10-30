@@ -1,6 +1,7 @@
 import ENV from './src/config/env';
 const path = require('path');
-console.log(ENV)
+// console.log(ENV)
+
 export default {
   "entry": "src/index.js",
   "outputPath": "./dist/index/",

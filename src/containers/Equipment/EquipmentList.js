@@ -6,8 +6,7 @@ import React from 'react';
 import { connect } from 'dva';
 import { Link, NavLink } from 'dva/router';
 import { Card, Table } from 'antd';
-import ENV from '@/config/env'
-import Storage from '@/utils/storage';
+import { ENV, Storage } from '@/utils';
 
 import styles from './Equipment.less';
 

@@ -5,7 +5,7 @@ import React from 'react';
 import { connect } from 'dva';
 import { notification } from 'antd';
 import { goBack } from "@/utils/utils";
-import ENV from '@/config/env'
+import { ENV } from '@/utils';
 import styles from './PhotoDetail.less';
 
 import PhotoSwiper from '@/blocks/Photo/PhotoSwiper';
@@ -14,40 +14,46 @@ import PhotoInfo from '@/blocks/Photo/PhotoInfo';
 
 import CommentList from '@/containers/Comment/CommentList';
 
-
 @connect(state => ({
   global: state.global,
 }))
-export default class AlbumDetail extends React.Component {
+export default class PhotosDetail extends React.Component {
 
-  state = {
-    id: this.props.match.params.id,                                           //文章id
-    detail: '',
-    currentPhoto: ''
-  };
-
-  componentDidMount(){
-    let id = this.state.id;
-    this.queryArticleDetail(id);
+  constructor(props){
+    super(props);
+    this.state = {
+      detail: '',
+      currentPhoto: ''
+    };
   }
 
-  queryArticleDetail(id){
+  componentDidMount(){
+    let id = this.props.match.params.id;
+    this.queryDetail(id);
+  }
+
+  UNSAFE_componentWillReceiveProps(nextProps){
+    if(nextProps.match.params.id !== this.props.match.params.id) {
+      let id = nextProps.match.params.id;
+      this.queryDetail(id);
+    }
+  }
+
+  queryDetail(id){
     this.props.dispatch({
-      type: 'global/post',
-      url: '/api/PhotosDetail',
-      payload: {
-        id: id
-      },
+      type: 'global/request',
+      url: `/photos/${id}`,
+      method: 'GET',
+      payload: {},
       callback: (res) => {
-        if(res.status === 1){
+        if(res.code === 0){
           let data = res.data;
-          document.title = data.title + " - " + data.uid.nickname + " - " + ENV.appname;
-          if(typeof(data.content) === 'string') data.content = JSON.parse(data.content);			//转换图片列表数据
+          document.title = data.title + " - " + data.author.nickname + " - " + ENV.appname;
           if(data.tags && typeof(data.tags) === 'string') data.tags = data.tags.split(',');
 
           this.setState({
             detail: data,
-            currentPhoto: data.content[0]
+            currentPhoto: data.images[0]
           });
         }else{
           notification.error({message: '提示', description: res.msg});
@@ -71,7 +77,7 @@ export default class AlbumDetail extends React.Component {
         <div className={styles.photoContent}>
           {
             currentPhoto ?
-              <PhotoSwiper list={detail.content} currentKey={0} callback={this.changeCurrentPhoto} />
+              <PhotoSwiper list={detail.images} currentKey={0} callback={this.changeCurrentPhoto} />
               : null
           }
         </div>
@@ -81,7 +87,7 @@ export default class AlbumDetail extends React.Component {
             <div className={styles.photoSlide}>
 
               <div className={styles.head}>
-                <PhotoAction data={detail} />
+                {/*<PhotoAction data={detail} />*/}
               </div>
 
               <div className={styles.body}>

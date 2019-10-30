@@ -4,8 +4,6 @@
 import React from 'react';
 import { connect } from 'dva';
 import { Modal } from 'antd';
-import ENV from '@/config/env'
-import Storage from '@/utils/storage'
 
 @connect(state => ({
   global: state.global,

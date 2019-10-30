@@ -5,7 +5,7 @@ import React from 'react';
 import { Redirect } from 'dva/router';
 import { connect } from 'dva';
 import { Button, Icon } from 'antd'
-import ENV from '@/config/env'
+import { ENV } from '@/utils';
 import styles from './SettingsBind.less'
 
 @connect(state => ({

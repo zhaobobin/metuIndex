@@ -4,11 +4,12 @@
 import React from 'react';
 import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
-import { Form, Input, Select, Button, Modal, notification } from 'antd';
+import { Form, Input, Select, Button, Modal } from 'antd';
 import styles from './PublishSlide.less';
 
 import PublishConfig from './PublishConfig'
 // import UploadPhoto from '@/components/Form/UploadPhoto'
+import { Toast } from '@/components'
 import InputText from '@/components/Form/InputText'
 
 const FormItem = Form.Item;
@@ -59,14 +60,14 @@ export default class PublishRight extends React.Component {
     const {global, publish} = this.props;
 
     this.props.form.validateFields('', (err, values) => {
+      console.log(values)
       if(!err){
-        values.uid = global.currentUser._id;
-        for(let i in publish.content){
-          delete publish.content[i].loading;
-          delete publish.content[i].cover;
-          delete publish.content[i].base64;
+        for(let i in publish.images){
+          delete publish.images[i].loading;
+          delete publish.images[i].cover;
+          delete publish.images[i].base64;
         }
-        values.content = JSON.stringify(publish.content);
+        values.images = JSON.stringify(publish.images);
         values.thumb = publish.thumb || '';
         if(values.tags) values.tags = values.tags.join(',');
         this.saveData(values)
@@ -79,26 +80,30 @@ export default class PublishRight extends React.Component {
 
   // 保存数据
   saveData(params){
-    let api = '',
-      id = this.props.id;
-    if(id){
-      api = '/api/PhotosUpdate';
-      params.id = id;
-    }else{
-      api = '/api/PhotosAdd';
-    }
+    let id = this.props.id;
+    if(id) params.id = id;
     //保存时，执行ossDel列表对应文件的删除操作
     this.props.dispatch({
-      type: 'global/post',
-      url: api,
+      type: 'global/request',
+      url: '/photos',
+      method: id ? 'PATCH' : 'POST',
       payload: params,
       callback: (res) => {
         this.ajaxFlag = true;
-        if(res.status === 1){
+        if(res.code === 0){
           this.props.form.resetFields();
-          this.props.dispatch(routerRedux.push('/u/'+this.props.global.currentUser.username));
+          Toast.info(res.message, 2)
         }else{
-          notification.error({message: res.msg || res.msg.message});
+          if(res.error_key) {
+            this.props.form.setFields({
+              [res.error_key]: {
+                value: '',
+                errors: [new Error(res.message)]
+              }
+            });
+          } else {
+            Toast.info(res.message, 2)
+          }
         }
       }
     });
@@ -209,7 +214,7 @@ export default class PublishRight extends React.Component {
             size="large"
             type="primary"
             htmlType="submit"
-            disabled={!publish.content || global.submitting}
+            disabled={!publish.images || global.submitting}
           >
             发布
           </Button>

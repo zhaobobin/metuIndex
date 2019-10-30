@@ -96,6 +96,7 @@ export default class PublishPhotoContent extends React.Component {
     file2base64(file, (base64) => {
       let imgData = {
         loading: true,                                            //加载状态
+        author: uid,                                              //作者id
         cover: false,                                             //是否作为封面
         key,                                                      //对应oss中的键值
         name: option.name,                                        //完整文件名
@@ -133,26 +134,28 @@ export default class PublishPhotoContent extends React.Component {
               if(photoList[i].name === option.name){
                 photoList[i].loading = false;
                 photoList[i].url = url;
-                photoList[i].exif = exif;
+                photoList[i].exif = exif ? JSON.stringify(exif) : '';
                 //相机
-                photoList[i].camera = exif.Model.value ? {
-                  brand: exif.Model.value.split(' ')[0],
-                  brandName: exif.Model.value.split(' ')[0].toLowerCase(),
-                  model: exif.Model.value,
-                  modelName: exif.Model.value.replace(/\s+/g, "-").toLowerCase()
-                } : '';
-                //镜头
-                photoList[i].lens = exif.LensModel.value ? {
-                  brand: exif.LensModel.value.split(' ')[0],
-                  brandName: exif.LensModel.value.split(' ')[0].toLowerCase(),
-                  model: exif.LensModel.value,
-                  modelName: exif.LensModel.value.replace(/\s+/g, "-").toLowerCase()
-                } : '';
-                //曝光
-                photoList[i].exposure = {
-                  FNumber: exif.FNumber ? exif.FNumber.value : '',
-                  ExposureTime: exif.ExposureTime ? exif.ExposureTime.value : '',
-                  ISOSpeedRatings: exif.ISOSpeedRatings ? exif.ISOSpeedRatings.value : ''
+                if(exif){
+                  photoList[i].camera = exif.Model.value ? {
+                    brand: exif.Model.value.split(' ')[0],
+                    brandName: exif.Model.value.split(' ')[0].toLowerCase(),
+                    model: exif.Model.value,
+                    modelName: exif.Model.value.replace(/\s+/g, "-").toLowerCase()
+                  } : '';
+                  //镜头
+                  photoList[i].lens = exif.LensModel.value ? {
+                    brand: exif.LensModel.value.split(' ')[0],
+                    brandName: exif.LensModel.value.split(' ')[0].toLowerCase(),
+                    model: exif.LensModel.value,
+                    modelName: exif.LensModel.value.replace(/\s+/g, "-").toLowerCase()
+                  } : '';
+                  //曝光
+                  photoList[i].exposure = {
+                    FNumber: exif.FNumber ? exif.FNumber.value : '',
+                    ExposureTime: exif.ExposureTime ? exif.ExposureTime.value : '',
+                    ISOSpeedRatings: exif.ISOSpeedRatings ? exif.ISOSpeedRatings.value : ''
+                  }
                 }
               }
             }
@@ -160,21 +163,23 @@ export default class PublishPhotoContent extends React.Component {
               photoList[0].cover = true;
             }
 
-            this.props.dispatch({
-              type: 'publish/savePhotoContent',
-              payload: {
-                content: photoList,
-                thumb: {
-                  url: photoList[0].url,
-                  width: photoList[0].width.toString(),
-                  height: photoList[0].height.toString()
-                },
-              }
-            });
-            console.log(photoList)
             this.setState({
               photoList,
             });
+
+            this.props.dispatch({
+              type: 'publish/savePhotoContent',
+              payload: {
+                images: photoList,
+                thumb: {
+                  url: photoList[0].url,
+                  width: photoList[0].width,
+                  height: photoList[0].height,
+                }
+              }
+            });
+            // console.log(photoList)
+
           }
         });
 

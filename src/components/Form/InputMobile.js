@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import { Input } from 'antd';
-import Validator from '@/utils/validator';
+import { Validator } from '@/utils';
 
 export default class InputMobile extends React.Component {
 

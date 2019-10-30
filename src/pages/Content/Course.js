@@ -3,8 +3,8 @@ import { connect } from 'dva';
 import { Row, Col } from 'antd';
 import styles from './Course.less';
 
+import ArticleListQuery from '@/blocks/Article/ArticleListQuery'
 import ArticleSearch from '@/containers/Article/ArticleSearch'
-import ArticleListQuery from '@/containers/Article/ArticleListQuery'
 import ArticleRank from '@/containers/Article/ArticleRank'
 import TagsRank from '@/containers/Tags/TagsRank'
 
@@ -16,26 +16,14 @@ export default class Course extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      keyword: "教程",
+      q: "教程",
+      url: '/articles'
     }
   }
 
   render(){
 
-    const {keyword} = this.state;
-    const {category} = this.props.global;
-
-    let currentCate = "教程";
-    for(let i in category){
-      if(keyword === category[i].name){
-        currentCate = category[i]._id
-      }
-    }
-
-    const queryOption = {
-      category: currentCate,
-      itemsPerPage: 10,                 //每页数量
-    };
+    const {url, q} = this.state;
 
     return(
       <div className={styles.container}>
@@ -48,10 +36,8 @@ export default class Course extends React.Component {
               <Col xs={24} sm={24} md={24} lg={17}>
 
                 <div className={styles.content}>
-
-                  <ArticleSearch/>
-
-                  <ArticleListQuery {...queryOption} />
+                  <ArticleSearch />
+                  <ArticleListQuery url={url} />
                 </div>
 
               </Col>

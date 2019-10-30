@@ -4,10 +4,11 @@
 import React from 'react';
 import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
-import { Form, Input, Select, Button, Modal, notification } from 'antd';
+import { Form, Input, Select, Button, Modal } from 'antd';
 import styles from './PublishSlide.less';
 
 // import UploadPhoto from '@/components/Form/UploadPhoto'
+import { Toast } from '@/components'
 import InputText from '@/components/Form/InputText'
 
 const FormItem = Form.Item;
@@ -72,27 +73,32 @@ export default class PublishRight extends React.Component {
   };
 
   // 提交
-  saveArticle(params){
-    let api = '',
-      id = this.props.id;
-    if(id){
-      api = '/api/ArticleUpdate';
-      params.id = id;
-    }else{
-      api = '/api/ArticleAdd';
-    }
+  saveArticle(values){
+    let id = this.props.id;
+    if(id) values.id = id;
+    console.log(values)
     //保存时，执行ossDel列表对应文件的删除操作
     this.props.dispatch({
-      type: 'global/post',
-      url: api,
-      payload: params,
+      type: 'global/request',
+      url: '/articles',
+      method: id ? 'PATCH' : 'POST',
+      payload: values,
       callback: (res) => {
         this.ajaxFlag = true;
         if(res.status === 1){
           this.props.form.resetFields();
-          this.props.dispatch(routerRedux.push('/u/'+this.props.global.currentUser.username));
+          this.props.dispatch(routerRedux.push('/users/'+this.props.global.currentUser.username));
         }else{
-          notification.error({message: res.msg});
+          if(res.error_key){
+            this.props.form.setFields({
+              [res.error_key]: {
+                value: '',
+                errors: [new Error(res.message)]
+              }
+            });
+          } else {
+            Toast.info(res.message, 2)
+          }
         }
       }
     });

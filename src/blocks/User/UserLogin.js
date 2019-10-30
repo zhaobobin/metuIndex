@@ -5,10 +5,7 @@ import React from 'react';
 import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
 import { Form, Icon, Button, Checkbox } from 'antd';
-import ENV from '@/config/env';
-import Validator from '@/utils/validator';
-import Storage from '@/utils/storage';
-import { Encrypt } from '@/utils/crypto';
+import { ENV, Storage, Validator, Encrypt } from '@/utils';
 import styles from './UserSign.less';
 
 import InputMobile from '@/components/Form/InputMobile'
@@ -208,11 +205,10 @@ export default class UserLogin extends React.Component {
         if(res.code === 0) {
           this.props.callback();
         }else{
-          const message = res.message.split(' ');
           this.props.form.setFields({
-            [message[0]]: {
+            [res.error_key]: {
               value: '',
-              errors: [new Error(message[1])]
+              errors: [new Error(res.message)]
             }
           });
         }

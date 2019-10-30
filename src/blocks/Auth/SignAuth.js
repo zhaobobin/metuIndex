@@ -21,7 +21,11 @@ export default class SignAuth extends React.Component {
   check = () => {
     const { isAuth } = this.props.global;
     if(isAuth) {
-      this.props.callback(isAuth);
+      if(this.props.callback) {
+        this.props.callback(isAuth);
+      } else {
+        return isAuth
+      }
     } else {
       this.showSignModal();
     }

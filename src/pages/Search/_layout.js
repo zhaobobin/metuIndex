@@ -10,7 +10,7 @@ import { Affix, Menu } from 'antd';
 import { getUrlParams } from "@/utils/utils"
 import styles from './_layout.less';
 
-import PhotosListQuery from '@/blocks/Photo/PhotosListQuery';
+// import PhotoListQuery from '@/blocks/Photo/PhotoListQuery';
 
 @connect(state => ({
   global: state.global,

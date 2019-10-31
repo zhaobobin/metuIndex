@@ -67,7 +67,7 @@ export default class PublishRight extends React.Component {
           delete publish.images[i].cover;
           delete publish.images[i].base64;
         }
-        values.images = JSON.stringify(publish.images);
+        values.images = publish.images;
         values.thumb = publish.thumb || '';
         if(values.tags) values.tags = values.tags.join(',');
         this.saveData(values)

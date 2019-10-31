@@ -66,9 +66,6 @@ export {
   default as SafetyOutline
 } from '@ant-design/icons/lib/outline/SafetyOutline';
 export {
-  default as MessageOutline
-} from '@ant-design/icons/lib/outline/MessageOutline';
-export {
   default as CloudUploadOutline
 } from '@ant-design/icons/lib/outline/CloudUploadOutline';
 export {
@@ -80,7 +77,30 @@ export {
 export {
   default as SearchOutline
 } from '@ant-design/icons/lib/outline/SearchOutline';
-
+export {
+  default as ArrowsAlt
+} from '@ant-design/icons/lib/outline/ArrowsAltOutline';
+export {
+  default as Shrink
+} from '@ant-design/icons/lib/outline/ShrinkOutline';
+export {
+  default as HeartOutline
+} from '@ant-design/icons/lib/outline/HeartOutline';
+export {
+  default as HeartFill
+} from '@ant-design/icons/lib/fill/HeartFill';
+export {
+  default as MessageOutline
+} from '@ant-design/icons/lib/outline/MessageOutline';
+export {
+  default as StarOutline
+} from '@ant-design/icons/lib/outline/StarOutline';
+export {
+  default as StarFill
+} from '@ant-design/icons/lib/fill/StarFill';
+export {
+  default as EllipsisOutline
+} from '@ant-design/icons/lib/outline/EllipsisOutline';
 
 // export what antd other components need
 // export {

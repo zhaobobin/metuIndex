@@ -63,6 +63,7 @@ export default class PhotoInfo extends React.Component {
 
     const { detail, currentPhoto } = this.props;
     // console.log(currentPhoto)
+    const currentPhotoExif = JSON.parse(currentPhoto.exif)
 
     //tags
     const tagsList = detail.tags ?
@@ -73,8 +74,8 @@ export default class PhotoInfo extends React.Component {
 
     //图片元数据详情
     let exifArr = [];
-    for(let i in currentPhoto.exif){
-      let o = {name: i, value: currentPhoto.exif[i].value}
+    for(let i in currentPhotoExif){
+      let o = {name: i, value: currentPhotoExif[i].value}
       exifArr.push(o)
     }
     const exifDetail = exifArr.length > 0 ?
@@ -105,7 +106,7 @@ export default class PhotoInfo extends React.Component {
               </div>
 
               {
-                currentPhoto.exif ?
+                currentPhotoExif ?
                   <div className={styles.section+" "+styles.exif}>
                     <ul>
                       <li key="model" className={styles.camera}>
@@ -128,9 +129,9 @@ export default class PhotoInfo extends React.Component {
                       {
                         currentPhoto.exposure ?
                           <li key="fn">
-                            <span>f{currentPhoto.exposure.FNumber},</span>
-                            <span>{currentPhoto.exposure.ExposureTime}s,</span>
-                            <span>ISO{currentPhoto.exposure.ISOSpeedRatings}</span>
+                            {currentPhoto.exposure.FNumber ? <span>f{currentPhoto.exposure.FNumber},</span> : null}
+                            {currentPhoto.exposure.ExposureTime ? <span>{currentPhoto.exposure.ExposureTime}s,</span> : null}
+                            {currentPhoto.exposure.ISOSpeedRatings ? <span>ISO{currentPhoto.exposure.ISOSpeedRatings}</span> : null}
                           </li>
                           :
                           ''

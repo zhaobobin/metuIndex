@@ -19,6 +19,7 @@ export default class SignAuth extends React.Component {
   }
 
   check = () => {
+
     const { isAuth } = this.props.global;
     if(isAuth) {
       if(this.props.callback) {
@@ -29,6 +30,7 @@ export default class SignAuth extends React.Component {
     } else {
       this.showSignModal();
     }
+
   }
 
   // 显示登录Modal

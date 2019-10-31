@@ -5,6 +5,7 @@ import { Icon } from 'antd';
 import Moment from 'moment';
 import styles from './ArticleAuthorInfo.less'
 
+import { Toast } from '@/components'
 import SignAuth from '@/blocks/Auth/SignAuth'
 
 @connect(state => ({
@@ -16,60 +17,93 @@ export default class ArticleAuthorInfo extends React.Component {
     super(props);
     this.ajaxFlag = true;
     this.state = {
-      followState: '',
+      loading: true,
+      following_state: '',
     };
   }
 
-  //关注
-  followingUser = () => {
-    // todo
+  componentDidMount(){
+    const {following_state} = this.props.detail;
+    this.setState({
+      loading: false,
+      following_state
+    })
+  }
+
+  // 关注
+  following = () => {
+
+    if(!this.ajaxFlag) return;
+    this.ajaxFlag = false;
+
+    if (!this.signAuth.check()) return;
+
+    const { following_state } = this.state;
+    const { detail } = this.props;
+
+    this.props.dispatch({
+      type: 'global/request',
+      url: `/users/following/${detail.author._id}`,
+      method: following_state ? 'DELETE' : 'PUT',
+      payload: {},
+      callback: (res) => {
+        setTimeout(() => { this.ajaxFlag = true }, 500);
+        if(res.code === 0) {
+          this.setState({
+            following_state: res.data.following_state
+          })
+        } else {
+          Toast.info(res.message, 2)
+        }
+      }
+    })
+
   };
 
   render(){
 
+    const { loading, following_state } = this.state
     const { detail } = this.props;
-    const uid = this.props.global.currentUser._id;
+    const { currentUser } = this.props.global;
 
     return(
-      <div className={styles.container}>
-        <Link to={`/users/${detail.author.username}`} className={styles.avatar}>
-          {
-            detail.author.avatar_url ?
-              <img src={detail.author.avatar_url + '?x-oss-process=style/thumb_s'} alt="avatar"/>
-              :
-              <Icon type="user" />
-          }
-        </Link>
-        <p>
-          <Link to={`/users/${detail.author.username}`}>
-            <span>{detail.author.nickname}</span>
-          </Link>
-        </p>
-        <p className={styles.date}>
-          <span>{Moment(detail.create_at).format('YYYY-MM-DD')}</span>
-          <span><Icon type="eye-o" /> {detail.view_number}</span>
-        </p>
+      <>
         {
-          detail.author._id === uid ?
+          loading ?
             null
             :
-            <a className={styles.follow}>
+            <div className={styles.container}>
+              <Link to={`/users/${detail.author.username}`} className={styles.avatar}>
+                {
+                  detail.author.avatar_url ?
+                    <img src={detail.author.avatar_url + '?x-oss-process=style/thumb_s'} alt="avatar"/>
+                    :
+                    <Icon type="user" />
+                }
+              </Link>
+              <p>
+                <Link to={`/users/${detail.author.username}`}>
+                  <span>{detail.author.nickname}</span>
+                </Link>
+              </p>
+              <p className={styles.date}>
+                <span>{Moment(detail.create_at).format('YYYY-MM-DD')}</span>
+                <span><Icon type="eye-o" /> {detail.view_number}</span>
+              </p>
               {
-                this.state.followState ?
-                  <span>已关注</span>
+                detail.author._id === currentUser._id ?
+                  null
                   :
-                  <SignAuth
-                    onRef={ref => this.signAuth = ref}
-                    callback={this.followingUser}
-                  >
-                    <span onClick={() => this.signAuth.check()}>关注</span>
-                  </SignAuth>
-
+                  <a className={styles.follow} onClick={this.following}>
+                    <span>{following_state ? '已关注' : '关注'}</span>
+                  </a>
               }
-            </a>
-        }
 
-      </div>
+              <SignAuth onRef={ref => this.signAuth = ref} />
+
+            </div>
+        }
+      </>
     )
   }
 

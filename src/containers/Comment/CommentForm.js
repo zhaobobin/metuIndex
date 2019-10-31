@@ -25,13 +25,8 @@ export default class CommentForm extends React.Component {
     };
   }
 
-  //检查登录状态
-  checkLogin = () => {
-    return this.signAuth.check();
-  };
-
   focusHandle = () => {
-    this.checkLogin();
+    this.signAuth.check();
   };
 
   blurHandle = () => {
@@ -42,7 +37,7 @@ export default class CommentForm extends React.Component {
   commentSubmit = (e) => {
 
     e.preventDefault();
-    if (!this.checkLogin()) return;												      //检查登录状态
+    if (!this.signAuth.check()) return;												      //检查登录状态
 
     this.props.form.validateFields('', (err, values) => {
       if (!err) {

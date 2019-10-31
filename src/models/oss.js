@@ -4,7 +4,7 @@
  let key = this.props.global.currentUser._id + '/photo_' + new Date().getTime() + '.' + file.name.split('.')[1];
  */
 import { notification } from 'antd'
-import { ENV, Storage, Request } from '@/utils'
+import { ENV, Storage, Request, FetchGet } from '@/utils'
 
 const getClient = function (data) {
   return new window.OSS.Wrapper({
@@ -88,12 +88,8 @@ export default {
 
       let url = payload.url + '?x-oss-process=image/info';
 
-      const exif = yield Request(url, { method: 'GET' })
+      const exif = yield FetchGet(url)
 
-      if (exif && exif.FNumber) {
-        let FNumber = exif.FNumber.value                              //转换光圈值
-        exif.FNumber.value = (FNumber.split('/')[0] / FNumber.split('/')[1]).toString()
-      }
       yield callback(exif);
 
     },

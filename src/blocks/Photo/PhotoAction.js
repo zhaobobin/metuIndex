@@ -6,7 +6,9 @@ import { connect } from 'dva';
 import { Icon } from 'antd';
 import styles from './PhotoAction.less';
 
+import { Toast } from '@/components'
 import CusShare from '@/blocks/Article/CusShare'
+import SignAuth from '@/blocks/Auth/SignAuth'
 
 @connect(state => ({
   global: state.global,
@@ -28,7 +30,7 @@ export default class PhotoAction extends PureComponent {
   componentDidMount(){
     let data = this.props.data,
       {global} = this.props;
-    this.initArticle(data, global)
+    //this.initArticle(data, global)
   }
 
   //处理用户登录、退出时，重新渲染文章数据
@@ -38,109 +40,61 @@ export default class PhotoAction extends PureComponent {
     }
   }
 
+  // 初始化文章状态
   initArticle(data, global){
-    let {isAuth, currentUser} = global;
-    //判断当前用户的喜欢、收藏
-    let likeState = isAuth ? data.like.indexOf(currentUser._id) > -1 : false,
-      collectState = isAuth ? currentUser.collect.indexOf(data._id) > -1 : false,
-      followState = isAuth ? currentUser.follow.indexOf(data.uid._id) > -1 : false;
 
-    this.setState({
-      detail: data,
-      likeCount: data.like.length,
-      likeState: likeState,
-      collectState: collectState,
-      followState: followState,
-    });
   }
 
-  //检查登录状态
-  checkLogin = () => {
-    let {isAuth} = this.props.global;
-    if(!isAuth){
-      this.props.dispatch({
-        type: 'global/changeSignModal',
-        payload: {
-          signModalVisible: true,
-          signTabKey: '1',
-        }
-      });
-      this.ajaxFlag = true;
-      return false;
+  // 检查权限：未登录、本人
+  checkAuth = () => {
+    if (!this.signAuth.check()) return false;
+    const {detail} = this.props;
+    const {currentUser} = this.props.global
+    return detail.author._id !== currentUser._id
+  }
+
+  // 点赞
+  favor = () => {
+
+    if(!this.ajaxFlag) return;
+    this.ajaxFlag = false;
+
+    if(!this.checkAuth()) return;
+
+    const {detail} = this.props;
+    if(detail.favoring_state) {
+
+    } else {
+
     }
-    return true;
-  };
 
-  //喜欢
-  handleLike = () => {
+    setTimeout(() => { this.ajaxFlag = true }, 500);
+
+  }
+
+  // 收藏
+  collect = () => {
+
     if(!this.ajaxFlag) return;
     this.ajaxFlag = false;
-    if(!this.checkLogin()) return false;								//检查登录状态
 
-    let {global} = this.props;
-    let _id = this.state.detail._id,
-      uid = this.props.global.currentUser._id,
-      action = this.state.likeState ? 'del' : 'add';
+    if(!this.checkAuth()) return;
 
-    this.props.dispatch({
-      type: 'global/post',
-      url: 'api/ArticleLike',
-      payload: {
-        _id: _id,
-        uid: uid,
-        action: action,
-      },
-      callback: (res) => {
-        this.initArticle(res.data, global);
-        setTimeout(() => {this.ajaxFlag = true}, 500)
-      }
-    });
+    const {detail} = this.props;
+    if(detail.collecting_state) {
 
-  };
+    } else {
 
-  //收藏
-  handleCollect = () => {
-    if(!this.ajaxFlag) return;
-    this.ajaxFlag = false;
-    if(!this.checkLogin()) return false;								//检查登录状态
+    }
 
-    let _id = this.state.detail._id,
-      uid = this.props.global.currentUser._id,
-      action = this.state.collectState ? 'del' : 'add';
+    setTimeout(() => { this.ajaxFlag = true }, 500);
 
-    this.props.dispatch({
-      type: 'global/post',
-      url: 'api/UserCollect',
-      payload: {
-        _id: _id,
-        uid: uid,
-        action: action,
-      },
-      callback: (res) => {
-        if(res.status === 1) this.setState({collectState: !this.state.collectState});
-        setTimeout(() => {this.ajaxFlag = true}, 500)
-      }
-    });
-
-  };
-
-  //关注
-  handleFollow = () => {
-
-  };
-
-  //显示exif详情
-  showExifDetail = () => {
-    this.setState({exifShow: styles.show})
-  };
-  //隐藏exif详情
-  closeExifDetail = () => {
-    this.setState({exifShow: ''})
-  };
+  }
 
   render(){
 
-    const {detail, likeState, likeCount, collectState} = this.state;
+    const { detail } = this.props;
+    const { likeState, likeCount, collectState} = this.state;
 
     return(
 
@@ -149,14 +103,14 @@ export default class PhotoAction extends PureComponent {
           detail ?
             <ul>
               <li className={styles.li1}>
-                <a title="喜欢" onClick={this.handleLike}>
-                  <Icon type={likeState ? "heart" : "heart-o"} />
-                  <span className={styles.count}>{likeCount}</span>
+                <a title="点赞" onClick={this.favor}>
+                  <Icon type={detail.favoring_state ? "heart" : "heart-o"} />
+                  <span className={styles.count}>{detail.favor_number}</span>
                 </a>
               </li>
               <li className={styles.li2}>
                 <Icon type="message" />
-                <span className={styles.count}>{detail.comments.length}</span>
+                <span className={styles.count}>{detail.comment_number}</span>
               </li>
               <li className={styles.li3}>
                 <CusShare/>
@@ -164,8 +118,8 @@ export default class PhotoAction extends PureComponent {
               <li className={styles.li4}>
                 <Icon type="ellipsis" />
                 <div className={styles.menu}>
-                  <a title="收藏" onClick={this.handleCollect}>
-                    <Icon type={collectState ? "star" : "star-o"} /> 收藏
+                  <a title="收藏" onClick={this.collect}>
+                    <Icon type={detail.collect_state ? "star" : "star-o"} /> 收藏
                   </a>
                   <a>举报</a>
                 </div>
@@ -174,6 +128,9 @@ export default class PhotoAction extends PureComponent {
             </ul>
             : null
         }
+
+        <SignAuth onRef={ref => this.signAuth = ref} />
+
       </div>
 
     )

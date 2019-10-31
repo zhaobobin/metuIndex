@@ -87,7 +87,7 @@ export default class PhotosDetail extends React.Component {
             <div className={styles.photoSlide}>
 
               <div className={styles.head}>
-                {/*<PhotoAction data={detail} />*/}
+                <PhotoAction detail={detail} />
               </div>
 
               <div className={styles.body}>

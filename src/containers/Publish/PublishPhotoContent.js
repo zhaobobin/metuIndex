@@ -96,7 +96,6 @@ export default class PublishPhotoContent extends React.Component {
     file2base64(file, (base64) => {
       let imgData = {
         loading: true,                                            //加载状态
-        author: uid,                                              //作者id
         cover: false,                                             //是否作为封面
         key,                                                      //对应oss中的键值
         name: option.name,                                        //完整文件名
@@ -130,21 +129,22 @@ export default class PublishPhotoContent extends React.Component {
             url
           },
           callback: (exif) => {
+            console.log(exif)
             for(let i in photoList){
               if(photoList[i].name === option.name){
                 photoList[i].loading = false;
                 photoList[i].url = url;
                 photoList[i].exif = exif ? JSON.stringify(exif) : '';
-                //相机
                 if(exif){
-                  photoList[i].camera = exif.Model.value ? {
+                  //相机
+                  photoList[i].camera = exif.Model ? {
                     brand: exif.Model.value.split(' ')[0],
                     brandName: exif.Model.value.split(' ')[0].toLowerCase(),
                     model: exif.Model.value,
                     modelName: exif.Model.value.replace(/\s+/g, "-").toLowerCase()
                   } : '';
                   //镜头
-                  photoList[i].lens = exif.LensModel.value ? {
+                  photoList[i].lens = exif.LensModel ? {
                     brand: exif.LensModel.value.split(' ')[0],
                     brandName: exif.LensModel.value.split(' ')[0].toLowerCase(),
                     model: exif.LensModel.value,
@@ -152,9 +152,9 @@ export default class PublishPhotoContent extends React.Component {
                   } : '';
                   //曝光
                   photoList[i].exposure = {
-                    FNumber: exif.FNumber ? exif.FNumber.value : '',
-                    ExposureTime: exif.ExposureTime ? exif.ExposureTime.value : '',
-                    ISOSpeedRatings: exif.ISOSpeedRatings ? exif.ISOSpeedRatings.value : ''
+                    FNumber: exif.FNumber ? exif.FNumber.value.split('/')[0] : '', // 光圈
+                    ExposureTime: exif.ExposureTime ? exif.ExposureTime.value : '', // 速度
+                    ISOSpeedRatings: exif.ISOSpeedRatings ? exif.ISOSpeedRatings.value : '' // iso
                   }
                 }
               }

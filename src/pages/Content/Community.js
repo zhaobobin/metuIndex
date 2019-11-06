@@ -32,7 +32,7 @@ export default class Community extends React.Component {
       current = keyword ? keyword.split('-')[0] : 'popular';
 
     const queryOption = {
-      keyword: current,
+      filter: current,
       per_page: 6,                 //每页数量
     };
 

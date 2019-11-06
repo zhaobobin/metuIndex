@@ -19,14 +19,10 @@ export default class PhotoListQuery extends React.Component {
     this.ajaxFlag = true;
     this.state = {
 
-      params: {
-        keyword: this.props.keyword || '',
-        topics: this.props.topics || '',
-      },
-
-      page: this.props.page || 1,					      //当前页数
-      per_page: this.props.per_page || 10,			      //每页数量
-      maxQueryPage: this.props.maxQueryPage || undefined,    //最大查询页数，默认undefined
+      filter: '',                               // 筛选条件
+      page: this.props.page || 1,					      // 当前页数
+      per_page: this.props.per_page || 10,			      // 每页数量
+      maxQueryPage: this.props.maxQueryPage || undefined,    // 最大查询页数，默认undefined
       initializing: 1,
 
       url: '',
@@ -38,19 +34,18 @@ export default class PhotoListQuery extends React.Component {
   }
 
   componentDidMount(){
-    let {url} = this.props;
-    this.queryPhotoList(url, {
-      ...this.state.params,
+    this.queryPhotoList(this.props.url, {
+      filter: this.props.filter,
       page: this.state.page,
       per_page: this.state.per_page
     })
   }
 
   UNSAFE_componentWillReceiveProps(nextProps){
-    if(nextProps.url !== this.props.url || nextProps.keyword !== this.props.keyword) {
+    if(nextProps.url !== this.props.url || nextProps.filter !== this.props.filter) {
       this.queryPhotoList(nextProps.url, {
         clearList: true,
-        keyword: nextProps.keyword,
+        filter: nextProps.filter,
         page: 1,
         per_page: this.state.per_page
       });
@@ -72,7 +67,7 @@ export default class PhotoListQuery extends React.Component {
           this.setState({
             url,
             loading: false,
-            params: query.params,
+            filter: query.filter,
             page: this.state.page + 1,
             list: list.concat(res.data.list),
             total: res.data.count,
@@ -95,7 +90,7 @@ export default class PhotoListQuery extends React.Component {
     let _this = this;
     setTimeout(function(){
       _this.queryPhotoList(url, {
-        params: _this.state.params,
+        filter: _this.state.filter,
         page: _this.state.page,
         per_page: _this.state.per_page
       });

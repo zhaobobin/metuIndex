@@ -5,7 +5,6 @@
   left: 0;
   top: 0;
   z-index: 1000;
-  background: #000;
 
   .photoContent{
     float: left;
@@ -19,16 +18,28 @@
     float: left;
     width: 20%;
     height: 100%;
-    border-left: 1px solid #1c1d1e;
     position: relative;
 
-    .head{height:64px;background:#000;position:relative;z-index:1;}
+    .head{height:64px;position:relative;z-index:1;}
     .body{
       position:absolute;left:0;top:64px;right:0;bottom:0;z-index:0;
       overflow-y:auto;
     }
     .foot{
       padding:15px;
+    }
+  }
+
+  &.white{
+    background: #fff;
+    .photoSlide{
+      border-left: 1px solid #f1f1f1;
+    }
+  }
+  &.black{
+    background: #000;
+    .photoSlide{
+      border-left: 1px solid #1c1d1e;
     }
   }
 

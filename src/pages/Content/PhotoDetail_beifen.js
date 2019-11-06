@@ -4,56 +4,62 @@
 import React from 'react';
 import { connect } from 'dva';
 import { notification } from 'antd';
-import { goBack } from "@/utils/utils";
 import { ENV } from '@/utils';
+import { goBack } from "@/utils/utils";
 import styles from './PhotoDetail.less';
 
 import PhotoSwiper from '@/blocks/Photo/PhotoSwiper';
 import PhotoAction from '@/blocks/Photo/PhotoAction';
 import PhotoInfo from '@/blocks/Photo/PhotoInfo';
 
-import CommentList from '@/containers/Comment/CommentList';
-
 @connect(state => ({
-  global: state.global,
+  global: state.global
 }))
-export default class PhotosDetail extends React.Component {
+export default class PhotoDetail extends React.Component {
 
   constructor(props){
     super(props);
     this.state = {
-      detail: '',
-      currentPhoto: ''
+      list: '',									                                                //列表数据
+      currentPhoto: '',												                                  //当前图片信息
+      currentKey: '',                                                           //当前图片索引值
     };
   }
 
   componentDidMount(){
     let id = this.props.match.params.id;
-    this.queryDetail(id);
+    this.initPhoto(id);
   }
 
   UNSAFE_componentWillReceiveProps(nextProps){
     if(nextProps.match.params.id !== this.props.match.params.id) {
       let id = nextProps.match.params.id;
-      this.queryDetail(id);
+      this.initPhoto(id);
     }
   }
 
-  queryDetail(id){
+  initPhoto(id){
+
     this.props.dispatch({
       type: 'global/request',
       url: `/photos/${id}`,
       method: 'GET',
       payload: {},
       callback: (res) => {
+        let list = res.data;
         if(res.code === 0){
-          let data = res.data;
-          document.title = data.title + " - " + data.author.nickname + " - " + ENV.appname;
-          if(data.tags && typeof(data.tags) === 'string') data.tags = data.tags.split(',');
-
+          let key = 0, currentPhoto = '';
+          for(let i in list){
+            if(list[i]._id === id){
+              key = parseInt(i, 10);
+              currentPhoto = list[i];
+            }
+          }
+          document.title = currentPhoto.title + " - 照片 - " + ENV.appname;
           this.setState({
-            detail: data,
-            currentPhoto: data.images[0]
+            list: list,
+            currentKey: key,
+            currentPhoto: currentPhoto,
           });
         }else{
           notification.error({message: '提示', description: res.msg});
@@ -64,12 +70,15 @@ export default class PhotosDetail extends React.Component {
   }
 
   changeCurrentPhoto = (photo) => {
+    document.title = photo.title + " - 照片 - " + ENV.appname;
     this.setState({currentPhoto: photo});
   };
 
   render(){
 
-    const { id, detail, currentPhoto } = this.state;
+    const { list, currentKey, currentPhoto } = this.state;
+
+    // console.log(currentPhoto)
 
     return(
       <div className={styles.photoDetail}>
@@ -77,7 +86,7 @@ export default class PhotosDetail extends React.Component {
         <div className={styles.photoContent}>
           {
             currentPhoto ?
-              <PhotoSwiper list={detail.images} currentKey={0} callback={this.changeCurrentPhoto} />
+              <PhotoSwiper list={list} currentKey={currentKey} callback={this.changeCurrentPhoto} />
               : null
           }
         </div>
@@ -87,14 +96,12 @@ export default class PhotosDetail extends React.Component {
             <div className={styles.photoSlide}>
 
               <div className={styles.head}>
-                <PhotoAction detail={detail} />
+                <PhotoAction data={currentPhoto} />
               </div>
 
               <div className={styles.body}>
-                <PhotoInfo detail={detail} currentPhoto={currentPhoto}/>
-                <div className={styles.foot}>
-                  <CommentList id={id} theme="black"/>
-                </div>
+                <PhotoInfo detail={currentPhoto} tags={currentPhoto.tags} currentPhoto={currentPhoto}/>
+
               </div>
 
             </div>

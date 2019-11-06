@@ -5,6 +5,7 @@
  * callback：返回当前图片信息
  */
 import React, { PureComponent } from 'react';
+import { connect } from 'dva';
 import {Row, Col, Icon, Spin} from 'antd';
 import { goBack } from '@/utils/utils';
 
@@ -12,6 +13,9 @@ import styles from './PhotoSwiper.less';
 
 const screenfull = require('screenfull');
 
+@connect(state => ({
+  global: state.global,
+}))
 export default class PhotoSwiper extends PureComponent {
 
   constructor(props){
@@ -166,6 +170,18 @@ export default class PhotoSwiper extends PureComponent {
     screenfull.toggle(screenFull);
   };
 
+  // 阅读模式
+  toggleReadModel = () => {
+    let { readModel } = this.props.global;
+    readModel = readModel === 'black' ? 'white' : 'black';
+    this.props.dispatch({
+      type: 'global/changeReadModel',
+      payload: {
+        readModel
+      }
+    })
+  }
+
   //返回
   goBack = () => {
     goBack()
@@ -173,7 +189,9 @@ export default class PhotoSwiper extends PureComponent {
 
   render(){
 
-    const { loading, list, currentPhoto, currentKey } = this.state;
+    const { theme } = this.props;
+    const { loading, list, currentPhoto, currentKey, swiperClass } = this.state;
+    const { readModel } = this.props.global
     //console.log(this.props.currentKey)
 
     //thumb初始位移
@@ -197,12 +215,15 @@ export default class PhotoSwiper extends PureComponent {
 
     return(
 
-      <div className={this.state.swiperClass} ref="screenFull">
+      <div className={swiperClass + " " + styles[theme]} ref="screenFull">
 
         <Row className={styles.swiperHeader}>
           <Col span={2}>
             <a className={styles.full} title="全屏显示" onClick={this.onChangeFullscreen}>
               <Icon type={this.state.screenfullType} />
+            </a>
+            <a className={styles.read} title="阅读模式" onClick={this.toggleReadModel}>
+              <Icon type="bulb" theme={readModel === 'black' ? 'filled' : null} />
             </a>
           </Col>
           <Col span={20}>

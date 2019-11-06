@@ -30,6 +30,12 @@ export {
   default as RightOutline
 } from '@ant-design/icons/lib/outline/RightOutline';
 export {
+  default as DoubleLeftOutline
+} from '@ant-design/icons/lib/outline/DoubleLeftOutline';
+export {
+  default as DoubleRightOutline
+} from '@ant-design/icons/lib/outline/DoubleRightOutline';
+export {
   default as UpOutline
 } from '@ant-design/icons/lib/outline/UpOutline';
 export {
@@ -101,6 +107,18 @@ export {
 export {
   default as EllipsisOutline
 } from '@ant-design/icons/lib/outline/EllipsisOutline';
+export {
+  default as LikeOutline
+} from '@ant-design/icons/lib/outline/LikeOutline';
+export {
+  default as LikeFill
+} from '@ant-design/icons/lib/fill/LikeFill';
+export {
+  default as BulbOutline
+} from '@ant-design/icons/lib/outline/BulbOutline';
+export {
+  default as BulbFill
+} from '@ant-design/icons/lib/fill/BulbFill';
 
 // export what antd other components need
 // export {

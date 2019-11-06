@@ -22,33 +22,8 @@ export default class PhotoInfo extends React.Component {
     this.ajaxFlag = true;
     this.state = {
       exifShow: '',
-      followState: '',
     };
   }
-
-  //检查登录状态
-  checkLogin = () => {
-    let {isAuth} = this.props.global;
-    if(!isAuth){
-      this.props.dispatch({
-        type: 'global/changeSignModal',
-        payload: {
-          signModalVisible: true,
-          signTabKey: '1',
-        }
-      });
-      this.ajaxFlag = true;
-      return false;
-    }
-    return true;
-  };
-
-  //关注
-  handleFollow = () => {
-    if(!this.ajaxFlag) return;
-    this.ajaxFlag = false;
-    if(!this.checkLogin()) return false;								//检查登录状态
-  };
 
   //显示exif详情
   showExifDetail = () => {
@@ -61,7 +36,7 @@ export default class PhotoInfo extends React.Component {
 
   render(){
 
-    const { detail, currentPhoto } = this.props;
+    const { detail, currentPhoto, theme } = this.props;
     // console.log(currentPhoto)
     const currentPhotoExif = JSON.parse(currentPhoto.exif)
 
@@ -89,7 +64,7 @@ export default class PhotoInfo extends React.Component {
       '';
 
     return(
-      <div className={styles.photoInfo}>
+      <div className={styles.photoInfo + " " + styles[theme]}>
 
         {
           detail ?

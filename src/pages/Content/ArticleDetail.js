@@ -9,7 +9,7 @@ import styles from './ArticleDetail.less';
 
 import Loading from '@/components/Common/Loading';
 import ArticleDetailShow from '@/blocks/Article/ArticleDetailShow';
-import CommentList from '@/containers/Comment/CommentList';
+import CommentList from '@/blocks/Comments/CommentList';
 
 @connect(state => ({
   global: state.global,
@@ -50,7 +50,6 @@ export default class ArticleDetail extends React.Component {
           document.title = data.title + " - " + data.author.nickname + " - " + ENV.appname;
           if(data.tags && typeof(data.tags) === 'string') data.tags = data.tags.split(',');
           this.setState({
-            id: id,
             detail: data
           });
         }
@@ -60,7 +59,7 @@ export default class ArticleDetail extends React.Component {
 
   render(){
 
-    const { id, detail } = this.state;
+    const { detail } = this.state;
 
     return(
 
@@ -79,7 +78,7 @@ export default class ArticleDetail extends React.Component {
                     detail.allow_comment === 0 ?
                       null
                       :
-                      <CommentList id={id} />
+                      <CommentList url={`/articles/${detail._id}/comments`} />
                   }
                 </div>
 

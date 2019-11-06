@@ -30,13 +30,21 @@ export default class ArticleAuthorInfo extends React.Component {
     })
   }
 
+  // 检查权限：未登录、本人
+  checkAuth = () => {
+    if (!this.signAuth.check()) return false;
+    const {detail} = this.props;
+    const {currentUser} = this.props.global
+    return detail.author._id !== currentUser._id
+  }
+
   // 关注
   following = () => {
 
     if(!this.ajaxFlag) return;
     this.ajaxFlag = false;
 
-    if (!this.signAuth.check()) return;
+    if (!this.checkAuth()) return;
 
     const { following_state } = this.state;
     const { detail } = this.props;

@@ -70,6 +70,8 @@ module.exports = {
     accountAuth: 'metuIndex-accountAuth', // 帐号身份验证
     ossToken: 'metuIndex-ossToken', // ossToken
 
+    readModel: 'metuIndex-readModel', // 阅读模式：white、black
+
   },
 
 };

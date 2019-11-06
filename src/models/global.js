@@ -18,7 +18,8 @@ export default {
     signModalVisible: false,                          //登录modal的显示状态
     signTabKey: '',                                   //登录modal中tab的默认key
 
-    theme: Storage.get(ENV.storage.theme) || {},
+    theme: Storage.get(ENV.storage.theme) || {},      // 主题
+    readModel:  Storage.get(ENV.readModel) || 'black',  // 阅读模式
   },
 
   effects: {
@@ -229,6 +230,12 @@ export default {
         ...state,
         signModalVisible: payload.signModalVisible,
         signTabKey: payload.signTabKey,
+      };
+    },
+    changeReadModel(state, { payload }) {
+      return {
+        ...state,
+        readModel: payload.readModel,
       };
     },
   },

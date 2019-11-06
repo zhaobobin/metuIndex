@@ -185,7 +185,7 @@ export default class PublishRight extends React.Component {
               <TextArea
                 style={{ width: '100%' }}
                 placeholder="描述长度不能超过200个字"
-                autosize={{ minRows: 2, maxRows: 4 }}
+                autoSize={{ minRows: 2, maxRows: 4 }}
               />
             )}
           </FormItem>

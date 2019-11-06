@@ -572,7 +572,7 @@ export default class PhotoListUpload extends Resct.Component {
                       })(
                         <TextArea style={{ width: '100%' }}
                           placeholder="描述长度不能超过100个字"
-                          autosize={{ minRows: 2, maxRows: 4 }}
+                          autoSize={{ minRows: 2, maxRows: 4 }}
                           onChange={this.changeDesc}
                         />
                       )}

@@ -1,12 +1,53 @@
 .photoInfo {
 
-  border-top: 1px solid #1c1d1e;
+  &.white{
+    border-top: 1px solid #f1f1f1;
+    .frame{
+      color: #555;
+      .title{
+        h1{
+          color: #555
+        }
+        p{
+          .tagItem{
+            color: #555
+          }
+        }
+      }
+      .section{
+        border-bottom: 1px solid #f1f1f1;
+      }
+    }
+    .exifDetail{
+      background: #fff
+    }
+  }
+  &.black{
+    border-top: 1px solid #1c1d1e;
+    .frame{
+      color: #fff;
+      .title{
+        h1{
+          color: #fff
+        }
+        p{
+          .tagItem{
+            color: #fff
+          }
+        }
+      }
+      .section{
+        border-bottom: 1px solid #1c1d1e;
+      }
+    }
+    .exifDetail{
+      background: #000
+    }
+  }
 
   .frame {
-    color: #fff;
     .section {
       padding: 15px;
-      border-bottom: 1px solid #1c1d1e;
       position: relative;
     }
     .author {
@@ -17,7 +58,6 @@
         line-height: 2em;
         font-size: 16px;
         font-weight: 500;
-        color: #fff;
       }
       p {
         margin-top: 10px;
@@ -31,7 +71,6 @@
         .tagItem {
           display: inline-block;
           margin: 0 10px 0 0;
-          color: #fff;
           &:before {
             content: "# ";
           }
@@ -75,7 +114,6 @@
   .exifDetail {
     display: none;
     padding: 15px;
-    background: #000;
     position: absolute;
     left: 0;
     top: 0;

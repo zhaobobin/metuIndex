@@ -28,7 +28,7 @@ export default function HomeTese () {
       title: '供稿',
       desc: '好照片能赚钱',
       url: '/publish/photo',
-      icon: 'edit',
+      icon: 'account-book',
     },
   ]
 

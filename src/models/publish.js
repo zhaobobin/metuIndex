@@ -10,10 +10,26 @@ export default {
   state: {
 
     submitting: false,                    //提交状态
-    publishType: '',                      //发布类型：文章、图片
+    publishType: '',                      //发布类型：文章、图片、问题、回答
+
     content: '',                          //文章内容
     images: '',                          //影集内容
     thumb: '',                            //缩略图（可选）
+
+    article: {
+      content: '',                          //文章内容
+      thumb: '',                            //缩略图（可选）
+    },
+    question: {
+      title: '',
+      content: '',                          //问题内容
+      thumb: '',                            //缩略图（可选）
+      topics: '',
+    },
+    answer: {
+      content: '',                          //回答内容
+      thumb: '',                            //缩略图（可选）
+    }
   },
 
   effects: {
@@ -29,11 +45,31 @@ export default {
         publishType: payload.publishType
       };
     },
-    saveArticleContent(state, {payload}) {
+    saveArticle(state, {payload}) {
       return {
         ...state,
-        content: payload.content,
-        thumb: payload.thumb,
+        article: {
+          ...state.article,
+          ...payload,
+        }
+      };
+    },
+    saveQuestion(state, {payload}) {
+      return {
+        ...state,
+        question: {
+          ...state.question,
+          ...payload,
+        }
+      };
+    },
+    saveAnswer(state, {payload}) {
+      return {
+        ...state,
+        answer: {
+          ...state.answer,
+          ...payload,
+        }
       };
     },
     savePhotoContent(state, {payload}) {

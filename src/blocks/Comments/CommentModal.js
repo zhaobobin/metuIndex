@@ -37,7 +37,6 @@ export default class CommentModal extends React.Component {
   }
 
   show = (params) => {
-    console.log(params)
     this.setState({
       visible: true,
       ...params
@@ -69,7 +68,7 @@ export default class CommentModal extends React.Component {
           this.addComment(content)
         }
       } else {
-        this.inputRef.focus()
+        this.contentRef.focus()
       }
     })
   }
@@ -139,9 +138,7 @@ export default class CommentModal extends React.Component {
                   allowClear
                   autoSize={{minRows: 4, maxRows: 6}}
                   placeholder={placeholder}
-                  ref={c => this.inputRef = c}
-                  onFocus={this.focusHandle}
-                  onBlur={this.blurHandle}
+                  ref={c => this.contentRef = c}
                 />
               )}
             </FormItem>

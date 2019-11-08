@@ -119,6 +119,15 @@ export {
 export {
   default as BulbFill
 } from '@ant-design/icons/lib/fill/BulbFill';
+export {
+  default as TeamOutline
+} from '@ant-design/icons/lib/outline/TeamOutline';
+export {
+  default as TrophyOutline
+} from '@ant-design/icons/lib/outline/TrophyOutline';
+export {
+  default as AccountBookOutline
+} from '@ant-design/icons/lib/outline/AccountBookOutline';
 
 // export what antd other components need
 // export {

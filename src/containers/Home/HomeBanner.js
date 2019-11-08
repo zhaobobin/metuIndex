@@ -25,11 +25,12 @@ export default class HomeBanner extends React.Component {
 
   queryPhotoWel(){
     this.props.dispatch({
-      type: 'global/post',
-      url: '/api/HomeSwiper',
+      type: 'global/request',
+      url: '/banner',
+      method: 'GET',
       payload: {},
       callback: (res) => {
-        if(res.status === 1){
+        if(res.code === 0){
           this.setState({
             data: res.data
           })
@@ -65,7 +66,7 @@ export default class HomeBanner extends React.Component {
             <div className={styles.item}>
               <img className={styles.hidden} src={data.thumb.url+'?x-oss-process=style/cover'} onLoad={this.onLoad} alt="banner" />
               {
-                data.uid ?
+                data.author ?
                   <p className={styles.info}>
                     <Link to={`/photos/${data._id}/${data.title}-by-${data.author.nickname}`}>{data.title}</Link>
                     <span>by</span>

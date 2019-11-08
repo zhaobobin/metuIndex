@@ -1,13 +1,13 @@
 import React from 'react';
 
-export default class Tribe extends React.Component {
+export default class QuestionDetail extends React.Component {
 
   render(){
 
     return(
 
       <div>
-        部落
+        QuestionDetail
       </div>
 
     )

@@ -24,7 +24,7 @@ export default class AccountPhotos extends React.Component {
 
         <Col xs={24} sm={24} md={22} lg={22}>
 
-          <PhotoListQuery url={url} />
+          <PhotoListQuery url={url} category="" />
 
         </Col>
 

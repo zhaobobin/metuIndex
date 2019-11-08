@@ -11,23 +11,45 @@ export default {
 
   'menu.home': 'Home',
   'menu.community': 'Community',
-  'menu.photos': 'Photos',
-  'menu.photo': 'Photo',
-  'menu.article.detail': 'Article detail',
+  'menu.community.discover': 'Discover',
+  'menu.community.discover.popular': 'Popular',
+  'menu.community.discover.editor': 'Editor',
+  'menu.community.discover.new': 'New',
+  'menu.community.discover.graphic': 'Graphic',
+  'menu.community.author': 'Photographer',
+  'menu.community.cricle': 'Cricle',
+
   'menu.contest': 'Contest',
 
-  'menu.discover': 'Discover',
-  'menu.author': 'Photographer',
-  'menu.tribe': 'Tribe',
-  'menu.cricle': 'Cricle',
-  'menu.course': 'Cuorse',
-  'menu.equipments': 'Equipments',
+  'menu.question': 'Question',
+  'menu.question.popular': 'Popular',
+  'menu.question.new': 'New',
+  'menu.question.waiting': 'Waiting',
+  'menu.question.detail': 'Question detail',
+
+  'menu.topics': 'Topics',
+  'menu.topic': 'Topic',
+  'menu.topic.detail': 'Topic detail',
+
   'menu.tags': 'Tags',
   'menu.tag': 'Tag',
+
+  'menu.equipments': 'Equipments',
+
+  'menu.photo.detail': 'Photo Detail',
+  'menu.article.detail': 'Article detail',
 
   'menu.publish': 'Publish',
   'menu.publish.photo': 'Publish photo',
   'menu.publish.article': 'Publish article',
+
+  'home.photo.title': 'Discover and share the world’s best photos',
+  'home.photo.desc1': 'Get inspiration from photos of different styles and genres around the world.',
+  'home.photo.desc2': 'The world is so big, yet I owe it a visit.',
+  'home.cricle.title': 'Join the circle in order to meet friends',
+  'home.contest.title': 'Challenge tasks and win rewards',
+  'home.contest.desc': 'Creative challenge activities to help photographers test their skills, gain recognition from others, and win exciting awards.',
+  'home.question.title': 'Participate in questions and answers, exchange learning',
 
   'version.menu.popular': 'Popular',
   'version.menu.editer': 'Editer',

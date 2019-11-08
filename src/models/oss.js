@@ -102,7 +102,7 @@ export default {
         res = ossToken
       } else {
         res = yield call(
-          (params) => {return Request(`${ENV.api_base}/oss/token`, {method: 'POST', body: params})},
+          (params) => {return Request('/oss/token', {method: 'POST', body: params})},
           {}
         )
         Storage.set(ENV.ossToken, res)

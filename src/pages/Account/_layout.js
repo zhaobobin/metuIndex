@@ -33,9 +33,8 @@ export default class _layout extends React.Component {
   queryUserDetail(username){
     this.props.dispatch({
       type: 'global/userinfo',
-      payload: {
-        username
-      }
+      url: `/users/${username}`,
+      payload: {}
     });
   }
 

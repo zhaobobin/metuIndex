@@ -1,7 +1,10 @@
+/**
+ * Graphic 图文
+ */
 import React from 'react';
 import { connect } from 'dva';
 import { Row, Col } from 'antd';
-import styles from './Course.less';
+import styles from './Graphic.less';
 
 import ArticleListQuery from '@/blocks/Article/ArticleListQuery'
 import ArticleSearch from '@/containers/Article/ArticleSearch'
@@ -11,19 +14,16 @@ import TagsRank from '@/containers/Tags/TagsRank'
 @connect(state => ({
   global: state.global,
 }))
-export default class Course extends React.Component {
+export default class Graphic extends React.Component {
 
   constructor(props){
     super(props);
     this.state = {
-      q: "教程",
-      url: '/articles'
+
     }
   }
 
   render(){
-
-    const {url, q} = this.state;
 
     return(
       <div className={styles.container}>
@@ -37,7 +37,7 @@ export default class Course extends React.Component {
 
                 <div className={styles.content}>
                   <ArticleSearch />
-                  <ArticleListQuery url={url} />
+                  <ArticleListQuery url="/articles" />
                 </div>
 
               </Col>

@@ -63,7 +63,7 @@ export default class PublishArticleContent extends React.Component {
     if(content) thumb = this.filterImages(content);
 
     this.props.dispatch({
-      type: 'publish/saveArticleContent',
+      type: 'publish/saveArticle',
       payload: {
         content,
         thumb,

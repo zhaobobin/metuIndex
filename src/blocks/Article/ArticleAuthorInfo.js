@@ -7,6 +7,7 @@ import styles from './ArticleAuthorInfo.less'
 
 import { Toast } from '@/components'
 import SignAuth from '@/blocks/Auth/SignAuth'
+import UserinfoPopover from '@/blocks/User/UserinfoPopover'
 
 @connect(state => ({
   global: state.global,
@@ -81,14 +82,16 @@ export default class ArticleAuthorInfo extends React.Component {
             null
             :
             <div className={styles.container}>
-              <Link to={`/users/${detail.author.username}`} className={styles.avatar}>
-                {
-                  detail.author.avatar_url ?
-                    <img src={detail.author.avatar_url + '?x-oss-process=style/thumb_s'} alt="avatar"/>
-                    :
-                    <Icon type="user" />
-                }
-              </Link>
+              <UserinfoPopover id={detail.author._id} placement="bottomLeft">
+                <Link to={`/users/${detail.author.username}`} className={styles.avatar}>
+                  {
+                    detail.author.avatar_url ?
+                      <img src={detail.author.avatar_url + '?x-oss-process=style/thumb_s'} alt="avatar"/>
+                      :
+                      <Icon type="user" />
+                  }
+                </Link>
+              </UserinfoPopover>
               <p>
                 <Link to={`/users/${detail.author.username}`}>
                   <span>{detail.author.nickname}</span>

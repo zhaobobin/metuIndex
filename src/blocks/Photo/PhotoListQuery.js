@@ -19,7 +19,7 @@ export default class PhotoListQuery extends React.Component {
     this.ajaxFlag = true;
     this.state = {
 
-      filter: '',                               // 筛选条件
+      category: '',                               // 分类
       page: this.props.page || 1,					      // 当前页数
       per_page: this.props.per_page || 10,			      // 每页数量
       maxQueryPage: this.props.maxQueryPage || undefined,    // 最大查询页数，默认undefined
@@ -35,17 +35,17 @@ export default class PhotoListQuery extends React.Component {
 
   componentDidMount(){
     this.queryPhotoList(this.props.url, {
-      filter: this.props.filter,
+      category: this.props.category || '',
       page: this.state.page,
       per_page: this.state.per_page
     })
   }
 
   UNSAFE_componentWillReceiveProps(nextProps){
-    if(nextProps.url !== this.props.url || nextProps.filter !== this.props.filter) {
+    if(nextProps.url !== this.props.url || nextProps.category !== this.props.category) {
       this.queryPhotoList(nextProps.url, {
         clearList: true,
-        filter: nextProps.filter,
+        category: nextProps.category || '',
         page: 1,
         per_page: this.state.per_page
       });
@@ -62,12 +62,12 @@ export default class PhotoListQuery extends React.Component {
       method: 'GET',
       payload: query,
       callback: (res) => {
-        this.ajaxFlag = true;
+        setTimeout(() => { this.ajaxFlag = true }, 500)
         if(res.code === 0){
           this.setState({
             url,
             loading: false,
-            filter: query.filter,
+            category: query.category,
             page: this.state.page + 1,
             list: list.concat(res.data.list),
             total: res.data.count,
@@ -82,17 +82,21 @@ export default class PhotoListQuery extends React.Component {
 
   //Masonry布局 - 滚动加载更多
   LoadMore = (page) => {
+
     if(!page) return;
+    let {url, category, per_page, hasMore} = this.state;
+    if(!url || !hasMore) return;
     if(this.state.maxQueryPage && page > this.state.maxQueryPage) return;
+
     if(!this.ajaxFlag) return;
     this.ajaxFlag = false;
-    let {url} = this.state;
+
     let _this = this;
     setTimeout(function(){
       _this.queryPhotoList(url, {
-        filter: _this.state.filter,
-        page: _this.state.page,
-        per_page: _this.state.per_page
+        category,
+        page,
+        per_page
       });
     }, 200)
   };

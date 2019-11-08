@@ -51,6 +51,8 @@ function checkStatus(response) {
  */
 export default function Request(url, options) {
 
+  url = ENV.api_base + url
+
   const newOptions = options;
 
   if (newOptions.method === 'GET') {

@@ -11,23 +11,45 @@ export default {
 
   'menu.home': '首页',
   'menu.community': '社区',
-  'menu.photos': '照片集',
-  'menu.photo': '照片',
-  'menu.article.detail': '文章详情22',
+  'menu.community.discover': '发现',
+  'menu.community.discover.popular': '热门',
+  'menu.community.discover.editor': '推荐',
+  'menu.community.discover.new': '最新',
+  'menu.community.discover.graphic': '图文',
+  'menu.community.author': '摄影师',
+  'menu.community.cricle': '圈子',
+
   'menu.contest': '活动',
 
-  'menu.discover': '发现',
-  'menu.author': '摄影师',
-  'menu.tribe': '部落',
-  'menu.cricle': '圈子',
-  'menu.course': '教程',
-  'menu.equipments': '器材',
+  'menu.question': '问答',
+  'menu.question.popular': '热门问题',
+  'menu.question.new': '最新问题',
+  'menu.question.waiting': '等你来答',
+  'menu.question.detail': '问答详情',
+
+  'menu.topics': '话题广场',
+  'menu.topic': '话题',
+  'menu.topic.detail': '话题详情',
+
   'menu.tags': '标签云',
   'menu.tag': '标签',
+
+  'menu.equipments': '器材',
+
+  'menu.photo.detail': '照片详情',
+  'menu.article.detail': '图文详情',
 
   'menu.publish': '发布',
   'menu.publish.photo': '发布图片',
   'menu.publish.article': '发布文章',
+
+  'home.photo.title': '发现和分享世界上最好的照片',
+  'home.photo.desc1': '从世界各地不同风格和流派的照片中获得灵感。',
+  'home.photo.desc2': '世界那么大，我想去看看。',
+  'home.cricle.title': '加入圈子，以图会友',
+  'home.contest.title': '挑战任务，赢取奖励',
+  'home.contest.desc': '创造性的挑战活动，以帮助摄影师测试他们的技能，得到他人的认可，并赢得令人兴奋的奖项。',
+  'home.question.title': '参与问答，交流学习',
 
   'version.menu.popular': '热门',
   'version.menu.editer': '推荐',

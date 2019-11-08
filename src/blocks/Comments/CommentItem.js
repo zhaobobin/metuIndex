@@ -1,5 +1,4 @@
 import React from 'react';
-// import { connect } from 'dva';
 import { Link } from 'dva/router';
 import { Icon } from 'antd';
 import Moment from 'moment';
@@ -7,16 +6,13 @@ import styles from './CommentList.less'
 
 import UserinfoPopover from '@/blocks/User/UserinfoPopover'
 
-// @connect(state => ({
-//   global: state.global,
-// }))
 export default function CommentItem ({item, action, userId, theme}) {
 
   return(
     <div className={styles.item + ' '+ theme}>
 
       <div className={styles.avatar}>
-        <UserinfoPopover id={item.author._id}>
+        <UserinfoPopover id={item.author._id} placement="topLeft">
           <Link to={`/users/${item.author.username}`}>
             {
               item.author.avatar ?

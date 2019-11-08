@@ -10,11 +10,11 @@ export default function ArticleListItem ({ item, index }) {
     <div key={index} className={styles.item}>
 
       <div className={styles.body}>
-        <Link to={`/course/${item._id}/${item.title}-by-${item.author.nickname}`} className={styles.thumb}>
+        <Link to={`/graphic/${item._id}/${item.title}-by-${item.author.nickname}`} className={styles.thumb}>
           <img src={item.thumb ? item.thumb : logo} alt={item.title} />
         </Link>
         <div className={styles.info}>
-          <h2><Link to={`/course/${item._id}/${item.title}-by-${item.author.nickname}`}>{item.title}</Link></h2>
+          <h2><Link to={`/graphic/${item._id}/${item.title}-by-${item.author.nickname}`}>{item.title}</Link></h2>
           <p className={styles.desc}>{item.description}</p>
         </div>
       </div>

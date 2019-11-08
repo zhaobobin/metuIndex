@@ -16,7 +16,7 @@ module.exports = {
   info: {
     appname: '迷图网',
     hometitle: '迷图网 - 摄影图片素材分享社区',
-    keywords: '迷图网,摄影,图片,素材,分享,社区。',
+    keywords: '摄影,摄影师,视觉摄影,摄影社区,摄影作品,摄影技巧,摄影活动,摄影圈子,摄影图片,迷图网',
     description: '迷图网(www.metuwang.com)，是一个致力于摄影分享、发现、售卖的专业平台，来自世界各地的摄影师是我们忠实的用户。让你与他人因图片相识，世界那么大，我想去看看。',
     author: '迷图网(www.metuwang.com)',
     verification: '',

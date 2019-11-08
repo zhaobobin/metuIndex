@@ -56,13 +56,12 @@ export default class PublishRight extends React.Component {
     if(!this.ajaxFlag) return;
     this.ajaxFlag = false;
 
-    const {global, publish} = this.props;
+    const { publish } = this.props;
 
     this.props.form.validateFields('', (err, values) => {
       if(!err){
-        values.uid = global.currentUser._id;
-        values.content = publish.content;
-        values.thumb = publish.thumb;
+        values.content = publish.article.content;
+        values.thumb = publish.article.thumb;
         if(values.tags) values.tags = values.tags.join(',');
         this.saveArticle(values)
       }else{
@@ -76,7 +75,7 @@ export default class PublishRight extends React.Component {
   saveArticle(values){
     let id = this.props.id;
     if(id) values.id = id;
-    console.log(values)
+
     //保存时，执行ossDel列表对应文件的删除操作
     this.props.dispatch({
       type: 'global/request',

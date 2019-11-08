@@ -57,10 +57,10 @@ export default class PublishRight extends React.Component {
     if(!this.ajaxFlag) return;
     this.ajaxFlag = false;
 
-    const {global, publish} = this.props;
+    const { publish } = this.props;
 
     this.props.form.validateFields('', (err, values) => {
-      console.log(values)
+      // console.log(values)
       if(!err){
         for(let i in publish.images){
           delete publish.images[i].loading;

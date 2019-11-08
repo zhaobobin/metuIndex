@@ -1,12 +1,12 @@
 /**
  * 搜索
  * q [String] 关键词
- * type [String] 分类：综合(content)、用户(user)、文章(article)、图片(photo)、话题(topic)、提问(answer)
+ * type [String] 分类：综合(content)、图片(photo)、图文(article)、问答(question)、用户(user)、话题(topic)
  */
 import React from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
-import { Affix, Menu } from 'antd';
+import { Row, Col, Affix, Menu } from 'antd';
 import { getUrlParams } from "@/utils/utils"
 import styles from './_layout.less';
 
@@ -25,7 +25,7 @@ export default class _layout extends React.Component {
       q = query.q ? decodeURIComponent(query.q) : '';
 
     return(
-      <div className={styles.container}>
+      <div className={styles.main}>
 
       <Affix>
         <Menu
@@ -53,8 +53,24 @@ export default class _layout extends React.Component {
         </Menu>
       </Affix>
 
-        <div className={styles.content}>
-          {type}
+        <div className={styles.container}>
+          <Row>
+            <Col xs={0} sm={0} md={2} lg={3} xl={5} />
+
+            <Col xs={24} sm={24} md={14} lg={12} xl={10}>
+              <div className={styles.content}>
+                {type}
+              </div>
+            </Col>
+
+            <Col xs={24} sm={24} md={6} lg={6} xl={4}>
+              <div className={styles.slide}>
+
+              </div>
+            </Col>
+
+            <Col xs={0} sm={0} md={2} lg={3} xl={5} />
+          </Row>
         </div>
 
       </div>

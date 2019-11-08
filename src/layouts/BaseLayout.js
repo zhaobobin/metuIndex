@@ -87,7 +87,7 @@ class BaseLayout extends React.Component {
         }}
       />
       :
-      <Layout style={{minHeight: '100vh'}}>
+      <Layout style={{minHeight: '100vh', background: '#f9f9f9'}}>
 
         <GlobalHeader navData={navData[0].children} location={location}/>
 
@@ -95,16 +95,14 @@ class BaseLayout extends React.Component {
 
           <Switch>
             {
-              getRouteData('BaseLayout').map(item =>
-                (
-                  <Route
-                    exact={item.exact}
-                    key={item.path}
-                    path={item.path}
-                    component={item.component}
-                  />
-                )
-              )
+              getRouteData('BaseLayout').map(item =>(
+                <Route
+                  exact={item.exact}
+                  key={item.path}
+                  path={item.path}
+                  component={item.component}
+                />
+              ))
             }
             <Route component={NotFound} />
           </Switch>

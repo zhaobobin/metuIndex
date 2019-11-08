@@ -128,6 +128,11 @@ export function checkRole(roleid) {
   }
 }
 
+export function getRichText(str, length=100){
+  const reg = new RegExp("<.+?>","g");
+  return str.replace(reg,'').slice(0, length); //执行替换成空字符
+}
+
 /*************************** 图片工具函数 ***************************/
 
 /**

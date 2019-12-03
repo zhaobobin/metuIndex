@@ -5,6 +5,7 @@ import { file2base64, createRandomId } from '@/utils/utils';
 import styles from './PublishPhotoContent.less';
 
 import { Alert } from '@/components/Dialog/Dialog'
+import SelectAlbum from './SelectAlbum'
 
 @connect(state => ({
   global: state.global,
@@ -17,36 +18,12 @@ export default class PublishPhotoContent extends React.Component {
     super(props);
     this.ajaxFlag = true;
     this.state = {
-      uid: this.props.global.currentUser._id,
+      user_id: this.props.global.currentUser._id,
       modalVisible: false,
       photoList: this.props.photoList || [],               //保存图片列表
       currentPhotoIndex: 0,                                //默认选择的图片索引值
     }
   }
-
-  componentDidMount(){
-
-  }
-
-  // 从用户相册导入图片
-  importAlbum = () => {
-    let {uid} = this.state;
-    this.props.dispatch({
-      type: 'global/post',
-      url: '/api/photoList',
-      payload: {
-        uid
-      },
-      callback: (res) => {
-
-      }
-    })
-  };
-
-  //查询用户相册列表
-  queryAlbumList = (uid) => {
-
-  };
 
   //图片上传前检查
   beforeUpload = (file) => {
@@ -57,10 +34,10 @@ export default class PublishPhotoContent extends React.Component {
         callback: () => {}
       });
     }
-    const isLt2M = file.size / 1024 / 1024 < 2;
+    const isLt2M = file.size / 1024 / 1024 < 50;
     if (!isLt2M) {
       Alert({
-        title: '图片文件的大小不能超过2MB!',
+        title: '图片文件的大小不能超过50MB!',
         callback: () => {}
       });
     }
@@ -70,7 +47,7 @@ export default class PublishPhotoContent extends React.Component {
   //上传图片到oss
   handleUploadPhoto = ({file}) => {
     // console.log(file)
-    let {uid, photoList} = this.state;
+    let {user_id, photoList} = this.state;
 
     for(let i in photoList){
       if(photoList[i].name === file.name) {         //阻止上传与列表图片雷同的文件
@@ -89,7 +66,7 @@ export default class PublishPhotoContent extends React.Component {
       id: createRandomId(),
       type: file.name.split('.')[1],
     };
-    let key = uid + '/' + option.id + '.' + option.type;
+    let key = user_id + '/' + option.id + '.' + option.type;
 
     // 根据key查询图片是否已上传
 
@@ -129,7 +106,7 @@ export default class PublishPhotoContent extends React.Component {
             url
           },
           callback: (exif) => {
-            console.log(exif)
+            // console.log(exif)
             for(let i in photoList){
               if(photoList[i].name === option.name){
                 photoList[i].loading = false;
@@ -168,7 +145,7 @@ export default class PublishPhotoContent extends React.Component {
             });
 
             this.props.dispatch({
-              type: 'publish/savePhotoContent',
+              type: 'publish/savePhoto',
               payload: {
                 images: photoList,
                 thumb: {
@@ -217,7 +194,7 @@ export default class PublishPhotoContent extends React.Component {
     return(
       <div className={styles.container}>
 
-        <Button size="large" onClick={this.importAlbum}>从相册导入</Button>
+        <SelectAlbum/>
 
         <div className={styles.content}>
 
@@ -237,7 +214,7 @@ export default class PublishPhotoContent extends React.Component {
                     <div className={styles.imgBox}>
                       <p className={styles.url}>
                         <img
-                          src={item.base64 ? item.base64.url : item.url + '?x-oss-process=style/thumb_m'}
+                          src={item.base64 ? item.base64.url : `${item.url}?x-oss-process=style/thumb_m`}
                           alt={item.title}
                         />
                         {
@@ -271,7 +248,7 @@ export default class PublishPhotoContent extends React.Component {
                     customRequest={this.handleUploadPhoto}
                   >
                     <Icon type="plus" />
-                    <p>最多可上传30张图片 <br/> 文件大小不超过2MB</p>
+                    <p>最多可上传30张图片 <br/> 文件大小不超过50MB</p>
                   </Upload>
                 </Col>
                 :

@@ -73,6 +73,8 @@ export default class PublishRight extends React.Component {
 
   // 提交
   saveArticle(values){
+
+    const { currentUser } = this.props.global;
     let id = this.props.id;
     if(id) values.id = id;
 
@@ -84,9 +86,10 @@ export default class PublishRight extends React.Component {
       payload: values,
       callback: (res) => {
         this.ajaxFlag = true;
-        if(res.status === 1){
+        if(res.code === 0){
+          Toast.info(res.message, 2);
           this.props.form.resetFields();
-          this.props.dispatch(routerRedux.push('/users/'+this.props.global.currentUser.username));
+          this.props.dispatch(routerRedux.push(`/graphic/${res.data}/${values.title}-by-${currentUser.nickname}`));
         }else{
           if(res.error_key){
             this.props.form.setFields({
@@ -122,7 +125,7 @@ export default class PublishRight extends React.Component {
 
     const { detail } = this.state;
     const { global, form, publish } = this.props;
-    const { getFieldDecorator } = form;
+    const { getFieldDecorator, getFieldValue } = form;
 
     //标签option
     const tags = ['人像', '风光', '街拍', '城市', '旅行', '纪实', '色彩', '手机', '黑白', '胶片', '抓拍'];
@@ -223,7 +226,11 @@ export default class PublishRight extends React.Component {
             size="large"
             type="primary"
             htmlType="submit"
-            disabled={!publish.content || global.submitting}
+            disabled={
+              !getFieldValue('title') ||
+              !publish.article.content ||
+              global.submitting
+            }
           >
             发布
           </Button>

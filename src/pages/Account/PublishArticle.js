@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Publish.less';
 
-import PublishArticleContent from '@/containers/Publish/PublishArticleContent';
+// import PublishArticleContent from '@/containers/Publish/PublishArticleContent';
 import PublishEditor from '@/containers/Publish/PublishEditor';
 import PublishArticleSlide from '@/containers/Publish/PublishArticleSlide';
 

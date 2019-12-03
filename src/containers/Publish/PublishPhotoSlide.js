@@ -62,13 +62,13 @@ export default class PublishRight extends React.Component {
     this.props.form.validateFields('', (err, values) => {
       // console.log(values)
       if(!err){
-        for(let i in publish.images){
-          delete publish.images[i].loading;
-          delete publish.images[i].cover;
-          delete publish.images[i].base64;
+        for(let i in publish.photo.images){
+          delete publish.photo.images[i].loading;
+          delete publish.photo.images[i].cover;
+          delete publish.photo.images[i].base64;
         }
-        values.images = publish.images;
-        values.thumb = publish.thumb || '';
+        values.images = publish.photo.images;
+        values.thumb = publish.photo.thumb || '';
         if(values.tags) values.tags = values.tags.join(',');
         this.saveData(values)
       }else{
@@ -79,20 +79,24 @@ export default class PublishRight extends React.Component {
   };
 
   // 保存数据
-  saveData(params){
-    let id = this.props.id;
-    if(id) params.id = id;
+  saveData(values){
+
+    const { currentUser } = this.props.global;
+    const id = this.props.id;
+    if(id) values.id = id;
+
     //保存时，执行ossDel列表对应文件的删除操作
     this.props.dispatch({
       type: 'global/request',
       url: '/photos',
       method: id ? 'PATCH' : 'POST',
-      payload: params,
+      payload: values,
       callback: (res) => {
         this.ajaxFlag = true;
         if(res.code === 0){
+          Toast.info(res.message, 2);
           this.props.form.resetFields();
-          Toast.info(res.message, 2)
+          this.props.dispatch(routerRedux.push(`/photos/${res.data}/${values.title}-by-${currentUser.nickname}`));
         }else{
           if(res.error_key) {
             this.props.form.setFields({
@@ -130,7 +134,7 @@ export default class PublishRight extends React.Component {
 
     const { detail } = this.state;
     const { global, form, publish } = this.props;
-    const { getFieldDecorator } = form;
+    const { getFieldDecorator, getFieldValue } = form;
 
     //标签option
     const tagsOption = PublishConfig.tags.map((topic, index) => (
@@ -214,7 +218,7 @@ export default class PublishRight extends React.Component {
             size="large"
             type="primary"
             htmlType="submit"
-            disabled={!publish.images || global.submitting}
+            disabled={!publish.photo.images || global.submitting}
           >
             发布
           </Button>

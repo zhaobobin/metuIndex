@@ -60,7 +60,7 @@ export default class PublishEditor extends React.Component {
   onEditorStateChange = (editorState) => {
     let thumb = '',
       content = draftToHtml(convertToRaw(editorState.getCurrentContent()))
-    if(convertFromHTML(content).contentBlocks === null) content = '';             // 判断内容是否为空
+    if(convertFromHTML(content).contentBlocks.length === 0) content = '';             // 判断内容是否为空
     // console.log(convertFromHTML(content))
     if(content) thumb = this.filterImages(content);
 
@@ -84,13 +84,13 @@ export default class PublishEditor extends React.Component {
 
   uploadImageCallback = (file) => {
     let option = {
-      uid: this.props.global.currentUser._id,
+      user_id: this.props.global.currentUser._id,
       category: 'photo',
       name: file.name.split('.')[0],
       unix: new Date().getTime(),
       type: file.name.split('.')[1],
     };
-    let key = option.uid + '/' + option.category + '_' + option.unix + '.' + option.type;
+    let key = option.user_id + '/' + option.category + '_' + option.unix + '.' + option.type;
     return new Promise(
       (resolve, reject) => {
         this.props.dispatch({

@@ -19,12 +19,7 @@ export default ({ className, linkElement = 'a', type, title, desc, img, actions,
         <h1>{title || config[pageType].title}</h1>
         <div className={styles.desc}>{desc || config[pageType].desc}</div>
         <div className={styles.actions}>
-          {
-            // eslint-disable-next-line
-            <a href="javascript:history.go(-1);">
-              <Button type="primary">返回</Button>
-            </a>
-          }
+          <Button type="primary" onClick={() => window.history.go(-1)}>返回</Button>
         </div>
       </div>
     </div>

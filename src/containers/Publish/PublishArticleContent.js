@@ -58,7 +58,7 @@ export default class PublishArticleContent extends React.Component {
   onEditorStateChange = (editorState) => {
     let thumb = '',
       content = draftToHtml(convertToRaw(editorState.getCurrentContent()))
-    if(convertFromHTML(content).contentBlocks === null) content = '';             // 判断内容是否为空
+    if(convertFromHTML(content).contentBlocks.length === 0) content = '';             // 判断内容是否为空
     // console.log(convertFromHTML(content))
     if(content) thumb = this.filterImages(content);
 

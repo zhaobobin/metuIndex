@@ -27,16 +27,16 @@ export default function GlobalFooter (props) {
         <Col {...center}>
           <div className={styles.footContent}>
             <div className={styles.top}>
-              <p className={styles.title}><strong>{ENV.hometitle}</strong></p>
-              <p className={styles.desc}>{ENV.description}</p>
+              <p className={styles.title}><strong>{ENV.info.hometitle}</strong></p>
+              <p className={styles.desc}>{ENV.info.description}</p>
             </div>
             <div className={styles.bottom}>
               <p>
-                <span>{ENV.icp}</span>
+                <span>{ENV.info.icp}</span>
                 <span>|</span>
-                <span>{ENV.beian}</span>
+                <span>{ENV.info.beian}</span>
                 <span>|</span>
-                <span>{ENV.copyright}</span>
+                <span>{ENV.info.copyright}</span>
               </p>
               <p>
                 <span><Link to="/help">帮助中心</Link></span>
@@ -47,7 +47,7 @@ export default function GlobalFooter (props) {
                 <span>|</span>
                 <span><Link to="/sitemap">网站地图</Link></span>
                 <span>|</span>
-                <span><a href={ENV.doc} target="_blank" rel="noopener noreferrer nofollow">开发文档</a></span>
+                <span><a href={ENV.info.doc} target="_blank" rel="noopener noreferrer nofollow">开发文档</a></span>
               </p>
             </div>
           </div>

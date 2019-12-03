@@ -12,9 +12,10 @@ export default {
     submitting: false,                    //提交状态
     publishType: '',                      //发布类型：文章、图片、问题、回答
 
-    content: '',                          //文章内容
-    images: '',                          //影集内容
-    thumb: '',                            //缩略图（可选）
+    photo: {
+      images: '',                          //影集内容
+      thumb: '',                            //缩略图（可选）
+    },
 
     article: {
       content: '',                          //文章内容
@@ -54,6 +55,15 @@ export default {
         }
       };
     },
+    savePhoto(state, {payload}) {
+      return {
+        ...state,
+        photo: {
+          ...state.photo,
+          ...payload,
+        }
+      };
+    },
     saveQuestion(state, {payload}) {
       return {
         ...state,
@@ -72,12 +82,6 @@ export default {
         }
       };
     },
-    savePhotoContent(state, {payload}) {
-      return {
-        ...state,
-        images: payload.images,
-        thumb: payload.thumb,
-      };
-    },
+
   }
 }

@@ -52,8 +52,12 @@ class BaseLayout extends React.Component {
     if(pathname === '/'){
       title = intl.formatMessage({id: 'env.hometitle'});
     }else{
-      let appname = intl.formatMessage({id: 'env.appname'});
-      title = this.foreachTitle(routeData, pathname).slice(3) + ' - ' + appname;
+      let appName = intl.formatMessage({id: 'env.appname'});
+      const pageTitle = this.foreachTitle(routeData, pathname).slice(3);
+      title = pageTitle ?
+        pageTitle + ' - ' + appName
+        :
+        appName;
     }
     return title;
   }

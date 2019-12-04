@@ -29,7 +29,7 @@ export default class Discover extends React.Component {
 
     const queryOption = {
       category: tab,
-      per_page: 6,                 //每页数量
+      per_page: 12,                 //每页数量
     };
 
     const menu = [

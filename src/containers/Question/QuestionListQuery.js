@@ -75,7 +75,7 @@ export default class QuestionListQuery extends React.Component {
     setTimeout(function(){
       _this.queryPhotoList(url, {
         category,
-        page,
+        page: page + 1,
         per_page
       });
     }, 200)

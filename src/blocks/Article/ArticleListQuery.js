@@ -117,15 +117,18 @@ export default class ArticleListQuery extends React.Component {
           }
         </Skeleton>
 
-        <Pagination
-          defaultCurrent={1}
-          total={total}
-          hideOnSinglePage={true}
-          showSizeChanger={true}
-          showQuickJumper={true}
-          onChange={this.onChange}
-          onShowSizeChange={this.onShowSizeChange}
-        />
+        <div className={styles.pagination}>
+          <Pagination
+            defaultCurrent={1}
+            total={total}
+            hideOnSinglePage={true}
+            showSizeChanger={true}
+            showQuickJumper={true}
+            onChange={this.onChange}
+            onShowSizeChange={this.onShowSizeChange}
+          />
+        </div>
+
       </div>
     )
   }

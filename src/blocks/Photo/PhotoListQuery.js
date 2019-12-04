@@ -85,6 +85,7 @@ export default class PhotoListQuery extends React.Component {
 
     if(!page) return;
     let {url, category, per_page, hasMore} = this.state;
+
     if(!url || !hasMore) return;
     if(this.state.maxQueryPage && page > this.state.maxQueryPage) return;
 
@@ -95,7 +96,7 @@ export default class PhotoListQuery extends React.Component {
     setTimeout(function(){
       _this.queryPhotoList(url, {
         category,
-        page,
+        page: page + 1,
         per_page
       });
     }, 200)

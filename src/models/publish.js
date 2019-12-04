@@ -13,7 +13,7 @@ export default {
     publishType: '',                      //发布类型：文章、图片、问题、回答
 
     photo: {
-      images: '',                          //影集内容
+      images: [],                          //影集内容
       thumb: '',                            //缩略图（可选）
     },
 

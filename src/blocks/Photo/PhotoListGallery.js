@@ -81,12 +81,13 @@ export default class PhotoListGallery extends React.Component {
       for(let i in photos){
         let src = photos[i].thumb.url + '?x-oss-process=style/thumb';
         let photo = {
+          key: i,
           _id: photos[i]._id,
           author: photos[i].author,
           title: photos[i].title,
           src: src,
-          width: parseInt(photos[i].thumb.width, 10),
-          height: parseInt(photos[i].thumb.height, 10),
+          width: photos[i].thumb.width ? parseInt(photos[i].thumb.width, 10) : 1920,
+          height: photos[i].thumb.height ? parseInt(photos[i].thumb.height, 10) : 1080,
           type: type
         };
 

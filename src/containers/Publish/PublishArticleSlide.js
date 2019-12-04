@@ -31,18 +31,16 @@ export default class PublishRight extends React.Component {
     }
   }
 
-  //选择缩略图
-  handleSelectPhoto = (url) => {
-    this.props.form.setFieldsValue({
-      thumb: url
-    });
+  componentWillUnmount(){
+    // 页面卸载时，清空redux
     this.props.dispatch({
-      type: 'publish/changeModelType',
+      type: 'publish/saveArticle',
       payload: {
-        thumb: url
+        content: '',
+        thumb: ''
       }
-    })
-  };
+    });
+  }
 
   // 标题
   titleCallback = (value) => {
@@ -89,7 +87,7 @@ export default class PublishRight extends React.Component {
         if(res.code === 0){
           Toast.info(res.message, 2);
           this.props.form.resetFields();
-          this.props.dispatch(routerRedux.push(`/graphic/${res.data}/${values.title}-by-${currentUser.nickname}`));
+          this.props.dispatch(routerRedux.push(`/users/${currentUser.username}/articles`));
         }else{
           if(res.error_key){
             this.props.form.setFields({

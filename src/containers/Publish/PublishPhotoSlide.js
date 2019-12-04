@@ -32,18 +32,16 @@ export default class PublishRight extends React.Component {
     }
   }
 
-  //选择缩略图
-  handleSelectPhoto = (url) => {
-    this.props.form.setFieldsValue({
-      thumb: url
-    });
+  componentWillUnmount(){
+    // 页面卸载时，清空redux
     this.props.dispatch({
-      type: 'publish/changeModelType',
+      type: 'publish/savePhoto',
       payload: {
-        thumb: url
+        images: [],
+        thumb: ''
       }
-    })
-  };
+    });
+  }
 
   // 标题
   titleCallback = (value) => {
@@ -57,18 +55,17 @@ export default class PublishRight extends React.Component {
     if(!this.ajaxFlag) return;
     this.ajaxFlag = false;
 
-    const { publish } = this.props;
+    const { images, thumb } = this.props.publish.photo;
 
     this.props.form.validateFields('', (err, values) => {
       // console.log(values)
       if(!err){
-        for(let i in publish.photo.images){
-          delete publish.photo.images[i].loading;
-          delete publish.photo.images[i].cover;
-          delete publish.photo.images[i].base64;
+        for(let i in images){
+          delete images[i].loading;
+          delete images[i].base64;
         }
-        values.images = publish.photo.images;
-        values.thumb = publish.photo.thumb || '';
+        values.images = images;
+        values.thumb = thumb || '';
         if(values.tags) values.tags = values.tags.join(',');
         this.saveData(values)
       }else{
@@ -96,7 +93,7 @@ export default class PublishRight extends React.Component {
         if(res.code === 0){
           Toast.info(res.message, 2);
           this.props.form.resetFields();
-          this.props.dispatch(routerRedux.push(`/photos/${res.data}/${values.title}-by-${currentUser.nickname}`));
+          this.props.dispatch(routerRedux.push(`/users/${currentUser.username}/photos`));
         }else{
           if(res.error_key) {
             this.props.form.setFields({

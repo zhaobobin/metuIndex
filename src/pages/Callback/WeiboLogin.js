@@ -43,8 +43,9 @@ export default class WeiboLogin extends React.Component {
     }
 
     this.props.dispatch({
-      type: 'global/post',
-      url: 'api/weiboLoginAuth',
+      type: 'global/request',
+      url: '/api/weiboLoginAuth',
+      method: 'POST',
       payload: {
         code: paramsObj.code,                   // code是一次性的参数，code的有效时间非常短，一般为30秒
       },
@@ -58,7 +59,7 @@ export default class WeiboLogin extends React.Component {
           })
         }
         else{
-          this.setState({error: 'code过期，' + res.msg});
+          this.setState({error: 'code过期，' + res.message});
         }
       }
     });

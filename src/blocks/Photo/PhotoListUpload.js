@@ -348,7 +348,7 @@ export default class PhotoListUpload extends Resct.Component {
             photoList: [],
           });
         }else{
-          notification.error({message: res.msg});
+          notification.error({message: res.message});
         }
       }
     });

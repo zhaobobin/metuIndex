@@ -257,6 +257,7 @@ export default class UserRegister extends React.Component {
                 ]
               })(
                 <InputSmscode
+                  type="register"
                   mobile={Validator.hasErrors(getFieldsError(['mobile'])) ? '' : getFieldValue('mobile')}
                   callback={this.smscodeCallback}
                 />

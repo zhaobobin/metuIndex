@@ -332,7 +332,8 @@ export default class UserLogin extends React.Component {
                     ]
                   })(
                     <InputSmscode
-                      tel={Validator.hasErrors(getFieldsError(['mobile'])) ? '' : getFieldValue('mobile')}
+                      type="login"
+                      mobile={Validator.hasErrors(getFieldsError(['mobile'])) ? '' : getFieldValue('mobile')}
                       callback={this.smscodeCallback}
                     />
                   )}

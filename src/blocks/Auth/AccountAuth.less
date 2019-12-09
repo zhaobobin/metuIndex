@@ -1,0 +1,61 @@
+@import '../../theme/index.less';
+
+.accountAuth{
+
+  :global{
+    .ant-modal-close{
+      right: -60px;
+      color: #fff;
+    }
+    .ant-modal-close-x{
+      font-size: 24px;
+    }
+    .ant-form-item{
+      height:70px;
+      margin:0;
+    }
+  }
+
+  .container{
+    .head{
+
+    }
+    .body{
+
+      .smscode{
+
+        position:relative;
+
+        .btn{
+          display: block;
+          height: 40px;
+          line-height: 40px;
+          border-radius: 4px;
+          text-align: center;
+          color: #fff;
+          cursor: pointer;
+
+
+          &.actived{
+            background: @color_blue;
+          }
+          &.disabled{
+            background: #d9d9d9;
+          }
+          &.null{
+            background: #d9d9d9;
+          }
+        }
+
+      }
+
+      .submit{
+        display: block;
+        width: 160px;
+        margin: 20px auto 0;
+      }
+
+    }
+  }
+
+}

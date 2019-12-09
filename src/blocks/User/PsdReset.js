@@ -7,7 +7,7 @@ import React from 'react';
 import { connect } from 'dva';
 import { routerRedux, Redirect } from 'dva/router';
 import { Row, Col, Form, Button, Steps } from 'antd'
-import { Toast } from 'antd-mobile'
+import { Toast } from '@/components'
 import { hasErrors } from '@/utils/utils'
 import { Encrypt } from '@/utils'
 import styles from './PsdReset.less';
@@ -182,8 +182,9 @@ export default class PsdReset extends React.Component {
     this.props.form.validateFields(['mobile'], (err, values) => {
       if(!err){
         this.props.dispatch({
-          type: 'global/post',
-          url: 'api/v1/user/checkPhone',
+          type: 'global/request',
+          url: '/user/checkPhone',
+          method: 'POST',
           payload: {
             mobile: values.mobile
           },
@@ -197,7 +198,7 @@ export default class PsdReset extends React.Component {
               this.props.form.setFields({
                 'mobile': {
                   value: values.mobile,
-                  errors: [new Error(res.msg)]
+                  errors: [new Error(res.message)]
                 }
               });
             }
@@ -235,8 +236,9 @@ export default class PsdReset extends React.Component {
     this.props.form.validateFields(['password', 'rpassword'], (err, values) => {
       if (!err) {
         this.props.dispatch({
-          type: 'global/post',
-          url: 'api/resetPsd',
+          type: 'global/request',
+          url: '/api/resetPsd',
+          method: 'POST',
           payload:{
             mobile,
             smscode,
@@ -250,7 +252,7 @@ export default class PsdReset extends React.Component {
             if(res.status === 1){
               this.props.dispatch(routerRedux.push('/user/reset/finish'));
             }else{
-              Toast.info(res.msg, 2);
+              Toast.info(res.message, 2);
             }
           }
         })
@@ -318,6 +320,7 @@ export default class PsdReset extends React.Component {
             })(
               <InputSmscode
                 // auto={true}
+                type="reset"
                 mobile={hasErrors(getFieldsError(['mobile'])) ? '' : getFieldValue('mobile')}
                 callback={this.smscodeCallback}
               />

@@ -1,7 +1,119 @@
-.col{height:64px;}
+@import '../../theme/index.less';
+
+.formInit{
+  :global{
+    .ant-input-disabled{
+      background-color: transparent;
+      cursor: default;
+    }
+
+    .ant-input-affix-wrapper .ant-input-prefix :not(.anticon),
+    .ant-input-affix-wrapper .ant-input-suffix :not(.anticon) {
+      line-height:20px;
+    }
+    .ant-btn{
+      width:160px;
+      height:40px;
+      line-height:38px;
+      font-size:16px;
+    }
+  }
+}
+
+.modalForm{
+  :global{
+    .ant-modal-close{
+      right: -60px;
+      color: #fff;
+    }
+    .ant-modal-close-x{
+      font-size: 24px;
+    }
+    .ant-input-disabled{
+      background-color: transparent;
+      cursor: default;
+    }
+
+    .ant-input-affix-wrapper .ant-input-prefix :not(.anticon),
+    .ant-input-affix-wrapper .ant-input-suffix :not(.anticon) {
+      line-height:20px;
+    }
+    .ant-btn{
+      width:160px;
+      height:40px;
+      line-height:38px;
+      font-size:16px;
+    }
+  }
+}
+
+
+.psdStatus{
+  display:block;
+  width:100%;
+  height:2px;
+  position:absolute;
+  left: 0;
+  bottom: -15px;
+  margin-top: 1px;
+  .box{
+    margin: 0 -1px;
+    height: 100%;
+  }
+  .text{
+    position:absolute;
+    right:0;
+    top:2px;
+  }
+  .line{
+    display:block;
+    float:left;
+    width: 33.33%;
+    height: 100%;
+  }
+  .block{
+    display:block;
+    height:100%;
+    margin: 0 2px;
+    border-radius:2px;
+    background: #e6e6e6;
+  }
+
+  &.psdLevelError{
+    .block{
+      background:#f5222d;
+    }
+    .text{
+      color:#f5222d;
+    }
+  }
+  &.psdLevelMiddle{
+    .block{
+      background:#faad14;
+    }
+    .text{
+      color:#faad14;
+    }
+  }
+  &.psdLevelStrong{
+    .block{
+      background:#52c41a;
+    }
+    .text{
+      color:#52c41a;
+    }
+  }
+}
+
+.col{
+  height:75px;
+}
+.modalForm{
+  padding: 0 140px 0 80px;
+}
+
 .btnGroup{
   button{
-    min-width:80px;
     margin-right:30px;
     &:last-child{margin-right:0;}
   }
@@ -10,3 +122,25 @@
 .ischildren{
   &:before{content: ' └ '}
 }
+
+.clearInput {
+  cursor: pointer;
+  color: #ccc;
+  transition: color 0.3s;
+  font-size: 14px;
+  &:hover {
+    color: #999;
+  }
+  &:active {
+    color: #666;
+  }
+}
+.suffix{
+  display:block;
+  height:20px;
+}
+.suffixText{
+  margin-left:5px;
+}
+
+

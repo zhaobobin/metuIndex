@@ -5,13 +5,38 @@ import React from 'react';
 import { Redirect } from 'dva/router';
 import { connect } from 'dva';
 import { Button, Icon } from 'antd'
-import { ENV } from '@/utils';
+import { ENV, Storage } from '@/utils';
 import styles from './SettingsBind.less'
+
+import AccountAuth from '@/blocks/Auth/AccountAuth'
+import ChangePassword from '@/containers/Settings/ChangePassword'
 
 @connect(state => ({
   global: state.global
 }))
 export default class SettingsBind extends React.Component {
+
+  auth = () => {
+    return this.accountAuth.check()
+  }
+
+  changeEmail = () => {
+    if(this.auth()) {
+
+    }
+  }
+
+  changeMobile = () => {
+    if(this.auth()) {
+
+    }
+  }
+
+  changePassword = () => {
+    if(this.auth()) {
+      this.changePassword.show()
+    }
+  }
 
   render(){
 
@@ -28,6 +53,7 @@ export default class SettingsBind extends React.Component {
         <div className={styles.body}>
           <ul>
 
+            {/*邮箱*/}
             <li>
               <p className={styles.icon}>
                 <Icon type="mail" />
@@ -45,16 +71,19 @@ export default class SettingsBind extends React.Component {
                 <span>可用邮箱加密码登录{ENV.appname}，可用邮箱找回密码</span>
               </p>
               <p className={styles.btns}>
-                <Button>{currentUser.email ? '更改' : '绑定'}</Button>
+                <Button onClick={this.changeEmail}>
+                  {currentUser.email ? '更改' : '绑定'}
+                </Button>
                 {
                   currentUser.email_auth ?
                     null
                     :
-                    <Button>验证</Button>
+                    <Button onClick={this.changeEmail}>验证</Button>
                 }
               </p>
             </li>
 
+            {/*手机*/}
             <li>
               <p className={styles.icon}>
                 <Icon type="mobile" />
@@ -67,10 +96,13 @@ export default class SettingsBind extends React.Component {
                 <span>可用手机号加密码登录{ENV.appname}，可通过手机号找回密码</span>
               </p>
               <p className={styles.btns}>
-                <Button>{currentUser.mobile ? '更改' : '绑定'}</Button>
+                <Button onClick={this.changeMobile}>
+                  {currentUser.mobile ? '更改' : '绑定'}
+                </Button>
               </p>
             </li>
 
+            {/*密码*/}
             <li>
               <p className={styles.icon}>
                 <Icon type="safety" />
@@ -83,10 +115,13 @@ export default class SettingsBind extends React.Component {
                 <span>用于保护账号信息和登录安全</span>
               </p>
               <p className={styles.btns}>
-                <Button>{currentUser.psd_bind ? '更改' : '设置'}</Button>
+                <Button onClick={this.changePassword}>
+                  {currentUser.psd_bind ? '更改' : '设置'}
+                </Button>
               </p>
             </li>
 
+            {/*社交*/}
             <li>
               <p className={styles.icon}>
                 <Icon type="message" />
@@ -115,6 +150,10 @@ export default class SettingsBind extends React.Component {
 
           </ul>
         </div>
+
+        <AccountAuth onRef={e => this.accountAuth = e} />
+
+        <ChangePassword onRef={e => this.changePassword = e}/>
 
       </div>
     )

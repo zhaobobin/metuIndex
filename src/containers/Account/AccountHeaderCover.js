@@ -105,8 +105,9 @@ export default class AccountHeaderCover extends React.Component {
         this.ajaxFlag = true
 
         this.props.dispatch({
-          type: 'global/post',
+          type: 'global/request',
           url: '/api/UserBanner',
+          method: 'POST',
           payload: {
             _id: uid,
             banner: url
@@ -117,7 +118,7 @@ export default class AccountHeaderCover extends React.Component {
             } else {
               notification.error({
                 message: '更新错误！',
-                description: res.msg,
+                description: res.message,
               })
               this.cancelBanner()
             }

@@ -62,7 +62,7 @@ export default class PhotoDetail extends React.Component {
             currentPhoto: currentPhoto,
           });
         }else{
-          notification.error({message: '提示', description: res.msg});
+          notification.error({message: '提示', description: res.message});
           goBack();
         }
       }

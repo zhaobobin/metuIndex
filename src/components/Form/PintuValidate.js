@@ -29,8 +29,9 @@ export default class PintuValidate extends React.Component {
   queryPintuImg(){
     let {mobile} = this.props;
     this.props.dispatch({
-      type: 'global/post',
+      type: 'global/request',
       url: '/api/userRegister/getCheckImg',
+      method: 'GET',
       payload:{
         mobile: mobile
       },

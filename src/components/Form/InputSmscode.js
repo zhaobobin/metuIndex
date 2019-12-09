@@ -159,21 +159,22 @@ export default class InputSmscode extends React.Component {
 
   //发送验证码
   sendSmsCode = () => {
-    let {mobile} = this.props;
+    let { type, mobile } = this.props;
     this.props.dispatch({
-      type: 'global/post',
-      url: 'api/smsCode',
+      type: 'global/request',
+      url: '/user/smscode',
+      method: 'POST',
       payload: {
+        type,
         mobile,
-        userType: 'user'
       },
       callback: (res) => {
-        if (res.status === 1) {
+        if (res.code === 0) {
           this.interval();                                      //执行倒计时
           this.props.callback('', 'clearError');
           Toast.info(`已将短信验证码发送到您${filterTel(mobile)}的手机当中，请注意查收！`, 2);
         } else {
-          Toast.info(res.msg, 2);
+          Toast.info(res.message, 2);
         }
       }
     });

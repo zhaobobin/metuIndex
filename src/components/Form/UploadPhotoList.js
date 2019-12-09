@@ -342,7 +342,7 @@ export default class UploadPhotoList extends React.Component {
             photoList: [],
           });
         }else{
-          notification.error({message: res.msg});
+          notification.error({message: res.message});
         }
       }
     });

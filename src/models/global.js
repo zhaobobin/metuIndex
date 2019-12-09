@@ -128,6 +128,7 @@ export default {
       // }
     },
 
+    // 用户详情
     *userinfo({ url, payload }, { call, put }) {
       const res = yield call(
         (params) => {return Request(url, {method: 'GET', body: params})},
@@ -139,7 +140,7 @@ export default {
           payload: res.data,
         });
       }else{
-        yield put(routerRedux.push({ pathname: '/404' }));
+        yield put(routerRedux.push({ pathname: '/' }));
       }
     },
 
@@ -156,7 +157,15 @@ export default {
           payload: res.data,
         });
       }else{
-        yield put(routerRedux.push({ pathname: '/404' }));
+        yield put({
+          type: 'changeLoginStatus',
+          payload: {
+            loading: false,
+            isAuth: false,
+            currentUser: '',
+          }
+        });
+        yield put(routerRedux.push({ pathname: '/' }));
       }
     },
 

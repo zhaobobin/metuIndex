@@ -45,8 +45,9 @@ export default class ArticleRank extends PureComponent {
     };
 
     this.props.dispatch({
-      type: 'global/post',
+      type: 'global/request',
       url: '/api/ArticleRank',
+      method: 'POST',
       payload: params,
       callback: (res) => {
         this.ajaxFlag = true;
@@ -55,7 +56,7 @@ export default class ArticleRank extends PureComponent {
             list: res.data,
           })
         }else{
-          notification.error({message: '提示', description: res.msg});
+          notification.error({message: '提示', description: res.message});
         }
       }
     });

@@ -60,8 +60,9 @@ export default class ArticleListQuery extends React.Component {
     this.ajaxFlag = false;
 
     this.props.dispatch({
-      type: 'global/post',
+      type: 'global/request',
       url: '/api/TagsArticle',
+      method: 'POST',
       payload: params,
       callback: (res) => {
         setTimeout(() => { this.ajaxFlag = true }, 500)
@@ -76,7 +77,7 @@ export default class ArticleListQuery extends React.Component {
             hasMore: res.hasMore
           });
         }else{
-          notification.error({message: '提示', description: res.msg});
+          notification.error({message: '提示', description: res.message});
         }
       }
     });

@@ -1,0 +1,32 @@
+@import '../../theme/index.less';
+
+.container{
+
+  border-bottom: 1px solid @border;
+  background: #fff;
+
+  .content{
+    padding: 25px 0;
+    height: 110px;
+
+    .avatar{
+      float: left;
+    }
+    p{
+      margin-left: 80px;
+      &.name{
+        margin-bottom: 5px;
+        color: #333;
+        font-size: 24px;
+      }
+      &.desc{
+        color: #999;
+        font-size: 13px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
+  }
+
+}

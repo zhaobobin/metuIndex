@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class _layout extends React.Component {
+export default class CircleCreate extends React.Component {
 
   componentDidMount(){
     window.scrollTo(0, 0);

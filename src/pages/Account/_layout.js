@@ -47,7 +47,8 @@ export default class _layout extends React.Component {
       <div className={styles.container}>
 
         {
-          profileUser ? <AccountHeaderCover />
+          profileUser ?
+            <AccountHeaderCover />
             :
             null
         }

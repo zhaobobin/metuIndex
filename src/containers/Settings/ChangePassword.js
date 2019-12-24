@@ -2,7 +2,6 @@
  * 设置 - 修改密码
  */
 import React from 'react'
-import {Redirect} from 'dva/router'
 import {connect} from 'dva'
 import { Modal } from 'antd'
 import { Validator, Encrypt } from '@/utils';

@@ -17,7 +17,14 @@ export default {
   'menu.community.discover.new': 'New',
   'menu.community.discover.graphic': 'Graphic',
   'menu.community.author': 'Photographer',
-  'menu.community.cricle': 'Cricle',
+  'menu.community.circle': 'Circle',
+  'menu.community.circle.detail': 'Circle Detail',
+  'menu.community.circle.create': 'Create Circle',
+  'menu.community.circle.discuss': 'Discuss',
+  'menu.community.circle.good': 'Good',
+  'menu.community.circle.member': 'Member',
+  'menu.community.circle.contest': 'Contest',
+  'menu.community.circle.album': 'Album',
 
   'menu.contest': 'Contest',
 

@@ -129,7 +129,7 @@ export default class UserinfoPopover extends React.Component {
               <p>
                 <span>关注 {userInfo.following_number}</span>
                 <span>粉丝 {userInfo.followers_number}</span>
-                <span>{userInfo.location || '中国'}</span>
+                <span>{userInfo.city ? userInfo.city.name : '中国'}</span>
               </p>
               <p>
                 <span>{userInfo.headline || ''}</span>

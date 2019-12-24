@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "ali-oss": "^4.11.2",
-    "antd": "^3.25.0",
+    "antd": "^3.26.3",
     "antd-mobile": "^2.2.13",
     "china-division": "^2.1.1",
     "copy-to-clipboard": "^3.0.8",

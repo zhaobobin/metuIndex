@@ -1,21 +1,21 @@
 /**
- * 表单 - 短信验证码
+ * 表单 - 邮箱验证码
  * auto [String]    自动发送
- * mobile [String] 手机号
+ * email [String] 邮箱
  * callback [Function] 返回输入值
 
  调用方式：
-   <InputSmscode
-     mobile={hasErrors(getFieldsError(['mobile'])) ? '' : getFieldValue('mobile')}
-     callback={this.smscodeCallback}
-   />
+ <InputSmscode
+ email={hasErrors(getFieldsError(['email'])) ? '' : getFieldValue('email')}
+ callback={this.smscodeCallback}
+ />
 
  回调函数：
  smscodeCallback = (value, err) => {
     //清空错误提示
     if(err === 'telError'){
       this.props.form.setFields({
-        'mobile': {
+        'email': {
           value: '',
           errors: [new Error('请输入手机号')]
         }
@@ -23,7 +23,7 @@
     }
     else if(err === 'clearError'){
       this.props.form.setFields({
-        'smscode': {
+        'emailcode': {
           value: '',
           errors: ''
         }
@@ -31,15 +31,15 @@
     }
     else if(err === 'smscodeError'){
       this.props.form.setFields({
-        'smscode': {
+        'emailcode': {
           value: '',
           errors: [new Error(!value ? '请输入短信验证码' : '短信验证码格式有误')]
         }
       });
     }
     else{
-      this.props.form.setFieldsValue({'smscode': value});
-      // this.props.form.validateFields(['smscode'], (err, values) => {});
+      this.props.form.setFieldsValue({'emailcode': value});
+      // this.props.form.validateFields(['emailcode'], (err, values) => {});
     }
   };
 
@@ -59,7 +59,7 @@ let timer;
 @connect(state => ({
   global: state.global
 }))
-export default class InputSmscode extends React.Component {
+export default class InputEmailcode extends React.Component {
 
   constructor(props) {
     super(props);
@@ -67,7 +67,7 @@ export default class InputSmscode extends React.Component {
     this.state = {
       value: '',            //输入框的值
       maxLength: 6,
-      mobile: '',
+      email: '',
       btnText: '获取验证码',
       btnStyle: styles.null,
       num: 60,                     //倒计时
@@ -78,14 +78,14 @@ export default class InputSmscode extends React.Component {
   }
 
   componentDidMount() {
-    this.initBtnStyle(this.props.mobile);
-    if(this.props.auto) this.sendSmsCode();      //自动发送验证码
+    this.initBtnStyle(this.props.email);
+    if(this.props.auto) this.sendEmailCode();      //自动发送验证码
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     //按钮在激活状态，才重置倒计时
-    if (nextProps.mobile !== this.props.mobile) {
-      this.initBtnStyle(nextProps.mobile);
+    if (nextProps.email !== this.props.email) {
+      this.initBtnStyle(nextProps.email);
     }
   }
 
@@ -94,9 +94,9 @@ export default class InputSmscode extends React.Component {
   }
 
   //初始化按钮样式
-  initBtnStyle(mobile) {
+  initBtnStyle(email) {
     let {num} = this.state;
-    let btnStyle = mobile ?
+    let btnStyle = email ?
       num === 60 ?
         styles.actived
         :
@@ -107,7 +107,7 @@ export default class InputSmscode extends React.Component {
         :
         styles.disabled;
     this.setState({
-      mobile,
+      email,
       btnStyle,
     })
   }
@@ -123,17 +123,17 @@ export default class InputSmscode extends React.Component {
   handleBlur = (e) => {
     let value = e.target.value;
     if (value.length !== this.state.maxLength) {
-      this.props.callback(value, 'smscodeError');
+      this.props.callback(value, 'emailcodeError');
     }
   };
 
   //确定
   submit = () => {
 
-    let {mobile} = this.props;
+    let { email } = this.props;
 
-    if (!mobile) {
-      this.props.callback(mobile, 'mobileError');
+    if (!email) {
+      this.props.callback(email, 'emailError');
       return;
     }
 
@@ -154,28 +154,28 @@ export default class InputSmscode extends React.Component {
   //拼图回调
   pintuResult = (value) => {
     if (!value) return;
-    this.sendSmsCode();
+    this.sendEmailCode();
     this.setState({
       modalVisible: false
     });
   };
 
-  //发送短信验证码
-  sendSmsCode = () => {
-    let { type, mobile } = this.props;
+  //发送邮箱验证码
+  sendEmailCode = () => {
+    let { type, email } = this.props;
     this.props.dispatch({
       type: 'global/request',
-      url: '/user/smscode',
+      url: '/user/emailcode',
       method: 'POST',
       payload: {
         type,
-        mobile,
+        email,
       },
       callback: (res) => {
         if (res.code === 0) {
           this.interval();                                      //执行倒计时
           this.props.callback('', 'clearError');
-          Toast.info(`已将短信验证码发送到您${filterTel(mobile)}的手机当中，请注意查收！`, 2);
+          Toast.info(`已将验证码发送到您${email}的邮箱当中，请注意查收！`, 2);
         } else {
           Toast.info(res.message, 2);
         }
@@ -192,7 +192,7 @@ export default class InputSmscode extends React.Component {
         this.ajaxFlag = true;
         this.setState({
           btnText: '重新获取',
-          btnStyle: this.state.mobile ? styles.actived : styles.null,
+          btnStyle: this.state.email ? styles.actived : styles.null,
           num: 60
         });
         clearInterval(timer);
@@ -225,7 +225,7 @@ export default class InputSmscode extends React.Component {
               size="large"
               maxLength={maxLength}
               autoComplete="off"
-              placeholder="短信验证码"
+              placeholder="邮箱验证码"
               onChange={this.changeValue}
               onBlur={this.handleBlur}
               value={value}

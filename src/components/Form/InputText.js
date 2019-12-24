@@ -15,9 +15,12 @@ export default class InputText extends React.Component {
   }
 
   componentDidMount(){
-    this.setState({
-      value: this.props.defaultVaule
-    })
+    const { initValue } = this.props
+    if(initValue){
+      this.setState({
+        value: initValue
+      })
+    }
   }
 
   changeValue = (e) => {
@@ -29,17 +32,17 @@ export default class InputText extends React.Component {
   render(){
 
     const { value } = this.state;
-    const { maxLength } = this.props;
+    const { maxLength, placeholder, disabled } = this.props;
 
     return(
       <Input
         size="large"
         autoComplete="off"
-        placeholder={this.props.placeholder}
+        placeholder={placeholder}
         onChange={this.changeValue}
         value={value}
         maxLength={maxLength}
-        disabled={this.props.disabled}
+        disabled={disabled}
         allowClear={true}
       />
     )

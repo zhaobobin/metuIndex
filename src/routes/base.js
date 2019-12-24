@@ -54,10 +54,26 @@ const BaseRoutes = app => [
       },
       {
         name: '圈子',
-        id: 'menu.community.cricle',
-        key: 'cricle',
-        path: 'community/cricle',
-        component: dynamicWrapper(app, [], () => import('../pages/Community/Cricle')),
+        id: 'menu.community.circle',
+        key: 'circle',
+        path: 'community/circle',
+        component: dynamicWrapper(app, [], () => import('../pages/Circle/CircleIndex')),
+      },
+      {
+        name: '圈子详情',
+        id: 'menu.community.circle.detail',
+        key: 'circle-detail',
+        path: 'community/circle/detail/:id',
+        isHide: true,
+        component: dynamicWrapper(app, [], () => import('../pages/Circle/CircleDetail')),
+      },
+      {
+        name: '创建圈子',
+        id: 'menu.community.circle.create',
+        key: 'circle-create',
+        path: 'community/circle/create',
+        isHide: true,
+        component: dynamicWrapper(app, [], () => import('../pages/Circle/CircleCreate')),
       },
 
       {
@@ -65,6 +81,7 @@ const BaseRoutes = app => [
         id: 'menu.contest',
         key: 'contest',
         path: 'contest',
+        isHide: true,
         component: dynamicWrapper(app, [], () => import('../pages/Contest/_layout')),
       },
       {
@@ -147,7 +164,7 @@ const BaseRoutes = app => [
         key: 'question',
         path: 'question/:id/:title',
         isHide: true,
-        component: dynamicWrapper(app, [], () => import('../pages/Detail/QuestionDetail')),
+        component: dynamicWrapper(app, [], () => import('../pages/Question/QuestionDetail')),
       },
       {
         name: '话题详情',

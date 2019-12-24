@@ -9,6 +9,8 @@ import { ENV, Storage } from '@/utils';
 import styles from './SettingsBind.less'
 
 import AccountAuth from '@/blocks/Auth/AccountAuth'
+import ChangeEmail from '@/containers/Settings/ChangeEmail'
+import ChangeMobile from '@/containers/Settings/ChangeMobile'
 import ChangePassword from '@/containers/Settings/ChangePassword'
 
 @connect(state => ({
@@ -22,13 +24,13 @@ export default class SettingsBind extends React.Component {
 
   changeEmail = () => {
     if(this.auth()) {
-
+      this.changeEmail.show()
     }
   }
 
   changeMobile = () => {
     if(this.auth()) {
-
+      this.changeMobile.show()
     }
   }
 
@@ -62,7 +64,10 @@ export default class SettingsBind extends React.Component {
                 <span><strong>邮箱</strong></span>
                 {
                   currentUser.email ?
-                    <span>{currentUser.email} ，{currentUser.email_auth ? '已验证' : '未验证'}</span>
+                    <span>
+                      {currentUser.email}
+                      {/*，{currentUser.email_auth ? '已验证' : '未验证'}*/}
+                    </span>
                     :
                     '未绑定'
                 }
@@ -74,12 +79,12 @@ export default class SettingsBind extends React.Component {
                 <Button onClick={this.changeEmail}>
                   {currentUser.email ? '更改' : '绑定'}
                 </Button>
-                {
-                  currentUser.email_auth ?
-                    null
-                    :
-                    <Button onClick={this.changeEmail}>验证</Button>
-                }
+                {/*{*/}
+                  {/*currentUser.email_auth ?*/}
+                    {/*null*/}
+                    {/*:*/}
+                    {/*<Button onClick={this.changeEmail}>验证</Button>*/}
+                {/*}*/}
               </p>
             </li>
 
@@ -153,6 +158,8 @@ export default class SettingsBind extends React.Component {
 
         <AccountAuth onRef={e => this.accountAuth = e} />
 
+        <ChangeEmail onRef={e => this.changeEmail = e}/>
+        <ChangeMobile onRef={e => this.changeMobile = e}/>
         <ChangePassword onRef={e => this.changePassword = e}/>
 
       </div>

@@ -68,7 +68,7 @@ export default class UserInfoSetting extends PureComponent {
 
   //选择城市
   handleSelectCity = (value) => {
-    let city = value.join(" - ");                     //数组转字符串
+    let city = value.join(" - ");
     this.props.form.setFieldsValue({
       city: city
     });
@@ -213,7 +213,7 @@ export default class UserInfoSetting extends PureComponent {
                 {getFieldDecorator('city', {
                   initialValue: currentUser.city
                 })(
-                  <SelectCity city={currentUser.city} handleSelectCity={this.handleSelectCity} />
+                  <SelectCity defaultValue={currentUser.city} callback={this.handleSelectCity} />
                 )}
               </FormItem>
 

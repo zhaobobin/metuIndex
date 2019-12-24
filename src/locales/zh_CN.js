@@ -17,7 +17,14 @@ export default {
   'menu.community.discover.new': '最新',
   'menu.community.discover.graphic': '图文',
   'menu.community.author': '摄影师',
-  'menu.community.cricle': '圈子',
+  'menu.community.circle': '圈子',
+  'menu.community.circle.detail': '圈子详情',
+  'menu.community.circle.create': '创建圈子',
+  'menu.community.circle.discuss': '讨论',
+  'menu.community.circle.good': '精选',
+  'menu.community.circle.member': '成员',
+  'menu.community.circle.contest': '活动',
+  'menu.community.circle.album': '影集',
 
   'menu.contest': '活动',
 

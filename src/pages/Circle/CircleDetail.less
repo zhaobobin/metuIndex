@@ -1,0 +1,27 @@
+@import '../../theme/index.less';
+
+.container{
+
+  .menu{
+    box-shadow: @box_shadow;
+    background: #fff;
+    .number{
+      margin-left: 5px;
+    }
+  }
+
+  :global{
+    .ant-menu-horizontal{
+      padding-top: 10px;
+      // text-align: center;
+    }
+    .ant-menu-horizontal > .ant-menu-item{
+      display: inline-block;
+    }
+  }
+
+  .content{
+    padding: 20px 0;
+  }
+
+}

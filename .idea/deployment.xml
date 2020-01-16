@@ -5,14 +5,14 @@
       <paths name="metuAdmin">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$/../metuAdmin/dist/metuAdmin" web="/" />
+            <mapping local="$PROJECT_DIR$/../metuAdmin/dist/admin" web="/" />
           </mappings>
         </serverdata>
       </paths>
       <paths name="metuIndex">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$/dist/metuIndex" web="/" />
+            <mapping local="$PROJECT_DIR$/dist/www" web="/" />
           </mappings>
         </serverdata>
       </paths>

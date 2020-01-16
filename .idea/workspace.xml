@@ -2,113 +2,205 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9867b411-40dc-42b9-8dd8-31005ea1b8dc" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/webServers.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/0.eed279f2.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/1.af2321e0.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/10.c30230ad.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/11.dc91421f.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/12.a7c04bc1.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/13.d48b78f2.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/14.5c9a994e.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/15.8816dac5.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/16.4676bb25.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/17.a88843e4.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/18.55ecc8f0.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/19.fa93ee04.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/2.d52be533.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/20.fbe50289.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/21.fe17c84c.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/22.f68caedc.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/23.49b56502.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/24.f08c4f94.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/25.15729db6.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/26.0cc31570.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/27.f57debb7.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/28.201d379f.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/29.835b2d94.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/3.c1269163.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/30.2cfa1435.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/31.f8c7c965.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/32.621bc908.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/33.1a122b93.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/34.3ac72cac.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/35.9506ffc7.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/36.bd0495ff.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/37.760a8379.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/38.bfb6be50.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/39.3d3094f7.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/4.a65663c9.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/40.0f1ce3c8.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/41.e891350a.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/42.6ea3fdae.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/43.a77e3105.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/44.a967c7b5.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/45.b76cb1ab.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/46.86d1995b.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/47.40944859.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/48.d5204d25.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/49.9aed3755.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/5.47169380.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/50.212c83de.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/51.b3ed56eb.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/52.2df91d3a.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/53.6ea10900.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/54.c2c40878.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/55.ab4107a9.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/56.67f94564.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/6.a27ae7bb.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/7.adad09c5.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/8.acbbf3c0.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/9.41f70795.async.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/css/HoverAllsLoader.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/images/favicon.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/images/logo.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/images/logo2.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/images/logo2@450x300.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/images/logo@100x100.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/images/logo@108x108.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/images/logo@120x120.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/images/logo@16x16.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/images/logo@200x200.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/images/logo@28x28.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/images/logo@80x80.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/index.5d30ebd5.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/index.61e36d30.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/index.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/static/banner.a909f2a2.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/static/pintu0.593e0d4e.jpeg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/static/pintu11.6e8052cd.jpeg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/static/pintu16.782056e9.jpeg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/static/pintu17.d15590a9.jpeg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/static/pintu20.5e4f9ade.jpeg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/static/pintu21.aad149b2.jpeg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/static/pintu23.4ad47b9d.jpeg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/static/pintu25.2e47fa34.jpeg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/static/pintu26.1cc785bd.jpeg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/static/pintu27.48640f0e.jpeg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/static/pintu28.210afc60.jpeg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/static/pintu32.a6b542d4.jpeg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/static/pintu35.54f41543.jpeg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/static/pintu36.5907b284.jpeg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/static/pintu38.dc3df961.jpeg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/static/pintu40.00d90886.jpeg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/static/pintu42.6ba47066.jpeg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/static/pintu46.730195ce.jpeg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/static/pintu47.5e2b49f6.jpeg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/static/pintu49.4cadac95.jpeg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/static/pintu5.8a7a17f9.jpeg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/static/pintu6.7b25147e.jpeg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/static/pintu7.53dd8177.jpeg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/static/pintu9.efac119c.jpeg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dist/metuIndex/static/sign_icon.f13cff3d.png" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/0.eed279f2.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/1.af2321e0.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/10.c30230ad.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/11.dc91421f.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/12.a7c04bc1.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/13.d48b78f2.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/14.5c9a994e.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/15.8816dac5.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/16.4676bb25.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/17.a88843e4.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/18.55ecc8f0.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/19.fa93ee04.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/2.d52be533.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/20.fbe50289.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/21.fe17c84c.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/22.f68caedc.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/23.49b56502.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/24.f08c4f94.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/25.15729db6.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/26.0cc31570.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/27.f57debb7.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/28.201d379f.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/29.835b2d94.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/3.c1269163.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/30.2cfa1435.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/31.f8c7c965.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/32.621bc908.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/33.1a122b93.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/34.3ac72cac.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/35.9506ffc7.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/36.bd0495ff.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/37.760a8379.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/38.bfb6be50.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/39.3d3094f7.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/4.a65663c9.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/40.0f1ce3c8.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/41.e891350a.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/42.6ea3fdae.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/43.a77e3105.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/44.a967c7b5.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/45.b76cb1ab.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/46.86d1995b.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/47.40944859.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/48.d5204d25.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/49.9aed3755.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/5.47169380.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/50.212c83de.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/51.b3ed56eb.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/52.2df91d3a.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/53.6ea10900.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/54.c2c40878.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/55.ab4107a9.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/56.67f94564.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/6.a27ae7bb.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/7.adad09c5.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/8.acbbf3c0.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/9.41f70795.async.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/css/HoverAllsLoader.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/images/favicon.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/images/logo.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/images/logo2.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/images/logo2@450x300.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/images/logo@100x100.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/images/logo@108x108.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/images/logo@120x120.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/images/logo@16x16.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/images/logo@200x200.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/images/logo@28x28.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/images/logo@80x80.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/index.5d30ebd5.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/index.61e36d30.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/index.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/static/banner.a909f2a2.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/static/pintu0.593e0d4e.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/static/pintu11.6e8052cd.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/static/pintu16.782056e9.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/static/pintu17.d15590a9.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/static/pintu20.5e4f9ade.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/static/pintu21.aad149b2.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/static/pintu23.4ad47b9d.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/static/pintu25.2e47fa34.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/static/pintu26.1cc785bd.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/static/pintu27.48640f0e.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/static/pintu28.210afc60.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/static/pintu32.a6b542d4.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/static/pintu35.54f41543.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/static/pintu36.5907b284.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/static/pintu38.dc3df961.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/static/pintu40.00d90886.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/static/pintu42.6ba47066.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/static/pintu46.730195ce.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/static/pintu47.5e2b49f6.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/static/pintu49.4cadac95.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/static/pintu5.8a7a17f9.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/static/pintu6.7b25147e.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/static/pintu7.53dd8177.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/static/pintu9.efac119c.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dist/www/static/sign_icon.f13cff3d.png" />
       <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/.webpackrc.js" afterPath="$PROJECT_DIR$/.webpackrc.js" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/Photo/PhotoListUpload.js" afterPath="$PROJECT_DIR$/src/blocks/Photo/PhotoListUpload.js" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/User/UserRegister.js" afterPath="$PROJECT_DIR$/src/blocks/User/UserRegister.js" />
-      <change beforePath="$PROJECT_DIR$/src/components/Form/PintuValidate.js" afterPath="$PROJECT_DIR$/src/components/Form/PintuValidate.js" />
-      <change beforePath="$PROJECT_DIR$/src/models/global.js" afterPath="$PROJECT_DIR$/src/models/global.js" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/0.eed279f2.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/1.af2321e0.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/10.c30230ad.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/11.dc91421f.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/12.a7c04bc1.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/13.d48b78f2.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/14.5c9a994e.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/15.8816dac5.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/16.4676bb25.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/17.a88843e4.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/18.55ecc8f0.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/19.fa93ee04.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/2.d52be533.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/20.fbe50289.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/21.fe17c84c.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/22.f68caedc.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/23.49b56502.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/24.f08c4f94.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/25.15729db6.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/26.0cc31570.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/27.f57debb7.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/28.201d379f.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/29.835b2d94.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/3.c1269163.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/30.2cfa1435.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/31.f8c7c965.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/32.621bc908.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/33.1a122b93.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/34.3ac72cac.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/35.9506ffc7.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/36.bd0495ff.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/37.760a8379.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/38.bfb6be50.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/39.3d3094f7.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/4.a65663c9.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/40.0f1ce3c8.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/41.e891350a.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/42.6ea3fdae.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/43.a77e3105.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/44.a967c7b5.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/45.b76cb1ab.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/46.86d1995b.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/47.40944859.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/48.d5204d25.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/49.9aed3755.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/5.47169380.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/50.212c83de.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/51.b3ed56eb.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/52.2df91d3a.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/53.6ea10900.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/54.c2c40878.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/55.ab4107a9.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/56.67f94564.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/6.a27ae7bb.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/7.adad09c5.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/8.acbbf3c0.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/9.41f70795.async.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/css/HoverAllsLoader.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/images/favicon.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/images/logo.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/images/logo2.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/images/logo2@450x300.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/images/logo@100x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/images/logo@108x108.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/images/logo@120x120.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/images/logo@16x16.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/images/logo@200x200.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/images/logo@28x28.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/images/logo@80x80.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/index.5d30ebd5.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/index.61e36d30.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/static/banner.a909f2a2.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/static/pintu0.593e0d4e.jpeg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/static/pintu11.6e8052cd.jpeg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/static/pintu16.782056e9.jpeg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/static/pintu17.d15590a9.jpeg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/static/pintu20.5e4f9ade.jpeg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/static/pintu21.aad149b2.jpeg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/static/pintu23.4ad47b9d.jpeg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/static/pintu25.2e47fa34.jpeg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/static/pintu26.1cc785bd.jpeg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/static/pintu27.48640f0e.jpeg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/static/pintu28.210afc60.jpeg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/static/pintu32.a6b542d4.jpeg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/static/pintu35.54f41543.jpeg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/static/pintu36.5907b284.jpeg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/static/pintu38.dc3df961.jpeg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/static/pintu40.00d90886.jpeg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/static/pintu42.6ba47066.jpeg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/static/pintu46.730195ce.jpeg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/static/pintu47.5e2b49f6.jpeg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/static/pintu49.4cadac95.jpeg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/static/pintu5.8a7a17f9.jpeg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/static/pintu6.7b25147e.jpeg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/static/pintu7.53dd8177.jpeg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/static/pintu9.efac119c.jpeg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dist/metuIndex/static/sign_icon.f13cff3d.png" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -142,10 +234,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name=".webpackrc.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.webpackrc.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="17" column="41" lean-forward="false" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="UserRegister.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blocks/User/UserRegister.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="485">
+            <state relative-caret-position="2675">
               <caret line="118" column="26" lean-forward="false" selection-start-line="118" selection-start-column="26" selection-end-line="118" selection-end-column="26" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
@@ -158,7 +260,7 @@
         <entry file="file://$PROJECT_DIR$/src/blocks/Photo/PhotoListUpload.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="275">
-              <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -166,7 +268,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="125">
@@ -278,12 +380,12 @@
         <option value="$PROJECT_DIR$/src/containers/Question/QuestionDetailHead.js" />
         <option value="$PROJECT_DIR$/src/pages/Question/QuestionDetail.js" />
         <option value="$PROJECT_DIR$/src/pages/Circle/CircleDetail.js" />
-        <option value="$PROJECT_DIR$/.webpackrc.js" />
         <option value="$PROJECT_DIR$/src/models/global.js" />
         <option value="$PROJECT_DIR$/src/utils/Crypto.js" />
         <option value="$PROJECT_DIR$/src/blocks/User/UserRegister.js" />
         <option value="$PROJECT_DIR$/src/blocks/Photo/PhotoListUpload.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/.webpackrc.js" />
       </list>
     </option>
   </component>
@@ -351,30 +453,12 @@
               <item name="metuIndex" type="b2602c69:ProjectViewProjectNode" />
               <item name="metuIndex" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="metuIndex" type="b2602c69:ProjectViewProjectNode" />
-              <item name="metuIndex" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="metuIndex" type="b2602c69:ProjectViewProjectNode" />
-              <item name="metuIndex" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="blocks" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="metuIndex" type="b2602c69:ProjectViewProjectNode" />
-              <item name="metuIndex" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="blocks" type="462c0819:PsiDirectoryNode" />
-              <item name="Photo" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -629,7 +713,9 @@
       <workItem from="1578988102758" duration="384000" />
       <workItem from="1579068061843" duration="230000" />
       <workItem from="1579163266381" duration="1933000" />
-      <workItem from="1579168368468" duration="628000" />
+      <workItem from="1579168368468" duration="670000" />
+      <workItem from="1579183967181" duration="46000" />
+      <workItem from="1579184168465" duration="13000" />
     </task>
     <task id="LOCAL-00001" summary="metuIndex">
       <created>1547650024511</created>
@@ -946,33 +1032,41 @@
       <option name="project" value="LOCAL" />
       <updated>1577180355498</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="metuIndex">
+      <created>1579169096776</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1579169096776</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="890124000" />
+    <option name="totallyTimeSpent" value="890225000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="960" extended-state="0" />
     <layout>
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985258" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23894349" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32819906" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4687131" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985258" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23157248" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293979" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938388" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293979" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -1307,17 +1401,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="325">
           <caret line="16" column="12" lean-forward="true" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#25#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.webpackrc.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="6" column="36" lean-forward="true" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1325,7 +1408,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="38" column="11" lean-forward="true" selection-start-line="38" selection-start-column="11" selection-end-line="38" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1333,7 +1415,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="488">
           <caret line="103" column="29" lean-forward="true" selection-start-line="103" selection-start-column="29" selection-end-line="103" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1341,7 +1422,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-898">
           <caret line="89" column="28" lean-forward="false" selection-start-line="89" selection-start-column="28" selection-end-line="89" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1349,9 +1429,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1381,7 +1458,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/blocks/User/UserRegister.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
+        <state relative-caret-position="2675">
           <caret line="118" column="26" lean-forward="false" selection-start-line="118" selection-start-column="26" selection-end-line="118" selection-end-column="26" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
@@ -1392,10 +1469,18 @@
     <entry file="file://$PROJECT_DIR$/src/blocks/Photo/PhotoListUpload.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="275">
-          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.webpackrc.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="17" column="41" lean-forward="false" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>

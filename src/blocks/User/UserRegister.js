@@ -108,7 +108,7 @@ export default class UserRegister extends React.Component {
 
     this.props.form.validateFields('', (err, values) => {
       if (!err) {
-        values.password = Encrypt(values.tel, values.password);
+        values.password = Encrypt(values.mobile, values.password);
         this.register(values);
       }
       setTimeout(() => { this.ajaxFlag = true }, 500);

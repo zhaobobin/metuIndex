@@ -16,7 +16,27 @@ export default class PintuValidate extends React.Component {
   }
 
   componentDidMount(){
-    this.init()
+    this.init();
+    document.addEventListener("touchstart", this.getStart);
+    document.addEventListener("touchmove", this.stopTouch, {passive:false});
+  }
+
+  componentWillUnmount(){
+    document.removeEventListener("touchstart", this.getStart);
+    document.removeEventListener("touchmove", this.stopTouch, {passive:false});
+  }
+
+  getStart = (e) => {
+    this.startX = e.targetTouches[0].pageX;
+    this.startY = e.targetTouches[0].pageY;
+  }
+
+  stopTouch = (e) => {
+    const moveX = e.targetTouches[0].pageX;
+    const moveY = e.targetTouches[0].pageY;
+    if(Math.abs(moveX - this.startX) > Math.abs(moveY - this.startY)){
+      e.preventDefault();
+    }
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {

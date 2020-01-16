@@ -23,7 +23,7 @@ const keys = ['category', 'title', 'tags', 'description', 'copyright'];
   oss: state.oss,
 }))
 @Form.create()
-export default class PhotoListUpload extends Resct.Component {
+export default class PhotoListUpload extends React.Component {
 
   constructor(props){
     super(props);

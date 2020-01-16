@@ -35,7 +35,7 @@ export default {
           payload: {
             loading: false,
             isAuth: true,
-            currentUser: res.data.currentUser,
+            currentUser: res.data.detail,
           }
         });
         Storage.set(ENV.storage.token, res.data.token);              //保存token

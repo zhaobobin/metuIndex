@@ -4,8 +4,8 @@ const path = require('path');
 
 export default {
   "entry": "src/index.js",
-  "outputPath": "./dist/index/",
-  "publicPath": "/index/",
+  "outputPath": "./dist/metuIndex/",
+  "publicPath": "/",
   "hash": true,
   "ignoreMomentLocale": true,
   "theme": "./src/theme/theme.js",

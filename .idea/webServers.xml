@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="2aee6915-fd27-478e-9ea1-efab792d0a27" name="metuIndex" url="http://115.29.55.83">
+        <fileTransfer host="115.29.55.83" port="22" rootFolder="/root" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="dc9b94b5-f506-42bb-bc2f-aa84310c1a02" name="metuAdmin" url="http://115.29.55.83">
+        <fileTransfer host="115.29.55.83" port="22" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

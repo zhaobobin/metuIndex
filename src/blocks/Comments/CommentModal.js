@@ -1,16 +1,16 @@
 /**
  * CommentModal
  */
-import React from 'react'
-import {connect} from 'dva'
-import { Modal, Button, Form, Icon, Input } from 'antd'
-import {filterStr} from "@/utils/utils"
-import styles from './CommentModal.less'
+import React from 'react';
+import {connect} from 'dva';
+import { Modal, Button, Form, Input } from 'antd';
+import {filterStr} from "@/utils/utils";
+import styles from './CommentModal.less';
 
-import {Toast} from '@/components'
+import {Toast} from '@/components';
 
-const FormItem = Form.Item
-const {TextArea} = Input
+const FormItem = Form.Item;
+const {TextArea} = Input;
 
 @connect(state => ({
   global: state.global,

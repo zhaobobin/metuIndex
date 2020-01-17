@@ -3,12 +3,11 @@
  */
 import React from 'react';
 import {connect} from 'dva'
-import { Link } from 'dva/router';
-import { Row, Col, Affix, Button } from 'antd';
-import styles from './QuestionSlide.less'
+import { Button } from 'antd';
+import styles from './QuestionSlide.less';
 
-import QuestionModal from './QuestionModal'
-import SignAuth from '@/blocks/Auth/SignAuth'
+import QuestionModal from './QuestionModal';
+import SignAuth from '@/blocks/Auth/SignAuth';
 
 @connect(state => ({
   global: state.global

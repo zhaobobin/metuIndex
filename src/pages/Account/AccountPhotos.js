@@ -3,7 +3,6 @@
  */
 import React from 'react'
 import { connect } from 'dva';
-import { routerRedux } from 'dva/router';
 import { Row, Col } from 'antd';
 
 import PhotoListQuery from '@/blocks/Photo/PhotoListQuery';

@@ -218,8 +218,8 @@ export default class InputSmscode extends React.Component {
     const modalWidth = document.body.clientWidth < 750 ? '95%' : '360px';
 
     return (
-      <div>
-        <Row gutter={10} className={styles.smscode}>
+      <div className={styles.smscode}>
+        <Row gutter={10}>
           <Col xs={14} sm={14} md={16} lg={16}>
             <Input
               size="large"

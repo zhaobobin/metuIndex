@@ -5,15 +5,13 @@
  */
 import React from 'react';
 import { connect } from 'dva';
-import { Link } from 'dva/router';
-import { Icon, Input } from 'antd';
 import styles from './CommentList.less';
 
-import { Toast } from '@/components'
-import SignAuth from '@/blocks/Auth/SignAuth'
-import CommentForm from './CommentForm'
-import CommentModal from './CommentModal'
-import CommentItem from './CommentItem'
+import { Toast } from '@/components';
+import SignAuth from '@/blocks/Auth/SignAuth';
+import CommentForm from './CommentForm';
+import CommentModal from './CommentModal';
+import CommentItem from './CommentItem';
 
 @connect(state => ({
   global: state.global,

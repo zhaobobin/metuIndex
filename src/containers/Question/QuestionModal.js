@@ -3,8 +3,8 @@
  */
 import React from 'react'
 import {connect} from 'dva'
-import { Modal, Button, Form, Icon, Input, Select } from 'antd'
-import { filterStr, getRichText } from "@/utils/utils"
+import { Modal, Button, Form, Input, Select } from 'antd'
+import { getRichText } from "@/utils/utils"
 import styles from './QuestionModal.less'
 
 import {Toast} from '@/components'

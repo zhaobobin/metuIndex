@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
-import { Row, Col, Affix, Menu } from 'antd';
-import styles from './QuestionDetail.less'
+import { Row, Col } from 'antd';
+import styles from './QuestionDetail.less';
 
 @connect(state => ({
   global: state.global,
@@ -52,7 +52,7 @@ export default class QuestionDetail extends React.Component {
 
   render(){
 
-    const { loading, id, detail } = this.state;
+    const { loading } = this.state;
 
     return(
 

@@ -1,12 +1,12 @@
 /**
  * 身份校验 - 发送短信验证码
  */
-import React from 'react'
-import {connect} from 'dva'
-import {Modal, Button, Row, Col, Input} from 'antd'
-import {Toast} from 'antd-mobile'
-import {ENV, Storage, Validator} from '@/utils'
-import styles from './AccountAuth.less'
+import React from 'react';
+import { connect } from 'dva';
+import { Modal, Button, Row, Col, Input } from 'antd';
+import { Toast } from 'antd-mobile';
+import { ENV, Storage } from '@/utils';
+import styles from './AccountAuth.less';
 
 let timer
 

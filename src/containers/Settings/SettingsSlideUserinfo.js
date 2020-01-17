@@ -1,6 +1,6 @@
 import React from 'react';
-import { Avatar, Button } from 'antd';
-import styles from './SettingsSlideUserinfo.less'
+import { Avatar } from 'antd';
+import styles from './SettingsSlideUserinfo.less';
 
 export default function SettingsUserinfo ({ currentUser }) {
 

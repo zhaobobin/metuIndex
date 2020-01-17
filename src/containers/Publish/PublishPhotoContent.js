@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import { Row, Col, Icon, Button, Upload, Modal } from 'antd';
+import { Row, Col, Icon, Upload, Modal } from 'antd';
 import { file2base64, createRandomId } from '@/utils/utils';
 import styles from './PublishPhotoContent.less';
 

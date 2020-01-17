@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'dva';
-import { Link, routerRedux } from 'dva/router';
+import { Link } from 'dva/router';
 import { Avatar, Button, Icon, Menu, Dropdown } from 'antd';
 import { FormattedMessage } from 'react-intl';
 import styles from './GlobalHeaderSign.less';
 
-import GlobalHeaderSearch from '@/components/Common/GlobalHeaderSearch'
+import GlobalHeaderSearch from '@/components/Common/GlobalHeaderSearch';
 import MessagesPopover from '@/blocks/Messages/MessagesPopover';
 import UserSignModal from '@/blocks/User/UserSignModal';
-import { Confirm } from '@/components/Dialog/Dialog'
+import { Confirm } from '@/components/Dialog/Dialog';
 
 @connect(state => ({
   global: state.global

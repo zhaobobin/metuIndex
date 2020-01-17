@@ -45,7 +45,7 @@ export default class _layout extends React.Component {
 
   render(){
 
-    const { isAuth, currentUser } = this.props.global;
+    const { isAuth } = this.props.global;
 
     return(
       <div className={styles.container}>

@@ -11,7 +11,7 @@
         </fileTransfer>
       </webServer>
       <webServer id="dc9b94b5-f506-42bb-bc2f-aa84310c1a02" name="metuAdmin" url="http://115.29.55.83">
-        <fileTransfer host="115.29.55.83" port="22" accessType="SFTP">
+        <fileTransfer host="115.29.55.83" port="22" rootFolder="/root" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>

@@ -1,13 +1,12 @@
 /**
  * 设置 - 修改密码
  */
-import React from 'react'
-import {connect} from 'dva'
-import { Modal } from 'antd'
-import { Validator, Encrypt } from '@/utils';
-import { Toast } from '@/components'
+import React from 'react';
+import { connect } from 'dva';
+import { Encrypt } from '@/utils';
+import { Toast } from '@/components';
 
-import FormInit from '@/components/Form/FormInit'
+import FormInit from '@/components/Form/FormInit';
 
 @connect(state => ({
   global: state.global

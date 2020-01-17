@@ -5,7 +5,7 @@ import React from 'react';
 import { connect } from 'dva';
 import { notification } from 'antd';
 import { goBack } from "@/utils/utils";
-import { ENV, Storage } from '@/utils';
+import { ENV } from '@/utils';
 import styles from './PhotoDetail.less';
 
 import PhotoSwiper from '@/blocks/Photo/PhotoSwiper';

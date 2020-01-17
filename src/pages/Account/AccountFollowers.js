@@ -53,9 +53,17 @@ export default class AccountFollowers extends React.Component {
 
   render(){
     return(
-      <div>
-        粉丝
-      </div>
+      <Row>
+        <Col xs={0} sm={0} md={4} lg={6} />
+
+        <Col xs={24} sm={24} md={16} lg={12}>
+
+          粉丝
+
+        </Col>
+
+        <Col xs={0} sm={0} md={4} lg={6} />
+      </Row>
     )
   }
 

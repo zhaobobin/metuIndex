@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'dva'
 import { Link } from 'dva/router';
-import { Button, Form, Icon, Input } from 'antd'
+import { Button, Form, Input } from 'antd'
 import {filterStr} from "@/utils/utils"
 import styles from './CommentList.less'
 

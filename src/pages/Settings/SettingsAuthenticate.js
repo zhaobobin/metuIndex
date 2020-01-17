@@ -1,12 +1,11 @@
 /**
  * 设置 - 实名认证
  */
-import React from 'react'
-import { Link } from 'dva/router'
-import {connect} from 'dva'
-import { Button, Icon } from 'antd'
+import React from 'react';
+import { Link } from 'dva/router';
+import {connect} from 'dva';
 import { ENV } from '@/utils';
-import styles from './SettingsAuthenticate.less'
+import styles from './SettingsAuthenticate.less';
 
 @connect(state => ({
   global: state.global
@@ -15,7 +14,7 @@ export default class SettingsAuthenticate extends React.Component {
 
   render() {
 
-    const {currentUser} = this.props.global
+    // const {currentUser} = this.props.global
 
     return (
       <div className={styles.container}>

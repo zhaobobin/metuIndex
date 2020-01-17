@@ -3,10 +3,9 @@
  */
 import React from 'react'
 import { connect } from 'dva';
-import { routerRedux } from 'dva/router';
 import { Row, Col } from 'antd';
 
-import ArticleListQuery from '@/blocks/Article/ArticleListQuery'
+import ArticleListQuery from '@/blocks/Article/ArticleListQuery';
 
 @connect(state => ({
   global: state.global,

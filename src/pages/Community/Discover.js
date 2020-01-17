@@ -4,13 +4,13 @@
  */
 import React from 'react';
 import { Link } from 'dva/router';
-import { Row, Col, Affix, Menu } from 'antd';
+import { Affix, Menu } from 'antd';
 import { FormattedMessage } from 'react-intl';
-import { getUrlParams } from '@/utils/utils'
+import { getUrlParams } from '@/utils/utils';
 import styles from './Discover.less';
 
-import Graphic from './Graphic'
-import PhotoLayout from './PhotoLayout'
+import Graphic from './Graphic';
+import PhotoLayout from './PhotoLayout';
 
 export default class Discover extends React.Component {
 

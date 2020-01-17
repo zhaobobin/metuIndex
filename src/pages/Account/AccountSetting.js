@@ -4,7 +4,7 @@ import { connect } from 'dva';
 import { Tabs } from 'antd';
 import styles from './AccountSetting.less';
 
-import AccountInfoSetting from '@/containers/Account/AccountInfoSetting'
+import AccountInfoSetting from '@/containers/Account/AccountInfoSetting';
 
 const TabPane = Tabs.TabPane;
 

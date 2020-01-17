@@ -1,15 +1,15 @@
 /**
  * 设置 - 修改手机
  */
-import React from 'react'
-import {connect} from 'dva'
-import { Form, Button, Modal } from 'antd'
-import { Validator, Encrypt } from '@/utils';
-import styles from './ChangeMobile.less'
+import React from 'react';
+import {connect} from 'dva';
+import { Form, Button, Modal } from 'antd';
+import { Validator } from '@/utils';
+import styles from './ChangeMobile.less';
 
-import { Toast } from '@/components'
-import InputMobile from '@/components/Form/InputMobile'
-import InputSmscode from '@/components/Form/InputSmscode'
+import { Toast } from '@/components';
+import InputMobile from '@/components/Form/InputMobile';
+import InputSmscode from '@/components/Form/InputSmscode';
 
 const FormItem = Form.Item;
 

@@ -2,16 +2,15 @@
  * 设置 - 帐号绑定
  */
 import React from 'react';
-import { Redirect } from 'dva/router';
 import { connect } from 'dva';
-import { Button, Icon } from 'antd'
-import { ENV, Storage } from '@/utils';
-import styles from './SettingsBind.less'
+import { Button, Icon } from 'antd';
+import { ENV } from '@/utils';
+import styles from './SettingsBind.less';
 
-import AccountAuth from '@/blocks/Auth/AccountAuth'
-import ChangeEmail from '@/containers/Settings/ChangeEmail'
-import ChangeMobile from '@/containers/Settings/ChangeMobile'
-import ChangePassword from '@/containers/Settings/ChangePassword'
+import AccountAuth from '@/blocks/Auth/AccountAuth';
+import ChangeEmail from '@/containers/Settings/ChangeEmail';
+import ChangeMobile from '@/containers/Settings/ChangeMobile';
+import ChangePassword from '@/containers/Settings/ChangePassword';
 
 @connect(state => ({
   global: state.global

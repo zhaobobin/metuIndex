@@ -2,8 +2,8 @@
  * 消息 - 气泡卡片
  */
 import React from 'react';
-import { Icon, Popover } from 'antd';
-import MessagesPopoverContent from '@/blocks/Messages/MessagesPopoverContent'
+import { Popover } from 'antd';
+import MessagesPopoverContent from '@/blocks/Messages/MessagesPopoverContent';
 
 export default class MessagesPopover extends React.Component {
 

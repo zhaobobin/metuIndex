@@ -53,9 +53,17 @@ export default class AccountFollowing extends React.Component {
 
   render(){
     return(
-      <div>
-        关注
-      </div>
+      <Row>
+        <Col xs={0} sm={0} md={4} lg={6} />
+
+        <Col xs={24} sm={24} md={16} lg={12}>
+
+          关注
+
+        </Col>
+
+        <Col xs={0} sm={0} md={4} lg={6} />
+      </Row>
     )
   }
 

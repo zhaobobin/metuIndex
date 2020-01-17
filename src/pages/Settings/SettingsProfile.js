@@ -2,9 +2,8 @@
  * 设置 - 个人信息
  */
 import React from 'react';
-import { Redirect } from 'dva/router';
 import { connect } from 'dva';
-import { Form, Button, Icon, Modal, Select } from 'antd'
+import { Form, Button, Modal, Select } from 'antd'
 import styles from './SettingsProfile.less'
 
 import { Toast } from '@/components'
@@ -138,7 +137,7 @@ export default class SettingsProfile extends React.Component {
 
     const { title, visible } = this.state;
     const { currentUser } = this.props.global;
-    const { getFieldDecorator, getFieldValue, getFieldsError } = this.props.form;
+    const { getFieldDecorator } = this.props.form;
 
     return(
       <div className={styles.container}>

@@ -69,7 +69,7 @@ export default class SelectAlbum extends React.Component {
   };
 
   onShowSizeChange = (current, pageSize) => {
-    let {url} = this.state;
+    // let {url} = this.state;
     this.importAlbum({
       page: current,
       per_page: pageSize

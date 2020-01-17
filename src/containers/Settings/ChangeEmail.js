@@ -1,15 +1,15 @@
 /**
  * 设置 - 修改邮箱
  */
-import React from 'react'
-import {connect} from 'dva'
-import { Form, Button, Modal } from 'antd'
-import { Validator, Encrypt } from '@/utils';
-import styles from './ChangeMobile.less'
+import React from 'react';
+import {connect} from 'dva';
+import { Form, Button, Modal } from 'antd';
+import { Validator } from '@/utils';
+import styles from './ChangeMobile.less';
 
-import { Toast } from '@/components'
-import InputEmail from '@/components/Form/InputEmail'
-import InputEmailcode from '@/components/Form/InputEmailcode'
+import { Toast } from '@/components';
+import InputEmail from '@/components/Form/InputEmail';
+import InputEmailcode from '@/components/Form/InputEmailcode';
 
 const FormItem = Form.Item;
 

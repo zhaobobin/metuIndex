@@ -2,11 +2,9 @@
  * 【作废】图片上传
  */
 import React from 'react';
-import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
-import { Form, Input, Button, Icon, Row, Col, Card, InputNumber, Select, Table, Divider, Upload, Modal, Popconfirm, notification } from 'antd';
-import ENV from '@/config/env'
-import Storage from '@/utils/storage';
+import { Form, Input, Button, Icon, Row, Col, Select, Upload, Modal, notification } from 'antd';
+import { ENV, Storage } from '@/utils';
 import { checkRole, hasErrors, file2base64 } from '@/utils/utils';
 import styles from './PhotoListUpload.less'
 

@@ -10,12 +10,13 @@ module.exports = {
     jasmine: true,
   },
   rules: {
+    'radix': [0],
     'generator-star-spacing': [0],
     'consistent-return': [0],
     'react/forbid-prop-types': [0],
     'react/no-deprecated': [0],
     'react/jsx-filename-extension': [1, { extensions: ['.js'] }],
-    'global-require': [1],
+    'global-require': [0],
     'import/prefer-default-export': [0],
     'react/jsx-no-bind': [0],
     'react/prop-types': [0],
@@ -38,6 +39,7 @@ module.exports = {
     'no-bitwise': [0],
     'no-caller': [0],
     'no-cond-assign': [0],
+    'no-script-url': [0],
     'import/no-unresolved': [0],
     'comma-dangle': [0],
     'object-curly-newline': [0],
@@ -48,6 +50,7 @@ module.exports = {
   parserOptions: {
     ecmaFeatures: {
       experimentalObjectRestSpread: true,
+      legacyDecorators: true
     },
   },
   settings: {

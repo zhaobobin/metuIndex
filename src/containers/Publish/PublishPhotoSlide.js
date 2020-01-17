@@ -131,7 +131,7 @@ export default class PublishRight extends React.Component {
 
     const { detail } = this.state;
     const { global, form, publish } = this.props;
-    const { getFieldDecorator, getFieldValue } = form;
+    const { getFieldDecorator } = form;
 
     //标签option
     const tagsOption = PublishConfig.tags.map((topic, index) => (

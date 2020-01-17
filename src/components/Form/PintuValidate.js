@@ -45,26 +45,6 @@ export default class PintuValidate extends React.Component {
     }
   }
 
-  //查询拼图图片路径
-  queryPintuImg(){
-    let {mobile} = this.props;
-    this.props.dispatch({
-      type: 'global/request',
-      url: '/api/userRegister/getCheckImg',
-      method: 'GET',
-      payload:{
-        mobile: mobile
-      },
-      callback: (res) => {
-        if(res && res.code === 0){
-
-        }else{
-
-        }
-      }
-    })
-  }
-
   //初始化
   init = () => {
     let _this = this;

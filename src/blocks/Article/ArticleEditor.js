@@ -1,12 +1,10 @@
 import React from 'react';
 import { connect } from 'dva';
-import Storage from '@/utils/storage';
-import { hasErrors, getImgSize, file2base64 } from '@/utils/utils';
 
-import { EditorState, convertToRaw, ContentState } from 'draft-js';
+import { EditorState, convertToRaw } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 import draftToHtml from 'draftjs-to-html';
-import htmlToDraft from 'html-to-draftjs';
+// import htmlToDraft from 'html-to-draftjs';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 @connect(state => ({

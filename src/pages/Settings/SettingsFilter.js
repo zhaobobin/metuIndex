@@ -2,9 +2,8 @@
  * 设置 - 屏蔽
  */
 import React from 'react';
-import { Redirect } from 'dva/router';
 import { connect } from 'dva';
-import { Button, Icon } from 'antd'
+import { Button } from 'antd'
 import styles from './SettingsFilter.less'
 
 @connect(state => ({
@@ -14,7 +13,7 @@ export default class SettingsFilter extends React.Component {
 
   render(){
 
-    const { currentUser } = this.props.global;
+    // const { currentUser } = this.props.global;
 
     return(
       <div className={styles.container}>

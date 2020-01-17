@@ -4,10 +4,10 @@
  * <PhotoListGrid photos={photos}/>
  */
 import React, { PureComponent } from 'react';
-import RGL, { Responsive, WidthProvider } from "react-grid-layout";
+import { Responsive, WidthProvider } from "react-grid-layout";
 import styles from './PhotoList.less';
 
-const ReactGridLayout = WidthProvider(RGL);
+// const ReactGridLayout = WidthProvider(RGL);
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
 const photos = [
@@ -43,24 +43,23 @@ export default class PhotoListGrid extends PureComponent {
 
   generateLayout = () => {
 
-    let {photos, breakpoint} = this.state;
+    let { photos } = this.state;
 
-    let rowW = 12,                                //每行栅格数
-      rowH = 4,                                   //每行高度
+    let rowH = 4,                                   //每行高度
       col = 4;                                    //每行元素个数
 
-    switch(breakpoint){
-      case 'lg': rowW = 12;col = 5;break;
-      case 'md': rowW = 10;col = 4;break;
-      case 'sm': rowW = 6;col = 3;break;
-      case 'xs': rowW = 4;col = 2;break;
-      case 'xxs': rowW = 2;col = 1;break;
-      default: rowW = 12;col = 4;
-    }
-//console.log(col)
+    // switch(breakpoint){
+    //   case 'lg': rowW = 12;col = 5;break;
+    //   case 'md': rowW = 10;col = 4;break;
+    //   case 'sm': rowW = 6;col = 3;break;
+    //   case 'xs': rowW = 4;col = 2;break;
+    //   case 'xxs': rowW = 2;col = 1;break;
+    //   default: rowW = 12;col = 4;
+    // }
+
     let currentX = 0, currentY = 0;
     for(let i in photos){
-      let width = '';                             //当前元素占据的宽度 100 / col
+      // let width = '';                             //当前元素占据的宽度 100 / col
       if(i > 0){
         currentX += photos[i-1].width;
         if(i%col === 0){                            //每当一行充满时，重X轴坐标，并且叠加Y轴坐标

@@ -2,9 +2,8 @@
  * 设置 - 消息提醒
  */
 import React from 'react';
-import { Redirect } from 'dva/router';
 import { connect } from 'dva';
-import { Button, Icon } from 'antd'
+import { Button } from 'antd'
 import styles from './SettingsMessage.less'
 
 @connect(state => ({
@@ -14,7 +13,7 @@ export default class SettingsMessage extends React.Component {
 
   render(){
 
-    const { currentUser } = this.props.global;
+    // const { currentUser } = this.props.global;
 
     return(
       <div className={styles.container}>

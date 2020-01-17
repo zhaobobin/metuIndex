@@ -2,9 +2,7 @@
  * 消息列表
  */
 import React from 'react';
-import { Redirect } from 'dva/router';
 import { connect } from 'dva';
-import { Button, Icon } from 'antd'
 import styles from './MessagesList.less'
 
 @connect(state => ({
@@ -69,7 +67,7 @@ export default class MessageList extends React.Component {
 
   render(){
 
-    const { currentUser } = this.props.global;
+    // const { currentUser } = this.props.global;
 
     return(
       <div className={styles.container}>

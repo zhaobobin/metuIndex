@@ -1,7 +1,7 @@
 /**
  * 账户 - 圈子
  */
-import React from 'react'
+import React from 'react';
 import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
 import { Row, Col } from 'antd';
@@ -53,9 +53,17 @@ export default class AccountCricle extends React.Component {
 
   render(){
     return(
-      <div>
-        圈子
-      </div>
+      <Row>
+        <Col xs={0} sm={0} md={4} lg={6} />
+
+        <Col xs={24} sm={24} md={16} lg={12}>
+
+          圈子
+
+        </Col>
+
+        <Col xs={0} sm={0} md={4} lg={6} />
+      </Row>
     )
   }
 

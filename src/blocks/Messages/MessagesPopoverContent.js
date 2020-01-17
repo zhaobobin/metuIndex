@@ -4,10 +4,10 @@
 import React from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
-import { Icon, Tabs, Popover } from 'antd';
+import { Icon, Tabs } from 'antd';
 import styles from './MessagesPopoverContent.less';
 
-import MessagesList from '@/blocks/Messages/MessagesList'
+import MessagesList from '@/blocks/Messages/MessagesList';
 
 const { TabPane } = Tabs;
 

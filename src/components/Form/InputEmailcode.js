@@ -49,10 +49,9 @@ import React from 'react';
 import { connect } from 'dva';
 import { Row, Col, Input } from 'antd';
 import { Modal, Toast } from 'antd-mobile';
-import { filterTel } from '@/utils/utils';
 import styles from './InputSmscode.less';
 
-import PintuValidate from '@/components/Form/PintuValidate'
+import PintuValidate from '@/components/Form/PintuValidate';
 
 let timer;
 

@@ -4,10 +4,10 @@
  */
 import React from 'react';
 import { connect } from 'dva';
-import { Empty, Skeleton, notification } from 'antd';
+import { Empty, Skeleton } from 'antd';
 import InfiniteScroll from 'react-infinite-scroller';			//加载更多
 
-import QuestionListItem from './QuestionListItem'
+import QuestionListItem from './QuestionListItem';
 
 @connect(state => ({
   global: state.global,

@@ -32,9 +32,7 @@ export default function GlobalFooter (props) {
             </div>
             <div className={styles.bottom}>
               <p>
-                <span>{ENV.info.icp}</span>
-                <span>|</span>
-                <span>{ENV.info.beian}</span>
+                <span><a href="http://beian.miit.gov.cn" target="_blank" rel="noopener noreferrer">{ENV.info.beian}</a></span>
                 <span>|</span>
                 <span>{ENV.info.copyright}</span>
               </p>

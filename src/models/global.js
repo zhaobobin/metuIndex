@@ -110,22 +110,6 @@ export default {
           currentUser: '',
         }
       });
-      // yield put(routerRedux.push({ pathname: '/' }));
-
-      // const res = yield call(
-      //   (params) => {return Request('/user/logout', {method: 'POST', body: params})},
-      //   payload
-      // );
-      // if(res.code === 0){
-      //   yield put({
-      //     type: 'changeLoginStatus',
-      //     payload: {
-      //       isAuth: false,
-      //       currentUser: '',
-      //     },
-      //   });
-      //   Storage.remove(ENV.storage.token);
-      // }
     },
 
     // 用户详情

@@ -74,7 +74,8 @@ export default class ArticleListQuery extends React.Component {
             list: list,
             page: query.page,
             per_page: query.per_page,
-          })
+          });
+          if(this.props.callback) this.props.callback(res.data.count);
         }
       }
     });
@@ -113,7 +114,9 @@ export default class ArticleListQuery extends React.Component {
                 <ArticleListItem key={index} item={item} />
               ))
               :
-              <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+              <div className={styles.empty}>
+                <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+              </div>
           }
         </Skeleton>
 

@@ -75,7 +75,8 @@ export default function Request(url, options) {
     };
     newOptions.body = JSON.stringify(newOptions.body);
   }
-
+  // Storage.remove(Storage.remove(ENV.storage.token))
+  // console.log(Storage.get(ENV.storage.token))
   // HttpBasicAuth
   if(Storage.get(ENV.storage.token)) {
     newOptions.headers['Authorization'] = 'Basic ' + Base64.encode(Storage.get(ENV.storage.token) + ':'); //读取本地token

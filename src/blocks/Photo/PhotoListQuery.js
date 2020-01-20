@@ -72,7 +72,8 @@ export default class PhotoListQuery extends React.Component {
             list: list.concat(res.data.list),
             total: res.data.count,
             hasMore: res.data.hasMore
-          })
+          });
+          if(this.props.callback) this.props.callback(res.data.count);
         }else{
           notification.error({message: '提示', description: res.message});
         }

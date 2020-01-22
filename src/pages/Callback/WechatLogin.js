@@ -35,12 +35,12 @@ export default class WechatLogin extends React.Component {
   wechatLoginAuth = () => {
 
     let state = paramsObj.state;
-    // if(!state || state !== Storage.get(ENV.storage.wechatLoginState)){
-    //   // 非法操作
-    //   // this.setState({error: 'state已过期'});
-    //   this.props.dispatch(routerRedux.push('/'));
-    //   return;
-    // }
+    if(!state || state !== Storage.get(ENV.storage.wechatLoginState)){
+      // 非法操作
+      // this.setState({error: 'state已过期'});
+      this.props.dispatch(routerRedux.push('/'));
+      return;
+    }
 
     this.props.dispatch({
       type: 'global/request',

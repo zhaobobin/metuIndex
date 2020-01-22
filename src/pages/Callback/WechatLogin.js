@@ -35,30 +35,30 @@ export default class WechatLogin extends React.Component {
   wechatLoginAuth = () => {
 
     let state = paramsObj.state;
-    if(!state || state !== Storage.get(ENV.storage.wechatLoginState)){
-      // 非法操作
-      // this.setState({error: 'state已过期'});
-      this.props.dispatch(routerRedux.push('/'));
-      return;
-    }
+    // if(!state || state !== Storage.get(ENV.storage.wechatLoginState)){
+    //   // 非法操作
+    //   // this.setState({error: 'state已过期'});
+    //   this.props.dispatch(routerRedux.push('/'));
+    //   return;
+    // }
 
     this.props.dispatch({
       type: 'global/request',
-      url: 'api/wechatLoginAuth',
+      url: '/user/wechatLoginAuth',
       method: 'POST',
       payload: {
         code: paramsObj.code,                   // code是一次性的参数，code的有效时间非常短，一般为30秒
       },
       callback: (res) => {
-        if(res.status === 1){     // 已注册，直接登录
-          this.changeLoginStatus(res.data)
-        }
-        else if(res.status === 2){  //未注册，用户关联注册
-          this.setState({
-            wechat_userinfo: res.data
-          })
-        }
-        else{
+        if(res.code === 0){
+          if(res.data.token) { // 已注册，直接登录
+            this.changeLoginStatus(res.data)
+          } else {  //未注册，需要用户完善信息
+            this.setState({
+              wechat_userinfo: res.data.detail
+            })
+          }
+        } else {
           this.setState({error: 'code过期，错误码：' + res.message});
         }
       }
@@ -79,7 +79,7 @@ export default class WechatLogin extends React.Component {
       payload: {
         loading: false,
         isAuth: true,
-        currentUser: data.currentUser,
+        currentUser: data.detail,
         token: data.token
       }
     });

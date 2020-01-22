@@ -163,7 +163,7 @@ export default class CommentList extends React.Component {
 
       },
       callback: (res) => {
-        if(res.status === 1){
+        if(res.code === 0){
 
         }else{
 

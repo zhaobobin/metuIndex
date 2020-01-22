@@ -66,7 +66,7 @@ export default class ArticleListQuery extends React.Component {
       payload: params,
       callback: (res) => {
         setTimeout(() => { this.ajaxFlag = true }, 500)
-        if(res.status === 1){
+        if(res.code === 0){
           for(let i in res.data){
             if(res.data[i].tags) res.data[i].tags = res.data[i].tags.split(',');
           };

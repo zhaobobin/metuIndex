@@ -44,16 +44,16 @@ export default class WeiboLogin extends React.Component {
 
     this.props.dispatch({
       type: 'global/request',
-      url: '/api/weiboLoginAuth',
+      url: '/user/weiboLoginAuth',
       method: 'POST',
       payload: {
         code: paramsObj.code,                   // code是一次性的参数，code的有效时间非常短，一般为30秒
       },
       callback: (res) => {
-        if(res.status === 1){     // 已注册，直接登录
+        if(res.code === 0){     // 已注册，直接登录
           this.changeLoginStatus(res.data)
         }
-        else if(res.status === 2){  //未注册，用户关联注册
+        else if(res.code === 0){  //未注册，用户关联注册
           this.setState({
             weibo_userinfo: res.data
           })

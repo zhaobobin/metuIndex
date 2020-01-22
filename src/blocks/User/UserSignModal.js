@@ -51,7 +51,7 @@ export default class UserSignModal extends React.Component {
         <div className={styles.content}>
           <div className={styles.head}>
             <img src={logo} alt="logo"/>
-            <strong>{ENV.slogan}</strong>
+            <strong>{ENV.info.slogan}</strong>
           </div>
           <div className={styles.body}>
             {

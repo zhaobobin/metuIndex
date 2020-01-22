@@ -36,7 +36,7 @@ export default class TagsRank extends React.Component {
       payload: params,
       callback: (res) => {
         this.ajaxFlag = true;
-        if(res.status === 1){
+        if(res.code === 0){
           this.setState({
             list: res.data,
           })

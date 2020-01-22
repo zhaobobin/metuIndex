@@ -338,7 +338,7 @@ export default class PhotoListUpload extends React.Component {
       type: 'photo/add',
       payload: data,
       callback: (res) => {
-        if(res.status === 1){
+        if(res.code === 0){
           this.queryList();
           this.delOssList();
           this.setState({

@@ -70,7 +70,7 @@ export default class EquipmentList extends React.Component {
       },
       callback: (res) => {
         setTimeout(() => { this.ajaxFlag = true }, 500)
-        if(res.status === 1){
+        if(res.code === 0){
           this.setState({
             loading: false,
             keyword: query.keyword,

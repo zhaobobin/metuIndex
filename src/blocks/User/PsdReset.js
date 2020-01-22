@@ -183,21 +183,22 @@ export default class PsdReset extends React.Component {
       if(!err){
         this.props.dispatch({
           type: 'global/request',
-          url: '/user/checkPhone',
+          url: '/user/checkMobile',
           method: 'POST',
           payload: {
-            mobile: values.mobile
+            mobile: values.mobile,
+            action: 'reset'
           },
           callback: (res) => {
-            if(res.status === 1) {
+            if(res.code === 0) {
               this.setState({
                 mobile: values.mobile
               });
               this.props.dispatch(routerRedux.push('/user/reset/smscode'));
             }else{
               this.props.form.setFields({
-                'mobile': {
-                  value: values.mobile,
+                [res.error_key]: {
+                  value: '',
                   errors: [new Error(res.message)]
                 }
               });
@@ -237,7 +238,7 @@ export default class PsdReset extends React.Component {
       if (!err) {
         this.props.dispatch({
           type: 'global/request',
-          url: '/api/resetPsd',
+          url: '/user/resetPsd',
           method: 'POST',
           payload:{
             mobile,
@@ -249,7 +250,7 @@ export default class PsdReset extends React.Component {
               this.loading = false;
               this.ajaxFlag = true;
             }, 500);
-            if(res.status === 1){
+            if(res.code === 0){
               this.props.dispatch(routerRedux.push('/user/reset/finish'));
             }else{
               Toast.info(res.message, 2);
@@ -341,7 +342,7 @@ export default class PsdReset extends React.Component {
                 { validator: this.checkConfirm },
               ],
             })(
-              <InputPassword callback={this.passwordCallback}/>
+              <InputPassword showPsdLevel={true} callback={this.passwordCallback}/>
             )}
           </FormItem>
           <FormItem>
@@ -351,7 +352,7 @@ export default class PsdReset extends React.Component {
                 { validator: this.checkConfirm }
               ],
             })(
-              <InputPassword callback={this.rpasswordCallback}/>
+              <InputPassword showPsdLevel={true} callback={this.rpasswordCallback}/>
             )}
           </FormItem>
         </div>

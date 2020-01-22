@@ -4,6 +4,8 @@
 /node_modules
 
 # production
+/.vscode
+/dist
 /src/config/wechat.js
 
 # misc

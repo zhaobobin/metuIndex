@@ -113,7 +113,7 @@ export default class AccountHeaderCover extends React.Component {
             banner: url
           },
           callback: (res) => {
-            if (res.status === 1) {
+            if (res.code === 0) {
               this.setState({detail: res.data, editVisible: false, uploadMessage: ''})
             } else {
               notification.error({

@@ -1,29 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" uploadOnCheckin="2aee6915-fd27-478e-9ea1-efab792d0a27">
+  <component name="PublishConfigData" autoUpload="Always" serverName="metuIndex" uploadOnCheckin="2aee6915-fd27-478e-9ea1-efab792d0a27">
     <serverData>
       <paths name="metuAdmin">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$/../metuAdmin/dist/admin" web="/" />
+            <mapping deploy="/" local="$PROJECT_DIR$/../metuAdmin/dist/admin" web="/" />
           </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/../metuAdmin/node_modules" />
+          </excludedPaths>
         </serverdata>
       </paths>
       <paths name="metuIndex">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$/dist/www" web="/" />
+            <mapping deploy="/" local="$PROJECT_DIR$/dist" web="/" />
           </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/node_modules" />
+          </excludedPaths>
         </serverdata>
       </paths>
       <paths name="metuServer">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$/../metuServer" web="/" />
+            <mapping deploy="/" local="$PROJECT_DIR$/../metuServer" web="/" />
           </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/../metuServer/node_modules" />
+          </excludedPaths>
         </serverdata>
       </paths>
     </serverData>
     <option name="myUploadOnCheckinName" value="metuIndex" />
+    <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>

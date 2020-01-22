@@ -174,7 +174,7 @@ export default {
         },
         {}
       )
-      if (res.status === 1) {
+      if (res.code === 0) {
         let client = getClient(res.data)
         client.deleteMulti(payload.keys)
           .catch(function (err) {

@@ -20,7 +20,7 @@
     "dva": "^2.4.1",
     "dva-loading": "^2.0.4",
     "html-to-draftjs": "^1.4.0",
-    "lodash": "^4.17.14",
+    "lodash": "^4.17.19",
     "moment": "^2.24.0",
     "qrcode.react": "^0.9.2",
     "react": "^16.11.0",

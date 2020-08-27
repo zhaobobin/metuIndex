@@ -97,7 +97,7 @@ export default {
     // 上传
     *upload({payload, callback}, {call, put}) {
       let res,
-        ossToken = Storage.get(ENV.ossToken, 7200)
+        ossToken = Storage.get(ENV.storage.ossToken, 7200)
       if(ossToken){
         res = ossToken
       } else {
@@ -105,7 +105,7 @@ export default {
           (params) => {return Request('/oss/token', {method: 'POST', body: params})},
           {}
         )
-        Storage.set(ENV.ossToken, res)
+        Storage.set(ENV.storage.ossToken, res)
       }
 
       if (res.code === 0) {

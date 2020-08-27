@@ -47,7 +47,7 @@ export default class ArticleDetail extends React.Component {
         if(res.code === 0){
           window.scrollTo(0, 0);
           let data = res.data;
-          document.title = data.title + " - " + data.author.nickname + " - " + ENV.appname;
+          document.title = data.title + " - " + data.author.nickname + " - " + ENV.info.appname;
           if(data.tags && typeof(data.tags) === 'string') data.tags = data.tags.split(',');
           this.setState({
             detail: data

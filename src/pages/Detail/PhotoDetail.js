@@ -4,7 +4,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import { notification } from 'antd';
-import { goBack } from "@/utils/utils";
+import { goBack } from '@/utils/utils';
 import { ENV } from '@/utils';
 import styles from './PhotoDetail.less';
 
@@ -48,7 +48,7 @@ export default class PhotoDetail extends React.Component {
       callback: (res) => {
         if(res.code === 0){
           let data = res.data;
-          document.title = data.title + " - " + data.author.nickname + " - " + ENV.appname;
+          document.title = data.title + " - " + data.author.nickname + " - " + ENV.info.appname;
           if(data.tags && typeof(data.tags) === 'string') data.tags = data.tags.split(',');
 
           this.setState({
@@ -70,7 +70,7 @@ export default class PhotoDetail extends React.Component {
   render(){
 
     const { detail, currentPhoto } = this.state;
-    const theme = this.props.global.readModel
+    const theme = this.props.global.readModel || 'black';
 
     return(
       <div className={styles.photoDetail + ' ' + styles[theme]}>

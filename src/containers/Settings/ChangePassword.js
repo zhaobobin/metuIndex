@@ -40,15 +40,15 @@ export default class ChangePassword extends React.Component {
   handleModalSubmit = (values) => {
     if(values){
       const uid = this.props.global.currentUser._id;
-      const oldPsd = Encrypt(uid, values.oldPsd)
-      const newPsd = Encrypt(uid, values.password)
+      const oldPassword = Encrypt(uid, values.oldPassword)
+      const newPassword = Encrypt(uid, values.password)
       this.props.dispatch({
         type: 'global/request',
         url: '/user/changePsd',
         method: 'POST',
         payload: {
-          oldPsd,
-          newPsd,
+          oldPassword,
+          newPassword,
         },
         callback: (res) => {
           if(res.code === 0) {
@@ -71,7 +71,7 @@ export default class ChangePassword extends React.Component {
     const modalParams = [
       [
         {
-          key: 'oldPsd',
+          key: 'oldPassword',
           label: '原密码',
           type: 'Input',
           inputType: 'password',

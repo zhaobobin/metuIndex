@@ -115,7 +115,6 @@ export default class PhotoListUpload extends React.Component {
         copyright: '',
         base64: base64,                                         //用于显示上传时的缩略图
         url: '',                                                //图片路径，用于显示
-        adminid: this.state.uid,
         current: false,
       };
       photoList.push(imgData);
@@ -129,7 +128,7 @@ export default class PhotoListUpload extends React.Component {
       unix: new Date().getTime(),
       type: file.name.split('.')[1],
     };
-    let key = option.uid + '/' + option.category + '_' + option.unix + '.' + option.type;
+    let key = `${option.uid}/${option.category}_${option.unix}.${option.type}`;
 
     this.props.dispatch({
       type: 'oss/upload',
@@ -310,7 +309,6 @@ export default class PhotoListUpload extends React.Component {
 
         for(let i in photoList){
           let photo = {
-            adminid: photoList[i].adminid,
             key: photoList[i].key,                                                //对应oss中的键值
             category: photoList[i].category,
             name: photoList[i].name,                                              //完整文件名

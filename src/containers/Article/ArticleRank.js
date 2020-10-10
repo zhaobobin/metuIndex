@@ -26,13 +26,13 @@ export default class ArticleRank extends PureComponent {
     };
   }
 
-  componentDidMount(){
-    this.queryArticleRank(this.props);
-  }
-
-  UNSAFE_componentWillReceiveProps(nextProps){
-    if(nextProps.category !== this.props.category) this.queryArticleRank(nextProps);
-  }
+  // componentDidMount(){
+  //   this.queryArticleRank(this.props);
+  // }
+  //
+  // UNSAFE_componentWillReceiveProps(nextProps){
+  //   if(nextProps.category !== this.props.category) this.queryArticleRank(nextProps);
+  // }
 
   queryArticleRank(props){
     if(!this.ajaxFlag) return;

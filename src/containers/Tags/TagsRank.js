@@ -21,9 +21,9 @@ export default class TagsRank extends React.Component {
     };
   }
 
-  componentDidMount(){
-    this.queryTagsRank({itemsPerPage: this.props.itemsPerPage});
-  }
+  // componentDidMount(){
+  //   this.queryTagsRank({itemsPerPage: this.props.itemsPerPage});
+  // }
 
   queryTagsRank(params){
     if(!this.ajaxFlag) return;

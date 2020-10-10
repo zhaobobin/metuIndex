@@ -147,7 +147,7 @@ export default class CommentList extends React.Component {
     this.commentModal.show({
       category,
       detail_id,
-      root_comment_id: item._id,
+      comment_id: item._id,
       reply_to: item.author._id,
       placeholder: `回复：${item.author.nickname}`
     })

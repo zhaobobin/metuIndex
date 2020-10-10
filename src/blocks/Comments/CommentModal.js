@@ -27,7 +27,7 @@ export default class CommentModal extends React.Component {
 
       category: '',
       detail_id: '',
-      root_comment_id: '',
+      comment_id: '',
       reply_to: '',
     };
   }
@@ -79,15 +79,15 @@ export default class CommentModal extends React.Component {
     if (!this.ajaxFlag) return
     this.ajaxFlag = false
 
-    const { category, detail_id, root_comment_id, reply_to } = this.state;
+    const { category, detail_id, comment_id, reply_to } = this.state;
 
     this.props.dispatch({
       type: 'global/request',
-      url: `/${category}/${detail_id}/comments`,
+      url: `/${category}/${detail_id}/comments/${comment_id}/reply`,
       method: 'POST',
       payload: {
         content,
-        root_comment_id,
+        root_comment_id: comment_id,
         reply_to
       },
       callback: (res) => {

@@ -3,7 +3,8 @@
  */
 import React from 'react';
 import { connect } from 'dva';
-import { Row, Col } from 'antd';
+import { Row, Col, notification } from 'antd';
+import { goBack } from '@/utils/utils';
 import { ENV } from '@/utils';
 import styles from './ArticleDetail.less';
 
@@ -37,7 +38,7 @@ export default class ArticleDetail extends React.Component {
     }
   }
 
-  queryArticleDetail(id){
+  queryArticleDetail = (id) => {
     this.props.dispatch({
       type: 'global/request',
       url: `/articles/${id}`,
@@ -52,6 +53,9 @@ export default class ArticleDetail extends React.Component {
           this.setState({
             detail: data
           });
+        }else{
+          notification.error({message: '提示', description: res.message});
+          goBack();
         }
       }
     });

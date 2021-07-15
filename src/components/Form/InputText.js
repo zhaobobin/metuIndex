@@ -1,51 +1,34 @@
 /**
  * 表单 - 单行文本输入框
  */
-import React from 'react';
-import { Input } from 'antd';
+import React, { useState, useEffect } from "react";
+import { Input } from "antd";
 
-export default class InputText extends React.Component {
+export const InputText = (props) => {
+  const { maxLength, placeholder, disabled, defaultValue, callback } = props;
 
-  constructor(props){
-    super(props);
-    this.ajaxFlag = true;
-    this.state = {
-      value: '',            //输入框的值
-    }
-  }
+  const [value, setValue] = useState(defaultValue);
 
-  componentDidMount(){
-    const { initValue } = this.props
-    if(initValue){
-      this.setState({
-        value: initValue
-      })
-    }
-  }
-
-  changeValue = (e) => {
+  const changeValue = (e) => {
     let value = e.target.value;
-    this.setState({ value });
-    this.props.callback(value);
+    setValue(value);
+    if (callback) {
+      callback(value);
+    }
   };
 
-  render(){
+  return (
+    <Input
+      size="large"
+      autoComplete="off"
+      placeholder={placeholder}
+      onChange={changeValue}
+      value={value}
+      maxLength={maxLength}
+      disabled={disabled}
+      allowClear={true}
+    />
+  );
+};
 
-    const { value } = this.state;
-    const { maxLength, placeholder, disabled } = this.props;
-
-    return(
-      <Input
-        size="large"
-        autoComplete="off"
-        placeholder={placeholder}
-        onChange={this.changeValue}
-        value={value}
-        maxLength={maxLength}
-        disabled={disabled}
-        allowClear={true}
-      />
-    )
-  }
-
-}
+export default InputText;

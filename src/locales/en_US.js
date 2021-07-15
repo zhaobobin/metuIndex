@@ -49,6 +49,7 @@ export default {
   'menu.publish': 'Publish',
   'menu.publish.photo': 'Publish photo',
   'menu.publish.article': 'Publish article',
+  'menu.edit': 'Edit',
 
   'home.photo.title': 'Discover and share the world’s best photos',
   'home.photo.desc1': 'Get inspiration from photos of different styles and genres around the world.',

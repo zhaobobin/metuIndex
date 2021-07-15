@@ -49,6 +49,7 @@ export default {
   'menu.publish': '发布',
   'menu.publish.photo': '发布图片',
   'menu.publish.article': '发布文章',
+  'menu.edit': '编辑',
 
   'home.photo.title': '发现和分享世界上最好的照片',
   'home.photo.desc1': '从世界各地不同风格和流派的照片中获得灵感。',

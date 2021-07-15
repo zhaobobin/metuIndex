@@ -1,13 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="9867b411-40dc-42b9-8dd8-31005ea1b8dc" name="Default" comment="metuIndex">
+      <change afterPath="$PROJECT_DIR$/src/pages/Account/AccountPhotoEdit.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/Comments/CommentList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/Comments/CommentList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/Comments/CommentModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/Comments/CommentModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/Photo/PhotoListUpload.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/Photo/PhotoListUpload.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Article/ArticleRank.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Article/ArticleRank.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Tags/TagsRank.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Tags/TagsRank.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/www/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/www/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/Photo/PhotoList.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/Photo/PhotoList.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/Photo/PhotoListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/Photo/PhotoListItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Common/GlobalHeaderSign.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Common/GlobalHeaderSign.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/base.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/base.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +77,9 @@
       </profile-state>
     </entry>
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="添加" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -346,14 +367,32 @@
       <workItem from="1601285757363" duration="106000" />
       <workItem from="1601285977022" duration="1300000" />
       <workItem from="1601348271349" duration="5652000" />
-      <workItem from="1602296908830" duration="1009000" />
-    </task>
-    <task id="LOCAL-00002" summary="metuIndex">
-      <created>1548732805343</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1548732805343</updated>
+      <workItem from="1602296908830" duration="1380000" />
+      <workItem from="1603257909878" duration="1699000" />
+      <workItem from="1604910191847" duration="903000" />
+      <workItem from="1605059972745" duration="626000" />
+      <workItem from="1611455206141" duration="469000" />
+      <workItem from="1616057673320" duration="693000" />
+      <workItem from="1617010084051" duration="204000" />
+      <workItem from="1617266276947" duration="12000" />
+      <workItem from="1618292007467" duration="12000" />
+      <workItem from="1618744353433" duration="626000" />
+      <workItem from="1618749681794" duration="603000" />
+      <workItem from="1618751307634" duration="160000" />
+      <workItem from="1618751882379" duration="186000" />
+      <workItem from="1618823986367" duration="648000" />
+      <workItem from="1619259182177" duration="566000" />
+      <workItem from="1623306975668" duration="720000" />
+      <workItem from="1623316046096" duration="59000" />
+      <workItem from="1623316837573" duration="90000" />
+      <workItem from="1623726513599" duration="626000" />
+      <workItem from="1625049825979" duration="453000" />
+      <workItem from="1625194751751" duration="79000" />
+      <workItem from="1625198591791" duration="1308000" />
+      <workItem from="1625714355088" duration="4034000" />
+      <workItem from="1626161143782" duration="7000" />
+      <workItem from="1626163969105" duration="7000" />
+      <workItem from="1626164230189" duration="633000" />
     </task>
     <task id="LOCAL-00003" summary="metuIndex">
       <created>1550051703336</created>
@@ -691,7 +730,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598496083035</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="metuIndex">
+      <created>1602298089774</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1602298089774</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -716,23 +762,16 @@
     <option name="LAST_COMMIT_MESSAGE" value="metuIndex" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="208" y="103" key="CommitChangelistDialog2" timestamp="1598496075702">
-      <screen x="0" y="23" width="1680" height="962" />
+    <state x="456" y="199" width="767" height="606" key="find.popup" timestamp="1626164253167">
+      <screen x="0" y="23" width="1680" height="957" />
     </state>
-    <state x="208" y="103" key="CommitChangelistDialog2/0.23.1680.962/1680.23.1920.1057@0.23.1680.962" timestamp="1598496075702" />
-    <state x="168" y="108" key="DiffContextDialog" timestamp="1598496071642">
-      <screen x="0" y="23" width="1680" height="962" />
+    <state x="456" y="199" width="767" height="606" key="find.popup/0.23.1680.957@0.23.1680.957" timestamp="1626164253167" />
+    <state x="456" y="200" width="767" height="606" key="find.popup/0.23.1680.960@0.23.1680.960" timestamp="1625714731465" />
+    <state x="456" y="201" width="767" height="606" key="find.popup/0.23.1680.963@0.23.1680.963" timestamp="1619259263403" />
+    <state x="697" y="396" key="publish.login" timestamp="1623307416071">
+      <screen x="0" y="23" width="1680" height="960" />
     </state>
-    <state x="168" y="108" key="DiffContextDialog/0.23.1680.962/1680.23.1920.1057@0.23.1680.962" timestamp="1598496071642" />
-    <state x="456" y="200" width="767" height="607" key="find.popup" timestamp="1601357894126">
-      <screen x="0" y="23" width="1680" height="963" />
-    </state>
-    <state x="456" y="200" width="767" height="606" key="find.popup/0.23.1680.962@0.23.1680.962" timestamp="1600740709937" />
-    <state x="456" y="200" width="767" height="607" key="find.popup/0.23.1680.963@0.23.1680.963" timestamp="1601357894126" />
-    <state x="697" y="396" key="publish.login" timestamp="1598496144026">
-      <screen x="0" y="23" width="1680" height="962" />
-    </state>
-    <state x="697" y="396" key="publish.login/0.23.1680.962/1680.23.1920.1057@0.23.1680.962" timestamp="1598496144026" />
+    <state x="697" y="396" key="publish.login/0.23.1680.960@0.23.1680.960" timestamp="1623307416071" />
   </component>
   <component name="masterDetails">
     <states>

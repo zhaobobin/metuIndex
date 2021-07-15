@@ -57,6 +57,7 @@ const BaseRoutes = app => [
         id: 'menu.community.circle',
         key: 'circle',
         path: 'community/circle',
+        isHide: true,
         component: dynamicWrapper(app, [], () => import('../pages/Circle/CircleIndex')),
       },
       {
@@ -89,6 +90,7 @@ const BaseRoutes = app => [
         id: 'menu.question',
         key: 'question',
         path: 'question',
+        isHide: true,
         component: dynamicWrapper(app, ['question', 'publish'], () => import('../pages/Question/_layout')),
       },
 
@@ -349,6 +351,14 @@ const BaseRoutes = app => [
         id: 'menu.publish',
         key: 'publish',
         path: 'publish/:publishType',
+        isHide: true,
+        component: dynamicWrapper(app, ['oss', 'publish'], () => import('../pages/Account/Publish')),
+      },
+      {
+        name: '编辑',
+        id: 'menu.edit',
+        key: 'edit',
+        path: 'edit/:publishType/:id',
         isHide: true,
         component: dynamicWrapper(app, ['oss', 'publish'], () => import('../pages/Account/Publish')),
       },

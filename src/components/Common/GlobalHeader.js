@@ -38,6 +38,10 @@ export default class GlobalHeader extends React.Component {
         window.addEventListener('scroll', this.handleScroll, false);
         this.setState({pathname: pathname, headerOpacity: styles.opacity, headerFixed: styles.fixed});
         break;
+      case 'edit':
+        window.addEventListener('scroll', this.handleScroll, false);
+        this.setState({pathname: pathname, headerOpacity: '', headerFixed: styles.fixed});
+        break;
       case 'users':
         window.removeEventListener('scroll', this.handleScroll, false);
         this.setState({pathname: pathname, headerOpacity: styles.opacity, headerFixed: ''});

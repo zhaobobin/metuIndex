@@ -27,10 +27,10 @@ export default class AccountPhotos extends React.Component {
   }
 
   render(){
-
-    const user_id = this.props.global.profileUser._id;
-    const url = `/users/${user_id}/photos`
+    const { currentUser, profileUser } = this.props.global;
     const { count } = this.state;
+    const url = `/users/${profileUser._id}/photos`;
+    const showEdit = currentUser._id === profileUser._id;
 
     return(
       <Row>
@@ -38,7 +38,7 @@ export default class AccountPhotos extends React.Component {
 
         <Col xs={24} sm={24} md={22} lg={22}>
 
-          <PhotoListQuery url={url} category="" callback={this.queryCallback} />
+          <PhotoListQuery url={url} category="" callback={this.queryCallback} showEdit={showEdit} />
 
           {
             count === 0 ?

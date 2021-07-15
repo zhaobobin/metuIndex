@@ -73,13 +73,15 @@ export default class PublishRight extends React.Component {
   saveArticle(values){
 
     const { currentUser } = this.props.global;
-    let id = this.props.id;
-    if(id) values.id = id;
+    const { id } = this.props;
+    if (id) {
+      values.id = id;
+    }
 
     //保存时，执行ossDel列表对应文件的删除操作
     this.props.dispatch({
       type: 'global/request',
-      url: '/articles',
+      url: id ? `/articles/${id}` : '/articles',
       method: id ? 'PATCH' : 'POST',
       payload: values,
       callback: (res) => {

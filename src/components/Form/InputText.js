@@ -1,7 +1,7 @@
 /**
  * 表单 - 单行文本输入框
  */
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Input } from "antd";
 
 export const InputText = (props) => {

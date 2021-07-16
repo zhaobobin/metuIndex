@@ -8,9 +8,7 @@ import { Form, Input, Select, Button, Modal } from "antd";
 import styles from "./PublishSlide.less";
 
 import PublishConfig from "./PublishConfig";
-// import UploadPhoto from '@/components/Form/UploadPhoto'
 import { Toast } from "@/components";
-import InputText from "@/components/Form/InputText";
 
 const FormItem = Form.Item;
 const confirm = Modal.confirm;
@@ -55,7 +53,6 @@ export default class PublishRight extends React.Component {
     const { images, thumb } = this.props.publish.photo;
 
     this.props.form.validateFields("", (err, values) => {
-      // console.log(values)
       if (!err) {
         for (let i in images) {
           delete images[i].loading;
@@ -160,11 +157,11 @@ export default class PublishRight extends React.Component {
                 { max: 20, message: "标题长度不能超过20个字！" },
               ],
             })(
-              <InputText
+              <Input
+                size="large"
                 maxLength={20}
-                defaultValue={publish.photo.title}
                 placeholder="标题长度不能超过20个字"
-                callback={this.titleCallback}
+                allowClear
               />
             )}
           </FormItem>

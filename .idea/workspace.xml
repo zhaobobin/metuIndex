@@ -20,13 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9867b411-40dc-42b9-8dd8-31005ea1b8dc" name="Default" comment="metuIndex">
-      <change afterPath="$PROJECT_DIR$/src/pages/Account/AccountPhotoEdit.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/www/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/Photo/PhotoList.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/Photo/PhotoList.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/Photo/PhotoListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/Photo/PhotoListItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Common/GlobalHeaderSign.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Common/GlobalHeaderSign.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/base.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/base.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +38,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="JsBowerSettings">
     <exe-path>/usr/local/bin/bower</exe-path>
@@ -114,6 +109,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="/usr/local/bin/node" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="web.server" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -393,6 +389,8 @@
       <workItem from="1626161143782" duration="7000" />
       <workItem from="1626163969105" duration="7000" />
       <workItem from="1626164230189" duration="633000" />
+      <workItem from="1626343169563" duration="100000" />
+      <workItem from="1626343449700" duration="58000" />
     </task>
     <task id="LOCAL-00003" summary="metuIndex">
       <created>1550051703336</created>
@@ -762,12 +760,20 @@
     <option name="LAST_COMMIT_MESSAGE" value="metuIndex" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="340" y="178" key="Vcs.Push.Dialog.v2" timestamp="1626343185395">
+      <screen x="0" y="23" width="1680" height="957" />
+    </state>
+    <state x="340" y="178" key="Vcs.Push.Dialog.v2/0.23.1680.957@0.23.1680.957" timestamp="1626343185395" />
     <state x="456" y="199" width="767" height="606" key="find.popup" timestamp="1626164253167">
       <screen x="0" y="23" width="1680" height="957" />
     </state>
     <state x="456" y="199" width="767" height="606" key="find.popup/0.23.1680.957@0.23.1680.957" timestamp="1626164253167" />
     <state x="456" y="200" width="767" height="606" key="find.popup/0.23.1680.960@0.23.1680.960" timestamp="1625714731465" />
     <state x="456" y="201" width="767" height="606" key="find.popup/0.23.1680.963@0.23.1680.963" timestamp="1619259263403" />
+    <state x="412" y="253" key="git4idea.merge.GitPullDialog" timestamp="1626343501482">
+      <screen x="0" y="23" width="1680" height="957" />
+    </state>
+    <state x="412" y="253" key="git4idea.merge.GitPullDialog/0.23.1680.957@0.23.1680.957" timestamp="1626343501482" />
     <state x="697" y="396" key="publish.login" timestamp="1623307416071">
       <screen x="0" y="23" width="1680" height="960" />
     </state>

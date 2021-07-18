@@ -8,6 +8,57 @@ import styles from "./PublishPhotoContent.less";
 import { Alert } from "@/components/Dialog/Dialog";
 import SelectAlbum from "./SelectAlbum";
 
+function flattenObj(obj) {
+  var result = [];
+  for (const i in obj) {
+    result = result.concat(obj[i]);
+  }
+  return result;
+}
+
+const reorder = (list, startIndex, endIndex) => {
+  const result = Array.from(list);
+  const [removed] = result.splice(startIndex, 1);
+  result.splice(endIndex, 0, removed);
+
+  return result;
+};
+
+export const reorderQuoteMap = ({ quoteMap, source, destination }) => {
+  const current = [...quoteMap[source.droppableId]];
+  const next = [...quoteMap[destination.droppableId]];
+  const target = current[source.index];
+
+  // moving to same list
+  if (source.droppableId === destination.droppableId) {
+    const reordered = reorder(
+      current,
+      source.index,
+      destination.index,
+    );
+    const result = {
+      ...quoteMap,
+      [source.droppableId]: reordered,
+    };
+    return result;
+  }
+
+  // moving to different list
+
+  // remove from original
+  current.splice(source.index, 1);
+  // insert into next
+  next.splice(destination.index, 0, target);
+
+  const result = {
+    ...quoteMap,
+    [source.droppableId]: current,
+    [destination.droppableId]: next,
+  };
+
+  return result;
+};
+
 @connect((state) => ({
   global: state.global,
   oss: state.oss,
@@ -159,7 +210,6 @@ export default class PublishPhotoContent extends React.Component {
                 }
               }
             }
-
             const payload = {
               images,
             };
@@ -246,35 +296,38 @@ export default class PublishPhotoContent extends React.Component {
     </div>
   );
 
-  // reordering the images result
-  reorder = (list, startIndex, endIndex) => {
-    const result = Array.from(list);
-    const [removed] = result.splice(startIndex, 1);
-    result.splice(endIndex, 0, removed);
-    return result;
-  };
-
   // 图片拖拽
-  onDragEnd = (result) => {
-    console.log(result);
+  onDragEnd = (result, images) => {
     if (!result.destination) {
       return;
     }
-    const images = this.reorder(
-      this.props.publish.photo.images,
-      result.source.index,
-      result.destination.index
-    );
+    const quoteMap = reorderQuoteMap({
+      quoteMap: images,
+      source: result.source,
+      destination: result.destination,
+    });
     this.props.dispatch({
       type: "publish/savePhoto",
       payload: {
-        images,
+        images: flattenObj(quoteMap),
       },
     });
   };
 
+  groupArray = (array, subGroupLength) => {
+    let index = 0;
+    let newObj = {};
+    while (index < array.length) {
+      newObj[index] = array.slice(index, (index += subGroupLength));
+    }
+    return newObj;
+  };
+
   render() {
-    const { images, thumb } = this.props.publish.photo;
+    let { images, thumb } = this.props.publish.photo;
+
+    const imagesLength = images.length;
+    images = this.groupArray(images, 4);
 
     const getListStyle = (isDraggingOver) => ({
       // background: isDraggingOver ? '#e6f7ff' : 'transparent',
@@ -304,8 +357,8 @@ export default class PublishPhotoContent extends React.Component {
           <Col span={12}>
             <SelectAlbum />
           </Col>
-          <Col span={12} style={{ textAlign: 'right' }}>
-            {images.length <= 30 ? (
+          <Col span={12} style={{ textAlign: "right" }}>
+            {imagesLength <= 30 ? (
               <Upload
                 name="photo"
                 accept=".jpg,.png"
@@ -315,7 +368,10 @@ export default class PublishPhotoContent extends React.Component {
                 beforeUpload={this.beforeUpload}
                 customRequest={this.handleUploadPhoto}
               >
-                <Tooltip placement="bottom" title={"最多可上传30张图片，文件大小不超过50MB"}>
+                <Tooltip
+                  placement="bottom"
+                  title={"最多可上传30张图片，文件大小不超过50MB"}
+                >
                   <Button size="large">
                     <Icon type="plus" />
                     <span>上传图片</span>
@@ -327,47 +383,53 @@ export default class PublishPhotoContent extends React.Component {
         </Row>
 
         <div className={styles.content}>
-          <DragDropContext onDragEnd={this.onDragEnd}>
-            <Droppable droppableId="droppable" direction="horizontal">
-              {(provided, snapshot) => (
-                <div
-                  ref={provided.innerRef}
-                  {...provided.droppableProps}
-                  style={{
-                    ...getListStyle(snapshot.isDraggingOver),
-                  }}
-                >
-                  {images.map((item, index) => {
-                    return (
-                      <Draggable
-                        key={index}
-                        draggableId={"Draggable" + index}
-                        index={index}
-                      >
-                        {(provided, snapshot) => (
-                          <div
-                            ref={provided.innerRef}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
-                            style={{
-                              ...getItemStyle(
-                                snapshot.isDragging,
-                                provided.draggableProps.style
-                              ),
-                            }}
-                          >
-                            {this.renderPhotoItem(item, index, thumb)}
-                          </div>
-                        )}
-                      </Draggable>
-                    );
-                  })}
-                </div>
-              )}
-            </Droppable>
+          <DragDropContext onDragEnd={(result) => this.onDragEnd(result, images)}>
+            {Object.keys(images).map((groupIndex) => (
+              <Droppable
+                key={groupIndex}
+                droppableId={`${groupIndex}`}
+                direction="horizontal"
+              >
+                {(provided, snapshot) => (
+                  <div
+                    ref={provided.innerRef}
+                    {...provided.droppableProps}
+                    style={{
+                      ...getListStyle(snapshot.isDraggingOver),
+                    }}
+                  >
+                    {images[groupIndex].map((item, index) => {
+                      return (
+                        <Draggable
+                          key={item._id}
+                          draggableId={item._id}
+                          index={index}
+                        >
+                          {(provided, snapshot) => (
+                            <div
+                              ref={provided.innerRef}
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                              style={{
+                                ...getItemStyle(
+                                  snapshot.isDragging,
+                                  provided.draggableProps.style
+                                ),
+                              }}
+                            >
+                              {this.renderPhotoItem(item, index, thumb)}
+                            </div>
+                          )}
+                        </Draggable>
+                      );
+                    })}
+                  </div>
+                )}
+              </Droppable>
+            ))}
           </DragDropContext>
 
-          {images.length === 0 ? (
+          {imagesLength === 0 ? (
             <div className={styles.uploadWrapper}>
               <Upload
                 name="photo"

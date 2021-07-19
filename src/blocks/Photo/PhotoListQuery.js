@@ -7,6 +7,7 @@ import { connect } from "dva";
 import { notification } from "antd";
 import InfiniteScroll from "react-infinite-scroller"; //加载更多
 
+import LoadingBg from "@/components/Common/LoadingBg";
 import PhotoListGallery from "@/blocks/Photo/PhotoListGallery";
 
 @connect((state) => ({
@@ -89,7 +90,7 @@ export default class PhotoListQuery extends React.Component {
     let { url, category, per_page, hasMore } = this.state;
 
     if (!url || !hasMore) return;
-    if (this.state.maxQueryPage && page > this.state.maxQueryPage) return;
+    if (this.state.maxQueryPage && page >= this.state.maxQueryPage) return;
 
     if (!this.ajaxFlag) return;
     this.ajaxFlag = false;
@@ -106,8 +107,10 @@ export default class PhotoListQuery extends React.Component {
 
   render() {
     const { showEdit } = this.props;
-    const { list, hasMore } = this.state;
-
+    const { loading, list, hasMore } = this.state;
+    if (loading) {
+      return <LoadingBg style={{ width: '100%', height: '500px' }} />
+    }
     return (
       <div className="photo-container">
         <InfiniteScroll

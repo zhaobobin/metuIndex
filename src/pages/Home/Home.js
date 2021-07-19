@@ -20,9 +20,11 @@ export default function Home () {
         <HomeBanner/>
       </LoadLazy>
 
+      {/*
       <LoadLazy height="200px">
         <HomeTese/>
       </LoadLazy>
+      */}
 
       <LoadLazy height="500px">
         <HomePhotoList/>

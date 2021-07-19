@@ -20,92 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9867b411-40dc-42b9-8dd8-31005ea1b8dc" name="Default" comment="metuIndex">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.webpackrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/.webpackrc.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/1.1267a9cc.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/10.2145820e.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/11.f7275ce0.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/13.51a94b01.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/17.a88843e4.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/18.55ecc8f0.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/2.54f4df0e.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/20.fbe50289.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/21.685876e7.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/22.37de0161.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/23.0d08ac2b.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/24.75edef2e.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/25.378856e6.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/26.0cc31570.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/27.4ec3d9b3.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/28.201d379f.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/29.835b2d94.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/30.2cfa1435.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/31.f8c7c965.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/32.5e1259f3.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/33.d2215cd5.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/34.7d6b9a0d.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/35.ec675b51.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/36.2d5a21ff.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/37.a73eef7d.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/38.6e3ff232.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/39.72dc03d5.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/40.1f96b9b5.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/41.5ee82cb7.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/42.551396da.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/43.6344c447.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/44.54c51afa.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/45.59804fb6.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/46.e95388d4.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/47.c8f290e0.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/48.d2ea7fff.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/49.e4f811a4.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/50.1180b3ca.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/51.a3a76247.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/52.f6a5fc7b.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/53.6ea10900.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/54.f0225ba7.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/56.67f94564.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/css/HoverAllsLoader.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/images/favicon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/images/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/images/logo2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/images/logo2@450x300.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/images/logo@100x100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/images/logo@108x108.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/images/logo@120x120.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/images/logo@16x16.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/images/logo@200x200.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/images/logo@28x28.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/images/logo@80x80.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/static/banner.a909f2a2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/static/pintu0.593e0d4e.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/static/pintu11.6e8052cd.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/static/pintu16.782056e9.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/static/pintu17.d15590a9.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/static/pintu20.5e4f9ade.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/static/pintu21.aad149b2.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/static/pintu23.4ad47b9d.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/static/pintu25.2e47fa34.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/static/pintu26.1cc785bd.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/static/pintu27.48640f0e.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/static/pintu28.210afc60.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/static/pintu32.a6b542d4.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/static/pintu35.54f41543.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/static/pintu36.5907b284.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/static/pintu38.dc3df961.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/static/pintu40.00d90886.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/static/pintu42.6ba47066.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/static/pintu46.730195ce.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/static/pintu47.5e2b49f6.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/static/pintu49.4cadac95.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/static/pintu5.8a7a17f9.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/static/pintu6.7b25147e.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/static/pintu7.53dd8177.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/static/pintu9.efac119c.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/static/sign_icon.f13cff3d.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Publish/PublishPhotoContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Publish/PublishPhotoContent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/Photo/PhotoListQuery.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/Photo/PhotoListQuery.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home/Home.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -478,14 +395,11 @@
       <workItem from="1626343449700" duration="58000" />
       <workItem from="1626420179413" duration="412000" />
       <workItem from="1626594652675" duration="213000" />
-      <workItem from="1626595014518" duration="45000" />
-    </task>
-    <task id="LOCAL-00004" summary="metuIndex">
-      <created>1550136948406</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1550136948406</updated>
+      <workItem from="1626595014518" duration="388000" />
+      <workItem from="1626662750901" duration="291000" />
+      <workItem from="1626677798434" duration="38000" />
+      <workItem from="1626678260682" duration="56000" />
+      <workItem from="1626678379016" duration="135000" />
     </task>
     <task id="LOCAL-00005" summary="metuIndex">
       <created>1550220982965</created>
@@ -823,7 +737,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626420298016</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="metuIndex">
+      <created>1626595113701</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1626595113702</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -852,10 +773,14 @@
       <screen x="0" y="23" width="1680" height="957" />
     </state>
     <state x="512" y="197" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.957@0.23.1680.957" timestamp="1626420529394" />
-    <state x="197" y="23" key="CommitChangelistDialog2" timestamp="1626595047463">
+    <state x="197" y="23" key="CommitChangelistDialog2" timestamp="1626595142791">
       <screen x="0" y="23" width="1680" height="957" />
     </state>
-    <state x="197" y="23" key="CommitChangelistDialog2/0.23.1680.957@0.23.1680.957" timestamp="1626595047463" />
+    <state x="197" y="23" key="CommitChangelistDialog2/0.23.1680.957@0.23.1680.957" timestamp="1626595142791" />
+    <state x="157" y="30" width="1344" height="765" key="DiffContextDialog" timestamp="1626678513704">
+      <screen x="0" y="23" width="1680" height="957" />
+    </state>
+    <state x="157" y="30" width="1344" height="765" key="DiffContextDialog/0.23.1680.957@0.23.1680.957" timestamp="1626678513704" />
     <state x="340" y="178" key="Vcs.Push.Dialog.v2" timestamp="1626594783675">
       <screen x="0" y="23" width="1680" height="957" />
     </state>

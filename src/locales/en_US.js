@@ -89,6 +89,7 @@ export default {
   'menu.users': 'User Center',
   'menu.users.photos': 'User Photos',
   'menu.users.articles': 'User Articles',
+  'menu.users.circles': 'User Circles',
   'menu.users.following': 'User Following',
   'menu.users.favoring': 'User Favoring',
   'menu.users.collecting': 'User Collecting',

@@ -32,7 +32,7 @@ export default class HomePhotoList extends React.Component{
     const queryOption = {
       category,
       per_page: 12,                 //每页数量
-      maxQueryPage: 2,                  //最大页数
+      maxQueryPage: 1,                  //最大页数
     };
 
     return(

@@ -57,7 +57,7 @@ const BaseRoutes = app => [
         id: 'menu.community.circle',
         key: 'circle',
         path: 'community/circle',
-        isHide: true,
+        isHide: false,
         component: dynamicWrapper(app, [], () => import('../pages/Circle/CircleIndex')),
       },
       {
@@ -199,6 +199,13 @@ const BaseRoutes = app => [
             key: 'articles',
             path: 'articles',
             component: dynamicWrapper(app, ['oss'], () => import('../pages/Account/AccountArticles')),
+          },
+          {
+            name: '圈子',
+            id: 'menu.users.circles',
+            key: 'circles',
+            path: 'circles',
+            component: dynamicWrapper(app, ['oss'], () => import('../pages/Account/AccountCircle')),
           },
           {
             name: '关注',

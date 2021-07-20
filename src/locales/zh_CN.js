@@ -90,6 +90,7 @@ export default {
   'menu.users': '用户中心',
   'menu.users.photos': '图片',
   'menu.users.articles': '文章',
+  'menu.users.circles': '圈子',
   'menu.users.following': '关注',
   'menu.users.favoring': '点赞',
   'menu.users.collecting': '收藏',

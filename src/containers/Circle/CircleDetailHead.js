@@ -1,8 +1,8 @@
 import React from 'react';
-import { Row, Col, Avatar } from 'antd'
-import styles from './CircleDetailHead.less'
+import { Row, Col, Avatar, Button } from 'antd';
+import styles from './CircleDetailHead.less';
 
-export default function CircleDetailHead ({ detail }) {
+export default function CircleDetailHead ({ detail, handleClickCircleJoinBtn }) {
 
   return(
 
@@ -24,6 +24,9 @@ export default function CircleDetailHead ({ detail }) {
             </div>
             <p className={styles.name}>{detail.name}</p>
             <p className={styles.desc}>{detail.description}</p>
+            <div className={styles.btns}>
+              <Button onClick={handleClickCircleJoinBtn}>{detail.following_state ? '退出' : '加入'}</Button>
+            </div>
           </div>
 
         </Col>

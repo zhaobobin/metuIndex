@@ -5,7 +5,7 @@ import React from 'react';
 import LoadLazy from '@/components/Common/LoadLazy'
 
 import HomeBanner from '@/containers/Home/HomeBanner';
-import HomeTese from '@/containers/Home/HomeTese';
+// import HomeTese from '@/containers/Home/HomeTese';
 import HomePhotoList from '@/containers/Home/HomePhotoList';
 import HomeCricle from '@/containers/Home/HomeCricle';
 import HomeContest from '@/containers/Home/HomeContest';

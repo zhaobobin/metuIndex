@@ -7,7 +7,7 @@ import CircleListItem from '@/containers/Circle/CircleListItem'
 @connect(state => ({
   global: state.global,
 }))
-export default class CircleIndex extends React.Component {
+export default class UserCircleListQuery extends React.Component {
 
   constructor(props){
     super(props);
@@ -27,23 +27,26 @@ export default class CircleIndex extends React.Component {
   }
 
   componentDidMount(){
-    this.queryCircleList({
+    this.queryCircleList(this.props.userId, {
       page: this.state.page,
       per_page: this.state.per_page
     })
   }
 
-  queryCircleList(query){
+  queryCircleList(userId, query){
+    
+    if(!this.ajaxFlag) return;
+    this.ajaxFlag = false;
 
     let list = query.clearList ? [] : this.state.list;
 
     this.props.dispatch({
       type: 'global/request',
-      url: '/circles',
+      url: `/users/${userId}/circles`,
       method: 'GET',
       payload: query,
       callback: (res) => {
-        setTimeout(() => { this.ajaxFlag = true }, 500)
+        setTimeout(() => { this.ajaxFlag = true }, 500);
         if(res.code === 0){
           this.setState({
             loading: false,

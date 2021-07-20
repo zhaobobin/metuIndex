@@ -3,8 +3,12 @@ import { connect } from 'dva';
 import { Link } from 'dva/router';
 import { Row, Col, Affix, Menu } from 'antd'
 import { FormattedMessage } from 'react-intl';
+import { ENV } from "@/utils/index";
 import { getUrlParams } from "@/utils/utils"
 import styles from './CircleDetail.less'
+
+import SignAuth from '@/blocks/Auth/SignAuth';
+import { Toast } from '@/components'
 
 import CircleDetailHead from '@/containers/Circle/CircleDetailHead'
 import CircleDetailGood from './CircleDetailGood'
@@ -34,7 +38,7 @@ export default class CircleDetail extends React.Component {
     this.queryCircleDetail(id);
   }
 
-  //处理用户登录、退出时，重新渲染文章数据
+  // 处理用户登录、退出时，重新渲染文章数据
   UNSAFE_componentWillReceiveProps(nextProps){
     if(nextProps.match.params.id !== this.props.match.params.id){
       let id = nextProps.match.params.id;
@@ -73,6 +77,36 @@ export default class CircleDetail extends React.Component {
     return content;
   }
 
+  // 加入圈子
+  handleClickCircleJoinBtn = async () => {
+    if(!this.ajaxFlag) return;
+    this.ajaxFlag = false;
+
+    const { detail } = this.state;
+    const circleId = this.props.match.params.id;
+    if (!this.signAuth.check()) {
+      return false;
+    }
+    this.props.dispatch({
+      type: 'global/request',
+      url: detail.following_state ? `/circles/exit/${circleId}` : `/circles/join/${circleId}`,
+      method: detail.following_state ? 'DELETE' : 'PUT',
+      payload: {},
+      callback: (res) => {
+        setTimeout(() => {this.ajaxFlag = true}, 500);
+        Toast.info(res.message, 2);
+        if (res.code === 0) {
+          this.setState({
+            detail: {
+              ...this.state.detail,
+              ...res.data
+            }
+          })
+        }
+      }
+    })
+  };
+
   render(){
 
     const { loading, id, detail } = this.state;
@@ -98,7 +132,7 @@ export default class CircleDetail extends React.Component {
           :
           <div className={styles.container}>
 
-            <CircleDetailHead detail={detail}/>
+            <CircleDetailHead detail={detail} handleClickCircleJoinBtn={this.handleClickCircleJoinBtn} />
 
             <Affix>
               <div className={styles.menu}>
@@ -151,6 +185,8 @@ export default class CircleDetail extends React.Component {
               </Row>
 
             </div>
+
+            <SignAuth onRef={ref => this.signAuth = ref} />
 
           </div>
       }

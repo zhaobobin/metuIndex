@@ -10,7 +10,7 @@ module.exports = {
   api: {
     old: 'http://127.0.0.1:8080',  // express
     test: 'http://127.0.0.1:7001', // egg
-    pro: 'http://www.metuwang.com',
+    pro: 'https://www.metuwang.com',
   },
 
   info: {
@@ -31,7 +31,7 @@ module.exports = {
     slogan: '影像点亮生活',
     web: 'www.metuwang.com',
     worktime: '9:00-17:30',
-    doc: 'http://doc.metuwang.com/',
+    doc: 'https://doc.metuwang.com/',
   },
 
   storage: {

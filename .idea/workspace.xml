@@ -20,51 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9867b411-40dc-42b9-8dd8-31005ea1b8dc" name="Default" comment="Photo List Query">
-      <change afterPath="$PROJECT_DIR$/src/blocks/Circle/UserCircleListQuery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Account/AccountCircle.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/26.0cc31570.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/27.4ec3d9b3.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/28.201d379f.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/29.835b2d94.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/30.2cfa1435.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/31.f8c7c965.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/32.5e1259f3.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/33.d2215cd5.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/34.7d6b9a0d.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/35.ec675b51.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/36.2d5a21ff.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/37.a73eef7d.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/38.6e3ff232.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/39.72dc03d5.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/40.1f96b9b5.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/41.5ee82cb7.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/42.551396da.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/43.6344c447.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/44.54c51afa.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/45.59804fb6.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/46.e95388d4.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/47.c8f290e0.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/48.d2ea7fff.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/49.e4f811a4.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/50.1180b3ca.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/51.a3a76247.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/52.f6a5fc7b.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/53.6ea10900.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/54.f0225ba7.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/56.67f94564.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/www/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Circle/CircleDetailHead.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Circle/CircleDetailHead.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Circle/CircleDetailHead.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Circle/CircleDetailHead.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Circle/CircleListItem.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Circle/CircleListItem.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Home/HomePhotoList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Home/HomePhotoList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/locales/en_US.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/en_US.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/locales/zh_CN.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/zh_CN.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Account/AccountCricle.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Circle/CircleDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Circle/CircleDetail.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Circle/CircleIndex.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Circle/CircleIndex.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/base.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/base.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/Photo/PhotoSwiper.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/Photo/PhotoSwiper.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -456,6 +415,19 @@
       <workItem from="1626746596171" duration="17000" />
       <workItem from="1626769675875" duration="2628000" />
       <workItem from="1626772320086" duration="312000" />
+      <workItem from="1627156880288" duration="9000" />
+      <workItem from="1627528134981" duration="613000" />
+      <workItem from="1627614282178" duration="5483000" />
+      <workItem from="1627634086777" duration="1665000" />
+      <workItem from="1627639951087" duration="1168000" />
+      <workItem from="1627641850905" duration="441000" />
+      <workItem from="1627868116160" duration="2075000" />
+      <workItem from="1627958549761" duration="799000" />
+      <workItem from="1630035506113" duration="856000" />
+      <workItem from="1630038092317" duration="272000" />
+      <workItem from="1630048403891" duration="18000" />
+      <workItem from="1630291722415" duration="2630000" />
+      <workItem from="1630304796535" duration="1067000" />
     </task>
     <task id="LOCAL-00006" summary="metuIndex">
       <created>1550482406097</created>
@@ -858,12 +830,11 @@
       <screen x="0" y="23" width="1680" height="957" />
     </state>
     <state x="340" y="178" key="Vcs.Push.Dialog.v2/0.23.1680.957@0.23.1680.957" timestamp="1626594783675" />
-    <state x="456" y="199" width="767" height="606" key="find.popup" timestamp="1626164253167">
+    <state x="456" y="199" width="767" height="606" key="find.popup" timestamp="1630048415967">
       <screen x="0" y="23" width="1680" height="957" />
     </state>
-    <state x="456" y="199" width="767" height="606" key="find.popup/0.23.1680.957@0.23.1680.957" timestamp="1626164253167" />
+    <state x="456" y="199" width="767" height="606" key="find.popup/0.23.1680.957@0.23.1680.957" timestamp="1630048415967" />
     <state x="456" y="200" width="767" height="606" key="find.popup/0.23.1680.960@0.23.1680.960" timestamp="1625714731465" />
-    <state x="456" y="201" width="767" height="606" key="find.popup/0.23.1680.963@0.23.1680.963" timestamp="1619259263403" />
     <state x="412" y="253" key="git4idea.merge.GitPullDialog" timestamp="1626343501482">
       <screen x="0" y="23" width="1680" height="957" />
     </state>

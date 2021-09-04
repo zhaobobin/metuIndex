@@ -69,7 +69,7 @@ export default class PhotoSwiper extends PureComponent {
   //取消事件监听
   componentWillUnmount(){
     document.removeEventListener('DOMMouseScroll', this.scrollFunc, false);
-    window.onmousewheel = document.onmousewheel = '';
+    window.onmousewheel = document.onmousewheel = null;
   }
 
   //监控鼠标进入
@@ -81,7 +81,7 @@ export default class PhotoSwiper extends PureComponent {
   //监控鼠标离开
   mouseLeave(){
     document.removeEventListener('DOMMouseScroll', this.scrollFunc, false);
-    window.onmousewheel = document.onmousewheel = '';
+    window.onmousewheel = document.onmousewheel = null;
   }
 
   //判断鼠标滚动方向

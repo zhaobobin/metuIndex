@@ -69,7 +69,7 @@ export default class UserLogin extends React.Component {
     let params = {
       response_type: 'code',
       client_id: '1779469029',
-      redirect_uri: encodeURI('http://www.metuwang.com/callback/weiboLogin'),
+      redirect_uri: encodeURI('https://www.metuwang.com/callback/weiboLogin'),
       state: WeiboLoginState
     };
     for (let i in params) {
@@ -89,7 +89,7 @@ export default class UserLogin extends React.Component {
     let params = {
       response_type: 'code',
       client_id: '101551625',
-      redirect_uri: encodeURI('http://www.metuwang.com/callback/qqLogin'),
+      redirect_uri: encodeURI('https://www.metuwang.com/callback/qqLogin'),
       state: QqLoginState
     };
     for (let i in params) {

@@ -21,9 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="9867b411-40dc-42b9-8dd8-31005ea1b8dc" name="Default" comment="Photo List Query">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/Photo/PhotoSwiper.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/Photo/PhotoSwiper.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/www/23.0d08ac2b.async.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/www/25.378856e6.async.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/www/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/www/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -428,6 +428,13 @@
       <workItem from="1630048403891" duration="18000" />
       <workItem from="1630291722415" duration="2630000" />
       <workItem from="1630304796535" duration="1067000" />
+      <workItem from="1630747177182" duration="1237000" />
+      <workItem from="1632368507886" duration="65000" />
+      <workItem from="1632368604161" duration="660000" />
+      <workItem from="1632369452529" duration="1170000" />
+      <workItem from="1632573051022" duration="1390000" />
+      <workItem from="1632882222523" duration="1228000" />
+      <workItem from="1632966859672" duration="640000" />
     </task>
     <task id="LOCAL-00006" summary="metuIndex">
       <created>1550482406097</created>
@@ -826,25 +833,24 @@
       <screen x="0" y="23" width="1680" height="958" />
     </state>
     <state width="1628" height="147" key="GridCell.Tab.0.right/0.23.1680.958@0.23.1680.958" timestamp="1626772312451" />
-    <state x="340" y="178" key="Vcs.Push.Dialog.v2" timestamp="1626594783675">
+    <state x="340" y="178" key="Vcs.Push.Dialog.v2" timestamp="1630747187202">
       <screen x="0" y="23" width="1680" height="957" />
     </state>
-    <state x="340" y="178" key="Vcs.Push.Dialog.v2/0.23.1680.957@0.23.1680.957" timestamp="1626594783675" />
-    <state x="456" y="199" width="767" height="606" key="find.popup" timestamp="1630048415967">
+    <state x="340" y="178" key="Vcs.Push.Dialog.v2/0.23.1680.957@0.23.1680.957" timestamp="1630747187202" />
+    <state x="456" y="199" width="767" height="606" key="find.popup" timestamp="1632966874897">
       <screen x="0" y="23" width="1680" height="957" />
     </state>
-    <state x="456" y="199" width="767" height="606" key="find.popup/0.23.1680.957@0.23.1680.957" timestamp="1630048415967" />
+    <state x="456" y="199" width="767" height="606" key="find.popup/0.23.1680.957@0.23.1680.957" timestamp="1632966874897" />
     <state x="456" y="200" width="767" height="606" key="find.popup/0.23.1680.960@0.23.1680.960" timestamp="1625714731465" />
     <state x="412" y="253" key="git4idea.merge.GitPullDialog" timestamp="1626343501482">
       <screen x="0" y="23" width="1680" height="957" />
     </state>
     <state x="412" y="253" key="git4idea.merge.GitPullDialog/0.23.1680.957@0.23.1680.957" timestamp="1626343501482" />
-    <state x="697" y="395" key="publish.login" timestamp="1626772427827">
-      <screen x="0" y="23" width="1680" height="958" />
+    <state x="697" y="395" key="publish.login" timestamp="1630747203554">
+      <screen x="0" y="23" width="1680" height="957" />
     </state>
-    <state x="697" y="395" key="publish.login/0.23.1680.957@0.23.1680.957" timestamp="1626679524262" />
+    <state x="697" y="395" key="publish.login/0.23.1680.957@0.23.1680.957" timestamp="1630747203554" />
     <state x="697" y="395" key="publish.login/0.23.1680.958@0.23.1680.958" timestamp="1626772427827" />
-    <state x="697" y="396" key="publish.login/0.23.1680.960@0.23.1680.960" timestamp="1623307416071" />
   </component>
   <component name="masterDetails">
     <states>

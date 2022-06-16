@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "NO_PROXY=true roadhog server",
+    "start": "cross-env X_ENV=dev NO_PROXY=true roadhog server",
+    "start:dev": "cross-env X_ENV=dev NO_PROXY=true roadhog server",
+    "start:pro": "cross-env X_ENV=pro NO_PROXY=true roadhog server",
     "build": "NODE_ENV=production roadhog build",
     "lint": "eslint --ext .js src test",
     "precommit": "npm run lint"
@@ -56,6 +58,7 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "cross-env": "^7.0.3",
     "eslint": "^4.14.0",
     "eslint-config-prettier": "^4.0.0",
     "eslint-config-umi": "^0.1.1",

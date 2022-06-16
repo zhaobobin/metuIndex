@@ -9,7 +9,7 @@ module.exports = {
 
   api: {
     old: 'http://127.0.0.1:8080',  // express
-    test: 'http://127.0.0.1:7001', // egg
+    dev: 'http://127.0.0.1:7001', // egg
     pro: 'https://www.metuwang.com',
   },
 

@@ -2,6 +2,18 @@ import ENV from './src/config/env';
 const path = require('path');
 // console.log(ENV)
 
+let proxyApi;
+switch (process.env.X_ENV) {
+  case 'dev':
+    proxyApi = ENV.api.dev;
+    break;
+  case 'pro':
+    proxyApi = ENV.api.pro;
+    break;
+  default:
+    proxyApi = ENV.api.pro;
+}
+
 export default {
   "entry": "src/index.js",
   "outputPath": "./dist/www/",
@@ -46,7 +58,7 @@ export default {
   },
   "proxy": {
     "/api": {
-      "target": ENV.api.test,
+      "target": proxyApi,
         "changeOrigin": true,
         // "pathRewrite": { "^/api" : "" }
     }

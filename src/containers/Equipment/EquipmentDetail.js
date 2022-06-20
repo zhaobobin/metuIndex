@@ -11,10 +11,10 @@ export default class EquipmentDetail extends PureComponent {
     detail: ''
   };
 
-  componentDidMount(){
-    let {keyword} = this.state;
-    console.log(keyword)
-  }
+  // componentDidMount(){
+  //   let {keyword} = this.state;
+  //   console.log(keyword)
+  // }
 
   UNSAFE_componentWillReceiveProps(nextProps){
     if(nextProps.keyword !== this.state.keyword) {

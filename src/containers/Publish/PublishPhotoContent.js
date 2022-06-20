@@ -126,6 +126,7 @@ export default class PublishPhotoContent extends React.Component {
 
     file2base64(file, (base64) => {
       let imgData = {
+        _id: option.id,
         loading: true, //加载状态
         key, //对应oss中的键值
         name: option.name, //完整文件名
@@ -255,6 +256,9 @@ export default class PublishPhotoContent extends React.Component {
   // 切换当前图片
   changeCover = (index) => {
     const { images } = this.props.publish.photo;
+    if (!images || !images.length) {
+      return;
+    }
     this.props.dispatch({
       type: "publish/savePhoto",
       payload: {
@@ -315,11 +319,16 @@ export default class PublishPhotoContent extends React.Component {
   };
 
   groupArray = (array, subGroupLength) => {
+    //console.log(array)
+    if (!array.length) {
+      return {};
+    }
     let index = 0;
     let newObj = {};
     while (index < array.length) {
       newObj[index] = array.slice(index, (index += subGroupLength));
     }
+    //console.log(newObj)
     return newObj;
   };
 
@@ -328,7 +337,6 @@ export default class PublishPhotoContent extends React.Component {
 
     const imagesLength = images.length;
     images = this.groupArray(images, 4);
-
     const getListStyle = (isDraggingOver) => ({
       // background: isDraggingOver ? '#e6f7ff' : 'transparent',
       // display: "flex",
@@ -350,7 +358,6 @@ export default class PublishPhotoContent extends React.Component {
       opecity: isDragging ? 0.5 : 1,
       ...draggableStyle,
     });
-
     return (
       <div className={styles.container}>
         <Row>
@@ -384,49 +391,51 @@ export default class PublishPhotoContent extends React.Component {
 
         <div className={styles.content}>
           <DragDropContext onDragEnd={(result) => this.onDragEnd(result, images)}>
-            {Object.keys(images).map((groupIndex) => (
-              <Droppable
-                key={groupIndex}
-                droppableId={`${groupIndex}`}
-                direction="horizontal"
-              >
-                {(provided, snapshot) => (
-                  <div
-                    ref={provided.innerRef}
-                    {...provided.droppableProps}
-                    style={{
-                      ...getListStyle(snapshot.isDraggingOver),
-                    }}
-                  >
-                    {images[groupIndex].map((item, index) => {
-                      return (
-                        <Draggable
-                          key={item._id}
-                          draggableId={item._id}
-                          index={index}
-                        >
-                          {(provided, snapshot) => (
-                            <div
-                              ref={provided.innerRef}
-                              {...provided.draggableProps}
-                              {...provided.dragHandleProps}
-                              style={{
-                                ...getItemStyle(
-                                  snapshot.isDragging,
-                                  provided.draggableProps.style
-                                ),
-                              }}
-                            >
-                              {this.renderPhotoItem(item, index, thumb)}
-                            </div>
-                          )}
-                        </Draggable>
-                      );
-                    })}
-                  </div>
-                )}
-              </Droppable>
-            ))}
+            {Object.keys(images).map((groupIndex) => {
+              return (
+                <Droppable
+                  key={groupIndex}
+                  droppableId={groupIndex}
+                  direction="horizontal"
+                >
+                  {(provided, snapshot) => (
+                    <div
+                      ref={provided.innerRef}
+                      {...provided.droppableProps}
+                      style={{
+                        ...getListStyle(snapshot.isDraggingOver),
+                      }}
+                    >
+                      {images[groupIndex].map((item, index) => {
+                        return (
+                          <Draggable
+                            key={item._id}
+                            draggableId={item._id}
+                            index={index}
+                          >
+                            {(provided, snapshot) => (
+                              <div
+                                ref={provided.innerRef}
+                                {...provided.draggableProps}
+                                {...provided.dragHandleProps}
+                                style={{
+                                  ...getItemStyle(
+                                    snapshot.isDragging,
+                                    provided.draggableProps.style
+                                  ),
+                                }}
+                              >
+                                {this.renderPhotoItem(item, index, thumb)}
+                              </div>
+                            )}
+                          </Draggable>
+                        );
+                      })}
+                    </div>
+                  )}
+                </Droppable>
+              )
+            })}
           </DragDropContext>
 
           {imagesLength === 0 ? (

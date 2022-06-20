@@ -102,6 +102,7 @@ export default {
     *logout({ payload, callback }, { call, put }) {
 
       Storage.remove(ENV.storage.token);
+      Storage.remove(ENV.storage.ossToken);
       yield put({
         type: 'changeLoginStatus',
         payload: {

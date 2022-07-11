@@ -1,0 +1,40 @@
+@import '../../theme/index.less';
+
+.tagArticle {
+
+  .head {
+    padding: 15px 50px 0 50px;
+    background: #fff;
+    position: relative;
+    z-index: 9;
+    h1 {
+      display: inline-block;
+      margin: 0;
+      font-size: 32px;
+      font-weight: 400;
+      letter-spacing: 20px;
+
+    }
+    .total {
+      margin-left: 30px;
+      color: #666
+    }
+  }
+
+  :global {
+    .ant-menu-horizontal {
+      margin-top: -2px;
+      padding-top: 10px;
+      text-align: center;
+      box-shadow: @box_shadow;
+    }
+
+    .ant-menu-horizontal>.ant-menu-item {
+      display: inline-block;
+    }
+  }
+
+  .content {
+    padding: 20px 0;
+  }
+}

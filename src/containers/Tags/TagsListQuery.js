@@ -70,11 +70,11 @@ export default class TagsListQuery extends React.Component {
           for(let i in res.data){
             if(res.data[i].tags) res.data[i].tags = res.data[i].tags.split(',');
           };
-          this.props.callback(res.total);
+          this.props.callback(res.data.count);
           this.setState({
-            total: res.total,
-            list: res.data,
-            hasMore: res.hasMore
+            total: res.data.count,
+            list: res.data.list,
+            hasMore: res.data.hasMore
           });
         }else{
           notification.error({message: '提示', description: res.message});
@@ -88,14 +88,14 @@ export default class TagsListQuery extends React.Component {
     if(!page) return;
     let _this = this;
     setTimeout(function(){
-      _this.queryArticleList();
+      _this.queryTagsList();
     }, 200)
   };
 
   render(){
 
     const { list, hasMore } = this.state;
-    //console.log(list)
+    // console.log(list)
 
     return(
       <div className="tags-container">
@@ -107,7 +107,7 @@ export default class TagsListQuery extends React.Component {
               loadMore={this.LoadMore}
               hasMore={hasMore}
             >
-              <PhotoListMasonry data={list} type="album" />
+              <PhotoListMasonry data={list} type="photos" />
             </InfiniteScroll>
             :
             null

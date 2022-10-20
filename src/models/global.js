@@ -156,7 +156,9 @@ export default {
 
     *request({ url, method, payload, callback }, { call, put }) {
 
-      let res, exp = payload.exp, storage = Storage.get(url);
+      let res;
+      const exp = payload ? payload.exp : null; 
+      const storage = Storage.get(url);
 
       if(exp && storage){
         res = storage;

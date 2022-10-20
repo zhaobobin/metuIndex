@@ -43,8 +43,8 @@ export default class Discover extends React.Component {
       { key: "editor", id: "menu.community.discover.editor", name: "推荐" },
       { key: "new", id: "menu.community.discover.new", name: "新作" },
       { key: "graphic", id: "menu.community.discover.graphic", name: "图文" },
-      { key: "set", id: "menu.community.discover.set", name: "影集" },
-      { key: "story", id: "menu.community.discover.story", name: "专栏" },
+      // { key: "set", id: "menu.community.discover.set", name: "影集" },
+      // { key: "story", id: "menu.community.discover.story", name: "专栏" },
       { key: "tag", id: "menu.community.discover.tag", name: "标签" },
     ];
 

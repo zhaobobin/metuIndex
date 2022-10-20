@@ -2,7 +2,7 @@
  * 图片列表 - 瀑布流
  * data： 数组
  * type：展示类型，默认album
- * <PhotoListMasonry data={list} type="album" />
+ * <PhotoListMasonry data={list} type="photos" />
  */
 import React from 'react';
 import { Link } from 'dva/router';

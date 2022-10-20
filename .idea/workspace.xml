@@ -19,14 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9867b411-40dc-42b9-8dd8-31005ea1b8dc" name="Default" comment="Photo List Query">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Tags/TagsArticleQuery.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Tags/TagsListQuery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Community/TagLayout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Community/TagLayout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Content/TagList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Content/TagsList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Content/TagList.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Content/TagsList.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/base.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/base.js" afterDir="false" />
-    </list>
+    <list default="true" id="9867b411-40dc-42b9-8dd8-31005ea1b8dc" name="Default" comment="Photo List Query" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -441,6 +434,7 @@
       <workItem from="1663812549863" duration="663000" />
       <workItem from="1664260525320" duration="676000" />
       <workItem from="1665648018567" duration="143000" />
+      <workItem from="1666236499711" duration="82000" />
     </task>
     <task id="LOCAL-00006" summary="metuIndex">
       <created>1550482406097</created>

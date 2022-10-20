@@ -96,6 +96,9 @@ export default class SettingsProfile extends React.Component {
 
     this.props.form.validateFields('', (err, values) => {
       if (!err) {
+        if (values.nickname === this.props.global.currentUser.nickname) {
+          delete values.nickname;
+        }
         this.save(values)
       }
       setTimeout(() => { this.ajaxFlag = true }, 500);
@@ -196,7 +199,7 @@ export default class SettingsProfile extends React.Component {
                   { required: true, message: '请输入手机号' }
                 ],
               })(
-                <InputText initValue={currentUser.nickname} placeholder="昵称" callback={this.nicknameCallback}/>
+                <InputText placeholder="昵称" callback={this.nicknameCallback}/>
               )}
             </FormItem>
 
@@ -206,7 +209,7 @@ export default class SettingsProfile extends React.Component {
                 rules: [
                 ],
               })(
-                <InputText initValue={currentUser.professional} placeholder="职业" callback={this.professionalCallback}/>
+                <InputText placeholder="职业" callback={this.professionalCallback}/>
               )}
             </FormItem>
 
@@ -240,7 +243,7 @@ export default class SettingsProfile extends React.Component {
                 rules: [
                 ],
               })(
-                <InputText initValue={currentUser.headline} placeholder="签名" callback={this.headlineCallback}/>
+                <InputText placeholder="签名" callback={this.headlineCallback}/>
               )}
             </FormItem>
 

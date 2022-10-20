@@ -14,6 +14,8 @@ export default class AccountArticles extends React.Component {
 
   render(){
 
+    const { currentUser, profileUser } = this.props.global;
+    const showEdit = currentUser._id === profileUser._id;
     const user_id = this.props.global.profileUser._id;
     const url = `/users/${user_id}/articles`
 
@@ -23,7 +25,7 @@ export default class AccountArticles extends React.Component {
 
         <Col xs={24} sm={24} md={16} lg={12}>
 
-          <ArticleListQuery url={url} />
+          <ArticleListQuery url={url} showEdit={showEdit} />
 
         </Col>
 

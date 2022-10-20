@@ -34,9 +34,10 @@ export default class PublishEditor extends React.Component {
 
   // 初始化内容
   initContent = () => {
-    const { content } = this.props;
-    if(!content) return;
-    const blocksFromHtml = htmlToDraft(content);
+    const { content, publish } = this.props;
+    const initContent = content || publish.article.content;
+    if(!initContent) return;
+    const blocksFromHtml = htmlToDraft(initContent);
     const { contentBlocks, entityMap } = blocksFromHtml;
     const contentState = ContentState.createFromBlockArray(contentBlocks, entityMap);
     const editorState = EditorState.createWithContent(contentState);

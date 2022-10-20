@@ -63,6 +63,7 @@ export default class UserSign extends React.Component {
                 <GlobalHeaderSearch/>
               </li>
 
+              {/*
               <MessagesPopover>
                 <li>
                   <a className={styles.message}>
@@ -70,6 +71,7 @@ export default class UserSign extends React.Component {
                   </a>
                 </li>
               </MessagesPopover>
+              */}
 
               <Dropdown
                 overlay={

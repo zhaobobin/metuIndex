@@ -57,7 +57,7 @@ export default class Publish extends React.Component {
             data.tags = data.tags.split(",");
           }
           this.props.dispatch({
-            type: "publish/savePhoto",
+            type: publishType === "photo" ? "publish/savePhoto" : "publish/saveArticle",
             payload: data,
           });
           this.setState({

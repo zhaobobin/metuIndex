@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /dist/www
+/dist
 
 # production
 /.vscode

@@ -236,7 +236,7 @@ export default class UserRegister extends React.Component {
                   { required: true, message: '请输入昵称' },
                 ],
               })(
-                <InputText defaultVaule={this.props.nickname} placeholder="昵称" callback={this.nicknameCallback}/>
+                <InputText placeholder="昵称" callback={this.nicknameCallback}/>
               )}
             </FormItem>
 

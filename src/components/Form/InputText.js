@@ -5,9 +5,11 @@ import React, { useState } from "react";
 import { Input } from "antd";
 
 export const InputText = (props) => {
-  const { maxLength, placeholder, disabled, defaultValue, callback } = props;
 
-  const [value, setValue] = useState(defaultValue);
+  const { maxLength, placeholder, disabled, defaultValue, callback } = props;
+  const initialValue = defaultValue || props.value;
+
+  const [value, setValue] = useState(initialValue);
 
   const changeValue = (e) => {
     let value = e.target.value;

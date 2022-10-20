@@ -82,7 +82,11 @@ export default class ArticleDetail extends React.Component {
                     detail.allow_comment === 0 ?
                       null
                       :
-                      <CommentList url={`/articles/${detail._id}/comments`} />
+                      <CommentList 
+                        url={`/articles/${detail._id}/comments`} 
+                        category="articles"
+                        detail_id={detail._id}
+                      />
                   }
                 </div>
 

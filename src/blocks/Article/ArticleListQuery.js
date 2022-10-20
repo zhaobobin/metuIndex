@@ -101,7 +101,7 @@ export default class ArticleListQuery extends React.Component {
   };
 
   render(){
-
+    const { showEdit } = this.props;
     const { loading, list, total } = this.state;
 
     return(
@@ -111,7 +111,7 @@ export default class ArticleListQuery extends React.Component {
           {
             list.length > 0 ?
               list.map((item, index) => (
-                <ArticleListItem key={index} item={item} />
+                <ArticleListItem key={index} item={item} showEdit={showEdit} />
               ))
               :
               <div className={styles.empty}>

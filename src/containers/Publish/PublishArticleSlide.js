@@ -26,9 +26,7 @@ export default class PublishRight extends React.Component {
   constructor(props){
     super(props);
     this.ajaxFlag = true;
-    this.state = {
-      detail: ''
-    }
+    this.state = {}
   }
 
   componentWillUnmount(){
@@ -123,9 +121,9 @@ export default class PublishRight extends React.Component {
 
   render(){
 
-    const { detail } = this.state;
     const { global, form, publish } = this.props;
     const { getFieldDecorator, getFieldValue } = form;
+    const detail = publish.article;
 
     //标签option
     const tags = ['人像', '风光', '街拍', '城市', '旅行', '纪实', '色彩', '手机', '黑白', '胶片', '抓拍'];
@@ -173,7 +171,7 @@ export default class PublishRight extends React.Component {
                 { max: 20, message: '标题长度不能超过20个字！' },
               ],
             })(
-              <InputText maxLength={20} defaultVaule={this.props.title} placeholder="标题长度不能超过20个字" callback={this.titleCallback}/>
+              <InputText maxLength={20} placeholder="标题长度不能超过20个字" callback={this.titleCallback}/>
             )}
           </FormItem>
 

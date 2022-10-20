@@ -57,7 +57,7 @@ const BaseRoutes = app => [
         id: 'menu.community.circle',
         key: 'circle',
         path: 'community/circle',
-        isHide: false,
+        isHide: true,
         component: dynamicWrapper(app, [], () => import('../pages/Circle/CircleIndex')),
       },
       {

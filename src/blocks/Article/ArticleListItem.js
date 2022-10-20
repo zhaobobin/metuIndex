@@ -4,7 +4,7 @@ import Moment from 'moment';
 import logo from '@/assets/logo2.png';
 import styles from './ArticleListItem.less';
 
-export default function ArticleListItem ({ item, index }) {
+export default function ArticleListItem ({ item, index, showEdit }) {
 
   return(
     <div key={index} className={styles.item}>
@@ -16,6 +16,11 @@ export default function ArticleListItem ({ item, index }) {
         <div className={styles.info}>
           <h2><Link to={`/graphic/${item._id}/${item.title}-by-${item.author.nickname}`}>{item.title}</Link></h2>
           <p className={styles.desc}>{item.description}</p>
+          {showEdit && (
+            <Link className={styles.edit} to={`/edit/article/${item._id}`}>
+              编辑
+            </Link>
+          )}
         </div>
       </div>
 

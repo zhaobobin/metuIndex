@@ -3,7 +3,7 @@
  * tag：标签名称
  * sort：排序
  * callback：回调
- * <TagsArticleQuery tag={tag} sort={{_id: -1}} />
+ * <TagsListQuery tag={tag} sort={{_id: -1}} />
  */
 import React from 'react';
 import { connect } from 'dva';
@@ -15,7 +15,7 @@ import PhotoListMasonry from '@/blocks/Photo/PhotoListMasonry'
 @connect(state => ({
   global: state.global
 }))
-export default class ArticleListQuery extends React.Component {
+export default class TagsListQuery extends React.Component {
 
   constructor(props){
     super(props);
@@ -36,9 +36,9 @@ export default class ArticleListQuery extends React.Component {
   }
 
   componentDidMount(){
-    this.queryArticleList({
+    this.queryTagsList({
       tag: this.state.tag,
-      sort: this.state.sort,
+      // sort: this.state.sort,
       currentPage: this.state.currentPage,
       pageSize: this.state.pageSize
     })
@@ -46,23 +46,23 @@ export default class ArticleListQuery extends React.Component {
 
   UNSAFE_componentWillReceiveProps(nextProps){
     if(nextProps.tag !== this.props.tag){
-      this.queryArticleList({
+      this.queryTagsList({
         tag: nextProps.tag,
-        sort: nextProps.sort,
+        // sort: nextProps.sort,
         currentPage: this.state.currentPage,
         pageSize: this.state.pageSize
       });
     }
   }
 
-  queryArticleList(params){
+  queryTagsList(params){
     if(!this.ajaxFlag) return;
     this.ajaxFlag = false;
 
     this.props.dispatch({
       type: 'global/request',
-      url: '/api/TagsArticle',
-      method: 'POST',
+      url: '/photos',
+      method: 'GET',
       payload: params,
       callback: (res) => {
         setTimeout(() => { this.ajaxFlag = true }, 500)

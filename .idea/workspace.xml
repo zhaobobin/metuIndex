@@ -21,9 +21,11 @@
   <component name="ChangeListManager">
     <list default="true" id="9867b411-40dc-42b9-8dd8-31005ea1b8dc" name="Default" comment="Photo List Query">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/23.0d08ac2b.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/25.378856e6.async.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/www/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/www/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Tags/TagsArticleQuery.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Tags/TagsListQuery.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Community/TagLayout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Community/TagLayout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Content/TagList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Content/TagsList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Content/TagList.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Content/TagsList.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/base.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/base.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -435,6 +437,10 @@
       <workItem from="1632573051022" duration="1390000" />
       <workItem from="1632882222523" duration="1228000" />
       <workItem from="1632966859672" duration="640000" />
+      <workItem from="1659320970906" duration="37000" />
+      <workItem from="1663812549863" duration="663000" />
+      <workItem from="1664260525320" duration="676000" />
+      <workItem from="1665648018567" duration="143000" />
     </task>
     <task id="LOCAL-00006" summary="metuIndex">
       <created>1550482406097</created>
@@ -805,52 +811,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="Photo List Query" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="512" y="197" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1626420529394">
+    <state x="456" y="198" width="767" height="606" key="find.popup" timestamp="1663812567140">
       <screen x="0" y="23" width="1680" height="957" />
     </state>
-    <state x="512" y="197" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.957@0.23.1680.957" timestamp="1626420529394" />
-    <state x="197" y="23" key="CommitChangelistDialog2" timestamp="1626679507551">
-      <screen x="0" y="23" width="1680" height="957" />
-    </state>
-    <state x="197" y="23" key="CommitChangelistDialog2/0.23.1680.957@0.23.1680.957" timestamp="1626679507551" />
-    <state x="157" y="30" width="1344" height="765" key="DiffContextDialog" timestamp="1626678513704">
-      <screen x="0" y="23" width="1680" height="957" />
-    </state>
-    <state x="157" y="30" width="1344" height="765" key="DiffContextDialog/0.23.1680.957@0.23.1680.957" timestamp="1626678513704" />
-    <state width="1628" height="147" key="GridCell.Tab.0.bottom" timestamp="1626772312451">
-      <screen x="0" y="23" width="1680" height="958" />
-    </state>
-    <state width="1628" height="147" key="GridCell.Tab.0.bottom/0.23.1680.958@0.23.1680.958" timestamp="1626772312451" />
-    <state width="1628" height="147" key="GridCell.Tab.0.center" timestamp="1626772312450">
-      <screen x="0" y="23" width="1680" height="958" />
-    </state>
-    <state width="1628" height="147" key="GridCell.Tab.0.center/0.23.1680.958@0.23.1680.958" timestamp="1626772312450" />
-    <state width="1628" height="147" key="GridCell.Tab.0.left" timestamp="1626772312450">
-      <screen x="0" y="23" width="1680" height="958" />
-    </state>
-    <state width="1628" height="147" key="GridCell.Tab.0.left/0.23.1680.958@0.23.1680.958" timestamp="1626772312450" />
-    <state width="1628" height="147" key="GridCell.Tab.0.right" timestamp="1626772312451">
-      <screen x="0" y="23" width="1680" height="958" />
-    </state>
-    <state width="1628" height="147" key="GridCell.Tab.0.right/0.23.1680.958@0.23.1680.958" timestamp="1626772312451" />
-    <state x="340" y="178" key="Vcs.Push.Dialog.v2" timestamp="1630747187202">
-      <screen x="0" y="23" width="1680" height="957" />
-    </state>
-    <state x="340" y="178" key="Vcs.Push.Dialog.v2/0.23.1680.957@0.23.1680.957" timestamp="1630747187202" />
-    <state x="456" y="199" width="767" height="606" key="find.popup" timestamp="1632966874897">
-      <screen x="0" y="23" width="1680" height="957" />
-    </state>
-    <state x="456" y="199" width="767" height="606" key="find.popup/0.23.1680.957@0.23.1680.957" timestamp="1632966874897" />
-    <state x="456" y="200" width="767" height="606" key="find.popup/0.23.1680.960@0.23.1680.960" timestamp="1625714731465" />
-    <state x="412" y="253" key="git4idea.merge.GitPullDialog" timestamp="1626343501482">
-      <screen x="0" y="23" width="1680" height="957" />
-    </state>
-    <state x="412" y="253" key="git4idea.merge.GitPullDialog/0.23.1680.957@0.23.1680.957" timestamp="1626343501482" />
-    <state x="697" y="395" key="publish.login" timestamp="1630747203554">
-      <screen x="0" y="23" width="1680" height="957" />
-    </state>
-    <state x="697" y="395" key="publish.login/0.23.1680.957@0.23.1680.957" timestamp="1630747203554" />
-    <state x="697" y="395" key="publish.login/0.23.1680.958@0.23.1680.958" timestamp="1626772427827" />
+    <state x="456" y="198" width="767" height="606" key="find.popup/0.23.1680.957@0.23.1680.957" timestamp="1663812567140" />
   </component>
   <component name="masterDetails">
     <states>

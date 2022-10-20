@@ -124,7 +124,7 @@ const BaseRoutes = app => [
         key: 'tag',
         path: 'tags/:tag',
         isHide: true,
-        component: dynamicWrapper(app, [], () => import('../pages/Content/TagList')),
+        component: dynamicWrapper(app, [], () => import('../pages/Content/TagsList')),
       },
       {
         name: '器材',

@@ -105,16 +105,16 @@ export default function TagLayout() {
       <Col xs={0} sm={1} md={2} lg={3} />
       <Col xs={24} sm={22} md={20} lg={18}>
         {
-          TAGS.map(tag => (
-            <div className={styles.tagSection}>
+          TAGS.map((tag, index) => (
+            <div className={styles.tagSection} key={index}>
               <div className={styles.title}>
                 <h2>{tag.name}</h2>
               </div>
               <div className={styles.tagList}>
                 <Row gutter={20}>
                   {
-                    tag.children.map(item => (
-                      <Col xs={12} sm={6} md={6} lg={4}>
+                    tag.children.map((item, i) => (
+                      <Col xs={12} sm={6} md={6} lg={4} key={i}>
                         <Link to={`/tags/${item.name}`} className={styles.tagItem}>
                           { item.img ? <img src={item.img} alt="tagImg" /> : null }
                           <span className={styles.tagName}>{item.name}</span>

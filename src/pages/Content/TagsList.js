@@ -6,11 +6,11 @@ import { Link } from "dva/router";
 import { Affix, Menu } from "antd";
 import { FormattedMessage } from "react-intl";
 import { getUrlParams } from "@/utils/utils";
-import styles from "./TagList.less";
+import styles from "./TagsList.less";
 
-import TagsArticleQuery from "@/containers/Tags/TagsArticleQuery";
+import TagsListQuery from "@/containers/Tags/TagsListQuery";
 
-export default class TagList extends React.Component {
+export default class TagsList extends React.Component {
   state = {
     tag: this.props.match.params.tag,
     total: 0,
@@ -29,7 +29,7 @@ export default class TagList extends React.Component {
     const { tag } = this.state;
     if (tab === "popular") {
       return (
-        <TagsArticleQuery
+        <TagsListQuery
           tag={tag}
           sort={{ views: -1 }}
           callback={this.queryResult}
@@ -38,7 +38,7 @@ export default class TagList extends React.Component {
     }
     if (tab === "new") {
       return (
-        <TagsArticleQuery
+        <TagsListQuery
           tag={tag}
           sort={{ _id: -1 }}
           callback={this.queryResult}

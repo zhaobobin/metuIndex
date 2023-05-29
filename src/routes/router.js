@@ -19,7 +19,7 @@ import 'moment/locale/zh-cn';
 moment.locale('zh-cn');
 
 addLocaleData(enLocaleData);
-const currentLang = navigator.language;  //navigator.language：'zh-CN' or 'en-US'
+const currentLang = 'zh-CN';  //navigator.language：'zh-CN' or 'en-US'
 const messages = { 'en-US': en_US, 'zh-CN': zh_CN };
 const locale = { 'en-US': enUS, 'zh-CN': zhCN }
 //国家化 end!

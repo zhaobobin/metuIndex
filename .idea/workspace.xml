@@ -19,7 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9867b411-40dc-42b9-8dd8-31005ea1b8dc" name="Default" comment="Photo List Query" />
+    <list default="true" id="9867b411-40dc-42b9-8dd8-31005ea1b8dc" name="Default" comment="Photo List Query">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/www/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/www/index.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -80,6 +83,8 @@
   <component name="PropertiesComponent">
     <property name="HbShouldOpenHtmlAsHb" value="disabled" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
@@ -106,8 +111,8 @@
     <property name="node.js.selected.package.tslint" value="$PROJECT_DIR$/node_modules/tslint" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="/usr/local/bin/node" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="web.server" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -435,6 +440,40 @@
       <workItem from="1664260525320" duration="676000" />
       <workItem from="1665648018567" duration="143000" />
       <workItem from="1666236499711" duration="82000" />
+      <workItem from="1672889074443" duration="1302000" />
+      <workItem from="1672906537244" duration="2541000" />
+      <workItem from="1672971584202" duration="9000" />
+      <workItem from="1672987074245" duration="445000" />
+      <workItem from="1672987938231" duration="139000" />
+      <workItem from="1672988804492" duration="255000" />
+      <workItem from="1672989521445" duration="2541000" />
+      <workItem from="1673231860908" duration="1319000" />
+      <workItem from="1673248375371" duration="1189000" />
+      <workItem from="1673249777818" duration="18000" />
+      <workItem from="1673252406236" duration="1074000" />
+      <workItem from="1673319984883" duration="3521000" />
+      <workItem from="1673339293100" duration="2658000" />
+      <workItem from="1673418468803" duration="475000" />
+      <workItem from="1673419629327" duration="6090000" />
+      <workItem from="1673504991187" duration="893000" />
+      <workItem from="1673506649032" duration="929000" />
+      <workItem from="1673512158248" duration="1394000" />
+      <workItem from="1673513914268" duration="1744000" />
+      <workItem from="1673591233987" duration="1599000" />
+      <workItem from="1673594015701" duration="3188000" />
+      <workItem from="1673600162317" duration="2061000" />
+      <workItem from="1673851055897" duration="679000" />
+      <workItem from="1673852509121" duration="2088000" />
+      <workItem from="1673926060535" duration="5305000" />
+      <workItem from="1673948545767" duration="506000" />
+      <workItem from="1674012326156" duration="1239000" />
+      <workItem from="1674022773495" duration="202000" />
+      <workItem from="1674029533642" duration="623000" />
+      <workItem from="1674032635988" duration="487000" />
+      <workItem from="1674113854646" duration="526000" />
+      <workItem from="1674114674686" duration="3800000" />
+      <workItem from="1675061653677" duration="5000" />
+      <workItem from="1680236644775" duration="567000" />
     </task>
     <task id="LOCAL-00006" summary="metuIndex">
       <created>1550482406097</created>
@@ -805,10 +844,14 @@
     <option name="LAST_COMMIT_MESSAGE" value="Photo List Query" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="456" y="198" width="767" height="606" key="find.popup" timestamp="1663812567140">
-      <screen x="0" y="23" width="1680" height="957" />
+    <state x="239" y="51" key="SettingsEditor" timestamp="1673249759168">
+      <screen x="0" y="23" width="1680" height="954" />
     </state>
-    <state x="456" y="198" width="767" height="606" key="find.popup/0.23.1680.957@0.23.1680.957" timestamp="1663812567140" />
+    <state x="239" y="51" key="SettingsEditor/0.23.1680.954@0.23.1680.954" timestamp="1673249759168" />
+    <state x="326" y="99" width="1127" height="820" key="find.popup" timestamp="1674013582205">
+      <screen x="0" y="23" width="1680" height="954" />
+    </state>
+    <state x="326" y="99" width="1127" height="820" key="find.popup/0.23.1680.954@0.23.1680.954" timestamp="1674013582205" />
   </component>
   <component name="masterDetails">
     <states>

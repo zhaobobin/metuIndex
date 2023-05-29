@@ -2,12 +2,12 @@
 
 # dependencies
 /node_modules
-/dist/www
-/dist
 
 # production
 /.vscode
 /src/config/wechat.js
+/dist/www
+/dist
 
 # misc
 .idea

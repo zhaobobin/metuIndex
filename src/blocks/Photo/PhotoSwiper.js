@@ -8,7 +8,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'dva';
 import {Row, Col, Icon, Spin} from 'antd';
 import { goBack } from '@/utils/utils';
-
+import classNames from 'classnames';
 import styles from './PhotoSwiper.less';
 
 const screenfull = require('screenfull');
@@ -217,20 +217,20 @@ export default class PhotoSwiper extends PureComponent {
 
       <div className={swiperClass + " " + styles[theme]} ref="screenFull">
 
-        <Row className={styles.swiperHeader}>
-          <Col span={2}>
+        <div className={styles.swiperHeader}>
+          <div className={styles.btn}>
             <a className={styles.full} title="全屏显示" onClick={this.onChangeFullscreen}>
               <Icon type={this.state.screenfullType} />
             </a>
             <a className={styles.read} title="阅读模式" onClick={this.toggleReadModel}>
               <Icon type="bulb" theme={readModel === 'black' ? 'filled' : null} />
             </a>
-          </Col>
-          <Col span={20}>
+          </div>
+          <div className={styles.title}>
             <span>{this.state.currentIndex}/{this.state.photoTotal}</span>
-          </Col>
-          <Col span={2}><a className={styles.close} title="关闭" onClick={this.goBack}><Icon type="close" /></a></Col>
-        </Row>
+          </div>
+          <div className={styles.btn} style={{textAlign: 'right'}}><a className={styles.close} title="关闭" onClick={this.goBack}><Icon type="close" /></a></div>
+        </div>
 
         {
           currentPhoto ?
